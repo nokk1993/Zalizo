@@ -20,6 +20,7 @@
 - **Етап 11 (бекап)**: ядро `Backup/BackupFile.swift` (schemaVersion, усі секції опційні при читанні, дати як секунди - точний round trip, CSV); `BackupService` (експорт, імпорт «замінити все»/«об'єднати», фото base64 у файлі); `BackupView`; тест експорт → скидання → імпорт.
 - **Етап 12 (опційне)**: таргет `ZalizoWidgets` (WidgetExtension/, Live Activity з `RestActivityAttributes` у ZalizoCore), `LiveActivityService`; `HealthService` (вимкнено за замовчуванням, потрібна capability HealthKit вручну). Віджети домашнього екрана пропущено (потрібна App Group).
 - **Етапи 13-14**: ущільнено рядок підходу під iPhone SE, повний README.
+- **Редизайн «Зал»**: нова назва на головному екрані (Bundle ID і назви таргетів без змін), тільки короткі тире "-" (тест `Typography` це стереже), seed v2. Дизайн-система в `Zalizo/DesignSystem`: темне полотно (`ZalBackground`, `.zalScreen()`), скляні картки (`.cardStyle()`), лаймова картка (`.highlightCardStyle()`), кнопки `.zalPrimary` / `.zalDark`, `CircleIconButton`, `ProgressRing`, `WeekStrip`, `PillPicker`, `PhotoCard` (монохромні фото вправ). Інтерфейс завжди темний, перемикач теми прибрано. Нова іконка: `Tools/make_icon.py`.
 
 ## Відомі обмеження / що перевірити на Mac
 - Увесь iOS-код написано без компілятора: перша збірка в Xcode може показати помилки, їх треба виправити.

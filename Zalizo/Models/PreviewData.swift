@@ -5,7 +5,7 @@ import SwiftUI
 extension View {
     /// In-memory container with fictional demo data for SwiftUI previews. Not a real person.
     func previewData() -> some View {
-        modelContainer(for: SchemaV1.models, inMemory: true) { result in
+        themed().modelContainer(for: SchemaV1.models, inMemory: true) { result in
             guard case .success(let container) = result else { return }
             Task { @MainActor in PreviewData.populate(container.mainContext) }
         }

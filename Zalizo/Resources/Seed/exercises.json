@@ -1,0 +1,3562 @@
+{
+ "version": 1,
+ "exercises": [
+  {
+   "slug": "barbell-bench-press",
+   "nameUk": "Жим штанги лежачи",
+   "nameEn": "Barbell Bench Press",
+   "synonyms": [
+    "жим",
+    "жим лежачи",
+    "жим штанги",
+    "бенч",
+    "bench",
+    "bench press"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "shoulders"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Ляж на лаву так, щоб очі були під грифом; стопи міцно на підлозі.",
+    "Зведи і опусти лопатки, зроби невеликий прогин у грудному відділі — сідниці на лаві.",
+    "Візьми гриф хватом трохи ширше плечей, зап'ястя рівні над ліктями.",
+    "Зніми штангу і виведи її над плечима.",
+    "Контрольовано опусти гриф до нижньої частини грудей, лікті під кутом ~45–70° до тулуба.",
+    "Без відскоку вижми штангу вгору і трохи назад, до положення над плечима."
+   ],
+   "commonMistakes": [
+    "Відскок штанги від грудей.",
+    "Лікті розведені на 90° до тулуба — перевантаження плечей.",
+    "Відрив сідниць від лави.",
+    "Лопатки «розпливаються» під час підходу."
+   ],
+   "safetyTips": [
+    "Працюй зі страхувальником або в рамі з обмежувачами.",
+    "Не використовуй «відкритий» хват без великого пальця."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "dumbbell-bench-press",
+    "neutral-grip-dumbbell-press",
+    "machine-chest-press",
+    "push-up"
+   ],
+   "riskAreas": [
+    "shoulders"
+   ],
+   "source": "Barbell_Bench_Press_-_Medium_Grip",
+   "imageNames": [
+    "ex-barbell-bench-press-0",
+    "ex-barbell-bench-press-1"
+   ]
+  },
+  {
+   "slug": "incline-barbell-press",
+   "nameUk": "Жим штанги на похилій лаві",
+   "nameEn": "Incline Barbell Bench Press",
+   "synonyms": [
+    "жим на похилій",
+    "похилий жим",
+    "incline press"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "shoulders",
+    "triceps"
+   ],
+   "equipment": [
+    "barbell",
+    "adjustableBench"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Встанови спинку лави під кутом 30°.",
+    "Зведи лопатки, стопи на підлозі, хват трохи ширше плечей.",
+    "Зніми штангу і виведи над верхньою частиною грудей.",
+    "Опусти гриф до верху грудей під ключицями.",
+    "Вижми вгору, не розводячи лікті надто широко."
+   ],
+   "commonMistakes": [
+    "Занадто крутий кут — вправа перетворюється на жим для плечей.",
+    "Відрив сідниць від лави.",
+    "Опускання грифа на шию."
+   ],
+   "safetyTips": [
+    "Працюй з обмежувачами або страхувальником.",
+    "Тримай зап'ястя рівними."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "incline-dumbbell-press",
+    "machine-chest-press"
+   ],
+   "riskAreas": [
+    "shoulders"
+   ],
+   "source": "Barbell_Incline_Bench_Press_-_Medium_Grip",
+   "imageNames": [
+    "ex-incline-barbell-press-0",
+    "ex-incline-barbell-press-1"
+   ]
+  },
+  {
+   "slug": "dumbbell-bench-press",
+   "nameUk": "Жим гантелей лежачи",
+   "nameEn": "Dumbbell Bench Press",
+   "synonyms": [
+    "жим гантелей",
+    "гантелі лежачи",
+    "dumbbell press"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "shoulders"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь на край лави з гантелями на стегнах, ляж і виведи їх над грудьми.",
+    "Зведи лопатки, стопи на підлозі.",
+    "Опусти гантелі по дузі до рівня грудей, лікті ~45° до тулуба.",
+    "Відчуй розтягнення грудних і вижми гантелі вгору, трохи зводячи їх.",
+    "Не стукай гантелями у верхній точці."
+   ],
+   "commonMistakes": [
+    "Занадто глибоке опускання з болем у плечах.",
+    "Лікті на 90° до тулуба.",
+    "Хаотична траєкторія, гантелі «гуляють»."
+   ],
+   "safetyTips": [
+    "Після підходу опусти гантелі на стегна і сядь — не кидай їх убік.",
+    "Обирай вагу, яку контролюєш."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "barbell-bench-press",
+    "neutral-grip-dumbbell-press",
+    "machine-chest-press",
+    "push-up"
+   ],
+   "riskAreas": [
+    "shoulders"
+   ],
+   "source": "Dumbbell_Bench_Press",
+   "imageNames": [
+    "ex-dumbbell-bench-press-0",
+    "ex-dumbbell-bench-press-1"
+   ]
+  },
+  {
+   "slug": "incline-dumbbell-press",
+   "nameUk": "Жим гантелей на похилій лаві (30°)",
+   "nameEn": "Incline Dumbbell Press",
+   "synonyms": [
+    "жим гантелей на похилій",
+    "похилий жим гантелей",
+    "incline dumbbell"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "shoulders",
+    "triceps"
+   ],
+   "equipment": [
+    "dumbbells",
+    "adjustableBench"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Встанови спинку лави під кутом 30°.",
+    "Ляж, виведи гантелі над верхньою частиною грудей.",
+    "Зведи лопатки, груди вперед.",
+    "Опусти гантелі по дузі до рівня верху грудей.",
+    "Вижми вгору, трохи зводячи гантелі."
+   ],
+   "commonMistakes": [
+    "Кут 45° і більше — навантаження йде на плечі.",
+    "Гантелі опускаються нижче, ніж дозволяє рухливість плеча.",
+    "Відрив сідниць."
+   ],
+   "safetyTips": [
+    "Подавай гантелі у вихідне положення зі стегон.",
+    "Тримай зап'ястя рівними."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "incline-barbell-press",
+    "machine-chest-press",
+    "neutral-grip-dumbbell-press"
+   ],
+   "riskAreas": [],
+   "source": "Incline_Dumbbell_Press",
+   "imageNames": [
+    "ex-incline-dumbbell-press-0",
+    "ex-incline-dumbbell-press-1"
+   ]
+  },
+  {
+   "slug": "neutral-grip-dumbbell-press",
+   "nameUk": "Жим гантелей нейтральним хватом",
+   "nameEn": "Neutral-Grip Dumbbell Press",
+   "synonyms": [
+    "нейтральний жим",
+    "жим гантелей долонями всередину"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "shoulders"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Ляж на лаву, гантелі над грудьми, долоні дивляться одна на одну.",
+    "Зведи лопатки, лікті тримай ближче до тулуба.",
+    "Опусти гантелі до рівня грудей.",
+    "Вижми вгору без розведення ліктів."
+   ],
+   "commonMistakes": [
+    "Розведення ліктів у сторони.",
+    "Неповна амплітуда.",
+    "Кидання гантелей у верхній точці."
+   ],
+   "safetyTips": [
+    "Хороший варіант при дискомфорті в плечах — дає меншу ротацію.",
+    "Не опускай гантелі нижче, ніж комфортно."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "dumbbell-bench-press",
+    "machine-chest-press"
+   ],
+   "riskAreas": [],
+   "source": "Dumbbell_Bench_Press_with_Neutral_Grip",
+   "imageNames": [
+    "ex-neutral-grip-dumbbell-press-0",
+    "ex-neutral-grip-dumbbell-press-1"
+   ]
+  },
+  {
+   "slug": "chest-dips",
+   "nameUk": "Віджимання на брусах (нахил уперед)",
+   "nameEn": "Chest Dips",
+   "synonyms": [
+    "бруси",
+    "віджимання на брусах",
+    "dips"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "shoulders"
+   ],
+   "equipment": [
+    "dipBars"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Стань на бруси на прямих руках, плечі опущені.",
+    "Нахили корпус уперед на 20–30°, ноги трохи вперед.",
+    "Опускайся, згинаючи лікті, до відчуття розтягнення грудних (плече приблизно паралельно підлозі).",
+    "Вижмись угору до випрямлення рук, не «провалюючи» плечі."
+   ],
+   "commonMistakes": [
+    "Занадто глибоке опускання.",
+    "Плечі піднімаються до вух.",
+    "Розгойдування і ривки."
+   ],
+   "safetyTips": [
+    "При болю в плечах заміни на жим у тренажері.",
+    "Додавай вагу (пояс) тільки після 12+ чистих повторень."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "machine-chest-press",
+    "dumbbell-bench-press",
+    "push-up"
+   ],
+   "riskAreas": [
+    "shoulders",
+    "elbows"
+   ],
+   "source": "Dips_-_Chest_Version",
+   "imageNames": [
+    "ex-chest-dips-0",
+    "ex-chest-dips-1"
+   ]
+  },
+  {
+   "slug": "machine-chest-press",
+   "nameUk": "Жим у тренажері сидячи",
+   "nameEn": "Machine Chest Press",
+   "synonyms": [
+    "жим у тренажері",
+    "тренажер для грудей",
+    "chest press"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "shoulders"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Налаштуй сидіння так, щоб рукоятки були на рівні середини грудей.",
+    "Притисни спину і лопатки до спинки.",
+    "Вижми рукоятки вперед до майже прямих рук.",
+    "Повільно поверни до відчуття розтягнення грудних."
+   ],
+   "commonMistakes": [
+    "Відрив спини від спинки.",
+    "Неправильна висота сидіння.",
+    "Різке «кидання» ваги назад."
+   ],
+   "safetyTips": [
+    "Безпечна альтернатива штанзі: можна працювати до відмови без страхувальника."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "dumbbell-bench-press",
+    "push-up"
+   ],
+   "riskAreas": [],
+   "source": "Leverage_Chest_Press",
+   "imageNames": [
+    "ex-machine-chest-press-0",
+    "ex-machine-chest-press-1"
+   ]
+  },
+  {
+   "slug": "cable-crossover",
+   "nameUk": "Зведення в кросовері",
+   "nameEn": "Cable Crossover",
+   "synonyms": [
+    "кросовер",
+    "зведення на блоках",
+    "cable fly"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "shoulders"
+   ],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Встанови блоки вище плечей, візьми рукоятки і зроби крок уперед.",
+    "Злегка нахились, руки трохи зігнуті в ліктях.",
+    "Зведи руки по дузі перед собою на рівні нижньої частини грудей.",
+    "Затримайся на секунду і повільно розведи до розтягнення грудних."
+   ],
+   "commonMistakes": [
+    "Згинання-розгинання ліктів (жим замість зведення).",
+    "Занадто велика вага з ривками.",
+    "Сутулість."
+   ],
+   "safetyTips": [
+    "Тримай лікті м'якими — не блокуй їх.",
+    "Не розводь руки за лінію тулуба різко."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "dumbbell-fly",
+    "pec-deck"
+   ],
+   "riskAreas": [],
+   "source": "Cable_Crossover",
+   "imageNames": [
+    "ex-cable-crossover-0",
+    "ex-cable-crossover-1"
+   ]
+  },
+  {
+   "slug": "dumbbell-fly",
+   "nameUk": "Розведення гантелей лежачи",
+   "nameEn": "Dumbbell Fly",
+   "synonyms": [
+    "розведення",
+    "розводки",
+    "fly"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "shoulders"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Ляж на лаву, гантелі над грудьми, долоні одна до одної.",
+    "Злегка зігни лікті і зафіксуй цей кут.",
+    "Повільно розведи руки в сторони до розтягнення грудних.",
+    "Зведи гантелі по тій самій дузі."
+   ],
+   "commonMistakes": [
+    "Занадто важкі гантелі і глибоке опускання.",
+    "Перетворення на жим.",
+    "Прямі, заблоковані лікті."
+   ],
+   "safetyTips": [
+    "Не опускай гантелі нижче рівня тулуба при дискомфорті в плечах."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "cable-crossover",
+    "pec-deck"
+   ],
+   "riskAreas": [
+    "shoulders"
+   ],
+   "source": "Dumbbell_Flyes",
+   "imageNames": [
+    "ex-dumbbell-fly-0",
+    "ex-dumbbell-fly-1"
+   ]
+  },
+  {
+   "slug": "pec-deck",
+   "nameUk": "Зведення в тренажері (батерфляй)",
+   "nameEn": "Pec Deck",
+   "synonyms": [
+    "батерфляй",
+    "бабочка",
+    "pec deck",
+    "butterfly"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "shoulders"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Налаштуй сидіння: рукоятки на рівні грудей.",
+    "Спина притиснута, лікті злегка зігнуті.",
+    "Зведи рукоятки перед собою, стискаючи грудні.",
+    "Повільно розведи до відчуття розтягнення."
+   ],
+   "commonMistakes": [
+    "Відрив спини.",
+    "Ривки вагою.",
+    "Занадто глибоке розведення."
+   ],
+   "safetyTips": [
+    "Контролюй негативну фазу — 2–3 секунди."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "cable-crossover",
+    "dumbbell-fly"
+   ],
+   "riskAreas": [],
+   "source": "Butterfly",
+   "imageNames": [
+    "ex-pec-deck-0",
+    "ex-pec-deck-1"
+   ]
+  },
+  {
+   "slug": "push-up",
+   "nameUk": "Віджимання від підлоги",
+   "nameEn": "Push-up",
+   "synonyms": [
+    "віджимання",
+    "отжимания",
+    "pushups",
+    "push up"
+   ],
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "shoulders",
+    "abs"
+   ],
+   "equipment": [
+    "bodyweight"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Упор лежачи: долоні трохи ширше плечей, тіло — пряма лінія.",
+    "Напруж прес і сідниці.",
+    "Опустись, згинаючи лікті під ~45°, до майже торкання грудьми підлоги.",
+    "Вижмись угору до прямих рук."
+   ],
+   "commonMistakes": [
+    "Провисання таза.",
+    "Голова опущена вниз.",
+    "Неповна амплітуда."
+   ],
+   "safetyTips": [
+    "При болю в зап'ястях використовуй упори або гантелі як рукоятки."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "dumbbell-bench-press",
+    "machine-chest-press"
+   ],
+   "riskAreas": [
+    "wrists"
+   ],
+   "source": "Pushups",
+   "imageNames": [
+    "ex-push-up-0",
+    "ex-push-up-1"
+   ]
+  },
+  {
+   "slug": "pull-up",
+   "nameUk": "Підтягування",
+   "nameEn": "Pull-up",
+   "synonyms": [
+    "підтягування",
+    "турнік",
+    "pullups",
+    "pull up"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "forearms"
+   ],
+   "equipment": [
+    "pullUpBar"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Візьмись за перекладину прямим хватом трохи ширше плечей.",
+    "Повис на прямих руках, опусти плечі від вух.",
+    "Тягнись грудьми до перекладини, ведучи лікті вниз і назад.",
+    "Підборіддя вище перекладини — і контрольовано опустись до прямих рук."
+   ],
+   "commonMistakes": [
+    "Розгойдування і ривки ногами.",
+    "Неповна амплітуда внизу.",
+    "Плечі підняті до вух."
+   ],
+   "safetyTips": [
+    "Якщо не виходить 6 повторень — роби тягу верхнього блока або підтягування з гумою."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "lat-pulldown",
+    "chin-up",
+    "inverted-row"
+   ],
+   "riskAreas": [
+    "shoulders",
+    "elbows"
+   ],
+   "source": "Pullups",
+   "imageNames": [
+    "ex-pull-up-0",
+    "ex-pull-up-1"
+   ]
+  },
+  {
+   "slug": "chin-up",
+   "nameUk": "Підтягування зворотним хватом",
+   "nameEn": "Chin-up",
+   "synonyms": [
+    "зворотні підтягування",
+    "chin up",
+    "chinup"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    "pullUpBar"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Візьмись за перекладину долонями до себе на ширині плечей.",
+    "Повис, напруж прес.",
+    "Підтягнись, поки підборіддя не стане вище перекладини.",
+    "Повільно опустись до прямих рук."
+   ],
+   "commonMistakes": [
+    "Ривки тазом.",
+    "Неповне опускання.",
+    "Задирання підборіддя замість руху тулуба."
+   ],
+   "safetyTips": [
+    "При болю в ліктях заміни на тягу вузьким хватом."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "close-grip-lat-pulldown",
+    "pull-up"
+   ],
+   "riskAreas": [
+    "elbows"
+   ],
+   "source": "Chin-Up",
+   "imageNames": [
+    "ex-chin-up-0",
+    "ex-chin-up-1"
+   ]
+  },
+  {
+   "slug": "lat-pulldown",
+   "nameUk": "Тяга верхнього блока",
+   "nameEn": "Lat Pulldown",
+   "synonyms": [
+    "верхній блок",
+    "тяга блока",
+    "lat pulldown",
+    "тяга верхнього"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь, зафіксуй стегна під валиками, візьми рукоять ширше плечей.",
+    "Злегка відхились назад (10–20°), груди вперед.",
+    "Тягни рукоять до верху грудей, ведучи лікті вниз.",
+    "Повільно поверни рукоять до повного випрямлення рук."
+   ],
+   "commonMistakes": [
+    "Тяга за голову.",
+    "Сильне відхилення і розгойдування корпусом.",
+    "Робота тільки руками без участі лопаток."
+   ],
+   "safetyTips": [
+    "Тяга до грудей безпечніша для плечей, ніж за голову."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "pull-up",
+    "close-grip-lat-pulldown",
+    "straight-arm-pulldown"
+   ],
+   "riskAreas": [],
+   "source": "Wide-Grip_Lat_Pulldown",
+   "imageNames": [
+    "ex-lat-pulldown-0",
+    "ex-lat-pulldown-1"
+   ]
+  },
+  {
+   "slug": "close-grip-lat-pulldown",
+   "nameUk": "Тяга верхнього блока вузьким хватом",
+   "nameEn": "Close-Grip Lat Pulldown",
+   "synonyms": [
+    "вузька тяга",
+    "тяга вузьким хватом",
+    "close grip pulldown"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Візьми V-рукоять або вузький прямий хват.",
+    "Сядь, зафіксуй стегна, груди вперед.",
+    "Тягни рукоять до верху грудей, лікті вздовж тулуба.",
+    "Повільно поверни до прямих рук."
+   ],
+   "commonMistakes": [
+    "Розгойдування корпусом.",
+    "Неповна амплітуда вгорі.",
+    "Плечі вперед у кінці руху."
+   ],
+   "safetyTips": [
+    "Тримай нейтральне положення шиї."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "lat-pulldown",
+    "chin-up"
+   ],
+   "riskAreas": [],
+   "source": "Close-Grip_Front_Lat_Pulldown",
+   "imageNames": [
+    "ex-close-grip-lat-pulldown-0",
+    "ex-close-grip-lat-pulldown-1"
+   ]
+  },
+  {
+   "slug": "barbell-bent-over-row",
+   "nameUk": "Тяга штанги в нахилі",
+   "nameEn": "Barbell Bent-Over Row",
+   "synonyms": [
+    "тяга в нахилі",
+    "тяга штанги",
+    "bent over row",
+    "barbell row"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "hamstrings",
+    "traps"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань, стопи на ширині таза, візьми штангу хватом трохи ширше плечей.",
+    "Нахились уперед до 30–45° від горизонталі, спина рівна, коліна злегка зігнуті.",
+    "Тягни штангу до низу живота, зводячи лопатки.",
+    "Контрольовано опусти до прямих рук."
+   ],
+   "commonMistakes": [
+    "Округлена спина.",
+    "Ривки корпусом угору.",
+    "Корпус випрямляється з кожним повтором."
+   ],
+   "safetyTips": [
+    "При болю в попереку заміни на тягу гантелі з упором у лаву.",
+    "Тримай прес напруженим."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "chest-supported-row",
+    "seated-cable-row",
+    "one-arm-dumbbell-row",
+    "t-bar-row"
+   ],
+   "riskAreas": [
+    "lowerBack"
+   ],
+   "source": "Bent_Over_Barbell_Row",
+   "imageNames": [
+    "ex-barbell-bent-over-row-0",
+    "ex-barbell-bent-over-row-1"
+   ]
+  },
+  {
+   "slug": "seated-cable-row",
+   "nameUk": "Тяга горизонтального блока",
+   "nameEn": "Seated Cable Row",
+   "synonyms": [
+    "горизонтальна тяга",
+    "нижній блок",
+    "seated row",
+    "cable row"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "traps"
+   ],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь, упрись стопами, візьми V-рукоять.",
+    "Випрями спину, коліна злегка зігнуті.",
+    "Тягни рукоять до живота, зводячи лопатки.",
+    "Повільно поверни вперед, дозволивши лопаткам розійтися."
+   ],
+   "commonMistakes": [
+    "Розгойдування корпусом вперед-назад.",
+    "Округлена спина.",
+    "Плечі підняті до вух."
+   ],
+   "safetyTips": [
+    "Не відхиляйся назад більше ніж на 10–15°."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "chest-supported-row",
+    "one-arm-dumbbell-row",
+    "inverted-row"
+   ],
+   "riskAreas": [],
+   "source": "Seated_Cable_Rows",
+   "imageNames": [
+    "ex-seated-cable-row-0",
+    "ex-seated-cable-row-1"
+   ]
+  },
+  {
+   "slug": "one-arm-dumbbell-row",
+   "nameUk": "Тяга гантелі однією рукою",
+   "nameEn": "One-Arm Dumbbell Row",
+   "synonyms": [
+    "тяга гантелі",
+    "тяга однією рукою",
+    "dumbbell row"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Упрись коліном і рукою в лаву, спина паралельна підлозі.",
+    "Візьми гантель вільною рукою.",
+    "Тягни гантель до таза, лікоть уздовж тулуба.",
+    "Повільно опусти до повного розтягнення."
+   ],
+   "commonMistakes": [
+    "Скручування корпусу.",
+    "Тяга до грудей замість таза.",
+    "Ривки."
+   ],
+   "safetyTips": [
+    "Тримай спину нейтральною, не провалюйся в попереку."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "chest-supported-row",
+    "seated-cable-row"
+   ],
+   "riskAreas": [],
+   "source": "One-Arm_Dumbbell_Row",
+   "imageNames": [
+    "ex-one-arm-dumbbell-row-0",
+    "ex-one-arm-dumbbell-row-1"
+   ]
+  },
+  {
+   "slug": "chest-supported-row",
+   "nameUk": "Тяга гантелей з упором грудьми в лаву",
+   "nameEn": "Chest-Supported Dumbbell Row",
+   "synonyms": [
+    "тяга з упором",
+    "тяга на похилій лаві",
+    "chest supported row"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "traps"
+   ],
+   "equipment": [
+    "dumbbells",
+    "adjustableBench"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Встанови лаву під кутом 30–45° і ляж на неї грудьми.",
+    "Візьми гантелі, руки прямі.",
+    "Тягни гантелі до таза, зводячи лопатки.",
+    "Повільно опусти до прямих рук."
+   ],
+   "commonMistakes": [
+    "Відрив грудей від лави.",
+    "Короткий рух без зведення лопаток.",
+    "Задирання голови."
+   ],
+   "safetyTips": [
+    "Найкращий варіант тяги при болях у попереку — спина не навантажується."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "one-arm-dumbbell-row",
+    "seated-cable-row"
+   ],
+   "riskAreas": [],
+   "source": "Dumbbell_Incline_Row",
+   "imageNames": [
+    "ex-chest-supported-row-0",
+    "ex-chest-supported-row-1"
+   ]
+  },
+  {
+   "slug": "t-bar-row",
+   "nameUk": "Т-тяга",
+   "nameEn": "T-Bar Row",
+   "synonyms": [
+    "т тяга",
+    "t-bar",
+    "t bar row"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "traps"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань над грифом, візьми рукоять.",
+    "Нахились до ~45°, спина рівна.",
+    "Тягни рукоять до живота, зводячи лопатки.",
+    "Контрольовано опусти."
+   ],
+   "commonMistakes": [
+    "Округлена спина.",
+    "Ривки ногами.",
+    "Неповна амплітуда."
+   ],
+   "safetyTips": [
+    "При болю в попереку заміни на тягу з упором."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "chest-supported-row",
+    "barbell-bent-over-row",
+    "seated-cable-row"
+   ],
+   "riskAreas": [
+    "lowerBack"
+   ],
+   "source": "T-Bar_Row_with_Handle",
+   "imageNames": [
+    "ex-t-bar-row-0",
+    "ex-t-bar-row-1"
+   ]
+  },
+  {
+   "slug": "inverted-row",
+   "nameUk": "Австралійські підтягування",
+   "nameEn": "Inverted Row",
+   "synonyms": [
+    "австралійські",
+    "горизонтальні підтягування",
+    "inverted row"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Встанови гриф у рамі на рівні пояса, ляж під нього.",
+    "Візьмись хватом на ширині плечей, тіло пряме.",
+    "Підтягни груди до грифа, зводячи лопатки.",
+    "Повільно опустись."
+   ],
+   "commonMistakes": [
+    "Провисання таза.",
+    "Неповна амплітуда.",
+    "Ривки."
+   ],
+   "safetyTips": [
+    "Чим горизонтальніше тіло, тим важче — регулюй висоту грифа."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "seated-cable-row",
+    "one-arm-dumbbell-row"
+   ],
+   "riskAreas": [],
+   "source": "Inverted_Row",
+   "imageNames": [
+    "ex-inverted-row-0",
+    "ex-inverted-row-1"
+   ]
+  },
+  {
+   "slug": "straight-arm-pulldown",
+   "nameUk": "Пуловер на блоці прямими руками",
+   "nameEn": "Straight-Arm Pulldown",
+   "synonyms": [
+    "пуловер на блоці",
+    "тяга прямими руками",
+    "straight arm pulldown"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань перед верхнім блоком, візьми рукоять прямим хватом.",
+    "Злегка нахились, руки майже прямі.",
+    "Опусти рукоять по дузі до стегон, напружуючи найширші.",
+    "Повільно поверни вгору."
+   ],
+   "commonMistakes": [
+    "Згинання ліктів.",
+    "Розгойдування корпусом.",
+    "Занадто велика вага."
+   ],
+   "safetyTips": [
+    "Тримай прес напруженим, не прогинайся в попереку."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "lat-pulldown"
+   ],
+   "riskAreas": [],
+   "source": "Straight-Arm_Pulldown",
+   "imageNames": [
+    "ex-straight-arm-pulldown-0",
+    "ex-straight-arm-pulldown-1"
+   ]
+  },
+  {
+   "slug": "face-pull",
+   "nameUk": "Тяга канату до обличчя",
+   "nameEn": "Face Pull",
+   "synonyms": [
+    "фейс пул",
+    "face pull",
+    "тяга до обличчя"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [
+    "traps",
+    "back"
+   ],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Встанови блок на рівні обличчя, візьми канат хватом зверху.",
+    "Зроби крок назад, руки прямі.",
+    "Тягни канат до обличчя, розводячи кінці і лікті в сторони-назад.",
+    "Затримайся на секунду і повільно поверни."
+   ],
+   "commonMistakes": [
+    "Занадто велика вага і відхилення корпусом.",
+    "Лікті нижче плечей.",
+    "Ривки."
+   ],
+   "safetyTips": [
+    "Корисна вправа для здоров'я плечей — роби її регулярно."
+   ],
+   "breathing": "Видих, коли тягнеш вагу до себе; вдих, коли повільно повертаєш у вихідне положення.",
+   "alternatives": [
+    "rear-delt-fly",
+    "reverse-pec-deck"
+   ],
+   "riskAreas": [],
+   "source": "Face_Pull",
+   "imageNames": [
+    "ex-face-pull-0",
+    "ex-face-pull-1"
+   ]
+  },
+  {
+   "slug": "hyperextension",
+   "nameUk": "Гіперекстензія",
+   "nameEn": "Back Extension",
+   "synonyms": [
+    "гіперекстензія",
+    "гіпер",
+    "back extension"
+   ],
+   "primaryMuscles": [
+    "back"
+   ],
+   "secondaryMuscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "core",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Налаштуй валик під верх стегон, щоб таз вільно згинався.",
+    "Руки схрести на грудях.",
+    "Опустись униз з рівною спиною.",
+    "Підніми корпус до прямої лінії з ногами, без перерозгинання."
+   ],
+   "commonMistakes": [
+    "Перерозгинання в попереку вгорі.",
+    "Ривки.",
+    "Округлення спини внизу."
+   ],
+   "safetyTips": [
+    "При гострому болю в попереку не виконуй — порадься з лікарем."
+   ],
+   "breathing": "Дихай рівно, не затримуй дихання; на зусиллі — повільний видих.",
+   "alternatives": [
+    "romanian-deadlift",
+    "hip-thrust"
+   ],
+   "riskAreas": [
+    "lowerBack"
+   ],
+   "source": "Hyperextensions_Back_Extensions",
+   "imageNames": [
+    "ex-hyperextension-0",
+    "ex-hyperextension-1"
+   ]
+  },
+  {
+   "slug": "barbell-shrug",
+   "nameUk": "Шраги зі штангою",
+   "nameEn": "Barbell Shrug",
+   "synonyms": [
+    "шраги",
+    "шраги штанга",
+    "shrug"
+   ],
+   "primaryMuscles": [
+    "traps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо, тримай штангу на прямих руках перед стегнами.",
+    "Підніми плечі прямо вгору до вух.",
+    "Затримайся на секунду.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Обертання плечима.",
+    "Згинання рук.",
+    "Неповна амплітуда."
+   ],
+   "safetyTips": [
+    "Тримай голову нейтрально, не тягни шию вперед."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "dumbbell-shrug"
+   ],
+   "riskAreas": [],
+   "source": "Barbell_Shrug",
+   "imageNames": [
+    "ex-barbell-shrug-0",
+    "ex-barbell-shrug-1"
+   ]
+  },
+  {
+   "slug": "dumbbell-shrug",
+   "nameUk": "Шраги з гантелями",
+   "nameEn": "Dumbbell Shrug",
+   "synonyms": [
+    "шраги гантелі",
+    "dumbbell shrug"
+   ],
+   "primaryMuscles": [
+    "traps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо, гантелі вздовж тулуба.",
+    "Підніми плечі вгору до вух.",
+    "Затримайся на секунду.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Обертання плечима.",
+    "Ривки.",
+    "Згинання ліктів."
+   ],
+   "safetyTips": [
+    "Використовуй лямки, якщо хват здається раніше трапецій."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "barbell-shrug"
+   ],
+   "riskAreas": [],
+   "source": "Dumbbell_Shrug",
+   "imageNames": [
+    "ex-dumbbell-shrug-0",
+    "ex-dumbbell-shrug-1"
+   ]
+  },
+  {
+   "slug": "deadlift",
+   "nameUk": "Станова тяга",
+   "nameEn": "Deadlift",
+   "synonyms": [
+    "станова",
+    "станова тяга",
+    "deadlift",
+    "тяга класична"
+   ],
+   "primaryMuscles": [
+    "back",
+    "hamstrings",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "quads",
+    "traps",
+    "forearms"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань, гриф над серединою стопи, стопи на ширині таза.",
+    "Нахились і візьмись за гриф, руки зовні колін.",
+    "Опусти таз, спина рівна, груди вперед, гриф притиснутий до гомілок.",
+    "Глибокий вдих, напруж прес і підніми штангу, штовхаючи підлогу ногами.",
+    "Випрямись повністю, без відхилення назад.",
+    "Опусти штангу, відводячи таз назад, по тій самій траєкторії."
+   ],
+   "commonMistakes": [
+    "Округлена спина.",
+    "Гриф далеко від ніг.",
+    "Ривок руками.",
+    "Перерозгинання у верхній точці."
+   ],
+   "safetyTips": [
+    "Починай з легкої ваги і відпрацюй техніку.",
+    "При болю в попереку заміни на румунську тягу з гантелями або ягодичний міст."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "romanian-deadlift",
+    "hip-thrust",
+    "hyperextension"
+   ],
+   "riskAreas": [
+    "lowerBack"
+   ],
+   "source": "Barbell_Deadlift",
+   "imageNames": [
+    "ex-deadlift-0",
+    "ex-deadlift-1"
+   ]
+  },
+  {
+   "slug": "close-grip-bench-press",
+   "nameUk": "Жим лежачи вузьким хватом",
+   "nameEn": "Close-Grip Bench Press",
+   "synonyms": [
+    "вузький жим",
+    "жим вузьким",
+    "close grip bench"
+   ],
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [
+    "chest",
+    "shoulders"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Ляж на лаву, візьми гриф хватом на ширині плечей.",
+    "Зведи лопатки, зніми штангу.",
+    "Опусти гриф до нижньої частини грудей, лікті вздовж тулуба.",
+    "Вижми вгору до прямих рук."
+   ],
+   "commonMistakes": [
+    "Занадто вузький хват — біль у зап'ястях.",
+    "Лікті в сторони.",
+    "Відскок від грудей."
+   ],
+   "safetyTips": [
+    "Хват не вужчий за ширину плечей.",
+    "Працюй зі страхувальником."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "rope-pushdown",
+    "triceps-pushdown",
+    "bench-dips"
+   ],
+   "riskAreas": [
+    "wrists",
+    "elbows"
+   ],
+   "source": "Close-Grip_Barbell_Bench_Press",
+   "imageNames": [
+    "ex-close-grip-bench-press-0",
+    "ex-close-grip-bench-press-1"
+   ]
+  },
+  {
+   "slug": "ez-skull-crusher",
+   "nameUk": "Французький жим з EZ-грифом",
+   "nameEn": "EZ-Bar Skull Crusher",
+   "synonyms": [
+    "французький жим",
+    "француз",
+    "skull crusher",
+    "skullcrusher"
+   ],
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "ezBar"
+   ],
+   "mechanic": "isolation",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Ляж на лаву, тримай EZ-гриф над грудьми на прямих руках.",
+    "Відведи руки трохи за голову.",
+    "Згинаючи лікті, опусти гриф до лоба або за голову.",
+    "Розігни руки, не розводячи лікті."
+   ],
+   "commonMistakes": [
+    "Лікті розходяться в сторони.",
+    "Рух у плечах замість ліктів.",
+    "Занадто велика вага."
+   ],
+   "safetyTips": [
+    "При болю в ліктях заміни на розгинання на блоці."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "cable-overhead-extension",
+    "overhead-dumbbell-extension",
+    "rope-pushdown"
+   ],
+   "riskAreas": [
+    "elbows"
+   ],
+   "source": "EZ-Bar_Skullcrusher",
+   "imageNames": [
+    "ex-ez-skull-crusher-0",
+    "ex-ez-skull-crusher-1"
+   ]
+  },
+  {
+   "slug": "overhead-dumbbell-extension",
+   "nameUk": "Розгинання гантелі з-за голови",
+   "nameEn": "Overhead Dumbbell Extension",
+   "synonyms": [
+    "розгинання з-за голови",
+    "французький жим гантелі",
+    "overhead extension"
+   ],
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь, візьми гантель обома руками і підніми над головою.",
+    "Лікті дивляться вперед, прес напружений.",
+    "Опусти гантель за голову, згинаючи лікті.",
+    "Розігни руки вгору."
+   ],
+   "commonMistakes": [
+    "Лікті розводяться.",
+    "Прогин у попереку.",
+    "Неповна амплітуда."
+   ],
+   "safetyTips": [
+    "Сидячи зі спинкою безпечніше для попереку."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "cable-overhead-extension",
+    "ez-skull-crusher"
+   ],
+   "riskAreas": [
+    "elbows",
+    "shoulders"
+   ],
+   "source": "Standing_Dumbbell_Triceps_Extension",
+   "imageNames": [
+    "ex-overhead-dumbbell-extension-0",
+    "ex-overhead-dumbbell-extension-1"
+   ]
+  },
+  {
+   "slug": "cable-overhead-extension",
+   "nameUk": "Розгинання на блоці з-за голови",
+   "nameEn": "Cable Overhead Triceps Extension",
+   "synonyms": [
+    "розгинання на блоці з-за голови",
+    "overhead cable extension"
+   ],
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Встанови блок унизу, візьми канат і стань спиною до тренажера.",
+    "Нахились уперед, лікті біля голови.",
+    "Розігни руки вперед-угору.",
+    "Повільно поверни до розтягнення трицепса."
+   ],
+   "commonMistakes": [
+    "Лікті розходяться.",
+    "Рух корпусом.",
+    "Неповне розгинання."
+   ],
+   "safetyTips": [
+    "Тримай спину рівною, крок уперед для стійкості."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "overhead-dumbbell-extension",
+    "ez-skull-crusher"
+   ],
+   "riskAreas": [
+    "elbows"
+   ],
+   "source": "Cable_Rope_Overhead_Triceps_Extension",
+   "imageNames": [
+    "ex-cable-overhead-extension-0",
+    "ex-cable-overhead-extension-1"
+   ]
+  },
+  {
+   "slug": "triceps-pushdown",
+   "nameUk": "Розгинання на блоці",
+   "nameEn": "Triceps Pushdown",
+   "synonyms": [
+    "розгинання на блоці",
+    "блок на трицепс",
+    "pushdown"
+   ],
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань перед верхнім блоком, візьми пряму рукоять.",
+    "Лікті притисни до тулуба.",
+    "Розігни руки донизу до повного випрямлення.",
+    "Повільно поверни до кута ~90°."
+   ],
+   "commonMistakes": [
+    "Лікті ходять уперед-назад.",
+    "Нахил корпусом на рукоять.",
+    "Ривки."
+   ],
+   "safetyTips": [
+    "Тримай зап'ястя рівними."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "rope-pushdown",
+    "bench-dips"
+   ],
+   "riskAreas": [],
+   "source": "Triceps_Pushdown",
+   "imageNames": [
+    "ex-triceps-pushdown-0",
+    "ex-triceps-pushdown-1"
+   ]
+  },
+  {
+   "slug": "rope-pushdown",
+   "nameUk": "Розгинання на блоці з канатом",
+   "nameEn": "Rope Pushdown",
+   "synonyms": [
+    "канат",
+    "розгинання з канатом",
+    "rope pushdown"
+   ],
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Візьми канат на верхньому блоці.",
+    "Лікті біля тулуба.",
+    "Розігни руки донизу, внизу розведи кінці каната в сторони.",
+    "Повільно поверни."
+   ],
+   "commonMistakes": [
+    "Лікті відходять від тулуба.",
+    "Робота плечима.",
+    "Занадто велика вага."
+   ],
+   "safetyTips": [
+    "Найм'якший варіант для ліктів."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "triceps-pushdown",
+    "overhead-dumbbell-extension"
+   ],
+   "riskAreas": [],
+   "source": "Triceps_Pushdown_-_Rope_Attachment",
+   "imageNames": [
+    "ex-rope-pushdown-0",
+    "ex-rope-pushdown-1"
+   ]
+  },
+  {
+   "slug": "bench-dips",
+   "nameUk": "Зворотні віджимання від лави",
+   "nameEn": "Bench Dips",
+   "synonyms": [
+    "віджимання від лави",
+    "зворотні віджимання",
+    "bench dips"
+   ],
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [
+    "chest",
+    "shoulders"
+   ],
+   "equipment": [
+    "bodyweight"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Сядь на край лави, долоні поруч із тазом.",
+    "Зсунь таз уперед, ноги зігнуті або прямі.",
+    "Опустись, згинаючи лікті до ~90°.",
+    "Вижмись угору."
+   ],
+   "commonMistakes": [
+    "Занадто глибоке опускання.",
+    "Лікті в сторони.",
+    "Таз далеко від лави."
+   ],
+   "safetyTips": [
+    "При болю в плечах не виконуй — заміни на розгинання на блоці."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "triceps-pushdown",
+    "close-grip-bench-press"
+   ],
+   "riskAreas": [
+    "shoulders"
+   ],
+   "source": "Bench_Dips",
+   "imageNames": [
+    "ex-bench-dips-0",
+    "ex-bench-dips-1"
+   ]
+  },
+  {
+   "slug": "barbell-curl",
+   "nameUk": "Підйом штанги на біцепс",
+   "nameEn": "Barbell Curl",
+   "synonyms": [
+    "біцепс штанга",
+    "підйом штанги",
+    "curl",
+    "barbell curl"
+   ],
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо, візьми штангу знизу на ширині плечей.",
+    "Лікті притисни до тулуба.",
+    "Зігни руки, піднімаючи штангу до плечей.",
+    "Повільно опусти до майже прямих рук."
+   ],
+   "commonMistakes": [
+    "Розгойдування корпусом.",
+    "Лікті йдуть уперед.",
+    "Неповне опускання."
+   ],
+   "safetyTips": [
+    "При дискомфорті в зап'ястях використовуй EZ-гриф."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "ez-bar-curl",
+    "dumbbell-curl",
+    "cable-curl"
+   ],
+   "riskAreas": [
+    "wrists",
+    "elbows"
+   ],
+   "source": "Barbell_Curl",
+   "imageNames": [
+    "ex-barbell-curl-0",
+    "ex-barbell-curl-1"
+   ]
+  },
+  {
+   "slug": "ez-bar-curl",
+   "nameUk": "Підйом EZ-штанги на біцепс",
+   "nameEn": "EZ-Bar Curl",
+   "synonyms": [
+    "ez гриф",
+    "кривий гриф",
+    "ez curl"
+   ],
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "ezBar"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Візьми EZ-гриф за вигини.",
+    "Лікті біля тулуба.",
+    "Зігни руки до плечей.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Читинг корпусом.",
+    "Лікті вперед.",
+    "Короткий рух."
+   ],
+   "safetyTips": [
+    "М'якше для зап'ясть, ніж прямий гриф."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "barbell-curl",
+    "dumbbell-curl"
+   ],
+   "riskAreas": [],
+   "source": "EZ-Bar_Curl",
+   "imageNames": [
+    "ex-ez-bar-curl-0",
+    "ex-ez-bar-curl-1"
+   ]
+  },
+  {
+   "slug": "dumbbell-curl",
+   "nameUk": "Згинання рук з гантелями",
+   "nameEn": "Dumbbell Curl",
+   "synonyms": [
+    "біцепс гантелі",
+    "згинання гантелі",
+    "dumbbell curl"
+   ],
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо, гантелі вздовж тулуба.",
+    "Зігни руки, розвертаючи долоні догори.",
+    "Підніми до плечей, стисни біцепс.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Розгойдування.",
+    "Лікті відходять від тулуба.",
+    "Швидке опускання."
+   ],
+   "safetyTips": [
+    "Можна виконувати поперемінно."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "barbell-curl",
+    "cable-curl",
+    "hammer-curl"
+   ],
+   "riskAreas": [],
+   "source": "Dumbbell_Bicep_Curl",
+   "imageNames": [
+    "ex-dumbbell-curl-0",
+    "ex-dumbbell-curl-1"
+   ]
+  },
+  {
+   "slug": "incline-dumbbell-curl",
+   "nameUk": "Згинання з гантелями на похилій лаві",
+   "nameEn": "Incline Dumbbell Curl",
+   "synonyms": [
+    "похилий біцепс",
+    "згинання на похилій",
+    "incline curl"
+   ],
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "dumbbells",
+    "adjustableBench"
+   ],
+   "mechanic": "isolation",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Встанови лаву під 45–60°, сядь, руки звисають вниз.",
+    "Лікті трохи позаду тулуба.",
+    "Зігни руки, не виводячи лікті вперед.",
+    "Повільно опусти до повного розтягнення."
+   ],
+   "commonMistakes": [
+    "Лікті йдуть уперед.",
+    "Занадто велика вага.",
+    "Відрив спини."
+   ],
+   "safetyTips": [
+    "Дає сильне розтягнення — починай з легкої ваги."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "dumbbell-curl",
+    "cable-curl"
+   ],
+   "riskAreas": [],
+   "source": "Incline_Dumbbell_Curl",
+   "imageNames": [
+    "ex-incline-dumbbell-curl-0",
+    "ex-incline-dumbbell-curl-1"
+   ]
+  },
+  {
+   "slug": "hammer-curl",
+   "nameUk": "«Молотки»",
+   "nameEn": "Hammer Curl",
+   "synonyms": [
+    "молотки",
+    "молот",
+    "hammer curl",
+    "hammer"
+   ],
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо, гантелі вздовж тулуба, долоні одна до одної.",
+    "Лікті біля тулуба.",
+    "Зігни руки, зберігаючи нейтральний хват.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Розгойдування.",
+    "Лікті вперед.",
+    "Неповна амплітуда."
+   ],
+   "safetyTips": [
+    "Нейтральний хват комфортний для зап'ясть і ліктів."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "dumbbell-curl",
+    "cable-curl"
+   ],
+   "riskAreas": [],
+   "source": "Hammer_Curls",
+   "imageNames": [
+    "ex-hammer-curl-0",
+    "ex-hammer-curl-1"
+   ]
+  },
+  {
+   "slug": "cable-curl",
+   "nameUk": "Згинання рук на блоці",
+   "nameEn": "Cable Curl",
+   "synonyms": [
+    "біцепс блок",
+    "згинання на блоці",
+    "cable curl"
+   ],
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Візьми рукоять нижнього блока хватом знизу.",
+    "Лікті біля тулуба.",
+    "Зігни руки до плечей.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Нахил корпусом.",
+    "Лікті вперед.",
+    "Ривки."
+   ],
+   "safetyTips": [
+    "Постійна напруга — добре для завершення тренування."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "dumbbell-curl",
+    "ez-bar-curl"
+   ],
+   "riskAreas": [],
+   "source": "Standing_Biceps_Cable_Curl",
+   "imageNames": [
+    "ex-cable-curl-0",
+    "ex-cable-curl-1"
+   ]
+  },
+  {
+   "slug": "preacher-curl",
+   "nameUk": "Згинання на лаві Скотта",
+   "nameEn": "Preacher Curl",
+   "synonyms": [
+    "скотт",
+    "лава скотта",
+    "preacher curl"
+   ],
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "ezBar",
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь за лаву Скотта, пахви на верху подушки.",
+    "Візьми EZ-гриф знизу.",
+    "Зігни руки до плечей.",
+    "Повільно опусти, не розгинаючи лікті повністю різко."
+   ],
+   "commonMistakes": [
+    "Кидання ваги внизу.",
+    "Відрив ліктів від подушки.",
+    "Занадто велика вага."
+   ],
+   "safetyTips": [
+    "Унизу не розслабляйся повністю — це навантажує сухожилля."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "ez-bar-curl",
+    "cable-curl"
+   ],
+   "riskAreas": [
+    "elbows"
+   ],
+   "source": "Preacher_Curl",
+   "imageNames": [
+    "ex-preacher-curl-0",
+    "ex-preacher-curl-1"
+   ]
+  },
+  {
+   "slug": "barbell-back-squat",
+   "nameUk": "Присідання зі штангою",
+   "nameEn": "Barbell Back Squat",
+   "synonyms": [
+    "присідання",
+    "присід",
+    "присяд",
+    "squat",
+    "back squat"
+   ],
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings",
+    "abs",
+    "back"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Встанови штангу в рамі на рівні верху грудей.",
+    "Підсядь під гриф, поклади його на трапеції, зведи лопатки.",
+    "Зніми штангу, відійди на 2 кроки, стопи трохи ширше плечей, носки злегка назовні.",
+    "Вдих, напруж прес і присідай, відводячи таз назад і розводячи коліна за носками.",
+    "Опустись до паралелі стегна з підлогою або нижче, зберігаючи рівну спину.",
+    "Встань, штовхаючи підлогу всією стопою."
+   ],
+   "commonMistakes": [
+    "Коліна «заходять» усередину.",
+    "Округлення попереку внизу.",
+    "Відрив п'ят.",
+    "Нахил уперед «на носки»."
+   ],
+   "safetyTips": [
+    "Обов'язково виставляй страхувальні упори рами.",
+    "При болю в колінах або попереку заміни на жим ногами."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "leg-press",
+    "goblet-squat",
+    "hack-squat",
+    "front-squat"
+   ],
+   "riskAreas": [
+    "lowerBack",
+    "knees"
+   ],
+   "source": "Barbell_Squat",
+   "imageNames": [
+    "ex-barbell-back-squat-0",
+    "ex-barbell-back-squat-1"
+   ]
+  },
+  {
+   "slug": "front-squat",
+   "nameUk": "Фронтальні присідання",
+   "nameEn": "Front Squat",
+   "synonyms": [
+    "фронтальні",
+    "фронт присід",
+    "front squat"
+   ],
+   "primaryMuscles": [
+    "quads"
+   ],
+   "secondaryMuscles": [
+    "glutes",
+    "abs"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "expert",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Поклади гриф на передні дельти, лікті високо вперед.",
+    "Стопи на ширині плечей.",
+    "Присідай з вертикальним корпусом.",
+    "Встань, тримаючи лікті високо."
+   ],
+   "commonMistakes": [
+    "Лікті опускаються.",
+    "Округлення верхньої частини спини.",
+    "Коліна всередину."
+   ],
+   "safetyTips": [
+    "Виставляй страхувальні упори."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "barbell-back-squat",
+    "goblet-squat",
+    "leg-press"
+   ],
+   "riskAreas": [
+    "knees",
+    "wrists"
+   ],
+   "source": "Front_Barbell_Squat",
+   "imageNames": [
+    "ex-front-squat-0",
+    "ex-front-squat-1"
+   ]
+  },
+  {
+   "slug": "goblet-squat",
+   "nameUk": "Гоблет-присідання",
+   "nameEn": "Goblet Squat",
+   "synonyms": [
+    "гоблет",
+    "присідання з гантеллю",
+    "goblet squat"
+   ],
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "abs"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Тримай гантель вертикально біля грудей.",
+    "Стопи трохи ширше плечей.",
+    "Присідай між колінами, корпус вертикальний.",
+    "Встань, штовхаючи підлогу."
+   ],
+   "commonMistakes": [
+    "Округлення спини.",
+    "Коліна всередину.",
+    "Відрив п'ят."
+   ],
+   "safetyTips": [
+    "Чудова вправа для навчання техніки присідання."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "leg-press",
+    "barbell-back-squat"
+   ],
+   "riskAreas": [
+    "knees"
+   ],
+   "source": "Goblet_Squat",
+   "imageNames": [
+    "ex-goblet-squat-0",
+    "ex-goblet-squat-1"
+   ]
+  },
+  {
+   "slug": "hack-squat",
+   "nameUk": "Гак-присідання в тренажері",
+   "nameEn": "Hack Squat",
+   "synonyms": [
+    "гак",
+    "гак присід",
+    "hack squat"
+   ],
+   "primaryMuscles": [
+    "quads"
+   ],
+   "secondaryMuscles": [
+    "glutes"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань у тренажер, плечі під валиками, спина притиснута.",
+    "Стопи на ширині плечей на платформі.",
+    "Опустись до кута в колінах 90° або нижче.",
+    "Вижми платформу, не блокуючи коліна."
+   ],
+   "commonMistakes": [
+    "Відрив таза від спинки.",
+    "Блокування колін угорі.",
+    "Коліна всередину."
+   ],
+   "safetyTips": [
+    "Тренажер страхує — можна працювати близько до відмови."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "leg-press",
+    "barbell-back-squat"
+   ],
+   "riskAreas": [
+    "knees"
+   ],
+   "source": "Hack_Squat",
+   "imageNames": [
+    "ex-hack-squat-0",
+    "ex-hack-squat-1"
+   ]
+  },
+  {
+   "slug": "leg-press",
+   "nameUk": "Жим ногами",
+   "nameEn": "Leg Press",
+   "synonyms": [
+    "жим ногами",
+    "платформа",
+    "leg press"
+   ],
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь у тренажер, притисни спину і таз.",
+    "Стопи на платформі на ширині плечей.",
+    "Зніми з фіксаторів і опусти платформу до кута ~90° у колінах.",
+    "Вижми платформу, не блокуючи коліна повністю."
+   ],
+   "commonMistakes": [
+    "Таз відривається від сидіння внизу.",
+    "Повне блокування колін.",
+    "Коліна сходяться."
+   ],
+   "safetyTips": [
+    "Не опускай платформу так низько, щоб округлювався поперек."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "hack-squat",
+    "goblet-squat",
+    "barbell-back-squat"
+   ],
+   "riskAreas": [
+    "knees"
+   ],
+   "source": "Leg_Press",
+   "imageNames": [
+    "ex-leg-press-0",
+    "ex-leg-press-1"
+   ]
+  },
+  {
+   "slug": "bulgarian-split-squat",
+   "nameUk": "Болгарські присідання",
+   "nameEn": "Bulgarian Split Squat",
+   "synonyms": [
+    "болгарські",
+    "болгарка",
+    "split squat"
+   ],
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань спиною до лави, поклади носок задньої ноги на неї.",
+    "Тримай гантелі в руках.",
+    "Опустись на передній нозі, поки стегно не стане паралельно підлозі.",
+    "Встань, штовхаючи п'ятою передньої ноги."
+   ],
+   "commonMistakes": [
+    "Занадто короткий крок.",
+    "Коліно всередину.",
+    "Нахил корпусу вбік."
+   ],
+   "safetyTips": [
+    "Почни без ваги для балансу."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "dumbbell-lunge",
+    "leg-press"
+   ],
+   "riskAreas": [
+    "knees"
+   ],
+   "source": "Split_Squat_with_Dumbbells",
+   "imageNames": [
+    "ex-bulgarian-split-squat-0",
+    "ex-bulgarian-split-squat-1"
+   ]
+  },
+  {
+   "slug": "dumbbell-lunge",
+   "nameUk": "Випади з гантелями",
+   "nameEn": "Dumbbell Lunge",
+   "synonyms": [
+    "випади",
+    "выпады",
+    "lunge"
+   ],
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо, гантелі в руках.",
+    "Зроби крок уперед і опустись, поки обидва коліна не зігнуться до ~90°.",
+    "Відштовхнись передньою ногою і поверніся.",
+    "Повтори на іншу ногу."
+   ],
+   "commonMistakes": [
+    "Коліно задньої ноги б'ється об підлогу.",
+    "Коліно передньої ноги всередину.",
+    "Короткий крок."
+   ],
+   "safetyTips": [
+    "Тримай корпус вертикально."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "bulgarian-split-squat",
+    "leg-press"
+   ],
+   "riskAreas": [
+    "knees"
+   ],
+   "source": "Dumbbell_Lunges",
+   "imageNames": [
+    "ex-dumbbell-lunge-0",
+    "ex-dumbbell-lunge-1"
+   ]
+  },
+  {
+   "slug": "romanian-deadlift",
+   "nameUk": "Румунська станова тяга",
+   "nameEn": "Romanian Deadlift",
+   "synonyms": [
+    "румунська тяга",
+    "румынка",
+    "rdl",
+    "romanian deadlift"
+   ],
+   "primaryMuscles": [
+    "hamstrings",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "back",
+    "forearms"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо зі штангою в руках, стопи на ширині таза.",
+    "Коліна злегка зігнуті і зафіксовані.",
+    "Відводь таз назад, опускаючи штангу вздовж ніг, спина рівна.",
+    "Опустись до сильного розтягнення задньої поверхні стегна (зазвичай до середини гомілки).",
+    "Поверни таз уперед і випрямись."
+   ],
+   "commonMistakes": [
+    "Округлена спина.",
+    "Присідання замість нахилу тазом.",
+    "Штанга далеко від ніг."
+   ],
+   "safetyTips": [
+    "При болю в попереку заміни на згинання ніг у тренажері.",
+    "Не гонись за амплітудою ціною рівної спини."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "dumbbell-romanian-deadlift",
+    "lying-leg-curl",
+    "hip-thrust",
+    "hyperextension"
+   ],
+   "riskAreas": [
+    "lowerBack"
+   ],
+   "source": "Romanian_Deadlift",
+   "imageNames": [
+    "ex-romanian-deadlift-0",
+    "ex-romanian-deadlift-1"
+   ]
+  },
+  {
+   "slug": "dumbbell-romanian-deadlift",
+   "nameUk": "Румунська тяга з гантелями",
+   "nameEn": "Dumbbell Romanian Deadlift",
+   "synonyms": [
+    "румунська з гантелями",
+    "dumbbell rdl"
+   ],
+   "primaryMuscles": [
+    "hamstrings",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "back"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо з гантелями перед стегнами.",
+    "Злегка зігни коліна.",
+    "Відводь таз назад, ведучи гантелі вздовж ніг.",
+    "Поверни таз уперед і випрямись."
+   ],
+   "commonMistakes": [
+    "Округлена спина.",
+    "Гантелі далеко від ніг.",
+    "Згинання колін."
+   ],
+   "safetyTips": [
+    "Легше контролювати, ніж штангу."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "romanian-deadlift",
+    "lying-leg-curl",
+    "hip-thrust"
+   ],
+   "riskAreas": [
+    "lowerBack"
+   ],
+   "source": "Stiff-Legged_Dumbbell_Deadlift",
+   "imageNames": [
+    "ex-dumbbell-romanian-deadlift-0",
+    "ex-dumbbell-romanian-deadlift-1"
+   ]
+  },
+  {
+   "slug": "hip-thrust",
+   "nameUk": "Ягодичний міст зі штангою",
+   "nameEn": "Barbell Hip Thrust",
+   "synonyms": [
+    "хіп траст",
+    "ягодичний міст",
+    "hip thrust"
+   ],
+   "primaryMuscles": [
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь на підлогу, лопатки на краю лави, штанга на тазу (з м'якою накладкою).",
+    "Стопи на ширині таза, гомілки вертикальні у верхній точці.",
+    "Підніми таз до прямої лінії плечі–коліна.",
+    "Стисни сідниці, затримайся і опусти."
+   ],
+   "commonMistakes": [
+    "Перерозгинання попереку.",
+    "Стопи занадто далеко.",
+    "Неповне розгинання таза."
+   ],
+   "safetyTips": [
+    "Використовуй накладку на гриф."
+   ],
+   "breathing": "Глибокий вдих животом і напруження преса перед опусканням, видих після проходження найважчої точки підйому.",
+   "alternatives": [
+    "romanian-deadlift",
+    "hyperextension"
+   ],
+   "riskAreas": [],
+   "source": "Barbell_Hip_Thrust",
+   "imageNames": [
+    "ex-hip-thrust-0",
+    "ex-hip-thrust-1"
+   ]
+  },
+  {
+   "slug": "lying-leg-curl",
+   "nameUk": "Згинання ніг лежачи",
+   "nameEn": "Lying Leg Curl",
+   "synonyms": [
+    "згинання ніг",
+    "біцепс стегна",
+    "leg curl"
+   ],
+   "primaryMuscles": [
+    "hamstrings"
+   ],
+   "secondaryMuscles": [
+    "calves"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Ляж у тренажер, валик над п'ятами.",
+    "Таз притиснутий до лави.",
+    "Зігни ноги, підтягуючи валик до сідниць.",
+    "Повільно поверни."
+   ],
+   "commonMistakes": [
+    "Відрив таза.",
+    "Ривки.",
+    "Неповне розгинання."
+   ],
+   "safetyTips": [
+    "Безпечна альтернатива тягам при болях у попереку."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "seated-leg-curl",
+    "romanian-deadlift"
+   ],
+   "riskAreas": [],
+   "source": "Lying_Leg_Curls",
+   "imageNames": [
+    "ex-lying-leg-curl-0",
+    "ex-lying-leg-curl-1"
+   ]
+  },
+  {
+   "slug": "seated-leg-curl",
+   "nameUk": "Згинання ніг сидячи",
+   "nameEn": "Seated Leg Curl",
+   "synonyms": [
+    "згинання ніг сидячи",
+    "seated leg curl"
+   ],
+   "primaryMuscles": [
+    "hamstrings"
+   ],
+   "secondaryMuscles": [
+    "calves"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь у тренажер, валик під гомілками, стегна зафіксовані.",
+    "Спина притиснута.",
+    "Зігни ноги якомога сильніше.",
+    "Повільно поверни."
+   ],
+   "commonMistakes": [
+    "Ривки.",
+    "Відрив стегон.",
+    "Швидке повернення."
+   ],
+   "safetyTips": [
+    "Сидячий варіант дає більше розтягнення."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "lying-leg-curl",
+    "romanian-deadlift"
+   ],
+   "riskAreas": [],
+   "source": "Seated_Leg_Curl",
+   "imageNames": [
+    "ex-seated-leg-curl-0",
+    "ex-seated-leg-curl-1"
+   ]
+  },
+  {
+   "slug": "leg-extension",
+   "nameUk": "Розгинання ніг у тренажері",
+   "nameEn": "Leg Extension",
+   "synonyms": [
+    "розгинання ніг",
+    "квадрицепс тренажер",
+    "leg extension"
+   ],
+   "primaryMuscles": [
+    "quads"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь, валик на нижній частині гомілки.",
+    "Тримайся за рукоятки.",
+    "Розігни ноги до майже прямих.",
+    "Повільно поверни."
+   ],
+   "commonMistakes": [
+    "Ривки.",
+    "Відрив таза.",
+    "Занадто велика вага."
+   ],
+   "safetyTips": [
+    "При болю в колінах зменши амплітуду або заміни вправу."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "leg-press",
+    "goblet-squat"
+   ],
+   "riskAreas": [
+    "knees"
+   ],
+   "source": "Leg_Extensions",
+   "imageNames": [
+    "ex-leg-extension-0",
+    "ex-leg-extension-1"
+   ]
+  },
+  {
+   "slug": "standing-calf-raise",
+   "nameUk": "Підйоми на носки стоячи",
+   "nameEn": "Standing Calf Raise",
+   "synonyms": [
+    "литки",
+    "носки",
+    "calf raise",
+    "підйоми на носки"
+   ],
+   "primaryMuscles": [
+    "calves"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань носками на платформу, плечі під валиками.",
+    "Опусти п'яти якомога нижче.",
+    "Піднімись на носки максимально високо.",
+    "Затримайся на секунду вгорі і внизу."
+   ],
+   "commonMistakes": [
+    "Пружинення без паузи.",
+    "Згинання колін.",
+    "Неповна амплітуда."
+   ],
+   "safetyTips": [
+    "Пауза в розтягненні — ключ до росту литок."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "seated-calf-raise"
+   ],
+   "riskAreas": [],
+   "source": "Standing_Calf_Raises",
+   "imageNames": [
+    "ex-standing-calf-raise-0",
+    "ex-standing-calf-raise-1"
+   ]
+  },
+  {
+   "slug": "seated-calf-raise",
+   "nameUk": "Підйоми на носки сидячи",
+   "nameEn": "Seated Calf Raise",
+   "synonyms": [
+    "литки сидячи",
+    "seated calf"
+   ],
+   "primaryMuscles": [
+    "calves"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "lower",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь, валик на стегнах біля колін, носки на платформі.",
+    "Опусти п'яти вниз.",
+    "Піднімись на носки.",
+    "Затримайся вгорі."
+   ],
+   "commonMistakes": [
+    "Пружинення.",
+    "Неповна амплітуда.",
+    "Занадто велика вага."
+   ],
+   "safetyTips": [
+    "Доповнює стоячий варіант."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "standing-calf-raise"
+   ],
+   "riskAreas": [],
+   "source": "Seated_Calf_Raise",
+   "imageNames": [
+    "ex-seated-calf-raise-0",
+    "ex-seated-calf-raise-1"
+   ]
+  },
+  {
+   "slug": "overhead-press",
+   "nameUk": "Жим штанги стоячи (армійський)",
+   "nameEn": "Overhead Press",
+   "synonyms": [
+    "армійський жим",
+    "жим стоячи",
+    "ohp",
+    "overhead press",
+    "military press"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "abs"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Зніми штангу з рами на рівні ключиць, хват трохи ширше плечей.",
+    "Стопи на ширині таза, напруж сідниці і прес.",
+    "Вижми штангу вертикально вгору, відводячи голову назад.",
+    "Угорі «пропусти» голову під гриф.",
+    "Контрольовано опусти до ключиць."
+   ],
+   "commonMistakes": [
+    "Сильний прогин у попереку.",
+    "Жим уперед, а не вгору.",
+    "Поштовх ногами."
+   ],
+   "safetyTips": [
+    "При болях у плечах або попереку заміни на жим у тренажері."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "seated-dumbbell-press",
+    "machine-shoulder-press",
+    "arnold-press"
+   ],
+   "riskAreas": [
+    "shoulders",
+    "lowerBack"
+   ],
+   "source": "Standing_Military_Press",
+   "imageNames": [
+    "ex-overhead-press-0",
+    "ex-overhead-press-1"
+   ]
+  },
+  {
+   "slug": "seated-dumbbell-press",
+   "nameUk": "Жим гантелей сидячи",
+   "nameEn": "Seated Dumbbell Press",
+   "synonyms": [
+    "жим гантелей сидячи",
+    "жим на плечі",
+    "dumbbell shoulder press"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    "dumbbells",
+    "adjustableBench"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь на лаву зі спинкою під 80–90°.",
+    "Підніми гантелі до рівня плечей, долоні вперед.",
+    "Вижми гантелі вгору.",
+    "Повільно опусти до рівня вух."
+   ],
+   "commonMistakes": [
+    "Прогин у попереку.",
+    "Стукання гантелями вгорі.",
+    "Лікті позаду тулуба."
+   ],
+   "safetyTips": [
+    "Подавай гантелі коліньми."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "overhead-press",
+    "machine-shoulder-press",
+    "arnold-press"
+   ],
+   "riskAreas": [
+    "shoulders"
+   ],
+   "source": "Seated_Dumbbell_Press",
+   "imageNames": [
+    "ex-seated-dumbbell-press-0",
+    "ex-seated-dumbbell-press-1"
+   ]
+  },
+  {
+   "slug": "arnold-press",
+   "nameUk": "Жим Арнольда",
+   "nameEn": "Arnold Press",
+   "synonyms": [
+    "арнольд",
+    "arnold press"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "compound",
+   "level": "intermediate",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь, гантелі перед обличчям, долоні до себе.",
+    "Почни жим, розвертаючи долоні вперед.",
+    "Вижми гантелі вгору.",
+    "Опусти, розвертаючи долоні назад до себе."
+   ],
+   "commonMistakes": [
+    "Швидкий рух.",
+    "Прогин у попереку.",
+    "Занадто велика вага."
+   ],
+   "safetyTips": [
+    "Обертання може дратувати плечі — при дискомфорті обери звичайний жим."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "seated-dumbbell-press",
+    "machine-shoulder-press"
+   ],
+   "riskAreas": [
+    "shoulders"
+   ],
+   "source": "Arnold_Dumbbell_Press",
+   "imageNames": [
+    "ex-arnold-press-0",
+    "ex-arnold-press-1"
+   ]
+  },
+  {
+   "slug": "machine-shoulder-press",
+   "nameUk": "Жим у тренажері на плечі",
+   "nameEn": "Machine Shoulder Press",
+   "synonyms": [
+    "жим на плечі тренажер",
+    "shoulder press machine"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "compound",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Налаштуй сидіння: рукоятки на рівні плечей.",
+    "Спина притиснута.",
+    "Вижми рукоятки вгору.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Відрив спини.",
+    "Занадто низьке сидіння.",
+    "Ривки."
+   ],
+   "safetyTips": [
+    "Найбезпечніший жим для плечей."
+   ],
+   "breathing": "Вдих перед опусканням, затримай дихання в нижній точці, видих після проходження найважчої частини підйому.",
+   "alternatives": [
+    "seated-dumbbell-press",
+    "overhead-press"
+   ],
+   "riskAreas": [],
+   "source": "Leverage_Shoulder_Press",
+   "imageNames": [
+    "ex-machine-shoulder-press-0",
+    "ex-machine-shoulder-press-1"
+   ]
+  },
+  {
+   "slug": "dumbbell-lateral-raise",
+   "nameUk": "Махи гантелями в сторони",
+   "nameEn": "Dumbbell Lateral Raise",
+   "synonyms": [
+    "махи",
+    "махи в сторони",
+    "lateral raise",
+    "розведення в сторони"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [
+    "traps"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань прямо, гантелі вздовж тулуба, лікті злегка зігнуті.",
+    "Злегка нахились уперед.",
+    "Підніми руки в сторони до рівня плечей, мізинці трохи вгору.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Розгойдування корпусом.",
+    "Підйом вище плечей з участю трапецій.",
+    "Занадто важкі гантелі."
+   ],
+   "safetyTips": [
+    "Легка вага і контроль — важливіше за кілограми."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "cable-lateral-raise"
+   ],
+   "riskAreas": [],
+   "source": "Side_Lateral_Raise",
+   "imageNames": [
+    "ex-dumbbell-lateral-raise-0",
+    "ex-dumbbell-lateral-raise-1"
+   ]
+  },
+  {
+   "slug": "cable-lateral-raise",
+   "nameUk": "Махи на блоці в сторону",
+   "nameEn": "Cable Lateral Raise",
+   "synonyms": [
+    "махи на блоці",
+    "cable lateral"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань боком до нижнього блока, візьми рукоять дальньою рукою.",
+    "Лікоть злегка зігнутий.",
+    "Підніми руку в сторону до рівня плеча.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Розгойдування.",
+    "Підйом вище плеча.",
+    "Згинання ліктя."
+   ],
+   "safetyTips": [
+    "Постійна напруга по всій амплітуді."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "dumbbell-lateral-raise"
+   ],
+   "riskAreas": [],
+   "source": "Cable_Seated_Lateral_Raise",
+   "imageNames": [
+    "ex-cable-lateral-raise-0",
+    "ex-cable-lateral-raise-1"
+   ]
+  },
+  {
+   "slug": "rear-delt-fly",
+   "nameUk": "Махи в нахилі на задню дельту",
+   "nameEn": "Rear Delt Fly",
+   "synonyms": [
+    "задня дельта",
+    "махи в нахилі",
+    "rear delt fly",
+    "reverse fly"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [
+    "traps",
+    "back"
+   ],
+   "equipment": [
+    "dumbbells"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Нахились уперед майже до паралелі, спина рівна.",
+    "Гантелі під грудьми, лікті злегка зігнуті.",
+    "Розведи руки в сторони до рівня тулуба.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Зведення лопаток замість роботи дельт.",
+    "Ривки.",
+    "Округлена спина."
+   ],
+   "safetyTips": [
+    "Можна виконувати лежачи грудьми на похилій лаві — так безпечніше для попереку."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "reverse-pec-deck",
+    "face-pull"
+   ],
+   "riskAreas": [],
+   "source": "Reverse_Flyes",
+   "imageNames": [
+    "ex-rear-delt-fly-0",
+    "ex-rear-delt-fly-1"
+   ]
+  },
+  {
+   "slug": "reverse-pec-deck",
+   "nameUk": "Зворотні розведення в тренажері",
+   "nameEn": "Reverse Pec Deck",
+   "synonyms": [
+    "зворотний батерфляй",
+    "reverse pec deck"
+   ],
+   "primaryMuscles": [
+    "shoulders"
+   ],
+   "secondaryMuscles": [
+    "traps"
+   ],
+   "equipment": [
+    "machines"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "upper",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Сядь обличчям до тренажера, груди до спинки.",
+    "Візьмись за рукоятки на рівні плечей.",
+    "Розведи руки назад до лінії тулуба.",
+    "Повільно поверни."
+   ],
+   "commonMistakes": [
+    "Ривки.",
+    "Плечі піднімаються.",
+    "Занадто велика вага."
+   ],
+   "safetyTips": [
+    "Тримай руки злегка зігнутими."
+   ],
+   "breathing": "Видих на зусиллі, вдих на поверненні. Не затримуй дихання надовго.",
+   "alternatives": [
+    "rear-delt-fly",
+    "face-pull"
+   ],
+   "riskAreas": [],
+   "source": "Reverse_Machine_Flyes",
+   "imageNames": [
+    "ex-reverse-pec-deck-0",
+    "ex-reverse-pec-deck-1"
+   ]
+  },
+  {
+   "slug": "hanging-leg-raise",
+   "nameUk": "Підйоми ніг у висі",
+   "nameEn": "Hanging Leg Raise",
+   "synonyms": [
+    "підйоми ніг",
+    "вис",
+    "hanging leg raise"
+   ],
+   "primaryMuscles": [
+    "abs"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    "pullUpBar"
+   ],
+   "mechanic": "isolation",
+   "level": "intermediate",
+   "region": "core",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Повис на перекладині, плечі опущені.",
+    "Напруж прес.",
+    "Підніми ноги (зігнуті або прямі) до рівня таза і вище, підкручуючи таз.",
+    "Повільно опусти без розгойдування."
+   ],
+   "commonMistakes": [
+    "Розгойдування.",
+    "Підйом тільки стегнами без підкручування таза.",
+    "Швидке опускання."
+   ],
+   "safetyTips": [
+    "Почни зі зігнутих колін."
+   ],
+   "breathing": "Дихай рівно, не затримуй дихання; на зусиллі — повільний видих.",
+   "alternatives": [
+    "knee-raise-parallel-bars",
+    "lying-leg-raise",
+    "cable-crunch"
+   ],
+   "riskAreas": [],
+   "source": "Hanging_Leg_Raise",
+   "imageNames": [
+    "ex-hanging-leg-raise-0",
+    "ex-hanging-leg-raise-1"
+   ]
+  },
+  {
+   "slug": "knee-raise-parallel-bars",
+   "nameUk": "Підйоми колін на брусах",
+   "nameEn": "Knee Raise on Parallel Bars",
+   "synonyms": [
+    "коліна на брусах",
+    "капітанське крісло",
+    "knee raise"
+   ],
+   "primaryMuscles": [
+    "abs"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "dipBars"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "core",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Упрись передпліччями або прямими руками на бруси.",
+    "Ноги вниз, спина притиснута.",
+    "Підтягни коліна до грудей, підкручуючи таз.",
+    "Повільно опусти."
+   ],
+   "commonMistakes": [
+    "Розгойдування.",
+    "Неповна амплітуда.",
+    "Плечі до вух."
+   ],
+   "safetyTips": [
+    "Легший варіант підйомів ніг у висі."
+   ],
+   "breathing": "Дихай рівно, не затримуй дихання; на зусиллі — повільний видих.",
+   "alternatives": [
+    "hanging-leg-raise",
+    "lying-leg-raise"
+   ],
+   "riskAreas": [],
+   "source": "Knee_Hip_Raise_On_Parallel_Bars",
+   "imageNames": [
+    "ex-knee-raise-parallel-bars-0",
+    "ex-knee-raise-parallel-bars-1"
+   ]
+  },
+  {
+   "slug": "lying-leg-raise",
+   "nameUk": "Підйоми ніг лежачи",
+   "nameEn": "Lying Leg Raise",
+   "synonyms": [
+    "ноги лежачи",
+    "lying leg raise"
+   ],
+   "primaryMuscles": [
+    "abs"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "bodyweight"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "core",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Ляж на лаву або підлогу, руки вздовж тулуба або за краєм лави.",
+    "Поперек притисни.",
+    "Підніми прямі ноги до вертикалі.",
+    "Повільно опусти, не торкаючись підлоги."
+   ],
+   "commonMistakes": [
+    "Поперек відривається від опори.",
+    "Ривки.",
+    "Швидке опускання."
+   ],
+   "safetyTips": [
+    "При болю в попереку зігни коліна."
+   ],
+   "breathing": "Дихай рівно, не затримуй дихання; на зусиллі — повільний видих.",
+   "alternatives": [
+    "knee-raise-parallel-bars",
+    "dead-bug"
+   ],
+   "riskAreas": [
+    "lowerBack"
+   ],
+   "source": "Flat_Bench_Lying_Leg_Raise",
+   "imageNames": [
+    "ex-lying-leg-raise-0",
+    "ex-lying-leg-raise-1"
+   ]
+  },
+  {
+   "slug": "plank",
+   "nameUk": "Планка",
+   "nameEn": "Plank",
+   "synonyms": [
+    "планка",
+    "plank"
+   ],
+   "primaryMuscles": [
+    "abs"
+   ],
+   "secondaryMuscles": [
+    "shoulders",
+    "glutes"
+   ],
+   "equipment": [
+    "bodyweight"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "core",
+   "progression": "timed",
+   "techniqueSteps": [
+    "Упор на передпліччя, лікті під плечима.",
+    "Тіло — пряма лінія від голови до п'ят.",
+    "Напруж прес і сідниці.",
+    "Тримай положення заданий час, рівно дихаючи."
+   ],
+   "commonMistakes": [
+    "Провисання таза.",
+    "Таз задертий угору.",
+    "Затримка дихання."
+   ],
+   "safetyTips": [
+    "Якість важливіша за тривалість: краще 45 с ідеально, ніж 2 хв з провислим тазом."
+   ],
+   "breathing": "Дихай рівно, не затримуй дихання; на зусиллі — повільний видих.",
+   "alternatives": [
+    "dead-bug",
+    "ab-wheel"
+   ],
+   "riskAreas": [],
+   "source": "Plank",
+   "imageNames": [
+    "ex-plank-0",
+    "ex-plank-1"
+   ]
+  },
+  {
+   "slug": "cable-crunch",
+   "nameUk": "Скручування на блоці",
+   "nameEn": "Cable Crunch",
+   "synonyms": [
+    "скручування",
+    "молитва",
+    "cable crunch"
+   ],
+   "primaryMuscles": [
+    "abs"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "cables"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "core",
+   "progression": "doubleProgression",
+   "techniqueSteps": [
+    "Стань на коліна перед верхнім блоком, тримай канат біля голови.",
+    "Таз нерухомий.",
+    "Скрутись, зближуючи ребра з тазом.",
+    "Повільно поверни."
+   ],
+   "commonMistakes": [
+    "Рух тазом замість скручування.",
+    "Тяга руками.",
+    "Ривки."
+   ],
+   "safetyTips": [
+    "Дозволяє прогресувати вагою — добре для росту преса."
+   ],
+   "breathing": "Дихай рівно, не затримуй дихання; на зусиллі — повільний видих.",
+   "alternatives": [
+    "hanging-leg-raise",
+    "lying-leg-raise"
+   ],
+   "riskAreas": [],
+   "source": "Cable_Crunch",
+   "imageNames": [
+    "ex-cable-crunch-0",
+    "ex-cable-crunch-1"
+   ]
+  },
+  {
+   "slug": "ab-wheel",
+   "nameUk": "Ролик для преса",
+   "nameEn": "Ab Wheel Rollout",
+   "synonyms": [
+    "ролик",
+    "колесо",
+    "ab wheel",
+    "ab roller"
+   ],
+   "primaryMuscles": [
+    "abs"
+   ],
+   "secondaryMuscles": [
+    "shoulders",
+    "back"
+   ],
+   "equipment": [
+    "bodyweight"
+   ],
+   "mechanic": "isolation",
+   "level": "intermediate",
+   "region": "core",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Стань на коліна, тримай ролик під плечима.",
+    "Напруж прес, таз трохи підкручений.",
+    "Повільно викоти ролик уперед, не прогинаючись у попереку.",
+    "Поверни ролик назад силою преса."
+   ],
+   "commonMistakes": [
+    "Провисання попереку.",
+    "Занадто далекий викат.",
+    "Рух тазом назад."
+   ],
+   "safetyTips": [
+    "При болях у попереку не виконуй."
+   ],
+   "breathing": "Дихай рівно, не затримуй дихання; на зусиллі — повільний видих.",
+   "alternatives": [
+    "plank",
+    "cable-crunch"
+   ],
+   "riskAreas": [
+    "lowerBack"
+   ],
+   "source": "Ab_Roller",
+   "imageNames": [
+    "ex-ab-wheel-0",
+    "ex-ab-wheel-1"
+   ]
+  },
+  {
+   "slug": "dead-bug",
+   "nameUk": "«Мертвий жук»",
+   "nameEn": "Dead Bug",
+   "synonyms": [
+    "мертвий жук",
+    "dead bug"
+   ],
+   "primaryMuscles": [
+    "abs"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    "bodyweight"
+   ],
+   "mechanic": "isolation",
+   "level": "beginner",
+   "region": "core",
+   "progression": "bodyweight",
+   "techniqueSteps": [
+    "Ляж на спину, руки вгору, ноги зігнуті під 90°.",
+    "Притисни поперек до підлоги.",
+    "Одночасно опусти протилежні руку і ногу.",
+    "Поверни і повтори на інший бік."
+   ],
+   "commonMistakes": [
+    "Поперек відривається.",
+    "Поспіх.",
+    "Затримка дихання."
+   ],
+   "safetyTips": [
+    "Безпечна вправа для преса при проблемах зі спиною."
+   ],
+   "breathing": "Дихай рівно, не затримуй дихання; на зусиллі — повільний видих.",
+   "alternatives": [
+    "plank",
+    "lying-leg-raise"
+   ],
+   "riskAreas": [],
+   "source": "Dead_Bug",
+   "imageNames": [
+    "ex-dead-bug-0",
+    "ex-dead-bug-1"
+   ]
+  }
+ ]
+}

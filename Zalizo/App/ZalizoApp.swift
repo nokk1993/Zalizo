@@ -11,6 +11,7 @@ struct ZalizoApp: App {
         do {
             let container = try Persistence.makeContainer()
             try Persistence.bootstrap(container.mainContext)
+            SeedLoader.seedAll(context: container.mainContext)
             self.container = container
             self.startupError = nil
         } catch {

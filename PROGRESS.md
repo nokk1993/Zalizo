@@ -11,6 +11,7 @@
 - **Етап 1 (каркас)**: власник зібрав і встановив на iPhone, працює.
 - **Етап 2 (розрахунки)**: `Packages/ZalizoCore/Sources/ZalizoCore/Calculations/` — BodyMetrics, NutritionCalculator, WeightTrend, AdaptiveCalories, StrengthMath (OneRM, WeightRounding, PlateCalculator, WarmupGenerator, Volume). 54 тести зелені (Swift 6.2, Linux).
 - **Етап 3 (профіль і онбординг)**: `ZalizoCore/Profile/ProfileSnapshot.swift` (ProfileSnapshot, PlanCalculator.summary/changes, ProgramCatalog, KeyLift, LiftResult); `Zalizo/Services/ProfileStore.swift`; `Features/Onboarding/*` (11 кроків, продовження з місця зупинки, «Пропустити» → дефолти); `Features/Profile/*` (Мої дані з екраном «Що зміниться», Норми і прогноз, Пройти анкету заново). **Ще не зібрано в Xcode.**
+- **Етап 4 (бібліотека вправ)**: seed 71 вправи (`Tools/seed/exercises_seed.py` → `Resources/Seed/exercises.json`, версія seed 1), 142 фото (`Assets.xcassets/Exercises`, `Tools/seed/import_exercise_images.py`), `SeedLoader` (не перезаписує правки), `PhotoStorage`, `BodyMapView` (схема м'язів спереду/ззаду), екрани: бібліотека (пошук, фільтри, обране, режим вибору `onPick`), картка вправи, власна вправа з фото. Тести seed читають реальний JSON. **Ще не зібрано в Xcode.**
 
 ## Ухвалені рішення
 - Bundle ID: `ua.zalizo.app.b82a66`. Він стабільний, без персональних даних, **не змінювати**.

@@ -282,3 +282,32 @@ extension PlanChange.Field {
         }
     }
 }
+
+extension ExerciseMechanic {
+    var title: LocalizedStringResource {
+        switch self {
+        case .compound: "Базова"
+        case .isolation: "Ізолююча"
+        }
+    }
+}
+
+extension ExerciseLevel {
+    var title: LocalizedStringResource {
+        switch self {
+        case .beginner: "Легка техніка"
+        case .intermediate: "Середня складність"
+        case .expert: "Складна техніка"
+        }
+    }
+}
+
+extension BodyRegion {
+    var title: LocalizedStringResource {
+        switch self {
+        case .upper: "Верх тіла"
+        case .lower: "Низ тіла"
+        case .core: "Кор"
+        }
+    }
+}

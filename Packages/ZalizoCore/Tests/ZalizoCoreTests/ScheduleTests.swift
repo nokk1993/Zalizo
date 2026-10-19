@@ -64,3 +64,23 @@ struct ScheduleTests {
         #expect(!TrainingSchedule.missedYesterday(trainingDays: mwf, workoutDates: [], now: date(21), calendar: utc))
     }
 }
+
+@Suite("Session estimate")
+struct SessionEstimateTests {
+    @Test func dayAEstimate() {
+        // Day A of the 3-day split ≈ 65–75 minutes
+        let items = [
+            SessionEstimate.Item(sets: 4, restSeconds: 180, hasWarmup: true),
+            .init(sets: 3, restSeconds: 120, hasWarmup: false),
+            .init(sets: 3, restSeconds: 120, hasWarmup: false),
+            .init(sets: 3, restSeconds: 90, hasWarmup: false),
+            .init(sets: 3, restSeconds: 105, hasWarmup: false),
+            .init(sets: 3, restSeconds: 90, hasWarmup: false),
+            .init(sets: 2, restSeconds: 60, hasWarmup: false)
+        ]
+        let minutes = SessionEstimate.minutes(items)
+        #expect((60...80).contains(minutes))
+        #expect(minutes % 5 == 0)
+        #expect(SessionEstimate.minutes([]) == 5)
+    }
+}

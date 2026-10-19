@@ -41,6 +41,32 @@ struct ProfileView: View {
                 }
 
                 Section {
+                    NavigationLink {
+                        GoalsView()
+                    } label: {
+                        Label("Цілі і досягнення", systemImage: "flag.checkered")
+                    }
+                    NavigationLink {
+                        KnowledgeBaseView()
+                    } label: {
+                        Label("База знань", systemImage: "book")
+                    }
+                }
+
+                Section {
+                    NavigationLink {
+                        BackupView()
+                    } label: {
+                        Label("Резервна копія", systemImage: "externaldrive.badge.icloud")
+                    }
+                    NavigationLink {
+                        SettingsView()
+                    } label: {
+                        Label("Налаштування", systemImage: "gearshape")
+                    }
+                }
+
+                Section {
                     Button {
                         confirmRestart = true
                     } label: {

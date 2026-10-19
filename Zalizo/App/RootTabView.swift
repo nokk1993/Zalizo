@@ -2,6 +2,8 @@ import SwiftUI
 
 struct RootTabView: View {
     @Environment(AppState.self) private var appState
+    @Environment(\.modelContext) private var context
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         @Bindable var appState = appState
@@ -23,6 +25,10 @@ struct RootTabView: View {
             }
         }
         .tabBarMinimizeBehavior(.onScrollDown)
+        .onChange(of: scenePhase, initial: true) { _, phase in
+            guard phase == .active else { return }
+            Task { await ReminderService.refresh(in: context) }
+        }
     }
 }
 

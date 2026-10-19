@@ -20,6 +20,7 @@ struct TodayView: View {
     @State private var showWellness = false
     @State private var wellnessSuggestion: WellnessPending?
     @State private var showWeighIn = false
+    @State private var showQuickLog = false
 
     struct WellnessPending: Identifiable {
         let id = UUID()
@@ -75,13 +76,22 @@ struct TodayView: View {
                     .cardStyle()
 
                     if activeSessions.isEmpty {
-                        Button {
-                            startFreeWorkout()
-                        } label: {
-                            Label("Довільне тренування", systemImage: "plus.circle")
-                                .frame(maxWidth: .infinity, minHeight: 44)
+                        HStack(spacing: Theme.Spacing.s) {
+                            Button {
+                                startFreeWorkout()
+                            } label: {
+                                Label("Довільне", systemImage: "plus.circle")
+                                    .frame(maxWidth: .infinity, minHeight: 44)
+                            }
+                            .buttonStyle(.glass)
+                            Button {
+                                showQuickLog = true
+                            } label: {
+                                Label("Швидкий запис", systemImage: "text.badge.plus")
+                                    .frame(maxWidth: .infinity, minHeight: 44)
+                            }
+                            .buttonStyle(.glass)
                         }
-                        .buttonStyle(.glass)
                     }
                 }
                 .padding(Theme.Spacing.l)
@@ -103,6 +113,7 @@ struct TodayView: View {
                 }
                 .presentationDetents([.medium, .large])
             }
+            .sheet(isPresented: $showQuickLog, onDismiss: reload) { QuickLogView() }
             .sheet(isPresented: $showWeighIn) {
                 WeighInSheet(initial: latestWeights.first?.weightKg ?? Defaults.weightKg)
                     .presentationDetents([.medium])
@@ -141,6 +152,8 @@ struct TodayView: View {
         plan = TodayPlanner.plan(in: context)
         deloadReason = TodayPlanner.deloadReason(in: context)
         week = TodayPlanner.weekProgress(in: context)
+        AchievementService.evaluate(in: context)
+        Task { await ReminderService.refresh(in: context) }
     }
 
     private func requestStart(day: ProgramDay) {

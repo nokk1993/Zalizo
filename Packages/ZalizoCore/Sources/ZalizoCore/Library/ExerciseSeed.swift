@@ -22,11 +22,44 @@ public struct ExerciseSeed: Codable, Equatable, Sendable {
     public var imageNames: [String]
     /// Folder in free-exercise-db the images came from (attribution/debugging).
     public var source: String?
+
+    public init(
+        slug: String, nameUk: String, nameEn: String, synonyms: [String], primaryMuscles: [MuscleGroup],
+        secondaryMuscles: [MuscleGroup], equipment: [Equipment], mechanic: ExerciseMechanic, level: ExerciseLevel,
+        region: BodyRegion, progression: ProgressionType, techniqueSteps: [String], commonMistakes: [String],
+        safetyTips: [String], breathing: String, alternatives: [String], riskAreas: [InjuryArea],
+        imageNames: [String], source: String?
+    ) {
+        self.slug = slug
+        self.nameUk = nameUk
+        self.nameEn = nameEn
+        self.synonyms = synonyms
+        self.primaryMuscles = primaryMuscles
+        self.secondaryMuscles = secondaryMuscles
+        self.equipment = equipment
+        self.mechanic = mechanic
+        self.level = level
+        self.region = region
+        self.progression = progression
+        self.techniqueSteps = techniqueSteps
+        self.commonMistakes = commonMistakes
+        self.safetyTips = safetyTips
+        self.breathing = breathing
+        self.alternatives = alternatives
+        self.riskAreas = riskAreas
+        self.imageNames = imageNames
+        self.source = source
+    }
 }
 
 public struct ExerciseSeedFile: Codable, Equatable, Sendable {
     public var version: Int
     public var exercises: [ExerciseSeed]
+
+    public init(version: Int, exercises: [ExerciseSeed]) {
+        self.version = version
+        self.exercises = exercises
+    }
 
     public static func decode(_ data: Data) throws -> ExerciseSeedFile {
         try JSONDecoder().decode(ExerciseSeedFile.self, from: data)

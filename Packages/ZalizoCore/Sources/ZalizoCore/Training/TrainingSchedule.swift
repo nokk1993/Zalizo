@@ -34,7 +34,7 @@ public enum TrainingSchedule {
     /// Workouts finished in the ISO week containing `date`.
     public static func workoutsInWeek(of date: Date, workoutDates: [Date], calendar: Calendar = .iso) -> Int {
         guard let week = calendar.dateInterval(of: .weekOfYear, for: date) else { return 0 }
-        return workoutDates.filter { week.contains($0) }.count
+        return workoutDates.filter { week.containsHalfOpen($0) }.count
     }
 
     /// Consecutive weeks (ending with the current or the previous week) with at least `target` workouts.
@@ -67,5 +67,12 @@ public extension Calendar {
         var calendar = Calendar(identifier: .iso8601)
         calendar.timeZone = .current
         return calendar
+    }
+}
+
+public extension DateInterval {
+    /// `start ≤ date < end` — `contains(_:)` also includes `end`, which double-counts midnight.
+    func containsHalfOpen(_ date: Date) -> Bool {
+        date >= start && date < end
     }
 }

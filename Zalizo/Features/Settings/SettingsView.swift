@@ -11,6 +11,8 @@ struct SettingsView: View {
             SettingsForm(settings: settings)
         } else {
             ProgressView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .zalScreen()
         }
     }
 }
@@ -54,6 +56,7 @@ private struct SettingsForm: View {
             } header: {
                 Text("Вага")
             }
+            .glassRows()
 
             Section {
                 ForEach(allPlates, id: \.self) { plate in
@@ -66,6 +69,7 @@ private struct SettingsForm: View {
             } footer: {
                 Text("Позначені диски є у твоєму залі (пара кожного).")
             }
+            .glassRows()
 
             Section("Тренування") {
                 Picker("Відпочинок за замовчуванням", selection: $settings.defaultRestSeconds) {
@@ -81,6 +85,7 @@ private struct SettingsForm: View {
                     Text("Бжицкі").tag(OneRMFormula.brzycki)
                 }
             }
+            .glassRows()
 
             Section {
                 reminderToggle("Нагадування про тренування", isOn: $settings.trainingReminderEnabled)
@@ -104,6 +109,7 @@ private struct SettingsForm: View {
                     Text("Лише локальні сповіщення на цьому телефоні.")
                 }
             }
+            .glassRows()
 
             Section {
                 Toggle("Синхронізація з Apple Health", isOn: Binding(get: { healthEnabled }, set: { value in
@@ -135,25 +141,32 @@ private struct SettingsForm: View {
             } footer: {
                 Text("Записує вагу і силові тренування в Health, читає вагу з розумних ваг. Потребує увімкнення HealthKit у Xcode (див. README).")
             }
-
-            Section("Вигляд") {
-                Picker("Тема", selection: Binding(get: { settings.theme }, set: { settings.theme = $0 })) {
-                    Text("Системна").tag(AppTheme.system)
-                    Text("Світла").tag(AppTheme.light)
-                    Text("Темна").tag(AppTheme.dark)
-                }
-            }
+            .glassRows()
 
             Section {
                 Button("Скинути всі дані", role: .destructive) { confirmReset = true }
             } footer: {
                 Text("Видаляє історію, профіль, фото і налаштування. Спершу зроби резервну копію.")
             }
+            .glassRows()
 
             Section {
-                LabeledContent("Версія", value: AppInfo.versionText)
+                HStack(spacing: Theme.Spacing.m) {
+                    IconBadge(systemImage: "dumbbell.fill", tint: Theme.Palette.accent, size: 40)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Зал").font(.headline)
+                        Text("Версія \(AppInfo.versionText)")
+                            .font(.footnote.monospacedDigit())
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .accessibilityElement(children: .combine)
+            } footer: {
+                Text("«Зал» працює офлайн, без акаунтів і реклами. Усі дані зберігаються тільки на цьому телефоні.")
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle("Налаштування")
         .onChange(of: settings.hapticsEnabled) { _, value in Haptics.isEnabled = value }
         .onDisappear {

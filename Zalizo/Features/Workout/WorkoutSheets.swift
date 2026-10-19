@@ -24,15 +24,21 @@ struct ReplaceExerciseSheet: View {
                                 .buttonStyle(.plain)
                         }
                     }
+                    .glassRows()
                 }
                 Section {
                     NavigationLink {
                         ExerciseLibraryView(onPick: onPick)
                     } label: {
-                        Label("Уся бібліотека", systemImage: "books.vertical")
+                        HStack(spacing: Theme.Spacing.m) {
+                            IconBadge(systemImage: "books.vertical", tint: Theme.Palette.accent)
+                            Text("Уся бібліотека")
+                        }
                     }
                 }
+                .glassRows()
             }
+            .zalScreen()
             .navigationTitle("Замінити «\(performed.exerciseName)»")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -60,30 +66,39 @@ struct PlateCalculatorSheet: View {
     }
 
     var body: some View {
-        VStack(spacing: Theme.Spacing.xl) {
-            Text("Калькулятор дисків").font(.title3.bold())
-            BigStepper(title: "кг на штанзі", value: $weight, step: settings.barbellStepKg, range: settings.barWeightKg...500)
-            PlateBarView(plates: result.perSide)
-                .frame(height: 120)
-            VStack(spacing: Theme.Spacing.xs) {
-                if result.perSide.isEmpty {
-                    Text("Лише гриф (\(settings.barWeightKg.kgText) кг)")
-                } else {
-                    Text("На кожну сторону: \(result.perSide.map(\.preciseText).joined(separator: " + ")) кг")
-                        .font(.headline)
-                }
-                if !result.isExact {
-                    Text("Точно \(weight.preciseText) кг не набрати - найближче \(result.achievedTotal.preciseText) кг")
-                        .font(.footnote)
-                        .foregroundStyle(Theme.Palette.warning)
-                }
-                Text("Гриф \(settings.barWeightKg.kgText) кг. Набір дисків змінюється в Налаштуваннях.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+        ScrollView {
+            VStack(spacing: Theme.Spacing.xl) {
+                Text("Калькулятор дисків").font(.title2.weight(.light))
+                BigStepper(title: "кг на штанзі", value: $weight, step: settings.barbellStepKg, range: settings.barWeightKg...500)
+                PlateBarView(plates: result.perSide)
+                    .frame(height: 120)
+                    .cardStyle()
+                summary
             }
-            .multilineTextAlignment(.center)
+            .padding(Theme.Spacing.xl)
         }
-        .padding(Theme.Spacing.xl)
+        .zalScreen()
+    }
+
+    private var summary: some View {
+        VStack(spacing: Theme.Spacing.xs) {
+            if result.perSide.isEmpty {
+                Text("Лише гриф (\(settings.barWeightKg.kgText) кг)")
+                    .font(.headline)
+            } else {
+                Text("На кожну сторону: \(result.perSide.map(\.preciseText).joined(separator: " + ")) кг")
+                    .font(.headline)
+            }
+            if !result.isExact {
+                Text("Точно \(weight.preciseText) кг не набрати - найближче \(result.achievedTotal.preciseText) кг")
+                    .font(.footnote)
+                    .foregroundStyle(Theme.Palette.warning)
+            }
+            Text("Гриф \(settings.barWeightKg.kgText) кг. Набір дисків змінюється в Налаштуваннях.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .multilineTextAlignment(.center)
     }
 }
 
@@ -95,21 +110,22 @@ struct PlateBarView: View {
         GeometryReader { proxy in
             let height = proxy.size.height
             HStack(spacing: 3) {
-                Rectangle().fill(Color.secondary.opacity(0.5)).frame(width: 40, height: 10)
-                Rectangle().fill(Color.secondary.opacity(0.7)).frame(width: 8, height: 26)
+                Capsule().fill(barGradient).frame(width: 40, height: 10)
+                RoundedRectangle(cornerRadius: 2).fill(Color.white.opacity(0.6)).frame(width: 8, height: 26)
                 ForEach(Array(plates.enumerated()), id: \.offset) { _, plate in
-                    RoundedRectangle(cornerRadius: 3)
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
                         .fill(color(plate))
                         .frame(width: plate >= 5 ? 16 : 10, height: height * size(plate))
+                        .shadow(color: color(plate).opacity(0.4), radius: 4)
                         .overlay {
                             Text(plate.preciseText)
                                 .font(.system(size: 9, weight: .bold))
                                 .rotationEffect(.degrees(-90))
                                 .fixedSize()
-                                .foregroundStyle(.white)
+                                .foregroundStyle(labelColor(plate))
                         }
                 }
-                Rectangle().fill(Color.secondary.opacity(0.5)).frame(height: 10)
+                Capsule().fill(barGradient).frame(height: 10)
             }
             .frame(maxHeight: .infinity)
         }
@@ -127,15 +143,23 @@ struct PlateBarView: View {
         }
     }
 
-    /// Olympic colour convention.
+    private var barGradient: LinearGradient {
+        LinearGradient(colors: [Color.white.opacity(0.55), Color.white.opacity(0.25)], startPoint: .top, endPoint: .bottom)
+    }
+
+    /// App palette instead of Olympic colours: heavier plates are brighter.
     private func color(_ plate: Double) -> Color {
         switch plate {
-        case 25: .red
-        case 20: .blue
-        case 15: .yellow
-        case 10: .green
-        default: .gray
+        case 25: Theme.Palette.accent
+        case 20: Theme.Palette.blue
+        case 15: Theme.Palette.ice
+        case 10: Color.white.opacity(0.85)
+        default: Color.white.opacity(0.45)
         }
+    }
+
+    private func labelColor(_ plate: Double) -> Color {
+        plate == 20 ? .white : Theme.Palette.onAccent
     }
 }
 
@@ -147,29 +171,42 @@ struct WarmupSheet: View {
     var body: some View {
         let plan = model.plan(for: performed)
         let working = performed.orderedSets.filter { !$0.isWarmup }.map(\.weightKg).max() ?? 0
-        let bar: Double? = if case .barbell = plan.load { model.loadSettings.barWeightKg } else { nil }
+        let bar: Double? = plan.load == .barbell ? model.loadSettings.barWeightKg : nil
         let sets = WarmupGenerator.sets(
             workingWeight: working, mechanic: .compound, barWeight: bar,
             step: ProgressionEngine.roundingStep(for: plan, settings: model.loadSettings)
         )
-        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
-            Text("Розминка до \(working.preciseText) кг").font(.title3.bold())
-            if sets.isEmpty {
-                Text("Для цієї ваги окрема розминка не потрібна - зроби 1 легкий підхід на 10-12 повторів.")
-            } else {
-                ForEach(Array(sets.enumerated()), id: \.offset) { index, set in
-                    HStack {
-                        Text("\(index + 1).").foregroundStyle(.secondary)
-                        Text("\(set.weight.preciseText) кг × \(set.reps)").font(.headline.monospacedDigit())
+        ScrollView {
+            VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+                Text("Розминка до \(working.preciseText) кг")
+                    .font(.title2.weight(.light))
+                if sets.isEmpty {
+                    Text("Для цієї ваги окрема розминка не потрібна - зроби 1 легкий підхід на 10-12 повторів.")
+                        .cardStyle()
+                } else {
+                    VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+                        ForEach(Array(sets.enumerated()), id: \.offset) { index, set in
+                            HStack(spacing: Theme.Spacing.m) {
+                                Text("\(index + 1)")
+                                    .font(.caption.weight(.semibold).monospacedDigit())
+                                    .foregroundStyle(.secondary)
+                                    .frame(width: 28, height: 28)
+                                    .background(Theme.Palette.row, in: Circle())
+                                Text("\(set.weight.preciseText) кг × \(set.reps)")
+                                    .font(.title3.weight(.light).monospacedDigit())
+                            }
+                        }
                     }
+                    .cardStyle()
                 }
+                Text("Відпочинок між розминочними підходами - до хвилини. Розминка не повинна втомлювати.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
             }
-            Text("Відпочинок між розминочними підходами - до хвилини. Розминка не повинна втомлювати.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
+            .padding(Theme.Spacing.xl)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(Theme.Spacing.xl)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .zalScreen()
     }
 }
 
@@ -185,62 +222,30 @@ struct WorkoutSummaryView: View {
         let stats = model.stats
         let change = stats.tonnageChangePercent(vs: model.previousStats)
         NavigationStack {
-            List {
-                Section {
-                    HStack(spacing: Theme.Spacing.s) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+                    SummaryHeadline(title: model.session.title, tonnage: stats.tonnage, change: change)
+                    LazyVGrid(columns: [GridItem(.flexible(), spacing: Theme.Spacing.s), GridItem(.flexible(), spacing: Theme.Spacing.s)], spacing: Theme.Spacing.s) {
                         StatTile(title: "Тривалість", value: durationText(stats), systemImage: "stopwatch")
-                        StatTile(title: "Тоннаж", value: Int(stats.tonnage).groupedText, unit: "кг", systemImage: "scalemass")
-                    }
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(Color.clear)
-                    HStack(spacing: Theme.Spacing.s) {
                         StatTile(title: "Робочих підходів", value: "\(stats.workingSets)", systemImage: "number")
                         StatTile(title: "Вправ", value: "\(stats.exercises)", systemImage: "dumbbell")
+                        StatTile(title: "Рекордів", value: "\(model.records.count)", systemImage: "trophy.fill")
                     }
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(Color.clear)
-                }
-                if let change {
-                    Section("Порівняно з минулим разом") {
-                        Label {
-                            Text("Тоннаж \(change >= 0 ? "+" : "")\(change.kgText) %")
-                        } icon: {
-                            Image(systemName: change >= 0 ? "arrow.up.right" : "arrow.down.right")
-                                .foregroundStyle(change >= 0 ? Theme.Palette.success : Theme.Palette.warning)
-                        }
+                    if !model.records.isEmpty {
+                        recordsSection
                     }
-                }
-                if !model.records.isEmpty {
-                    Section("Рекорди") {
-                        ForEach(model.records) { record in
-                            Label {
-                                VStack(alignment: .leading) {
-                                    Text(record.text)
-                                    Text(record.exerciseName).font(.caption).foregroundStyle(.secondary)
-                                }
-                            } icon: {
-                                Image(systemName: "trophy.fill").foregroundStyle(.yellow)
-                            }
-                        }
-                    }
-                }
-                Section("Як почуваєшся?") {
-                    Picker("Самопочуття", selection: $feeling) {
-                        ForEach(1...5, id: \.self) { value in
-                            Text(FeelingText.title(value)).tag(value)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    TextField("Нотатка до тренування", text: $note, axis: .vertical)
-                }
-                if !model.hasCompletedSets {
-                    Section {
+                    feelingSection
+                    if !model.hasCompletedSets {
                         Text("Немає жодного виконаного підходу - тренування не буде збережено в історії.")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
+                            .cardStyle(tint: Theme.Palette.warning)
                     }
                 }
+                .padding(Theme.Spacing.l)
             }
+            .scrollDismissesKeyboard(.interactively)
+            .zalScreen()
             .navigationTitle("Тренування завершено")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -262,9 +267,76 @@ struct WorkoutSummaryView: View {
         }
     }
 
+    private var recordsSection: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+            SectionHeader("Рекорди")
+            VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+                ForEach(model.records) { record in
+                    HStack(spacing: Theme.Spacing.m) {
+                        IconBadge(systemImage: "trophy.fill", tint: Theme.Palette.accent)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(record.text).font(.subheadline.weight(.semibold))
+                            Text(record.exerciseName)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .accessibilityElement(children: .combine)
+                }
+            }
+            .cardStyle()
+        }
+    }
+
+    private var feelingSection: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+            SectionHeader("Як почуваєшся?")
+            FlowLayout {
+                ForEach(1...5, id: \.self) { value in
+                    ChipToggle(title: FeelingText.title(value), isOn: feeling == value) {
+                        withAnimation(.snappy) { feeling = value }
+                    }
+                }
+            }
+            TextField("Нотатка до тренування", text: $note, axis: .vertical)
+                .lineLimit(2...6)
+                .padding(Theme.Spacing.m)
+                .background(Theme.Palette.row, in: .rect(cornerRadius: Theme.Radius.control))
+                .overlay {
+                    RoundedRectangle(cornerRadius: Theme.Radius.control, style: .continuous)
+                        .strokeBorder(Theme.Palette.stroke, lineWidth: 1)
+                }
+        }
+    }
+
     private func durationText(_ stats: WorkoutStats) -> String {
         let (hours, minutes) = stats.hoursMinutes
         return hours > 0 ? String(localized: "\(hours) год \(minutes) хв") : String(localized: "\(minutes) хв")
+    }
+}
+
+/// Lime headline of the summary: total tonnage and the change against last time.
+private struct SummaryHeadline: View {
+    let title: String
+    let tonnage: Double
+    let change: Double?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+            Text(title).eyebrow()
+            Text("Тоннаж").font(.title2.weight(.light))
+            MetricText(Int(tonnage).groupedText, unit: "кг", size: 56)
+            if let change {
+                Label {
+                    Text("\(change >= 0 ? "+" : "")\(change.kgText) % до минулого разу")
+                } icon: {
+                    Image(systemName: change >= 0 ? "arrow.up.right" : "arrow.down.right")
+                }
+                .font(.subheadline.weight(.semibold))
+            }
+        }
+        .highlightCardStyle()
+        .accessibilityElement(children: .combine)
     }
 }
 

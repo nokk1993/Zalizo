@@ -315,11 +315,15 @@ extension BodyRegion {
 extension ExerciseSubstitution.Reason {
     /// "немає обладнання: Бруси" / "ризик для: Поперек"
     var text: String {
+        // Names are joined first: a closure with a nested String(localized:) inside the
+        // interpolation multiplies overloads and is slow for the type checker.
         switch self {
         case .missingEquipment(let items):
-            String(localized: "немає обладнання: \(items.map { String(localized: $0.title) }.joined(separator: ", "))")
+            let names = items.map { String(localized: $0.title) }.joined(separator: ", ")
+            return String(localized: "немає обладнання: \(names)")
         case .injuryRisk(let areas):
-            String(localized: "ризик для: \(areas.map { String(localized: $0.title) }.joined(separator: ", "))")
+            let names = areas.map { String(localized: $0.title) }.joined(separator: ", ")
+            return String(localized: "ризик для: \(names)")
         }
     }
 }
@@ -335,9 +339,9 @@ extension Volume.Zone {
 
     var color: Color {
         switch self {
-        case .low: Theme.Palette.warning
+        case .low: Theme.Palette.blue
         case .optimal: Theme.Palette.success
-        case .high: Theme.Palette.danger
+        case .high: Theme.Palette.warning
         }
     }
 }

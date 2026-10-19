@@ -27,7 +27,9 @@ struct PlannedExerciseEditor: View {
                         ExerciseRow(exercise: exercise)
                     }
                 }
+                LoadSummary(planned: planned)
             }
+            .glassRows()
 
             Section("Навантаження") {
                 Stepper(value: $planned.sets, in: 1...8) {
@@ -49,12 +51,14 @@ struct PlannedExerciseEditor: View {
                     ForEach(0...4, id: \.self) { Text("\($0)").tag($0) }
                 }
             }
+            .glassRows()
 
             Section {
                 TextField("Примітка", text: $planned.note, axis: .vertical)
             } footer: {
                 Text("RIR - скільки повторів ти ще міг би зробити. 1-2 - оптимально для росту м'язів без зайвої втоми.")
             }
+            .glassRows()
 
             Section("Замінити вправу") {
                 ForEach(alternatives) { alternative in
@@ -68,10 +72,15 @@ struct PlannedExerciseEditor: View {
                 Button {
                     showLibrary = true
                 } label: {
-                    Label("Обрати з бібліотеки", systemImage: "books.vertical")
+                    HStack(spacing: Theme.Spacing.m) {
+                        IconBadge(systemImage: "books.vertical", tint: Theme.Palette.accent)
+                        Text("Обрати з бібліотеки").foregroundStyle(.primary)
+                    }
                 }
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle(exercise?.nameUk ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear { try? context.save() }
@@ -110,5 +119,30 @@ struct PlannedExerciseEditor: View {
         planned.progressionRaw = exercise.progressionRaw
         try? context.save()
         Haptics.selection()
+    }
+}
+
+/// Current load in big light digits: "4 × 6-8", rest and RIR.
+private struct LoadSummary: View {
+    let planned: PlannedExercise
+
+    private var reps: String {
+        planned.repMin == planned.repMax ? "\(planned.repMin)" : "\(planned.repMin)-\(planned.repMax)"
+    }
+
+    var body: some View {
+        HStack(alignment: .firstTextBaseline, spacing: Theme.Spacing.l) {
+            MetricText("\(planned.sets) × \(reps)", unit: planned.progression == .timed ? LocalizedStringKey("с") : nil, size: 34)
+            Spacer(minLength: 0)
+            VStack(alignment: .trailing, spacing: 2) {
+                Text(RestFormat.text(planned.restSeconds))
+                    .font(.subheadline.weight(.semibold).monospacedDigit())
+                Text("RIR \(planned.targetRIR)")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.Palette.accent)
+            }
+        }
+        .padding(.vertical, Theme.Spacing.xs)
+        .accessibilityElement(children: .combine)
     }
 }

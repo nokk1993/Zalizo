@@ -22,14 +22,15 @@ struct WorkoutView: View {
                         showAddExercise = true
                     } label: {
                         Label("Додати вправу", systemImage: "plus")
-                            .frame(maxWidth: .infinity, minHeight: 44)
+                            .frame(maxWidth: .infinity, minHeight: 50)
                     }
                     .buttonStyle(.glass)
                 }
                 .padding(Theme.Spacing.l)
-                .padding(.bottom, 80)
+                .padding(.bottom, 96)
             }
             .scrollDismissesKeyboard(.interactively)
+            .zalScreen()
             .navigationTitle(model.session.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -46,7 +47,7 @@ struct WorkoutView: View {
                             Label("Скасувати тренування", systemImage: "trash")
                         }
                     } label: {
-                        Image(systemName: "chevron.down.circle")
+                        Image(systemName: "chevron.down")
                             .accessibilityLabel(Text("Меню тренування"))
                     }
                 }
@@ -116,30 +117,45 @@ struct WorkoutView: View {
 private struct WorkoutHeader: View {
     let session: WorkoutSession
 
+    private var doneSets: Int {
+        session.exercises.reduce(0) { $0 + $1.workingSets.count }
+    }
+
+    private var totalSets: Int {
+        session.exercises.filter { !$0.isSkipped }.reduce(0) { $0 + $1.sets.filter { !$0.isWarmup }.count }
+    }
+
     var body: some View {
-        HStack {
-            TimelineView(.periodic(from: session.startedAt, by: 1)) { context in
-                Label {
-                    Text(RestTimer.format(context.date.timeIntervalSince(session.startedAt)))
-                        .font(.title3.monospacedDigit().bold())
-                } icon: {
-                    Image(systemName: "stopwatch")
+        HStack(spacing: Theme.Spacing.l) {
+            VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                HStack(spacing: 6) {
+                    GlowDot(size: 6)
+                    Text("Тривалість").eyebrow()
+                }
+                TimelineView(.periodic(from: session.startedAt, by: 1)) { context in
+                    MetricText(RestTimer.format(context.date.timeIntervalSince(session.startedAt)), size: 44)
+                }
+                if session.isDeload {
+                    Text("Розвантаження")
+                        .font(.caption.weight(.semibold))
+                        .padding(.horizontal, Theme.Spacing.s)
+                        .padding(.vertical, 3)
+                        .background(Theme.Palette.water.opacity(0.2), in: Capsule())
                 }
             }
-            Spacer()
-            let done = session.exercises.reduce(0) { $0 + $1.workingSets.count }
-            let total = session.exercises.filter { !$0.isSkipped }.reduce(0) { $0 + $1.sets.filter { !$0.isWarmup }.count }
-            Text("\(done)/\(total) підходів")
-                .font(.subheadline.monospacedDigit())
-                .foregroundStyle(.secondary)
-            if session.isDeload {
-                Text("Розвантаження")
-                    .font(.caption.bold())
-                    .padding(.horizontal, Theme.Spacing.s)
-                    .padding(.vertical, 2)
-                    .background(Theme.Palette.water.opacity(0.2), in: .capsule)
+            Spacer(minLength: 0)
+            ProgressRing(progress: totalSets > 0 ? Double(doneSets) / Double(totalSets) : 0, lineWidth: 8) {
+                VStack(spacing: 0) {
+                    Text("\(doneSets)/\(totalSets)")
+                        .font(.headline.monospacedDigit())
+                    Text("підходів")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
             }
+            .frame(width: 88, height: 88)
         }
+        .cardStyle(inset: Theme.Spacing.xl)
         .accessibilityElement(children: .combine)
     }
 }
@@ -164,14 +180,20 @@ struct ExerciseCard: View {
                         showDetail = true
                     } label: {
                         ExerciseImage(exercise: exercise)
-                            .frame(width: 56, height: 56)
-                            .clipShape(.rect(cornerRadius: 10))
+                            .frame(width: 64, height: 64)
+                            .clipShape(.rect(cornerRadius: Theme.Radius.control))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: Theme.Radius.control, style: .continuous)
+                                    .strokeBorder(Theme.Palette.stroke, lineWidth: 1)
+                            }
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel(Text("Техніка виконання"))
                 }
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(performed.exerciseName).font(.headline)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(performed.exerciseName)
+                        .font(.headline)
+                        .fixedSize(horizontal: false, vertical: true)
                     if let prescription {
                         PrescriptionSummary(performed: performed, prescription: prescription, isTimed: exercise?.progression == .timed)
                     }
@@ -181,7 +203,9 @@ struct ExerciseCard: View {
             }
 
             if performed.isSkipped {
-                Text("Вправу пропущено").font(.subheadline).foregroundStyle(.secondary)
+                Label("Вправу пропущено", systemImage: "forward")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             } else {
                 VStack(spacing: Theme.Spacing.s) {
                     ForEach(Array(performed.orderedSets.enumerated()), id: \.element.id) { index, set in
@@ -204,9 +228,10 @@ struct ExerciseCard: View {
                     model.addSet(to: performed)
                 } label: {
                     Label("Підхід", systemImage: "plus")
-                        .font(.subheadline.weight(.medium))
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 44)
                 }
-                .buttonStyle(.borderless)
+                .buttonStyle(.glass)
             }
         }
         .cardStyle()
@@ -294,9 +319,7 @@ struct ExerciseCard: View {
                 Label("Прибрати з тренування", systemImage: "trash")
             }
         } label: {
-            Image(systemName: "ellipsis.circle")
-                .font(.title2)
-                .frame(width: 44, height: 44)
+            CircleIcon(systemImage: "ellipsis", size: 44)
                 .accessibilityLabel(Text("Дії з вправою"))
         }
     }
@@ -309,13 +332,13 @@ struct PrescriptionSummary: View {
     var isTimed = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 3) {
             Text(targetText)
-                .font(.subheadline.bold().monospacedDigit())
+                .font(.title3.weight(.light).monospacedDigit())
             if let hint = PrescriptionText.hint(prescription, performed: performed) {
                 Text(hint)
-                    .font(.caption)
-                    .foregroundStyle(prescription.kind == .increaseWeight ? Theme.Palette.success : (prescription.kind == .stall ? Theme.Palette.warning : Color.secondary))
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(hintColor)
             }
             if let last = prescription.last {
                 Text("Минулого разу: \(PrescriptionText.lastTime(last))")
@@ -332,6 +355,14 @@ struct PrescriptionSummary: View {
 
     private var targetText: String {
         PrescriptionText.target(sets: performed.plannedSets, prescription: prescription, isTimed: isTimed)
+    }
+
+    private var hintColor: Color {
+        switch prescription.kind {
+        case .increaseWeight: Theme.Palette.success
+        case .stall: Theme.Palette.warning
+        default: Theme.Palette.textSecondary
+        }
     }
 }
 
@@ -416,20 +447,17 @@ struct SetRow: View {
                 Button {
                     onToggleWarmup()
                 } label: {
-                    Label(set.isWarmup ? LocalizedStringResource("Зробити робочим") : LocalizedStringResource("Позначити розминочним"), systemImage: "thermometer.low")
+                    Label {
+                        Text(set.isWarmup ? LocalizedStringResource("Зробити робочим") : LocalizedStringResource("Позначити розминочним"))
+                    } icon: {
+                        Image(systemName: "thermometer.low")
+                    }
                 }
                 Button(role: .destructive, action: onDelete) {
                     Label("Видалити підхід", systemImage: "trash")
                 }
             } label: {
-                VStack(spacing: 0) {
-                    Text(label).font(.subheadline.bold().monospacedDigit())
-                    if let rir = set.rir {
-                        Text("RIR \(rir)").font(.system(size: 9)).foregroundStyle(.secondary)
-                    }
-                }
-                .frame(width: 28, height: 44)
-                .foregroundStyle(set.isWarmup ? Color.secondary : Color.primary)
+                SetBadge(label: label, isWarmup: set.isWarmup, rir: set.rir)
             }
             .accessibilityLabel(Text(set.isWarmup ? "Розминочний підхід" : "Підхід \(label)"))
 
@@ -442,22 +470,71 @@ struct SetRow: View {
             )
 
             Button(action: onToggle) {
-                Image(systemName: set.isCompleted ? "checkmark.circle.fill" : "circle")
-                    .font(.system(size: 32))
-                    .foregroundStyle(set.isCompleted ? Theme.Palette.success : Color.secondary)
-                    .frame(width: 44, height: 48)
-                    .contentTransition(.symbolEffect(.replace))
+                CheckCircle(isOn: set.isCompleted)
             }
             .buttonStyle(.plain)
             .accessibilityLabel(Text(set.isCompleted ? "Підхід виконано" : "Позначити підхід виконаним"))
         }
-        .opacity(set.isWarmup && !set.isCompleted ? 0.75 : 1)
-        .padding(.vertical, 2)
-        .background(set.isCompleted ? Theme.Palette.success.opacity(0.08) : Color.clear, in: .rect(cornerRadius: Theme.Radius.control))
+        .opacity(set.isWarmup && !set.isCompleted ? 0.6 : 1)
+        .padding(.vertical, 3)
+        .padding(.horizontal, 3)
+        .background(set.isCompleted ? Theme.Palette.accent.opacity(0.08) : Color.clear, in: .rect(cornerRadius: Theme.Radius.control))
     }
 }
 
-/// − value + with large hit areas.
+/// Set number, or a small "Р" capsule for warm-up sets; RIR underneath.
+private struct SetBadge: View {
+    let label: String
+    let isWarmup: Bool
+    let rir: Int?
+
+    var body: some View {
+        VStack(spacing: 2) {
+            if isWarmup {
+                Text(label)
+                    .font(.caption2.weight(.heavy))
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 2)
+                    .background(Theme.Palette.warmup.opacity(0.35), in: Capsule())
+            } else {
+                Text(label)
+                    .font(.subheadline.weight(.semibold).monospacedDigit())
+            }
+            if let rir {
+                Text("RIR \(rir)")
+                    .font(.system(size: 9, weight: .medium))
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .foregroundStyle(isWarmup ? Theme.Palette.textSecondary : Color.primary)
+        .frame(width: 30, height: 48)
+        .contentShape(Rectangle())
+    }
+}
+
+/// Big round "done" toggle: lime with a dark checkmark and a glow when completed.
+private struct CheckCircle: View {
+    let isOn: Bool
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(isOn ? Theme.Palette.accent : Theme.Palette.row)
+            Circle()
+                .strokeBorder(Color.white.opacity(isOn ? 0 : 0.25), lineWidth: 1.5)
+            Image(systemName: "checkmark")
+                .font(.system(size: 18, weight: .heavy))
+                .foregroundStyle(isOn ? Theme.Palette.onAccent : Color.white.opacity(0.35))
+        }
+        .frame(width: 46, height: 46)
+        .shadow(color: Theme.Palette.accent.opacity(isOn ? 0.55 : 0), radius: 10)
+        .frame(width: 48, height: 52)
+        .contentShape(Rectangle())
+        .animation(.snappy(duration: 0.2), value: isOn)
+    }
+}
+
+/// - value + with large hit areas.
 struct CompactStepper: View {
     @Binding var value: Double
     let step: Double
@@ -469,16 +546,22 @@ struct CompactStepper: View {
             button("minus", delta: -step)
             VStack(spacing: 0) {
                 Text(value.preciseText)
-                    .font(.body.bold().monospacedDigit())
+                    .font(.body.weight(.semibold).monospacedDigit())
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                Text(unit).font(.system(size: 10)).foregroundStyle(.secondary)
+                Text(unit)
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundStyle(.secondary)
             }
             .frame(minWidth: 40)
             button("plus", delta: step)
         }
         .frame(maxWidth: .infinity)
-        .background(Color.secondary.opacity(0.1), in: .rect(cornerRadius: Theme.Radius.control))
+        .background(Theme.Palette.row, in: .rect(cornerRadius: Theme.Radius.control))
+        .overlay {
+            RoundedRectangle(cornerRadius: Theme.Radius.control, style: .continuous)
+                .strokeBorder(Color.white.opacity(0.08), lineWidth: 1)
+        }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(unit))
         .accessibilityValue(Text(value.preciseText))
@@ -497,8 +580,9 @@ struct CompactStepper: View {
             Haptics.selection()
         } label: {
             Image(systemName: symbol)
-                .font(.body.bold())
-                .frame(width: 30, height: 44)
+                .font(.body.weight(.bold))
+                .foregroundStyle(.secondary)
+                .frame(width: 30, height: 48)
                 .contentShape(.rect)
         }
         .buttonStyle(.plain)
@@ -520,17 +604,12 @@ struct RestTimerBar: View {
     var body: some View {
         TimelineView(.periodic(from: .now, by: 0.5)) { context in
             HStack(spacing: Theme.Spacing.m) {
-                ZStack {
-                    Circle().stroke(Color.secondary.opacity(0.2), lineWidth: 5)
-                    Circle()
-                        .trim(from: 0, to: timer.progress(at: context.date))
-                        .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 5, lineCap: .round))
-                        .rotationEffect(.degrees(-90))
-                }
-                .frame(width: 44, height: 44)
+                ProgressRing(progress: timer.progress(at: context.date), lineWidth: 5)
+                    .frame(width: 50, height: 50)
                 VStack(alignment: .leading, spacing: 0) {
                     Text(RestTimer.format(timer.remaining(at: context.date)))
-                        .font(.title2.monospacedDigit().bold())
+                        .font(.system(.title, design: .default, weight: .thin).monospacedDigit())
+                        .contentTransition(.numericText(countsDown: true))
                     Text(nextSet)
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -538,12 +617,14 @@ struct RestTimerBar: View {
                 }
                 Spacer(minLength: 0)
                 Button("+30 с", action: onAdd)
+                    .font(.subheadline.weight(.semibold))
                     .buttonStyle(.glass)
-                Button("Далі", action: onSkip)
-                    .buttonStyle(.zalPrimary)
+                CircleIconButton(systemImage: "forward.end.fill", label: "Далі", prominent: true, size: 50, action: onSkip)
             }
-            .padding(Theme.Spacing.m)
-            .glassEffect(.regular, in: .rect(cornerRadius: Theme.Radius.card))
+            .padding(Theme.Spacing.s)
+            .padding(.leading, 2)
+            .glassEffect(.regular, in: Capsule())
+            .shadow(color: .black.opacity(0.35), radius: 16, y: 8)
             .padding(.horizontal, Theme.Spacing.m)
             .padding(.bottom, Theme.Spacing.s)
         }
@@ -559,16 +640,21 @@ private struct RecordBannerView: View {
         HStack(spacing: Theme.Spacing.m) {
             Image(systemName: "trophy.fill")
                 .font(.title2)
-                .foregroundStyle(.yellow)
                 .symbolEffect(.bounce, value: banner.id)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 1) {
                 Text(banner.text).font(.headline)
-                Text(banner.exerciseName).font(.caption).foregroundStyle(.secondary)
+                Text(banner.exerciseName)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
         }
-        .padding(Theme.Spacing.l)
-        .glassEffect(.regular, in: .capsule)
+        .foregroundStyle(Theme.Palette.onAccent)
+        .padding(.horizontal, Theme.Spacing.xl)
+        .padding(.vertical, Theme.Spacing.m)
+        .background(Theme.Palette.accent, in: Capsule())
+        .shadow(color: Theme.Palette.accent.opacity(0.55), radius: 20, y: 6)
         .padding(.top, Theme.Spacing.s)
+        .padding(.horizontal, Theme.Spacing.l)
         .accessibilityElement(children: .combine)
     }
 }
@@ -580,7 +666,8 @@ private struct CalibrationSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.l) {
             Text("Скільки ще повторів ти міг би зробити?")
-                .font(.title3.bold())
+                .font(.title2.weight(.light))
+                .fixedSize(horizontal: false, vertical: true)
             Text("Чесна відповідь допоможе точно підібрати робочу вагу для наступних підходів.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
@@ -591,7 +678,7 @@ private struct CalibrationSheet: View {
                         dismiss()
                     } label: {
                         Text(rir == 5 ? "5+" : "\(rir)")
-                            .font(.title2.bold())
+                            .font(.title2.weight(.light).monospacedDigit())
                             .frame(maxWidth: .infinity, minHeight: 56)
                     }
                     .buttonStyle(.glass)
@@ -602,5 +689,7 @@ private struct CalibrationSheet: View {
                 .foregroundStyle(.secondary)
         }
         .padding(Theme.Spacing.xl)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .zalScreen()
     }
 }

@@ -34,28 +34,41 @@ struct AddFoodSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Спосіб", selection: $mode) {
-                    ForEach(Mode.allCases, id: \.self) { Text($0.title).tag($0) }
-                }
-                .pickerStyle(.segmented)
-                .listRowBackground(Color.clear)
+                PillPicker(selection: $mode, options: Mode.allCases) { $0.title }
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel(Text("Спосіб"))
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets(top: Theme.Spacing.xs, leading: 0, bottom: Theme.Spacing.xs, trailing: 0))
 
                 switch mode {
                 case .reference:
                     if let selected {
                         Section {
-                            Text(selected.name).font(.headline)
+                            HStack(spacing: Theme.Spacing.m) {
+                                IconBadge(systemImage: "fork.knife", tint: Theme.Palette.accent, size: 34)
+                                Text(selected.name).font(.headline)
+                            }
                             Stepper(value: $grams, in: 5...2000, step: grams < 50 ? 5 : 10) {
-                                Text("\(Int(grams)) г").monospacedDigit()
+                                Text("\(Int(grams)) г")
+                                    .font(.title3.weight(.light).monospacedDigit())
                             }
                             let macros = selected.macros(grams: grams)
-                            Text("\(Int(macros.kcal)) ккал · Б \(macros.protein.kgText) · Ж \(macros.fat.kgText) · В \(macros.carbs.kgText)")
-                                .font(.subheadline.monospacedDigit())
+                            VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+                                MetricText("\(Int(macros.kcal))", unit: "ккал", size: 32)
+                                SelectedMacros(protein: macros.protein, fat: macros.fat, carbs: macros.carbs)
+                            }
+                            .accessibilityElement(children: .combine)
                             Button("Обрати інший продукт") { self.selected = nil }
                         }
+                        .glassRows()
                     } else {
                         Section {
-                            TextField("Пошук продукту", text: $search)
+                            HStack(spacing: Theme.Spacing.s) {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundStyle(.secondary)
+                                    .accessibilityHidden(true)
+                                TextField("Пошук продукту", text: $search)
+                            }
                             ForEach(foods) { food in
                                 Button {
                                     selected = food
@@ -64,13 +77,21 @@ struct AddFoodSheet: View {
                                     HStack {
                                         Text(food.name).foregroundStyle(.primary)
                                         Spacer()
-                                        Text("\(Int(food.kcal)) ккал/100 г").font(.caption).foregroundStyle(.secondary)
+                                        HStack(alignment: .firstTextBaseline, spacing: 2) {
+                                            Text("\(Int(food.kcal))")
+                                                .font(.callout.weight(.light).monospacedDigit())
+                                                .foregroundStyle(.primary)
+                                            Text("ккал/100 г")
+                                                .font(.caption2)
+                                                .foregroundStyle(.secondary)
+                                        }
                                     }
                                 }
                             }
                         } footer: {
                             Text("Значення на 100 г: сирі продукти, сухі крупи.")
                         }
+                        .glassRows()
                     }
                 case .quick:
                     Section {
@@ -79,9 +100,13 @@ struct AddFoodSheet: View {
                             .keyboardType(.numberPad)
                         TextField("Білок, г", value: $quickProtein, format: .number)
                             .keyboardType(.decimalPad)
+                    } footer: {
+                        Text("Достатньо калорій і білка - решту можна не рахувати.")
                     }
+                    .glassRows()
                 }
             }
+            .zalScreen()
             .scrollDismissesKeyboard(.interactively)
             .navigationTitle("Додати їжу")
             .navigationBarTitleDisplayMode(.inline)
@@ -137,23 +162,18 @@ struct ShoppingListView: View {
             Section {
                 ForEach(items, id: \.food.id) { item in
                     Button {
-                        if checked.contains(item.food.id) { checked.remove(item.food.id) } else { checked.insert(item.food.id) }
+                        checked.formSymmetricDifference([item.food.id])
                     } label: {
-                        HStack {
-                            Image(systemName: checked.contains(item.food.id) ? "checkmark.circle.fill" : "circle")
-                                .foregroundStyle(checked.contains(item.food.id) ? Theme.Palette.success : Color.secondary)
-                            Text(item.food.name)
-                                .strikethrough(checked.contains(item.food.id))
-                                .foregroundStyle(.primary)
-                            Spacer()
-                            Text(amount(item)).monospacedDigit().foregroundStyle(.secondary)
-                        }
+                        ShoppingRow(name: item.food.name, amount: amount(item), isChecked: checked.contains(item.food.id))
                     }
+                    .accessibilityAddTraits(checked.contains(item.food.id) ? [.isSelected] : [])
                 }
             } footer: {
                 Text("На 7 днів: меню чергуються, починаючи з обраного варіанту. Кількості округлені вгору.")
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle("Список покупок")
         .toolbar {
             ShareLink(item: shareText(items)) {
@@ -174,5 +194,61 @@ struct ShoppingListView: View {
 
     private func shareText(_ items: [MenuBuilder.ShoppingItem]) -> String {
         items.map { "• \($0.food.name) - \(amount($0))" }.joined(separator: "\n")
+    }
+}
+
+/// "● Б 24,5  ● Ж 3  ● В 0" for the selected portion.
+private struct SelectedMacros: View {
+    let protein: Double
+    let fat: Double
+    let carbs: Double
+
+    var body: some View {
+        HStack(spacing: Theme.Spacing.l) {
+            item("Б \(protein.kgText)", color: Theme.Palette.protein)
+            item("Ж \(fat.kgText)", color: Theme.Palette.fat)
+            item("В \(carbs.kgText)", color: Theme.Palette.carbs)
+        }
+        .font(.footnote.monospacedDigit())
+        .foregroundStyle(.secondary)
+    }
+
+    private func item(_ text: LocalizedStringResource, color: Color) -> some View {
+        HStack(spacing: 5) {
+            GlowDot(color: color, size: 6)
+            Text(text)
+        }
+    }
+}
+
+private struct ShoppingRow: View {
+    let name: String
+    let amount: String
+    let isChecked: Bool
+
+    var body: some View {
+        HStack(spacing: Theme.Spacing.m) {
+            ZStack {
+                Circle()
+                    .strokeBorder(Color.white.opacity(isChecked ? 0 : 0.25), lineWidth: 1.5)
+                if isChecked {
+                    Circle().fill(Theme.Palette.accent)
+                    Image(systemName: "checkmark")
+                        .font(.caption2.weight(.heavy))
+                        .foregroundStyle(Theme.Palette.onAccent)
+                }
+            }
+            .frame(width: 24, height: 24)
+            .shadow(color: Theme.Palette.accent.opacity(isChecked ? 0.5 : 0), radius: 6)
+            .accessibilityHidden(true)
+            Text(name)
+                .strikethrough(isChecked)
+                .foregroundStyle(isChecked ? Color.secondary : Color.primary)
+            Spacer()
+            Text(amount)
+                .font(.callout.weight(.light).monospacedDigit())
+                .foregroundStyle(.secondary)
+        }
+        .animation(.snappy(duration: 0.2), value: isChecked)
     }
 }

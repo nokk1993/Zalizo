@@ -26,22 +26,30 @@ struct GoalsView: View {
                 Button {
                     showAdd = true
                 } label: {
-                    Label("Нова ціль", systemImage: "plus")
+                    HStack(spacing: Theme.Spacing.m) {
+                        IconBadge(systemImage: "plus", tint: Theme.Palette.accent, size: 34)
+                        Text("Нова ціль").font(.body.weight(.medium))
+                    }
                 }
             } header: {
                 Text("Цілі")
             }
+            .glassRows()
 
-            Section("Досягнення") {
+            Section {
                 let unlocked = Set(achievements.map(\.key))
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 96), spacing: Theme.Spacing.m)], spacing: Theme.Spacing.m) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 96), spacing: Theme.Spacing.m)], spacing: Theme.Spacing.l) {
                     ForEach(AchievementKey.allCases, id: \.self) { key in
                         AchievementBadge(key: key, unlockedAt: achievements.first { $0.key == key.rawValue }?.unlockedAt, isUnlocked: unlocked.contains(key.rawValue))
                     }
                 }
-                .padding(.vertical, Theme.Spacing.s)
+                .padding(.vertical, Theme.Spacing.m)
+            } header: {
+                Text("Досягнення")
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle("Цілі і досягнення")
         .sheet(isPresented: $showAdd) { AddGoalSheet() }
         .task { AchievementService.evaluate(in: context) }
@@ -52,33 +60,54 @@ private struct GoalRow: View {
     let goal: Goal
     let status: GoalProgress.Status
 
+    private var tint: Color { status.isAchieved ? Theme.Palette.success : Theme.Palette.blue }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
-            HStack {
-                Text(goal.title).font(.headline)
-                Spacer()
+        HStack(alignment: .top, spacing: Theme.Spacing.l) {
+            ProgressRing(progress: status.fraction, lineWidth: 6, tint: tint) {
                 if status.isAchieved {
-                    Label("Досягнуто", systemImage: "checkmark.seal.fill")
-                        .font(.caption.bold())
+                    Image(systemName: "checkmark")
+                        .font(.headline.weight(.bold))
                         .foregroundStyle(Theme.Palette.success)
+                } else {
+                    Text("\(Int((min(max(status.fraction, 0), 1) * 100).rounded()))%")
+                        .font(.caption.weight(.light).monospacedDigit())
                 }
             }
-            ProgressView(value: status.fraction)
-                .tint(status.isAchieved ? Theme.Palette.success : Color.accentColor)
-            HStack {
+            .frame(width: 64, height: 64)
+            .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(goal.title).font(.headline)
+                    Spacer(minLength: Theme.Spacing.s)
+                    if status.isAchieved {
+                        Label("Досягнуто", systemImage: "checkmark.seal.fill")
+                            .labelStyle(.titleOnly)
+                            .font(.caption.bold())
+                            .foregroundStyle(Theme.Palette.success)
+                    }
+                }
                 Text("\(status.current.kgText) → \(goal.targetValue.kgText) \(unit)")
-                    .font(.caption.monospacedDigit())
-                Spacer()
+                    .font(.title3.weight(.light).monospacedDigit())
                 if let deadline = goal.deadline {
-                    Text("до \(deadline.formatted(date: .abbreviated, time: .omitted))").font(.caption)
+                    Text("до \(deadline.formatted(date: .abbreviated, time: .omitted))")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
-            }
-            .foregroundStyle(.secondary)
-            if !status.isAchieved {
-                Text(forecastText).font(.caption).foregroundStyle(status.onTrack == false ? Theme.Palette.warning : Color.secondary)
+                if !status.isAchieved {
+                    HStack(alignment: .firstTextBaseline, spacing: Theme.Spacing.s) {
+                        GlowDot(color: status.onTrack == false ? Theme.Palette.warning : Theme.Palette.accent, size: 6)
+                        Text(forecastText)
+                            .font(.caption)
+                            .foregroundStyle(status.onTrack == false ? Theme.Palette.warning : Color.secondary)
+                    }
+                }
             }
         }
-        .padding(.vertical, Theme.Spacing.xs)
+        .padding(.vertical, Theme.Spacing.s)
+        .accessibilityElement(children: .combine)
+        .accessibilityValue(Text("\(Int((min(max(status.fraction, 0), 1) * 100).rounded())) %"))
     }
 
     private var unit: String {
@@ -110,20 +139,39 @@ private struct AchievementBadge: View {
     let isUnlocked: Bool
 
     var body: some View {
-        VStack(spacing: Theme.Spacing.xs) {
-            Image(systemName: key.systemImage)
-                .font(.title2)
-                .frame(width: 52, height: 52)
-                .background(isUnlocked ? Color.accentColor.opacity(0.15) : Color.secondary.opacity(0.08), in: .circle)
-                .foregroundStyle(isUnlocked ? Color.accentColor : Color.secondary.opacity(0.5))
+        VStack(spacing: Theme.Spacing.s) {
+            medal
             Text(key.title)
-                .font(.caption2)
+                .font(.caption2.weight(.medium))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(isUnlocked ? .primary : .secondary)
                 .lineLimit(2, reservesSpace: true)
         }
         .accessibilityElement(children: .combine)
         .accessibilityValue(Text(isUnlocked ? "отримано" : "ще ні"))
+    }
+
+    private var medal: some View {
+        Image(systemName: key.systemImage)
+            .font(.system(size: 22, weight: isUnlocked ? .semibold : .regular))
+            .foregroundStyle(isUnlocked ? Theme.Palette.onAccent : Theme.Palette.textTertiary)
+            .frame(width: 58, height: 58)
+            .background(isUnlocked ? Theme.Palette.accent : Color.white.opacity(0.08), in: Circle())
+            .overlay {
+                Circle().strokeBorder(Color.white.opacity(isUnlocked ? 0.4 : 0.12), lineWidth: 1)
+            }
+            .overlay(alignment: .bottomTrailing) {
+                if !isUnlocked {
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 9, weight: .bold))
+                        .foregroundStyle(Theme.Palette.textSecondary)
+                        .frame(width: 20, height: 20)
+                        .background(Theme.Palette.canvasTop, in: Circle())
+                        .overlay { Circle().strokeBorder(Color.white.opacity(0.15), lineWidth: 1) }
+                }
+            }
+            .shadow(color: Theme.Palette.accent.opacity(isUnlocked ? 0.45 : 0), radius: 12)
+            .accessibilityHidden(true)
     }
 }
 
@@ -177,34 +225,38 @@ private struct AddGoalSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Тип цілі", selection: $kind) {
-                    Text("Вага тіла").tag(GoalKind.bodyWeight)
-                    Text("Сила у вправі").tag(GoalKind.liftWeight)
-                    Text("Тренувань за місяць").tag(GoalKind.workoutsPerMonth)
-                    Text("Замір").tag(GoalKind.measurement)
-                }
-                switch kind {
-                case .liftWeight:
-                    Picker("Вправа", selection: $exerciseSlug) {
-                        ForEach(exercises.filter { $0.mechanic == .compound }) { Text($0.nameUk).tag($0.slug) }
+                Section {
+                    Picker("Тип цілі", selection: $kind) {
+                        Text("Вага тіла").tag(GoalKind.bodyWeight)
+                        Text("Сила у вправі").tag(GoalKind.liftWeight)
+                        Text("Тренувань за місяць").tag(GoalKind.workoutsPerMonth)
+                        Text("Замір").tag(GoalKind.measurement)
                     }
-                case .measurement:
-                    Picker("Замір", selection: $measurement) {
-                        ForEach(MeasurementKind.allCases, id: \.self) { Text($0.title).tag($0) }
+                    switch kind {
+                    case .liftWeight:
+                        Picker("Вправа", selection: $exerciseSlug) {
+                            ForEach(exercises.filter { $0.mechanic == .compound }) { Text($0.nameUk).tag($0.slug) }
+                        }
+                    case .measurement:
+                        Picker("Замір", selection: $measurement) {
+                            ForEach(MeasurementKind.allCases, id: \.self) { Text($0.title).tag($0) }
+                        }
+                    default:
+                        EmptyView()
                     }
-                default:
-                    EmptyView()
-                }
-                Stepper(value: $target, in: kind == .workoutsPerMonth ? 1...31 : 1...400, step: kind == .workoutsPerMonth ? 1 : 0.5) {
-                    LabeledContent(kind == .liftWeight ? "Ціль (1ПМ), кг" : "Ціль") {
-                        Text(target.kgText).monospacedDigit()
+                    Stepper(value: $target, in: kind == .workoutsPerMonth ? 1...31 : 1...400, step: kind == .workoutsPerMonth ? 1 : 0.5) {
+                        LabeledContent(kind == .liftWeight ? "Ціль (1ПМ), кг" : "Ціль") {
+                            Text(target.kgText).monospacedDigit()
+                        }
+                    }
+                    Toggle("Дедлайн", isOn: $hasDeadline)
+                    if hasDeadline {
+                        DatePicker("До", selection: $deadline, in: Date.now..., displayedComponents: .date)
                     }
                 }
-                Toggle("Дедлайн", isOn: $hasDeadline)
-                if hasDeadline {
-                    DatePicker("До", selection: $deadline, in: Date.now..., displayedComponents: .date)
-                }
+                .glassRows()
             }
+            .zalScreen()
             .navigationTitle("Нова ціль")
             .navigationBarTitleDisplayMode(.inline)
             .onChange(of: kind) { _, newKind in target = defaultTarget(newKind) }

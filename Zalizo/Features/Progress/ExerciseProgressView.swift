@@ -13,15 +13,21 @@ struct ExerciseProgressListView: View {
         List {
             if list.isEmpty {
                 ContentUnavailableView("Ще немає даних", systemImage: "trophy", description: Text("Після тренувань тут з'являться графіки по кожній вправі."))
-            }
-            ForEach(list) { exercise in
-                NavigationLink {
-                    ExerciseProgressView(exercise: exercise)
-                } label: {
-                    ExerciseRow(exercise: exercise)
+                    .listRowBackground(Color.clear)
+            } else {
+                Section {
+                    ForEach(list) { exercise in
+                        NavigationLink {
+                            ExerciseProgressView(exercise: exercise)
+                        } label: {
+                            ExerciseRow(exercise: exercise)
+                        }
+                    }
                 }
+                .glassRows()
             }
         }
+        .zalScreen()
         .navigationTitle("Сила по вправах")
     }
 }
@@ -49,58 +55,39 @@ struct ExerciseProgressView: View {
 
     var body: some View {
         let formula = settings.first?.oneRMFormula ?? .epley
-        let records = StatsStore.records(sessions, exercises: exercises).filter { period.contains($0.date) }
-        let series = StatsService.exerciseSeries(records, slug: exercise.slug, formula: formula)
-        let repRecords = StatsService.repRecords(StatsStore.records(sessions, exercises: exercises), slug: exercise.slug)
-        List {
-            Section {
-                Picker("Показник", selection: $metric) {
-                    ForEach(Metric.allCases, id: \.self) { Text($0.title).tag($0) }
+        let allRecords = StatsStore.records(sessions, exercises: exercises)
+        let series = StatsService.exerciseSeries(allRecords.filter { period.contains($0.date) }, slug: exercise.slug, formula: formula)
+        let repRecords = StatsService.repRecords(allRecords, slug: exercise.slug)
+        ScrollView {
+            VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
+                PhotoCard(exercise: exercise, minHeight: 200) {
+                    BestOneRMHeader(best: series.map(\.estimatedOneRM).max(), formula: formula)
                 }
-                .pickerStyle(.segmented)
-                Picker("Період", selection: $period) {
-                    ForEach(StatsPeriod.allCases, id: \.self) { Text($0.title).tag($0) }
-                }
-                .pickerStyle(.segmented)
-                if series.isEmpty {
-                    Text("Немає даних за цей період").foregroundStyle(.secondary)
-                } else {
-                    TrendLineChart(points: series.map { .init(date: $0.date, value: value($0)) }, valueLabel: metric.title)
-                        .frame(height: 220)
-                }
-                if let best = series.map(\.estimatedOneRM).max() {
-                    Text("Найкраща оцінка 1ПМ: \(best.kgText) кг\(formula == .epley ? " (Еплі)" : " (Бжицкі)")")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            Section("Особисті рекорди") {
-                if repRecords.isEmpty {
-                    Text("Ще немає").foregroundStyle(.secondary)
-                }
-                ForEach(repRecords, id: \.reps) { record in
-                    LabeledContent {
-                        VStack(alignment: .trailing) {
-                            Text("\(record.weight.preciseText) кг").bold().monospacedDigit()
-                            Text(record.date.formatted(date: .abbreviated, time: .omitted)).font(.caption).foregroundStyle(.secondary)
+
+                VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+                    PillPicker(selection: $metric, options: Metric.allCases) { $0.title }
+                    VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+                        Text(metric.title).eyebrow()
+                        if series.isEmpty {
+                            Text("Немає даних за цей період")
+                                .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity, minHeight: 120)
+                        } else {
+                            TrendLineChart(points: series.map { .init(date: $0.date, value: value($0)) }, valueLabel: metric.title)
+                                .frame(height: 220)
                         }
-                    } label: {
-                        Text("\(record.reps) \(record.reps == 1 ? "повтор" : "повт.")")
                     }
+                    .cardStyle(inset: Theme.Spacing.xl)
+                    PillPicker(selection: $period, options: StatsPeriod.allCases) { $0.title }
                 }
+
+                RepRecordsGrid(records: repRecords)
+
+                ExerciseHistoryList(exercise: exercise, sessions: sessions)
             }
-            Section("Історія") {
-                ForEach(sessions.filter { session in session.exercises.contains { $0.exerciseSlug == exercise.slug && !$0.workingSets.isEmpty } }) { session in
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(session.startedAt.formatted(date: .abbreviated, time: .omitted)).font(.subheadline.bold())
-                        let sets = session.exercises.filter { $0.exerciseSlug == exercise.slug }.flatMap(\.workingSets)
-                        Text(sets.map { "\($0.weightKg.preciseText)×\($0.reps)" }.joined(separator: ", "))
-                            .font(.caption.monospacedDigit())
-                            .foregroundStyle(.secondary)
-                    }
-                }
-            }
+            .padding(Theme.Spacing.l)
         }
+        .zalScreen()
         .navigationTitle(exercise.nameUk)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -110,6 +97,98 @@ struct ExerciseProgressView: View {
         case .oneRM: point.estimatedOneRM
         case .maxWeight: point.maxWeight
         case .tonnage: point.tonnage
+        }
+    }
+}
+
+/// Bottom of the photo card: best estimated 1RM in big thin digits.
+private struct BestOneRMHeader: View {
+    let best: Double?
+    let formula: OneRMFormula
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(formula == .epley ? "Найкраща оцінка 1ПМ (Еплі)" : "Найкраща оцінка 1ПМ (Бжицкі)").eyebrow()
+            if let best {
+                MetricText(best.kgText, unit: "кг", size: 52)
+            } else {
+                Text("Ще немає даних")
+                    .font(.title2.weight(.light))
+            }
+        }
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// Personal records by rep count as small glass tiles.
+private struct RepRecordsGrid: View {
+    let records: [StatsService.RepRecord]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+            SectionHeader("Особисті рекорди")
+            if records.isEmpty {
+                Text("Ще немає")
+                    .foregroundStyle(.secondary)
+                    .cardStyle()
+            } else {
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: Theme.Spacing.s), GridItem(.flexible())], spacing: Theme.Spacing.s) {
+                    ForEach(records, id: \.reps) { record in
+                        RecordTile(record: record)
+                    }
+                }
+            }
+        }
+    }
+}
+
+private struct RecordTile: View {
+    let record: StatsService.RepRecord
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+            HStack(spacing: 6) {
+                GlowDot(size: 6)
+                Text("\(record.reps) \(record.reps == 1 ? "повтор" : "повт.")")
+                    .font(.footnote.weight(.medium))
+                    .foregroundStyle(.secondary)
+            }
+            MetricText(record.weight.preciseText, unit: "кг", size: 30)
+            Text(record.date.formatted(date: .abbreviated, time: .omitted))
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+        }
+        .cardStyle()
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// Sessions with this exercise: date + sets in light digits.
+private struct ExerciseHistoryList: View {
+    let exercise: Exercise
+    let sessions: [WorkoutSession]
+
+    private var withExercise: [WorkoutSession] {
+        sessions.filter { session in
+            session.exercises.contains { $0.exerciseSlug == exercise.slug && !$0.workingSets.isEmpty }
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+            SectionHeader("Історія")
+            LazyVStack(spacing: Theme.Spacing.s) {
+                ForEach(withExercise) { session in
+                    let sets = session.exercises.filter { $0.exerciseSlug == exercise.slug }.flatMap(\.workingSets)
+                    VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                        Text(session.startedAt.formatted(date: .abbreviated, time: .omitted)).eyebrow()
+                        Text(sets.map { "\($0.weightKg.preciseText)×\($0.reps)" }.joined(separator: ", "))
+                            .font(.body.weight(.light).monospacedDigit())
+                    }
+                    .cardStyle(inset: Theme.Spacing.m + 2)
+                    .accessibilityElement(children: .combine)
+                }
+            }
         }
     }
 }

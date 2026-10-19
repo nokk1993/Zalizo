@@ -10,7 +10,7 @@ struct QuestionHeader: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
-            Text(title).font(.title3.bold())
+            Text(title).font(.title3.weight(.semibold))
             if let subtitle {
                 Text(subtitle).font(.subheadline).foregroundStyle(.secondary)
             }
@@ -21,35 +21,85 @@ struct QuestionHeader: View {
 }
 
 struct WelcomeSection: View {
+    @ScaledMetric(relativeTo: .largeTitle) private var brandSize: CGFloat = 76
+
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
-            Image(systemName: "figure.strengthtraining.traditional")
-                .font(.system(size: 64))
-                .foregroundStyle(Color.accentColor)
+            WelcomeOrb()
                 .frame(maxWidth: .infinity)
-                .padding(.top, Theme.Spacing.xl)
-            Text("Привіт! Це «Зал»")
-                .font(.largeTitle.bold())
-            Text("Кілька коротких питань - і додаток порахує твою норму калорій і БЖВ, складе програму тренувань і підкаже робочі ваги на кожне тренування.")
-                .font(.body)
-            Text("Відповіді можна змінити будь-коли: Профіль → Мої дані. Усі дані зберігаються тільки на цьому телефоні.")
-                .font(.callout)
-                .foregroundStyle(.secondary)
+                .padding(.top, Theme.Spacing.l)
+
+            VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                Text("Привіт! Це")
+                    .font(.title.weight(.light))
+                    .foregroundStyle(.secondary)
+                Text("«Зал»")
+                    .font(.system(size: brandSize, weight: .bold))
+                    .minimumScaleFactor(0.6)
+                    .lineLimit(1)
+                Text("Тренуйся розумно. Рости щотижня.")
+                    .font(.title3.weight(.light))
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isHeader)
+
+            VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+                WelcomeRow(systemImage: "wand.and.stars", text: "Кілька коротких питань - і додаток порахує твою норму калорій і БЖВ, складе програму тренувань і підкаже робочі ваги на кожне тренування.")
+                WelcomeRow(systemImage: "lock.shield", text: "Відповіді можна змінити будь-коли: Профіль → Мої дані. Усі дані зберігаються тільки на цьому телефоні.")
+            }
+            .cardStyle()
+
             DisclaimerBox()
+        }
+    }
+}
+
+/// Soft lime glow behind a glass disc with a thin athlete symbol.
+private struct WelcomeOrb: View {
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(RadialGradient(
+                    colors: [Theme.Palette.accent.opacity(0.55), Theme.Palette.accent.opacity(0)],
+                    center: .center, startRadius: 0, endRadius: 130
+                ))
+                .frame(width: 260, height: 260)
+                .blur(radius: 18)
+            Image(systemName: "figure.strengthtraining.traditional")
+                .font(.system(size: 64, weight: .thin))
+                .foregroundStyle(Color.white)
+                .frame(width: 148, height: 148)
+                .glassEffect(.regular, in: Circle())
+        }
+        .accessibilityHidden(true)
+    }
+}
+
+private struct WelcomeRow: View {
+    let systemImage: String
+    let text: LocalizedStringResource
+
+    var body: some View {
+        HStack(alignment: .top, spacing: Theme.Spacing.m) {
+            IconBadge(systemImage: systemImage, tint: Theme.Palette.accent, size: 34)
+            Text(text)
+                .font(.callout)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
 
 struct DisclaimerBox: View {
     var body: some View {
-        Label {
+        HStack(alignment: .top, spacing: Theme.Spacing.m) {
+            IconBadge(systemImage: "cross.case", tint: Theme.Palette.warning, size: 34)
             Text("Інформація в додатку не є медичною порадою. Якщо під час вправи з'явився біль - зупинись. При хронічних захворюваннях або проблемах зі здоров'ям порадься з лікарем.")
                 .font(.footnote)
-        } icon: {
-            Image(systemName: "cross.case")
-                .foregroundStyle(Theme.Palette.warning)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
-        .cardStyle()
+        .cardStyle(tint: Theme.Palette.warning)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -85,17 +135,23 @@ struct BodySection: View {
                 DatePicker("Дата народження", selection: birthDate, in: birthDateRange, displayedComponents: .date)
                     .labelsHidden()
                 Spacer()
-                Text("Вік: \(snapshot.ageYears())")
-                    .font(.headline)
-                    .foregroundStyle(snapshot.birthDate == nil ? Color.secondary : Color.primary)
+                VStack(alignment: .trailing, spacing: 0) {
+                    Text("Вік").eyebrow()
+                    Text("\(snapshot.ageYears())")
+                        .font(.title.weight(.light).monospacedDigit())
+                        .foregroundStyle(snapshot.birthDate == nil ? Color.secondary : Color.primary)
+                }
+                .accessibilityElement(children: .combine)
             }
             .cardStyle()
 
             QuestionHeader(title: "Зріст")
             HeightWheel(heightCm: $snapshot.heightCm)
+                .cardStyle(inset: Theme.Spacing.s)
 
             QuestionHeader(title: "Поточна вага", subtitle: "Зважуйся зранку натще - так найточніше")
             WeightWheel(weightKg: $snapshot.weightKg)
+                .cardStyle(inset: Theme.Spacing.s)
         }
     }
 }
@@ -133,18 +189,22 @@ struct ScheduleSection: View {
                     ChipToggle(title: day.shortTitle, isOn: snapshot.trainingDays.contains(day)) { toggle(day) }
                 }
             }
-            Text("Тренувань на тиждень: \(snapshot.trainingDays.count)")
-                .font(.headline)
-                .foregroundStyle(snapshot.trainingDays.isEmpty ? Theme.Palette.danger : Color.primary)
-            if snapshot.trainingDays.isEmpty {
-                Text("Обери хоча б один день").font(.footnote).foregroundStyle(Theme.Palette.danger)
+            HStack(alignment: .firstTextBaseline) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Тренувань на тиждень").font(.subheadline).foregroundStyle(.secondary)
+                    if snapshot.trainingDays.isEmpty {
+                        Text("Обери хоча б один день").font(.footnote).foregroundStyle(Theme.Palette.danger)
+                    }
+                }
+                Spacer()
+                MetricText("\(snapshot.trainingDays.count)", size: 34)
+                    .foregroundStyle(snapshot.trainingDays.isEmpty ? Theme.Palette.danger : Color.primary)
             }
+            .cardStyle()
+            .accessibilityElement(children: .combine)
 
             QuestionHeader(title: "Скільки часу на тренування?")
-            Picker("Тривалість", selection: $snapshot.sessionMinutes) {
-                ForEach(durations, id: \.self) { Text("\($0) хв").tag($0) }
-            }
-            .pickerStyle(.segmented)
+            PillPicker(selection: $snapshot.sessionMinutes, options: durations) { "\($0) хв" }
         }
     }
 
@@ -196,13 +256,8 @@ struct EquipmentSection: View {
                     Stepper(value: $snapshot.dumbbellMaxKg, in: 4...80, step: 2) {
                         Text("Гантелі до \(snapshot.dumbbellMaxKg.kgText) кг")
                     }
-                    Text("Крок гантелей").font(.subheadline).foregroundStyle(.secondary)
-                    Picker("Крок гантелей", selection: $dumbbellStepKg) {
-                        Text("1 кг").tag(1.0)
-                        Text("2 кг").tag(2.0)
-                        Text("2,5 кг").tag(2.5)
-                    }
-                    .pickerStyle(.segmented)
+                    Text("Крок гантелей").eyebrow()
+                    PillPicker(selection: $dumbbellStepKg, options: [1.0, 2.0, 2.5]) { "\($0.preciseText) кг" }
                 }
                 .cardStyle()
             }
@@ -271,10 +326,7 @@ struct NutritionPreferencesSection: View {
             }
 
             QuestionHeader(title: "Скільки разів на день зручно їсти?")
-            Picker("Прийомів їжі", selection: $snapshot.mealsPerDay) {
-                ForEach(3...6, id: \.self) { Text("\($0)").tag($0) }
-            }
-            .pickerStyle(.segmented)
+            PillPicker(selection: $snapshot.mealsPerDay, options: Array(3...6)) { "\($0)" }
 
             QuestionHeader(title: "Бюджет на продукти")
             VStack(spacing: Theme.Spacing.m) {
@@ -318,10 +370,11 @@ struct TargetWeightSection: View {
 
             if snapshot.targetWeightKg != nil {
                 WeightWheel(weightKg: target)
+                    .cardStyle(inset: Theme.Spacing.s)
             } else {
                 VStack(alignment: .leading, spacing: Theme.Spacing.s) {
-                    Text("Пропонуємо: \(summary.targetWeightKg.kgText) кг")
-                        .font(.title3.bold())
+                    Text("Пропонуємо").eyebrow()
+                    MetricText(summary.targetWeightKg.kgText, unit: "кг", size: 44)
                     Text("Це приблизно 16 тижнів набору в безпечному темпі. Після досягнення можна поставити нову ціль.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -343,7 +396,10 @@ struct PaceInfo: View {
             let range = summary.recommendedRatePercent
             let lower = weightKg * range.lowerBound / 100
             let upper = weightKg * range.upperBound / 100
-            Label("Безпечний темп набору", systemImage: "speedometer").font(.headline)
+            HStack(spacing: Theme.Spacing.m) {
+                IconBadge(systemImage: "speedometer", tint: Theme.Palette.accent, size: 34)
+                Text("Безпечний темп набору").font(.headline)
+            }
             Text("\(range.lowerBound.preciseText)-\(range.upperBound.preciseText) % ваги на тиждень ≈ \(lower.preciseText)-\(upper.preciseText) кг")
             if summary.kgPerWeek > 0 {
                 Text("Плануємо: +\(summary.kgPerWeek.preciseText) кг на тиждень")
@@ -413,9 +469,12 @@ private struct LiftRow: View {
             }
             if result.isValid {
                 let estimate = result.estimatedOneRM()
-                Text("1ПМ ≈ \(estimate.value.kgText) кг\(estimate.isReliable ? "" : " (оцінка неточна: забагато повторень)")")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
+                HStack(spacing: Theme.Spacing.s) {
+                    GlowDot(color: estimate.isReliable ? Theme.Palette.accent : Theme.Palette.warning, size: 6)
+                    Text("1ПМ ≈ \(estimate.value.kgText) кг\(estimate.isReliable ? "" : " (оцінка неточна: забагато повторень)")")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
         .cardStyle()
@@ -429,26 +488,12 @@ struct PlanSummaryCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.l) {
-            VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
-                Text("Норма на день").font(.subheadline).foregroundStyle(.secondary)
-                Text("\(summary.targets.restDay.kcal.groupedText) ккал")
-                    .font(.system(.largeTitle, design: .rounded).bold().monospacedDigit())
-                if summary.targets.trainingDay.kcal != summary.targets.restDay.kcal {
-                    Text("У день тренування: \(summary.targets.trainingDay.kcal.groupedText) ккал")
-                        .font(.subheadline)
-                }
-            }
-            .cardStyle()
-
-            HStack(spacing: Theme.Spacing.s) {
-                MacroTile(title: "Білок", grams: summary.targets.restDay.proteinG, percent: summary.targets.restDay.proteinPercent, color: Theme.Palette.protein)
-                MacroTile(title: "Жири", grams: summary.targets.restDay.fatG, percent: summary.targets.restDay.fatPercent, color: Theme.Palette.fat)
-                MacroTile(title: "Вуглеводи", grams: summary.targets.restDay.carbsG, percent: summary.targets.restDay.carbsPercent, color: Theme.Palette.carbs)
-            }
+            CaloriesHero(summary: summary)
+            MacrosCard(day: summary.targets.restDay)
 
             HStack(spacing: Theme.Spacing.s) {
                 StatTile(title: "Вода", value: (Double(summary.targets.waterRestDayMl) / 1000).preciseText, unit: "л", systemImage: "drop.fill", tint: Theme.Palette.water)
-                StatTile(title: "Клітковина", value: "\(summary.targets.fiberG)", unit: "г", systemImage: "leaf.fill", tint: Theme.Palette.carbs)
+                StatTile(title: "Клітковина", value: "\(summary.targets.fiberG)", unit: "г", systemImage: "leaf.fill", tint: Theme.Palette.success)
             }
             Text("У день тренування води більше: \((Double(summary.targets.waterTrainingDayMl) / 1000).preciseText) л")
                 .font(.footnote)
@@ -456,14 +501,17 @@ struct PlanSummaryCard: View {
 
             ForecastBlock(summary: summary, snapshot: snapshot)
 
-            LabeledContent {
-                Text(ProgramTitles.title(slug: summary.recommendedProgramSlug)).bold()
-            } label: {
-                Label("Програма", systemImage: "list.bullet.clipboard")
+            HStack(spacing: Theme.Spacing.m) {
+                IconBadge(systemImage: "dumbbell", tint: Theme.Palette.accent)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Програма").eyebrow()
+                    Text(ProgramTitles.title(slug: summary.recommendedProgramSlug)).font(.headline)
+                }
             }
             .cardStyle()
+            .accessibilityElement(children: .combine)
 
-            DisclosureGroup("Як це пораховано") {
+            DisclosureGroup {
                 VStack(alignment: .leading, spacing: Theme.Spacing.s) {
                     Text("Базовий обмін (Міффлін-Сан Жеор): \(Int(summary.targets.bmr.rounded()).groupedText) ккал")
                     Text("З урахуванням активності: \(Int(summary.targets.tdee.rounded()).groupedText) ккал. Коефіцієнт уже включає ~3 тренування на тиждень.")
@@ -474,9 +522,46 @@ struct PlanSummaryCard: View {
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .padding(.top, Theme.Spacing.s)
+            } label: {
+                Text("Як це пораховано").font(.subheadline.weight(.medium))
             }
             .cardStyle()
         }
+    }
+}
+
+/// Lime highlight: daily calories in big thin digits.
+private struct CaloriesHero: View {
+    let summary: PlanSummary
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+            Text("Норма на день").eyebrow()
+            MetricText(summary.targets.restDay.kcal.groupedText, unit: "ккал", size: 56)
+            if summary.targets.trainingDay.kcal != summary.targets.restDay.kcal {
+                HStack(spacing: Theme.Spacing.s) {
+                    Image(systemName: "dumbbell.fill").font(.caption)
+                    Text("У день тренування: \(summary.targets.trainingDay.kcal.groupedText) ккал")
+                        .font(.subheadline.weight(.medium))
+                }
+            }
+        }
+        .highlightCardStyle()
+        .accessibilityElement(children: .combine)
+    }
+}
+
+private struct MacrosCard: View {
+    let day: NutritionCalculator.Macros
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+            Text("БЖВ").eyebrow()
+            MacroRow(title: "Білок", grams: day.proteinG, percent: day.proteinPercent, color: Theme.Palette.protein)
+            MacroRow(title: "Жири", grams: day.fatG, percent: day.fatPercent, color: Theme.Palette.fat)
+            MacroRow(title: "Вуглеводи", grams: day.carbsG, percent: day.carbsPercent, color: Theme.Palette.carbs)
+        }
+        .cardStyle()
     }
 }
 
@@ -486,9 +571,13 @@ private struct ForecastBlock: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.s) {
-            Label("Прогноз", systemImage: "calendar").font(.headline)
+            HStack(spacing: Theme.Spacing.m) {
+                IconBadge(systemImage: "calendar", tint: Theme.Palette.blue, size: 34)
+                Text("Прогноз").font(.headline)
+            }
             if let forecast = summary.forecast {
                 Text("З \(snapshot.weightKg.kgText) до \(summary.targetWeightKg.kgText) кг при темпі \(summary.kgPerWeek.preciseText) кг/тижд ≈ \(Int(forecast.weeks.rounded())) тижн.")
+                    .font(.title3.weight(.light))
                 Text("Орієнтовно до \(forecast.targetDate.formatted(date: .long, time: .omitted)) - це ≈ \(forecast.workouts) тренувань при \(snapshot.sessionsPerWeek) на тиждень.")
                     .foregroundStyle(.secondary)
                 if summary.isTargetSuggested {
@@ -506,22 +595,34 @@ private struct ForecastBlock: View {
     }
 }
 
-private struct MacroTile: View {
+private struct MacroRow: View {
     let title: LocalizedStringResource
     let grams: Int
     let percent: Double
     let color: Color
 
+    private var fraction: Double { min(max(percent / 100, 0), 1) }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(title).font(.caption).foregroundStyle(.secondary)
-            Text("\(grams) г").font(.title3.bold().monospacedDigit())
-            Text("\(Int(percent.rounded())) %").font(.caption2).foregroundStyle(.secondary)
-            Capsule().fill(color).frame(height: 4)
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(alignment: .firstTextBaseline, spacing: Theme.Spacing.s) {
+                GlowDot(color: color)
+                Text(title).font(.subheadline)
+                Spacer()
+                Text("\(grams) г").font(.title3.weight(.light).monospacedDigit())
+                Text("\(Int(percent.rounded())) %")
+                    .font(.caption.monospacedDigit())
+                    .foregroundStyle(.secondary)
+                    .frame(minWidth: 40, alignment: .trailing)
+            }
+            ZStack(alignment: .leading) {
+                Capsule().fill(Color.white.opacity(0.08))
+                Capsule()
+                    .fill(color)
+                    .scaleEffect(x: max(fraction, 0.02), y: 1, anchor: .leading)
+            }
+            .frame(height: 4)
         }
-        .padding(Theme.Spacing.m)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.background.secondary, in: .rect(cornerRadius: Theme.Radius.control))
         .accessibilityElement(children: .combine)
     }
 }

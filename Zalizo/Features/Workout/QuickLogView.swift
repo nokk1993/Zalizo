@@ -35,24 +35,31 @@ struct QuickLogView: View {
                 Section {
                     DatePicker("Коли", selection: $date, in: ...Date.now)
                 }
+                .glassRows()
                 Section {
-                    TextField("Наприклад: жим лежачи 70х10", text: $text)
-                        .focused($focused)
-                        .submitLabel(.done)
-                        .onSubmit(parse)
-                        .autocorrectionDisabled()
-                    Button("Розпізнати", action: parse)
+                    HStack(spacing: Theme.Spacing.m) {
+                        IconBadge(systemImage: "text.cursor", tint: Theme.Palette.accent, size: 34)
+                        TextField("Наприклад: жим лежачи 70х10", text: $text)
+                            .focused($focused)
+                            .submitLabel(.done)
+                            .onSubmit { parse() }
+                            .autocorrectionDisabled()
+                    }
+                    Button("Розпізнати") { parse() }
+                        .fontWeight(.semibold)
                         .disabled(text.trimmingCharacters(in: .whitespaces).isEmpty)
                 } footer: {
                     Text("Формати: «присід 100 на 5», «жим 70 кг 10 раз», «тяга 60х8х3» (3 підходи).")
                 }
+                .glassRows()
 
                 if notRecognised {
                     Section {
-                        Text("Не вдалося впізнати вправу - обери її вручну.")
+                        Label("Не вдалося впізнати вправу - обери її вручну.", systemImage: "exclamationmark.triangle")
                             .foregroundStyle(Theme.Palette.warning)
                         Button("Обрати з бібліотеки") { showLibrary = true }
                     }
+                    .glassRows()
                 }
 
                 if let draft {
@@ -81,24 +88,31 @@ struct QuickLogView: View {
                             focused = true
                         } label: {
                             Label("Додати", systemImage: "plus.circle.fill")
+                                .fontWeight(.semibold)
                         }
                     }
+                    .glassRows()
                 }
 
                 if !lines.isEmpty {
                     Section("Записано") {
                         ForEach(lines) { line in
-                            VStack(alignment: .leading) {
-                                Text(line.name)
-                                Text("\(line.weight.preciseText) кг × \(line.reps) × \(line.sets)")
-                                    .font(.caption.monospacedDigit())
-                                    .foregroundStyle(.secondary)
+                            HStack(spacing: Theme.Spacing.m) {
+                                GlowDot(size: 6)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(line.name)
+                                    Text("\(line.weight.preciseText) кг × \(line.reps) × \(line.sets)")
+                                        .font(.subheadline.weight(.light).monospacedDigit())
+                                        .foregroundStyle(.secondary)
+                                }
                             }
                         }
                         .onDelete { lines.remove(atOffsets: $0) }
                     }
+                    .glassRows()
                 }
             }
+            .zalScreen()
             .navigationTitle("Швидкий запис")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

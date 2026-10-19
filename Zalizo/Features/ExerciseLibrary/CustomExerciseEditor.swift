@@ -31,12 +31,15 @@ struct CustomExerciseEditor: View {
                 TextField("Англійська назва (необов'язково)", text: $nameEn)
                     .textInputAutocapitalization(.words)
             }
+            .glassRows()
             Section("Основні м'язи") {
                 muscleChips(selection: $primary)
             }
+            .glassRows()
             Section("Допоміжні м'язи") {
                 muscleChips(selection: $secondary)
             }
+            .glassRows()
             Section("Обладнання") {
                 FlowLayout {
                     ForEach(Equipment.allCases, id: \.self) { item in
@@ -47,6 +50,7 @@ struct CustomExerciseEditor: View {
                 }
                 .padding(.vertical, Theme.Spacing.xs)
             }
+            .glassRows()
             Section("Тип") {
                 Picker("Тип вправи", selection: $mechanic) {
                     ForEach(ExerciseMechanic.allCases, id: \.self) { Text($0.title).tag($0) }
@@ -56,6 +60,7 @@ struct CustomExerciseEditor: View {
                     ForEach(BodyRegion.allCases, id: \.self) { Text($0.title).tag($0) }
                 }
             }
+            .glassRows()
             Section {
                 TextEditor(text: $notes)
                     .frame(minHeight: 100)
@@ -64,19 +69,29 @@ struct CustomExerciseEditor: View {
             } footer: {
                 Text("Кожен крок - з нового рядка.")
             }
+            .glassRows()
             Section("Фото") {
                 if let photoData, let image = UIImage(data: photoData) {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
+                        .grayscale(1)
+                        .colorMultiply(Theme.Palette.ice)
                         .frame(maxHeight: 200)
                         .clipShape(.rect(cornerRadius: Theme.Radius.control))
+                        .frame(maxWidth: .infinity)
                 }
                 PhotosPicker(selection: $photoItem, matching: .images) {
-                    Label(photoData == nil ? LocalizedStringResource("Обрати з галереї") : LocalizedStringResource("Обрати інше"), systemImage: "photo")
+                    HStack(spacing: Theme.Spacing.m) {
+                        IconBadge(systemImage: "photo", tint: Theme.Palette.accent)
+                        Text(photoData == nil ? LocalizedStringResource("Обрати з галереї") : LocalizedStringResource("Обрати інше"))
+                            .foregroundStyle(.primary)
+                    }
                 }
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle("Нова вправа")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -85,6 +100,7 @@ struct CustomExerciseEditor: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Зберегти") { save() }
+                    .bold()
                     .disabled(!canSave)
             }
         }

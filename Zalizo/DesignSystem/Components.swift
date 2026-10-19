@@ -250,14 +250,18 @@ struct PhotoCard<Content: View>: View {
     }
 }
 
-/// Stand-in for a missing photo: blue-gray glow with a thin athlete symbol.
+/// Stand-in for a missing photo: blue-gray glow with a thin athlete symbol that fits any size.
 struct PhotoPlaceholder: View {
     var body: some View {
         ZStack {
             LinearGradient(colors: [Theme.Palette.ice.opacity(0.35), Theme.Palette.canvasTop], startPoint: .topTrailing, endPoint: .bottomLeading)
             Image(systemName: "figure.strengthtraining.traditional")
-                .font(.system(size: 72, weight: .thin))
+                .resizable()
+                .scaledToFit()
+                .fontWeight(.thin)
                 .foregroundStyle(Color.white.opacity(0.5))
+                .frame(maxWidth: 88, maxHeight: 88)
+                .padding(Theme.Spacing.m)
         }
         .accessibilityHidden(true)
     }

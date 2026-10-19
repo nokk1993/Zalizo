@@ -12,6 +12,7 @@ struct TodayView: View {
     @Query private var profiles: [UserProfile]
     @Query private var programs: [Program]
     @Query private var settings: [AppSettings]
+    @Query private var exercises: [Exercise]
 
     @State private var plan: TodayPlanner.Plan?
     @State private var deloadReason: DeloadAdvisor.Reason?
@@ -32,73 +33,24 @@ struct TodayView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: Theme.Spacing.l) {
-                    if let session = activeSessions.first {
-                        ActiveWorkoutCard(session: session) { resume(session) }
-                    } else if let plan {
-                        NextWorkoutCard(plan: plan, isDeload: isDeloadWeek) {
-                            requestStart(day: plan.day)
-                        }
-                    } else {
-                        ContentUnavailableView {
-                            Label("Немає програми", systemImage: "list.bullet.clipboard")
-                        } description: {
-                            Text("Обери програму у вкладці «Програма».")
-                        }
-                    }
-
-                    if activeSessions.isEmpty, let deloadReason {
-                        DeloadCard(reason: deloadReason) {
-                            TodayPlanner.acceptDeload(in: context)
-                            reload()
-                        } onPostpone: {
-                            TodayPlanner.postponeDeload(in: context)
-                            reload()
-                        }
-                    }
-                    if let end = TodayPlanner.deloadEndDate(in: context) {
-                        Label("Розвантажувальний тиждень до \(end.formatted(.dateTime.weekday(.wide).day().month()))", systemImage: "leaf")
-                            .font(.subheadline)
-                            .cardStyle()
-                    }
-
-                    HStack(spacing: Theme.Spacing.s) {
-                        StatTile(title: "Цього тижня", value: "\(week.done)/\(week.planned)", unit: "трен.", systemImage: "calendar", tint: Theme.Palette.success)
-                        StatTile(title: "Серія", value: "\(week.streak)", unit: "тижн. поспіль", systemImage: "flame.fill", tint: .orange)
-                    }
-
+                VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
+                    WeekStrip(days: weekDays)
+                    mainCard
+                    deloadCards
+                    WeekProgressCard(done: week.done, planned: week.planned, streak: week.streak)
                     WeighInCard(latest: latestWeights.first) { showWeighIn = true }
-
-                    VStack(alignment: .leading, spacing: Theme.Spacing.s) {
-                        Label("Порада дня", systemImage: "lightbulb").font(.headline)
-                        Text(DailyTips.tip())
-                    }
-                    .cardStyle()
-
+                    TipCard()
                     if activeSessions.isEmpty {
-                        HStack(spacing: Theme.Spacing.s) {
-                            Button {
-                                startFreeWorkout()
-                            } label: {
-                                Label("Довільне", systemImage: "plus.circle")
-                                    .frame(maxWidth: .infinity, minHeight: 44)
-                            }
-                            .buttonStyle(.glass)
-                            Button {
-                                showQuickLog = true
-                            } label: {
-                                Label("Швидкий запис", systemImage: "text.badge.plus")
-                                    .frame(maxWidth: .infinity, minHeight: 44)
-                            }
-                            .buttonStyle(.glass)
-                        }
+                        extraActions
                     }
                 }
                 .padding(Theme.Spacing.l)
+                .padding(.bottom, Theme.Spacing.xl)
             }
+            .zalScreen()
             .navigationTitle("Сьогодні")
             .task(id: refreshKey) { reload() }
-            .fullScreenCover(item: $workout, onDismiss: reload) { model in
+            .fullScreenCover(item: $workout, onDismiss: { reload() }) { model in
                 WorkoutView(model: model)
             }
             .sheet(isPresented: $showWellness) {
@@ -113,7 +65,7 @@ struct TodayView: View {
                 }
                 .presentationDetents([.medium, .large])
             }
-            .sheet(isPresented: $showQuickLog, onDismiss: reload) { QuickLogView() }
+            .sheet(isPresented: $showQuickLog, onDismiss: { reload() }) { QuickLogView() }
             .sheet(isPresented: $showWeighIn) {
                 WeighInSheet(initial: latestWeights.first?.weightKg ?? Defaults.weightKg)
                     .presentationDetents([.medium])
@@ -140,6 +92,93 @@ struct TodayView: View {
     }
 
     @State private var pendingDay: ProgramDay?
+
+    // MARK: - Sections
+
+    @ViewBuilder private var mainCard: some View {
+        if let session = activeSessions.first {
+            ActiveWorkoutCard(session: session) { resume(session) }
+        } else if let plan {
+            NextWorkoutCard(plan: plan, exercise: heroExercise(for: plan), isDeload: isDeloadWeek) {
+                requestStart(day: plan.day)
+            }
+        } else {
+            ContentUnavailableView {
+                Label("Немає програми", systemImage: "list.bullet.clipboard")
+            } description: {
+                Text("Обери програму у вкладці «Програма».")
+            }
+            .cardStyle()
+        }
+    }
+
+    @ViewBuilder private var deloadCards: some View {
+        if activeSessions.isEmpty, let deloadReason {
+            DeloadCard(reason: deloadReason) {
+                TodayPlanner.acceptDeload(in: context)
+                reload()
+            } onPostpone: {
+                TodayPlanner.postponeDeload(in: context)
+                reload()
+            }
+        }
+        if let end = TodayPlanner.deloadEndDate(in: context) {
+            HStack(spacing: Theme.Spacing.m) {
+                IconBadge(systemImage: "leaf", tint: Theme.Palette.success)
+                Text("Розвантажувальний тиждень до \(end.formatted(.dateTime.weekday(.wide).day().month()))")
+                    .font(.subheadline)
+            }
+            .cardStyle(tint: Theme.Palette.success)
+        }
+    }
+
+    private var extraActions: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+            SectionHeader("Поза програмою")
+            HStack(spacing: Theme.Spacing.s) {
+                Button {
+                    startFreeWorkout()
+                } label: {
+                    Label("Довільне", systemImage: "plus")
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                }
+                .buttonStyle(.glass)
+                Button {
+                    showQuickLog = true
+                } label: {
+                    Label("Швидкий запис", systemImage: "text.badge.plus")
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                }
+                .buttonStyle(.glass)
+            }
+        }
+    }
+
+    /// Current Monday-Sunday week: planned training weekdays and days with a finished workout.
+    private var weekDays: [WeekStrip.Day] {
+        let calendar = Calendar.iso
+        guard let interval = calendar.dateInterval(of: .weekOfYear, for: .now) else { return [] }
+        let saved = profiles.first?.weekdays ?? []
+        let training = Set(saved.isEmpty ? Defaults.trainingDays : saved)
+        let finished = allSessions.filter { $0.isFinished && interval.containsHalfOpen($0.startedAt) }.map(\.startedAt)
+        return (0..<7).compactMap { offset -> WeekStrip.Day? in
+            guard let date = calendar.date(byAdding: .day, value: offset, to: interval.start) else { return nil }
+            return WeekStrip.Day(
+                date: date,
+                isTraining: training.contains(Weekday.from(date: date, calendar: calendar)),
+                isDone: finished.contains { calendar.isDate($0, inSameDayAs: date) }
+            )
+        }
+    }
+
+    /// Photo for the hero card: the first exercise of the day (after substitutions).
+    private func heroExercise(for plan: TodayPlanner.Plan) -> Exercise? {
+        if let name = plan.previews.first?.name, let match = exercises.first(where: { $0.nameUk == name }) {
+            return match
+        }
+        guard let slug = plan.day.orderedExercises.first?.exerciseSlug else { return nil }
+        return exercises.first { $0.slug == slug }
+    }
 
     /// Changes whenever data that affects the plan changes.
     private var refreshKey: String {
@@ -209,52 +248,25 @@ extension WorkoutModel: Identifiable {
 
 private struct NextWorkoutCard: View {
     let plan: TodayPlanner.Plan
+    let exercise: Exercise?
     let isDeload: Bool
     let onStart: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.m) {
-            if plan.next.isToday {
-                Text("Сьогодні").font(.subheadline.bold()).foregroundStyle(Color.accentColor)
-            } else {
-                Text("Відпочинок. Наступне: \(plan.next.date.formatted(.dateTime.weekday(.abbreviated))), \(plan.day.name)")
-                    .font(.subheadline.bold())
-                    .foregroundStyle(.secondary)
+            PhotoCard(exercise: exercise, minHeight: 250) {
+                hero
             }
-            HStack(alignment: .firstTextBaseline) {
-                Text(plan.day.name).font(.title2.bold())
-                Spacer()
-                Text("~\(plan.estimatedMinutes) хв").font(.subheadline).foregroundStyle(.secondary)
+            if !plan.previews.isEmpty {
+                PreviewList(previews: plan.previews)
             }
-            Text(plan.program.name).font(.caption).foregroundStyle(.secondary)
-
-            VStack(alignment: .leading, spacing: Theme.Spacing.m) {
-                ForEach(plan.previews) { preview in
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(preview.name).font(.body.weight(.medium))
-                        Text(preview.target).font(.subheadline.bold().monospacedDigit())
-                        if let last = preview.last {
-                            Text("минулого разу: \(last)").font(.caption.monospacedDigit()).foregroundStyle(.secondary)
-                        }
-                        if let hint = preview.hint {
-                            Text(hint)
-                                .font(.caption.bold())
-                                .foregroundStyle(preview.kind == .increaseWeight ? Theme.Palette.success : (preview.kind == .stall ? Theme.Palette.warning : Color.secondary))
-                        }
-                        if let substitution = preview.substitution {
-                            Label(substitution, systemImage: "arrow.triangle.swap")
-                                .font(.caption2)
-                                .foregroundStyle(Theme.Palette.warning)
-                        }
-                    }
-                    .accessibilityElement(children: .combine)
-                }
-            }
-
             Button(action: onStart) {
-                Label(plan.next.isToday ? LocalizedStringResource("Почати тренування") : LocalizedStringResource("Почати зараз"), systemImage: "play.fill")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, minHeight: 50)
+                Label {
+                    Text(plan.next.isToday ? LocalizedStringResource("Почати тренування") : LocalizedStringResource("Почати зараз"))
+                } icon: {
+                    Image(systemName: "play.fill")
+                }
+                .frame(maxWidth: .infinity)
             }
             .buttonStyle(.zalPrimary)
             if isDeload {
@@ -263,7 +275,101 @@ private struct NextWorkoutCard: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .cardStyle()
+    }
+
+    private var hero: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+            HStack(spacing: 6) {
+                GlowDot(color: plan.next.isToday ? Theme.Palette.accent : Theme.Palette.blue, size: 7)
+                eyebrowText.eyebrow()
+            }
+            Text(plan.day.name)
+                .font(.largeTitle.weight(.bold))
+                .lineLimit(2)
+                .minimumScaleFactor(0.7)
+            HStack(spacing: Theme.Spacing.s) {
+                Text(plan.program.name).lineLimit(1)
+                Text("·")
+                Text("~\(plan.estimatedMinutes) хв").monospacedDigit()
+            }
+            .font(.subheadline)
+            .foregroundStyle(Color.white.opacity(0.75))
+        }
+        .accessibilityElement(children: .combine)
+    }
+
+    private var eyebrowText: Text {
+        if plan.next.isToday {
+            Text("Сьогодні")
+        } else {
+            Text("Відпочинок. Наступне: \(plan.next.date.formatted(.dateTime.weekday(.wide)))")
+        }
+    }
+}
+
+/// Exercises of the next workout with today's targets.
+private struct PreviewList: View {
+    let previews: [TodayPlanner.ExercisePreview]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            ForEach(Array(previews.enumerated()), id: \.element.id) { index, preview in
+                if index > 0 {
+                    Divider()
+                }
+                PreviewRow(number: index + 1, preview: preview)
+                    .padding(.vertical, Theme.Spacing.m)
+            }
+        }
+        .cardStyle(inset: Theme.Spacing.l)
+    }
+}
+
+private struct PreviewRow: View {
+    let number: Int
+    let preview: TodayPlanner.ExercisePreview
+
+    var body: some View {
+        HStack(alignment: .top, spacing: Theme.Spacing.m) {
+            Text("\(number)")
+                .font(.caption.weight(.semibold).monospacedDigit())
+                .foregroundStyle(.secondary)
+                .frame(width: 28, height: 28)
+                .background(Theme.Palette.row, in: Circle())
+            VStack(alignment: .leading, spacing: 3) {
+                Text(preview.name).font(.body.weight(.medium))
+                Text(preview.target)
+                    .font(.title3.weight(.light).monospacedDigit())
+                if let last = preview.last {
+                    Text("минулого разу: \(last)")
+                        .font(.caption.monospacedDigit())
+                        .foregroundStyle(.secondary)
+                }
+                if let hint = preview.hint {
+                    HStack(spacing: 6) {
+                        GlowDot(color: hintColor, size: 6)
+                        Text(hint)
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(hintColor)
+                    }
+                }
+                if let substitution = preview.substitution {
+                    Label(substitution, systemImage: "arrow.triangle.swap")
+                        .font(.caption2)
+                        .foregroundStyle(Theme.Palette.warning)
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .accessibilityElement(children: .combine)
+    }
+
+    private var hintColor: Color {
+        switch preview.kind {
+        case .increaseWeight: Theme.Palette.success
+        case .stall: Theme.Palette.warning
+        default: Theme.Palette.textSecondary
+        }
     }
 }
 
@@ -273,23 +379,71 @@ private struct ActiveWorkoutCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.m) {
-            Label("Тренування триває", systemImage: "figure.strengthtraining.traditional")
-                .font(.subheadline.bold())
-                .foregroundStyle(Color.accentColor)
-            Text(session.title).font(.title2.bold())
+            HStack(spacing: 6) {
+                Image(systemName: "figure.strengthtraining.traditional")
+                Text("Тренування триває")
+            }
+            .eyebrow()
+            Text(session.title)
+                .font(.title.weight(.bold))
+                .lineLimit(2)
             TimelineView(.periodic(from: session.startedAt, by: 1)) { context in
-                Text(RestTimer.format(context.date.timeIntervalSince(session.startedAt)))
-                    .font(.title3.monospacedDigit())
-                    .foregroundStyle(.secondary)
+                MetricText(RestTimer.format(context.date.timeIntervalSince(session.startedAt)), size: 56)
             }
             Button(action: onResume) {
                 Label("Продовжити", systemImage: "play.fill")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, minHeight: 50)
+                    .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.zalPrimary)
+            .buttonStyle(.zalDark)
+        }
+        .highlightCardStyle()
+    }
+}
+
+private struct WeekProgressCard: View {
+    let done: Int
+    let planned: Int
+    let streak: Int
+
+    private var progress: Double {
+        planned > 0 ? Double(done) / Double(planned) : 0
+    }
+
+    var body: some View {
+        HStack(spacing: Theme.Spacing.l) {
+            ProgressRing(progress: progress, lineWidth: 9) {
+                VStack(spacing: 0) {
+                    Text("\(done)/\(planned)")
+                        .font(.title2.weight(.light).monospacedDigit())
+                    Text("трен.")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .frame(width: 96, height: 96)
+            VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+                Text("Цього тижня").eyebrow()
+                statusText.font(.headline)
+                HStack(spacing: 6) {
+                    Image(systemName: "flame.fill")
+                        .foregroundStyle(Theme.Palette.warning)
+                    Text("Серія: \(streak) тижн. поспіль")
+                        .foregroundStyle(.secondary)
+                }
+                .font(.subheadline)
+            }
+            Spacer(minLength: 0)
         }
         .cardStyle()
+        .accessibilityElement(children: .combine)
+    }
+
+    private var statusText: Text {
+        if done >= planned {
+            Text("План тижня виконано")
+        } else {
+            Text("Ще \(planned - done) трен. до плану")
+        }
     }
 }
 
@@ -299,25 +453,29 @@ private struct DeloadCard: View {
     let onPostpone: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
-            Label("Час розвантажитись", systemImage: "leaf.fill")
-                .font(.headline)
-                .foregroundStyle(Theme.Palette.success)
-            switch reason {
-            case .scheduled(let weeks):
-                Text("Ти тренуєшся \(weeks) тижнів без перерви. Тиждень з удвічі меншою кількістю підходів (вага та сама) допоможе відновитися і рости далі.")
-            case .stalls(let count):
-                Text("Застій у \(count) базових вправах. Легкий тиждень - найкращий спосіб зрушити з місця.")
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
+            HStack(spacing: Theme.Spacing.m) {
+                IconBadge(systemImage: "leaf.fill", tint: Theme.Palette.success)
+                Text("Час розвантажитись").font(.headline)
             }
-            HStack {
+            Group {
+                switch reason {
+                case .scheduled(let weeks):
+                    Text("Ти тренуєшся \(weeks) тижнів без перерви. Тиждень з удвічі меншою кількістю підходів (вага та сама) допоможе відновитися і рости далі.")
+                case .stalls(let count):
+                    Text("Застій у \(count) базових вправах. Легкий тиждень - найкращий спосіб зрушити з місця.")
+                }
+            }
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            HStack(spacing: Theme.Spacing.s) {
                 Button("Почати розвантаження", action: onAccept)
                     .buttonStyle(.zalPrimary)
                 Button("Пізніше", action: onPostpone)
                     .buttonStyle(.glass)
             }
         }
-        .font(.subheadline)
-        .cardStyle()
+        .cardStyle(tint: Theme.Palette.success)
     }
 }
 
@@ -325,21 +483,50 @@ private struct WeighInCard: View {
     let latest: BodyWeightEntry?
     let onWeigh: () -> Void
 
+    private var weighedToday: BodyWeightEntry? {
+        guard let latest, Calendar.current.isDateInToday(latest.date) else { return nil }
+        return latest
+    }
+
     var body: some View {
-        HStack {
+        HStack(spacing: Theme.Spacing.m) {
+            IconBadge(systemImage: "scalemass", tint: Theme.Palette.blue, size: 44)
             VStack(alignment: .leading, spacing: 2) {
-                Label("Вага", systemImage: "scalemass").font(.headline)
-                if let latest, Calendar.current.isDateInToday(latest.date) {
-                    Text("Сьогодні: \(latest.weightKg.kgText) кг").foregroundStyle(.secondary)
+                Text("Вага").font(.headline)
+                if let today = weighedToday {
+                    HStack(alignment: .firstTextBaseline, spacing: Theme.Spacing.xs) {
+                        Text(today.weightKg.kgText)
+                            .font(.title2.weight(.light).monospacedDigit())
+                        Text("кг сьогодні")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
                 } else {
-                    Text("Зважся сьогодні зранку натще").foregroundStyle(.secondary)
+                    Text("Зважся сьогодні зранку натще")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                 }
             }
-            Spacer()
+            Spacer(minLength: 0)
             Button(action: onWeigh) {
-                Text(latest.map { Calendar.current.isDateInToday($0.date) } == true ? LocalizedStringResource("Змінити") : LocalizedStringResource("Зважитись"))
+                Text(weighedToday == nil ? LocalizedStringResource("Зважитись") : LocalizedStringResource("Змінити"))
             }
             .buttonStyle(.glass)
+        }
+        .cardStyle()
+    }
+}
+
+private struct TipCard: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+            HStack(spacing: 6) {
+                GlowDot(size: 6)
+                Text("Порада дня").eyebrow()
+            }
+            Text(DailyTips.tip())
+                .font(.body)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .cardStyle()
     }
@@ -355,15 +542,18 @@ struct WellnessCheckSheet: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    scale("Сон", value: $sleep, low: "погано спав", high: "виспався")
-                    scale("Енергія", value: $energy, low: "дуже втомлений", high: "повний сил")
-                    scale("М'язи", value: $soreness, low: "сильно болять", high: "не болять")
-                } footer: {
+            ScrollView {
+                VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+                    WellnessScale(title: "Сон", value: $sleep, low: "погано спав", high: "виспався")
+                    WellnessScale(title: "Енергія", value: $energy, low: "дуже втомлений", high: "повний сил")
+                    WellnessScale(title: "М'язи", value: $soreness, low: "сильно болять", high: "не болять")
                     Text("Якщо самопочуття погане, запропонуємо полегшити тренування. Нічого не зміниться без твого підтвердження.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                 }
+                .padding(Theme.Spacing.l)
             }
+            .zalScreen()
             .navigationTitle("Як ти сьогодні?")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -376,14 +566,23 @@ struct WellnessCheckSheet: View {
             }
         }
     }
+}
 
-    private func scale(_ title: LocalizedStringResource, value: Binding<Int>, low: LocalizedStringResource, high: LocalizedStringResource) -> some View {
-        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+/// 1-5 scale as round pills.
+private struct WellnessScale: View {
+    let title: LocalizedStringResource
+    @Binding var value: Int
+    let low: LocalizedStringResource
+    let high: LocalizedStringResource
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.m) {
             Text(title).font(.headline)
-            Picker(String(localized: title), selection: value) {
-                ForEach(1...5, id: \.self) { Text("\($0)").tag($0) }
+            HStack(spacing: 0) {
+                ForEach(1...5, id: \.self) { option in
+                    pill(option)
+                }
             }
-            .pickerStyle(.segmented)
             HStack {
                 Text(low)
                 Spacer()
@@ -392,6 +591,29 @@ struct WellnessCheckSheet: View {
             .font(.caption)
             .foregroundStyle(.secondary)
         }
+        .cardStyle()
+    }
+
+    private func pill(_ option: Int) -> some View {
+        let isSelected = option == value
+        return Button {
+            Haptics.selection()
+            withAnimation(.snappy) { value = option }
+        } label: {
+            Text("\(option)")
+                .font(.title3.weight(isSelected ? .bold : .light).monospacedDigit())
+                .foregroundStyle(isSelected ? Theme.Palette.onAccent : Color.primary)
+                .frame(width: 50, height: 50)
+                .background(isSelected ? Theme.Palette.accent : Theme.Palette.row, in: Circle())
+                .overlay { Circle().strokeBorder(Color.white.opacity(isSelected ? 0 : 0.12), lineWidth: 1) }
+                .shadow(color: Theme.Palette.accent.opacity(isSelected ? 0.45 : 0), radius: 10)
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(title))
+        .accessibilityValue(Text("\(option)"))
+        .accessibilityAddTraits(isSelected ? [.isSelected] : [])
     }
 }
 
@@ -407,13 +629,18 @@ struct WeighInSheet: View {
 
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: Theme.Spacing.l) {
                 WeightWheel(weightKg: $weight)
+                    .cardStyle()
                 Text("Найточніше - зранку після туалету, до їжі та води.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                Spacer(minLength: 0)
             }
-            .padding()
+            .padding(Theme.Spacing.l)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .zalScreen()
             .navigationTitle("Вага сьогодні")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

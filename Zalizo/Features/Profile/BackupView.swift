@@ -18,41 +18,53 @@ struct BackupView: View {
     var body: some View {
         List {
             Section {
-                if let last = settings.first?.lastBackupAt {
-                    LabeledContent("Остання копія", value: last.formatted(date: .abbreviated, time: .shortened))
-                } else {
-                    Label("Копій ще не було", systemImage: "exclamationmark.triangle")
-                        .foregroundStyle(Theme.Palette.warning)
-                }
+                BackupStatus(lastBackupAt: settings.first?.lastBackupAt)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+            }
+
+            Section {
                 Toggle("Включити фото", isOn: $includePhotos)
+            } header: {
+                Text("Експорт")
+            }
+            .glassRows()
+
+            Section {
                 Button {
                     createBackup()
                 } label: {
                     Label("Створити резервну копію", systemImage: "square.and.arrow.down")
+                        .frame(maxWidth: .infinity)
                 }
+                .buttonStyle(.zalPrimary)
                 .disabled(isWorking)
                 if let exportURL {
                     ShareLink(item: exportURL) {
                         Label("Зберегти у «Файли» / надіслати", systemImage: "square.and.arrow.up")
+                            .frame(maxWidth: .infinity, minHeight: 36)
                     }
+                    .buttonStyle(.glass)
                 }
-            } header: {
-                Text("Експорт")
             } footer: {
                 Text("Один JSON-файл з усіма даними. Збережи його в «Файли», iCloud Drive або надішли собі в Telegram. З фото файл буде більшим.")
             }
+            .listRowInsets(EdgeInsets(top: Theme.Spacing.xs, leading: 0, bottom: Theme.Spacing.xs, trailing: 0))
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
 
             Section {
                 Button {
                     showImporter = true
                 } label: {
-                    Label("Відновити з файлу", systemImage: "arrow.counterclockwise.circle")
+                    BackupRow(title: "Відновити з файлу", systemImage: "arrow.counterclockwise.circle")
                 }
             } header: {
                 Text("Імпорт")
             } footer: {
                 Text("Можна замінити всі дані або об'єднати з поточними (додаються лише записи, яких ще немає).")
             }
+            .glassRows()
 
             Section {
                 Button {
@@ -62,17 +74,19 @@ struct BackupView: View {
                         message = error.localizedDescription
                     }
                 } label: {
-                    Label("Історія тренувань у CSV", systemImage: "tablecells")
+                    BackupRow(title: "Історія тренувань у CSV", systemImage: "tablecells")
                 }
                 if let csvURL {
                     ShareLink(item: csvURL) {
-                        Label("Поділитися CSV", systemImage: "square.and.arrow.up")
+                        BackupRow(title: "Поділитися CSV", systemImage: "square.and.arrow.up")
                     }
                 }
             } footer: {
                 Text("Для Excel або Numbers: дата, вправа, підхід, вага, повтори, RIR.")
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle("Резервна копія")
         .fileImporter(isPresented: $showImporter, allowedContentTypes: [.json]) { result in
             handleImport(result)
@@ -129,5 +143,51 @@ struct BackupView: View {
             message = error.localizedDescription
         }
         pendingImport = nil
+    }
+}
+
+/// Last backup date in a glass card, or a warning when there is none yet.
+private struct BackupStatus: View {
+    let lastBackupAt: Date?
+
+    var body: some View {
+        HStack(spacing: Theme.Spacing.m) {
+            IconBadge(
+                systemImage: lastBackupAt == nil ? "exclamationmark.triangle" : "checkmark.shield",
+                tint: lastBackupAt == nil ? Theme.Palette.warning : Theme.Palette.accent,
+                size: 44
+            )
+            VStack(alignment: .leading, spacing: 2) {
+                if let lastBackupAt {
+                    Text("Остання копія").eyebrow()
+                    Text(lastBackupAt.formatted(date: .abbreviated, time: .shortened))
+                        .font(.title3.weight(.light))
+                } else {
+                    Text("Копій ще не було")
+                        .font(.headline)
+                        .foregroundStyle(Theme.Palette.warning)
+                    Text("Зроби першу, щоб не втратити історію.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .cardStyle(tint: lastBackupAt == nil ? Theme.Palette.warning : nil)
+        .accessibilityElement(children: .combine)
+    }
+}
+
+private struct BackupRow: View {
+    let title: LocalizedStringResource
+    let systemImage: String
+
+    var body: some View {
+        HStack(spacing: Theme.Spacing.m) {
+            IconBadge(systemImage: systemImage, tint: Theme.Palette.accent, size: 34)
+            Text(title)
+                .font(.body.weight(.medium))
+                .foregroundStyle(Color.primary)
+        }
     }
 }

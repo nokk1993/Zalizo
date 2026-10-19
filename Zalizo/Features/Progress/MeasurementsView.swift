@@ -11,32 +11,18 @@ struct MeasurementsView: View {
         List {
             Section {
                 ForEach(MeasurementKind.allCases, id: \.self) { kind in
-                    let points = measurements.filter { $0.kind == kind }
                     NavigationLink {
                         MeasurementDetailView(kind: kind)
                     } label: {
-                        LabeledContent {
-                            if let last = points.last {
-                                VStack(alignment: .trailing) {
-                                    Text("\(last.valueCm.kgText) см").monospacedDigit()
-                                    if let change = StatsService.change(points.map { .init(date: $0.date, value: $0.valueCm) }) {
-                                        Text("\(change >= 0 ? "+" : "")\(change.kgText) см")
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                }
-                            } else {
-                                Text("-").foregroundStyle(.secondary)
-                            }
-                        } label: {
-                            Text(kind.title)
-                        }
+                        MeasurementRow(kind: kind, points: measurements.filter { $0.kind == kind })
                     }
                 }
             } footer: {
                 Text("Міряй зранку, в одних і тих самих точках, сантиметровою стрічкою без натягу. Раз на 2-4 тижні достатньо.")
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle("Заміри")
         .toolbar {
             Button {
@@ -49,6 +35,33 @@ struct MeasurementsView: View {
     }
 }
 
+/// Kind on the left; latest value in thin digits and the change on the right.
+private struct MeasurementRow: View {
+    let kind: MeasurementKind
+    let points: [BodyMeasurement]
+
+    var body: some View {
+        HStack {
+            Text(kind.title).font(.body.weight(.medium))
+            Spacer(minLength: Theme.Spacing.s)
+            if let last = points.last {
+                VStack(alignment: .trailing, spacing: 0) {
+                    MetricText(last.valueCm.kgText, unit: "см", size: 24)
+                    if let change = StatsService.change(points.map { .init(date: $0.date, value: $0.valueCm) }) {
+                        Text("\(change >= 0 ? "+" : "")\(change.kgText) см")
+                            .font(.caption.monospacedDigit())
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            } else {
+                Text("-").foregroundStyle(.secondary)
+            }
+        }
+        .padding(.vertical, 2)
+        .accessibilityElement(children: .combine)
+    }
+}
+
 struct MeasurementDetailView: View {
     let kind: MeasurementKind
     @Environment(\.modelContext) private var context
@@ -58,26 +71,44 @@ struct MeasurementDetailView: View {
 
     var body: some View {
         List {
-            if entries.count >= 2 {
+            if let latest = entries.first {
                 Section {
-                    TrendLineChart(points: entries.reversed().map { .init(date: $0.date, value: $0.valueCm) }, valueLabel: kind.title, unit: "см")
-                        .frame(height: 200)
+                    VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("Останній замір").eyebrow()
+                            MetricText(latest.valueCm.kgText, unit: "см", size: 48)
+                        }
+                        if entries.count >= 2 {
+                            TrendLineChart(points: entries.reversed().map { .init(date: $0.date, value: $0.valueCm) }, valueLabel: kind.title, unit: "см")
+                                .frame(height: 200)
+                        }
+                    }
+                    .cardStyle(inset: Theme.Spacing.xl)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets())
                 }
             }
             Section {
                 ForEach(entries) { entry in
-                    LabeledContent {
-                        Text("\(entry.valueCm.kgText) см").monospacedDigit()
-                    } label: {
+                    HStack {
                         Text(entry.date.formatted(date: .abbreviated, time: .omitted))
+                            .font(.subheadline)
+                        Spacer()
+                        Text("\(entry.valueCm.kgText) см")
+                            .font(.body.weight(.light).monospacedDigit())
                     }
+                    .accessibilityElement(children: .combine)
                 }
                 .onDelete { offsets in
                     offsets.map { entries[$0] }.forEach(context.delete)
                     try? context.save()
                 }
+            } header: {
+                Text("Історія")
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle(Text(kind.title))
     }
 }
@@ -91,7 +122,10 @@ struct AddMeasurementsSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                DatePicker("Дата", selection: $date, in: ...Date.now, displayedComponents: .date)
+                Section {
+                    DatePicker("Дата", selection: $date, in: ...Date.now, displayedComponents: .date)
+                }
+                .glassRows()
                 Section {
                     ForEach(MeasurementKind.allCases, id: \.self) { kind in
                         HStack {
@@ -100,14 +134,17 @@ struct AddMeasurementsSheet: View {
                             TextField("см", value: binding(kind), format: .number.precision(.fractionLength(0...1)))
                                 .keyboardType(.decimalPad)
                                 .multilineTextAlignment(.trailing)
+                                .font(.body.monospacedDigit())
                                 .frame(width: 80)
                         }
                     }
                 } footer: {
                     Text("Заповни лише ті заміри, які зробив.")
                 }
+                .glassRows()
             }
             .scrollDismissesKeyboard(.interactively)
+            .zalScreen()
             .navigationTitle("Нові заміри")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

@@ -15,43 +15,66 @@ struct ExerciseLibraryView: View {
     @State private var showEditor = false
 
     private var filtered: [Exercise] {
-        exercises.filter { exercise in
-            (muscle.map { exercise.primaryMuscles.contains($0) || exercise.secondaryMuscles.contains($0) } ?? true)
-                && (equipment.map { exercise.equipment.contains($0) } ?? true)
-                && (!favoritesOnly || exercise.isFavorite)
-                && SearchText.matches(query: searchText, fields: [exercise.nameUk, exercise.nameEn] + exercise.synonyms)
+        exercises.filter { matchesFilters($0) }
+    }
+
+    /// Split into separate checks: one long `?? / && / +` chain is slow for the type checker.
+    private func matchesFilters(_ exercise: Exercise) -> Bool {
+        if let muscle, !exercise.primaryMuscles.contains(muscle), !exercise.secondaryMuscles.contains(muscle) {
+            return false
         }
+        if let equipment, !exercise.equipment.contains(equipment) {
+            return false
+        }
+        if favoritesOnly, !exercise.isFavorite {
+            return false
+        }
+        let fields: [String] = [exercise.nameUk, exercise.nameEn] + exercise.synonyms
+        return SearchText.matches(query: searchText, fields: fields)
     }
 
     var body: some View {
         List {
-            if filtered.isEmpty {
-                ContentUnavailableView.search(text: searchText)
+            Section {
+                filterPills
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: Theme.Spacing.xs, leading: Theme.Spacing.l, bottom: Theme.Spacing.s, trailing: Theme.Spacing.l))
             }
-            ForEach(filtered) { exercise in
-                if let onPick {
-                    Button {
-                        onPick(exercise)
-                    } label: {
-                        ExerciseRow(exercise: exercise)
+            Section {
+                if filtered.isEmpty {
+                    ContentUnavailableView.search(text: searchText)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                }
+                ForEach(filtered) { exercise in
+                    Group {
+                        if let onPick {
+                            Button {
+                                onPick(exercise)
+                            } label: {
+                                ExerciseRow(exercise: exercise)
+                            }
+                            .buttonStyle(.plain)
+                        } else {
+                            NavigationLink {
+                                ExerciseDetailView(exercise: exercise)
+                            } label: {
+                                ExerciseRow(exercise: exercise)
+                            }
+                        }
                     }
-                    .buttonStyle(.plain)
-                } else {
-                    NavigationLink {
-                        ExerciseDetailView(exercise: exercise)
-                    } label: {
-                        ExerciseRow(exercise: exercise)
-                    }
+                    .listRowBackground(LibraryRowBackground())
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: Theme.Spacing.s, leading: Theme.Spacing.l + Theme.Spacing.s, bottom: Theme.Spacing.s, trailing: Theme.Spacing.l + Theme.Spacing.s))
                 }
             }
         }
         .listStyle(.plain)
+        .zalScreen()
         .searchable(text: $searchText, prompt: Text("Назва вправи"))
         .navigationTitle("Бібліотека вправ")
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                filterMenu
-            }
             if onPick == nil {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -62,81 +85,64 @@ struct ExerciseLibraryView: View {
                 }
             }
         }
-        .safeAreaInset(edge: .top) {
-            if muscle != nil || equipment != nil || favoritesOnly {
-                activeFilters
-            }
-        }
         .sheet(isPresented: $showEditor) {
             NavigationStack { CustomExerciseEditor() }
         }
     }
 
-    private var filterMenu: some View {
-        Menu {
-            Toggle(isOn: $favoritesOnly) {
-                Label("Лише обрані", systemImage: "star")
-            }
-            Picker(selection: $muscle) {
-                Text("Усі м'язи").tag(MuscleGroup?.none)
-                ForEach(MuscleGroup.allCases, id: \.self) { group in
-                    Text(group.title).tag(MuscleGroup?.some(group))
+    /// Two horizontal pill rows: muscle groups (+ favourites) and equipment.
+    private var filterPills: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+            ScrollView(.horizontal) {
+                HStack(spacing: Theme.Spacing.s) {
+                    ChipToggle(title: "Усі м'язи", isOn: muscle == nil && !favoritesOnly) {
+                        withAnimation(.snappy) {
+                            muscle = nil
+                            favoritesOnly = false
+                        }
+                    }
+                    ChipToggle(title: "★ Обрані", isOn: favoritesOnly) {
+                        withAnimation(.snappy) { favoritesOnly.toggle() }
+                    }
+                    ForEach(MuscleGroup.allCases, id: \.self) { group in
+                        ChipToggle(title: group.title, isOn: muscle == group) {
+                            withAnimation(.snappy) { muscle = muscle == group ? nil : group }
+                        }
+                    }
                 }
-            } label: {
-                Label("Група м'язів", systemImage: "figure.arms.open")
             }
-            .pickerStyle(.menu)
-            Picker(selection: $equipment) {
-                Text("Усе обладнання").tag(Equipment?.none)
-                ForEach(Equipment.allCases, id: \.self) { item in
-                    Text(item.title).tag(Equipment?.some(item))
-                }
-            } label: {
-                Label("Обладнання", systemImage: "dumbbell")
-            }
-            .pickerStyle(.menu)
-        } label: {
-            Label("Фільтри", systemImage: "line.3.horizontal.decrease.circle")
-        }
-    }
+            .scrollIndicators(.hidden)
+            .scrollClipDisabled()
 
-    private var activeFilters: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: Theme.Spacing.s) {
-                if favoritesOnly {
-                    FilterChip(title: "Обрані") { favoritesOnly = false }
-                }
-                if let muscle {
-                    FilterChip(title: muscle.title) { self.muscle = nil }
-                }
-                if let equipment {
-                    FilterChip(title: equipment.title) { self.equipment = nil }
+            ScrollView(.horizontal) {
+                HStack(spacing: Theme.Spacing.s) {
+                    ChipToggle(title: "Усе обладнання", isOn: equipment == nil) {
+                        withAnimation(.snappy) { equipment = nil }
+                    }
+                    ForEach(Equipment.allCases, id: \.self) { item in
+                        ChipToggle(title: item.title, isOn: equipment == item) {
+                            withAnimation(.snappy) { equipment = equipment == item ? nil : item }
+                        }
+                    }
                 }
             }
-            .padding(.horizontal, Theme.Spacing.l)
-            .padding(.vertical, Theme.Spacing.s)
+            .scrollIndicators(.hidden)
+            .scrollClipDisabled()
         }
-        .background(.bar)
     }
 }
 
-private struct FilterChip: View {
-    let title: LocalizedStringResource
-    let onRemove: () -> Void
-
+/// Flat translucent rounded card behind a library row (no blur: long lists stay fast).
+private struct LibraryRowBackground: View {
     var body: some View {
-        Button(action: onRemove) {
-            HStack(spacing: Theme.Spacing.xs) {
-                Text(title)
-                Image(systemName: "xmark.circle.fill")
+        RoundedRectangle(cornerRadius: 22, style: .continuous)
+            .fill(Theme.Palette.row)
+            .overlay {
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .strokeBorder(Color.white.opacity(0.08), lineWidth: 1)
             }
-            .font(.subheadline.weight(.medium))
-            .padding(.horizontal, Theme.Spacing.m)
-            .padding(.vertical, Theme.Spacing.xs)
-            .background(Color.accentColor.opacity(0.15), in: .capsule)
-        }
-        .buttonStyle(.plain)
-        .accessibilityHint(Text("Прибрати фільтр"))
+            .padding(.horizontal, Theme.Spacing.l)
+            .padding(.vertical, 3)
     }
 }
 
@@ -147,10 +153,14 @@ struct ExerciseRow: View {
         HStack(spacing: Theme.Spacing.m) {
             ExerciseImage(exercise: exercise)
                 .frame(width: 56, height: 56)
-                .clipShape(.rect(cornerRadius: 10))
-            VStack(alignment: .leading, spacing: 2) {
+                .clipShape(.rect(cornerRadius: 14, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .strokeBorder(Color.white.opacity(0.1), lineWidth: 1)
+                }
+            VStack(alignment: .leading, spacing: 3) {
                 Text(exercise.nameUk)
-                    .font(.body.weight(.medium))
+                    .font(.body.weight(.semibold))
                     .foregroundStyle(.primary)
                 Text(exercise.musclesSummary)
                     .font(.caption)
@@ -160,7 +170,9 @@ struct ExerciseRow: View {
             Spacer(minLength: 0)
             if exercise.isFavorite {
                 Image(systemName: "star.fill")
-                    .foregroundStyle(.yellow)
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.Palette.accent)
+                    .shadow(color: Theme.Palette.accent.opacity(0.6), radius: 4)
                     .accessibilityLabel(Text("Обрана"))
             }
         }

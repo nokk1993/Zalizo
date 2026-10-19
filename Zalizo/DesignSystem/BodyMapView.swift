@@ -1,11 +1,13 @@
 import SwiftUI
 import ZalizoCore
 
-/// Simplified front/back body diagram. Each muscle group is tinted by an intensity 0…1
-/// (exercise: primary = 1, secondary = 0.5; weekly volume heat map: sets / 20).
+/// Simplified front/back body diagram on the dark canvas. Each muscle group has an intensity 0…1.
+/// Exercise map (`init(primary:secondary:)`): primary = 1 in `tint` with a glow, secondary = 0.5 in blue.
+/// Heat map (`init(intensities:)`, e.g. weekly sets / 20): ice-blue (low) → lime (good) → warning (above 1).
 struct BodyMapView: View {
     let intensities: [MuscleGroup: Double]
-    var tint: Color = .accentColor
+    var tint: Color = Theme.Palette.accent
+    var isExerciseMap = false
 
     var body: some View {
         HStack(alignment: .top, spacing: Theme.Spacing.l) {
@@ -23,20 +25,39 @@ struct BodyMapView: View {
                 let offsetX = (size.width - BodyShapes.width * scale) / 2
                 context.translateBy(x: offsetX, y: 0)
                 context.scaleBy(x: scale, y: scale)
-                let base = Color.secondary.opacity(0.18)
+                let base = Color.white.opacity(0.08)
+                let outline = Color.white.opacity(0.2)
                 for part in BodyShapes.neutral(side) {
                     context.fill(part, with: .color(base))
+                    context.stroke(part, with: .color(outline), lineWidth: 0.6)
                 }
                 for region in BodyShapes.regions(side) {
                     let value = intensities[region.muscle] ?? 0
-                    let color = value > 0 ? tint.opacity(0.25 + 0.75 * min(value, 1)) : base
-                    context.fill(region.path, with: .color(color))
+                    if let color = fill(for: value) {
+                        var glow = context
+                        glow.addFilter(.shadow(color: color.opacity(0.7), radius: 3))
+                        glow.fill(region.path, with: .color(color))
+                    } else {
+                        context.fill(region.path, with: .color(base))
+                    }
+                    context.stroke(region.path, with: .color(outline), lineWidth: 0.6)
                 }
             }
             .aspectRatio(BodyShapes.width / BodyShapes.height, contentMode: .fit)
             Text(title).font(.caption).foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
+    }
+
+    /// nil = muscle not involved (drawn as the neutral silhouette).
+    private func fill(for value: Double) -> Color? {
+        guard value > 0 else { return nil }
+        if isExerciseMap {
+            return value >= 1 ? tint : Theme.Palette.blue.opacity(0.85)
+        }
+        if value > 1 { return Theme.Palette.warning }
+        if value < 0.5 { return Theme.Palette.ice.opacity(0.3 + value) }
+        return tint.opacity(0.55 + 0.9 * (value - 0.5))
     }
 
     private var accessibilitySummary: String {
@@ -130,16 +151,22 @@ enum BodyShapes {
 
 extension BodyMapView {
     /// Primary muscles at full intensity, secondary at half.
-    init(primary: [MuscleGroup], secondary: [MuscleGroup], tint: Color = .accentColor) {
+    init(primary: [MuscleGroup], secondary: [MuscleGroup], tint: Color = Theme.Palette.accent) {
         var values: [MuscleGroup: Double] = [:]
         secondary.forEach { values[$0] = 0.5 }
         primary.forEach { values[$0] = 1 }
-        self.init(intensities: values, tint: tint)
+        self.init(intensities: values, tint: tint, isExerciseMap: true)
     }
 }
 
 #Preview {
-    BodyMapView(primary: [.chest], secondary: [.triceps, .shoulders])
-        .frame(height: 260)
-        .padding()
+    VStack(spacing: 24) {
+        BodyMapView(primary: [.chest], secondary: [.triceps, .shoulders])
+            .frame(height: 220)
+        BodyMapView(intensities: [.chest: 0.3, .back: 0.8, .quads: 1.2, .biceps: 0.6])
+            .frame(height: 220)
+    }
+    .padding()
+    .zalScreen()
+    .themed()
 }

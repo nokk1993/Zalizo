@@ -19,11 +19,20 @@ struct ProgramDayView: View {
         let catalog = ProgramStore.catalog(exercises)
         List {
             Section {
+                DayHero(day: day, cover: cover(catalog: catalog))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: Theme.Spacing.s, leading: 0, bottom: Theme.Spacing.s, trailing: 0))
+            }
+            Section {
                 TextField("Назва дня", text: $day.name)
                     .font(.headline)
                 TextField("Фокус (необов'язково)", text: $day.focus)
                     .foregroundStyle(.secondary)
+            } header: {
+                Text("Назва")
             }
+            .glassRows()
             Section {
                 ForEach(day.orderedExercises) { planned in
                     NavigationLink {
@@ -50,27 +59,36 @@ struct ProgramDayView: View {
                 Button {
                     showPicker = true
                 } label: {
-                    Label("Додати вправу", systemImage: "plus")
+                    HStack(spacing: Theme.Spacing.m) {
+                        IconBadge(systemImage: "plus", tint: Theme.Palette.accent)
+                        Text("Додати вправу").foregroundStyle(.primary)
+                    }
                 }
             } header: {
-                HStack {
-                    Text("Вправи")
-                    Spacer()
-                    EditButton().font(.caption)
+                SectionHeader(title: "Вправи") {
+                    EditButton().font(.subheadline.weight(.semibold))
                 }
+                .textCase(nil)
+                .foregroundStyle(.primary)
             } footer: {
                 Text("Якщо для вправи немає обладнання або вона ризикована для твоїх обмежень, програма автоматично підставить безпечнішу альтернативу.")
             }
+            .glassRows()
             if let program = day.program, program.days.count > 1 {
                 Section {
                     Button(role: .destructive) {
                         deleteDay(from: program)
                     } label: {
-                        Label("Видалити день", systemImage: "trash")
+                        HStack(spacing: Theme.Spacing.m) {
+                            IconBadge(systemImage: "trash", tint: Theme.Palette.danger)
+                            Text("Видалити день").foregroundStyle(Theme.Palette.danger)
+                        }
                     }
                 }
+                .glassRows()
             }
         }
+        .zalScreen()
         .navigationTitle(day.name)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showPicker) {
@@ -86,6 +104,13 @@ struct ProgramDayView: View {
                 }
             }
         }
+    }
+
+    /// Photo of the first exercise actually performed (after substitutions).
+    private func cover(catalog: [String: ExerciseInfo]) -> Exercise? {
+        guard let first = day.orderedExercises.first else { return nil }
+        let slug = ProgramStore.resolve(first, catalog: catalog, profile: profile).slug
+        return exercises.first { $0.slug == slug }
     }
 
     private func add(_ exercise: Exercise) {
@@ -111,6 +136,38 @@ struct ProgramDayView: View {
     }
 }
 
+/// Day header: monochrome photo card with the day name and totals.
+private struct DayHero: View {
+    let day: ProgramDay
+    let cover: Exercise?
+
+    private var totalSets: Int { day.exercises.reduce(0) { $0 + $1.sets } }
+
+    var body: some View {
+        PhotoCard(exercise: cover, minHeight: 200) {
+            VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                Text("День \(day.order + 1)").eyebrow()
+                Text(day.name.isEmpty ? String(localized: "Без назви") : day.name)
+                    .font(.title.weight(.bold))
+                    .foregroundStyle(Color.white)
+                    .lineLimit(2)
+                if !day.focus.isEmpty {
+                    Text(day.focus)
+                        .font(.subheadline.weight(.light))
+                        .foregroundStyle(Color.white.opacity(0.85))
+                }
+                HStack(spacing: Theme.Spacing.l) {
+                    MetricText("\(day.exercises.count)", unit: "вправ", size: 30)
+                    MetricText("\(totalSets)", unit: "підходів", size: 30)
+                }
+                .foregroundStyle(Color.white)
+                .padding(.top, Theme.Spacing.xs)
+            }
+        }
+        .accessibilityElement(children: .combine)
+    }
+}
+
 struct PlannedExerciseRow: View {
     let planned: PlannedExercise
     let resolution: ExerciseSubstitution.Resolution
@@ -120,26 +177,56 @@ struct PlannedExerciseRow: View {
         exercises.first { $0.slug == slug }
     }
 
+    /// Name of the planned exercise before substitution.
+    private var originalName: String {
+        exercise(planned.exerciseSlug)?.nameUk ?? planned.exerciseSlug
+    }
+
     var body: some View {
         let shown = exercise(resolution.slug)
-        HStack(spacing: Theme.Spacing.m) {
-            if let shown {
-                ExerciseImage(exercise: shown)
-                    .frame(width: 44, height: 44)
-                    .clipShape(.rect(cornerRadius: 8))
+        HStack(alignment: .top, spacing: Theme.Spacing.m) {
+            Group {
+                if let shown {
+                    ExerciseImage(exercise: shown)
+                } else {
+                    ZStack {
+                        Theme.Palette.row
+                        Image(systemName: "figure.strengthtraining.traditional")
+                            .font(.title3.weight(.light))
+                            .foregroundStyle(.secondary)
+                    }
+                }
             }
-            VStack(alignment: .leading, spacing: 2) {
-                Text(shown?.nameUk ?? planned.exerciseSlug).font(.body.weight(.medium))
-                Text(planned.prescription).font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+            .frame(width: 56, height: 56)
+            .clipShape(.rect(cornerRadius: 14, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .strokeBorder(Color.white.opacity(0.1), lineWidth: 1)
+            }
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(shown?.nameUk ?? planned.exerciseSlug)
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.primary)
+                Text(planned.dayRowVolume)
+                    .font(.title3.weight(.light).monospacedDigit())
+                    .foregroundStyle(.primary)
+                Text(planned.dayRowRest)
+                    .font(.caption.monospacedDigit())
+                    .foregroundStyle(.secondary)
                 if let reason = resolution.replacedBecause {
                     if resolution.isFallback {
-                        Label("Немає безпечної заміни (\(reason.text)) - будь обережний", systemImage: "exclamationmark.triangle.fill")
-                            .font(.caption2)
-                            .foregroundStyle(Theme.Palette.danger)
+                        SubstitutionBadge(
+                            text: String(localized: "Немає безпечної заміни (\(reason.text)) - будь обережний"),
+                            systemImage: "exclamationmark.triangle.fill",
+                            tint: Theme.Palette.danger
+                        )
                     } else {
-                        Label("Замість «\(exercise(planned.exerciseSlug)?.nameUk ?? planned.exerciseSlug)»: \(reason.text)", systemImage: "arrow.triangle.swap")
-                            .font(.caption2)
-                            .foregroundStyle(Theme.Palette.warning)
+                        SubstitutionBadge(
+                            text: String(localized: "Замість «\(originalName)»: \(reason.text)"),
+                            systemImage: "arrow.triangle.swap",
+                            tint: Theme.Palette.warning
+                        )
                     }
                 }
                 if !planned.note.isEmpty {
@@ -147,6 +234,43 @@ struct PlannedExerciseRow: View {
                 }
             }
         }
+        .padding(.vertical, Theme.Spacing.xs)
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// Tinted rounded badge for automatic substitutions.
+private struct SubstitutionBadge: View {
+    let text: String
+    let systemImage: String
+    let tint: Color
+
+    var body: some View {
+        Label {
+            Text(text)
+        } icon: {
+            Image(systemName: systemImage)
+        }
+        .font(.caption2.weight(.semibold))
+        .foregroundStyle(tint)
+        .padding(.horizontal, Theme.Spacing.s)
+        .padding(.vertical, 5)
+        .background(tint.opacity(0.14), in: .rect(cornerRadius: 10, style: .continuous))
+        .padding(.top, 2)
+    }
+}
+
+private extension PlannedExercise {
+    /// "4 × 6-8"
+    var dayRowVolume: String {
+        let reps = repMin == repMax ? "\(repMin)" : "\(repMin)-\(repMax)"
+        let unit = progression == .timed ? String(localized: " с") : ""
+        return "\(sets) × \(reps)\(unit)"
+    }
+
+    /// "відпочинок 3 хв · RIR 1"
+    var dayRowRest: String {
+        String(localized: "відпочинок \(RestFormat.text(restSeconds)) · RIR \(targetRIR)")
     }
 }
 

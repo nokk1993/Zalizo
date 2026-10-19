@@ -41,6 +41,7 @@ struct ProfileEditView: View {
                     ActivitySection(snapshot: $draft)
                 }
             }
+            .glassRows()
             Section {
                 link("Обладнання", systemImage: "dumbbell", detail: "\(draft.equipment.subtracting([.bodyweight]).count) видів") {
                     EquipmentSection(snapshot: $draft, dumbbellStepKg: $dumbbellStep)
@@ -52,6 +53,7 @@ struct ProfileEditView: View {
                     LiftsSection(knowsLifts: $knowsLifts, lifts: $lifts)
                 }
             }
+            .glassRows()
             Section {
                 link("Харчування", systemImage: "fork.knife", detail: "\(draft.mealsPerDay) прийоми") {
                     NutritionPreferencesSection(snapshot: $draft)
@@ -60,11 +62,14 @@ struct ProfileEditView: View {
                     TargetWeightSection(snapshot: $draft)
                 }
             }
+            .glassRows()
         }
+        .zalScreen()
         .navigationTitle("Мої дані")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Зберегти") { startSave() }
+                    .bold()
                     .disabled(!hasEdits)
             }
         }
@@ -86,14 +91,20 @@ struct ProfileEditView: View {
                 content().padding(Theme.Spacing.l)
             }
             .scrollDismissesKeyboard(.interactively)
+            .zalScreen()
             .navigationTitle(Text(title))
             .navigationBarTitleDisplayMode(.inline)
         } label: {
-            LabeledContent {
-                Text(detail).lineLimit(1)
-            } label: {
-                Label { Text(title) } icon: { Image(systemName: systemImage) }
+            HStack(spacing: Theme.Spacing.m) {
+                IconBadge(systemImage: systemImage, tint: Theme.Palette.accent, size: 34)
+                Text(title)
+                Spacer(minLength: Theme.Spacing.s)
+                Text(detail)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
             }
+            .accessibilityElement(children: .combine)
         }
     }
 
@@ -150,7 +161,9 @@ private struct ChangeReviewSheet: View {
                 Section {
                     ForEach(review.changes, id: \.field) { change in
                         LabeledContent {
-                            Text(valueText(change)).monospacedDigit()
+                            Text(valueText(change))
+                                .monospacedDigit()
+                                .foregroundStyle(Theme.Palette.accent)
                         } label: {
                             Text(change.field.title)
                         }
@@ -158,7 +171,9 @@ private struct ChangeReviewSheet: View {
                 } footer: {
                     Text("Робочі ваги в програмі підлаштуються на наступному тренуванні.")
                 }
+                .glassRows()
             }
+            .zalScreen()
             .navigationTitle("Що зміниться")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -170,6 +185,7 @@ private struct ChangeReviewSheet: View {
                         dismiss()
                         onConfirm()
                     }
+                    .bold()
                 }
             }
         }

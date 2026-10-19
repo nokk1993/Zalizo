@@ -8,7 +8,8 @@
 - Модель iPhone: не вказана (iOS 26.7.1).
 
 ## Зроблено
-- **Етап 1 (каркас)**: коміт «Етап 1: каркас проєкту». Код написано без Xcode (у хмарному Linux-контейнері), тому **збірку під iOS ще не перевірено**. Першим кроком на Mac запусти `sh Tools/check.sh` і виправ помилки компіляції, якщо вони будуть.
+- **Етап 1 (каркас)**: власник зібрав і встановив на iPhone, працює.
+- **Етап 2 (розрахунки)**: `Packages/ZalizoCore/Sources/ZalizoCore/Calculations/` — BodyMetrics, NutritionCalculator, WeightTrend, AdaptiveCalories, StrengthMath (OneRM, WeightRounding, PlateCalculator, WarmupGenerator, Volume). 54 тести зелені (Swift 6.2, Linux).
 
 ## Ухвалені рішення
 - Bundle ID: `ua.zalizo.app.b82a66`. Він стабільний, без персональних даних, **не змінювати**.
@@ -21,5 +22,5 @@
 - Default actor isolation — nonisolated (класичний Swift 6). View-моделі позначаються `@MainActor` явно.
 - Capabilities для Personal Team: iCloud, push і App Groups не використовувати. HealthKit, Live Activity і віджети — опційно, перевірити в Xcode на етапі 12.
 
-## Далі
-Етап 2: модуль розрахунків у `ZalizoCore` (BMR/TDEE/БЖВ, вода, клітковина, FFMI, темп і прогноз, адаптивна корекція, 1ПМ Еплі/Бжицкі, % від 1ПМ і RIR, округлення до кроку, калькулятор дисків, розминка, тоннаж, відносна сила) + тести.
+## Репозиторій
+GitHub: `nokk1993/zalizo` (приватний), гілка `main`.

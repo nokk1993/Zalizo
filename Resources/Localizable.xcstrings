@@ -21,6 +21,26 @@
         }
       }
     },
+    "%@ · %lld%%": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$lld%%"
+          }
+        }
+      }
+    },
+    "%@ · ще %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ to go"
+          }
+        }
+      }
+    },
     "%lld%% · ціль %@": {
       "localizations": {
         "en": {
@@ -820,6 +840,16 @@
         }
       }
     },
+    "Сьогодні · %lld%%": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today · %lld%%"
+          }
+        }
+      }
+    },
     "Сьогодні ще не виконано · %@": {
       "localizations": {
         "en": {
@@ -996,6 +1026,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "more than yesterday"
+          }
+        }
+      }
+    },
+    "з %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "of %@"
           }
         }
       }

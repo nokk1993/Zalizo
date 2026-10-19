@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>Шаг — бренд-гайд</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Inter", -apple-system, sans-serif; color: #1A1412; background: #FFFFFF; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; padding: 14mm 14mm 10mm; display: flex; flex-direction: column; gap: 7mm; }
+  header { display: flex; align-items: center; gap: 6mm; }
+  header img { width: 26mm; height: 26mm; border-radius: 5.8mm; }
+  h1 { font-size: 30pt; font-weight: 800; letter-spacing: -0.5pt; }
+  .tag { font-size: 11pt; color: #6E6560; margin-top: 1mm; }
+  h2 { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.8pt; color: #6E6560; margin-bottom: 3mm; font-weight: 700; }
+  p, li { font-size: 9pt; line-height: 1.45; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+  .icons { display: flex; gap: 4mm; align-items: flex-end; }
+  .icons figure { text-align: center; font-size: 7.5pt; color: #6E6560; }
+  .icons .tile { width: 22mm; height: 22mm; border-radius: 5mm; overflow: hidden; display: grid; place-items: center; margin-bottom: 1.5mm; }
+  .icons .tile img { width: 100%; height: 100%; }
+  .darkbg { background: linear-gradient(#3A3A3C, #1C1C1E); }
+  .tintbg { background: linear-gradient(#5A3A1E, #2A1A0E); }
+  .tintbg img { filter: sepia(1) saturate(4) hue-rotate(-12deg) brightness(1.05); }
+  .small { display: flex; gap: 3mm; align-items: center; margin-top: 3mm; font-size: 7.5pt; color: #6E6560; }
+  .small img { border-radius: 22%; }
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+  .sw { border-radius: 3mm; overflow: hidden; border: 0.3mm solid #EAE3DF; }
+  .sw .c { height: 14mm; }
+  .sw .t { padding: 2mm; font-size: 7.5pt; line-height: 1.35; }
+  .sw b { display: block; font-size: 8.5pt; }
+  .type { display: flex; align-items: baseline; gap: 4mm; }
+  .hero { white-space: nowrap; font-size: 40pt; font-weight: 800; letter-spacing: -1.5pt; }
+  .hero small { font-size: 15pt; color: #6E6560; letter-spacing: 0; }
+  ul { padding-left: 4mm; }
+  .do { color: #1B7F4C; font-weight: 700; }
+  .dont { color: #C9321F; font-weight: 700; }
+  .ring { width: 34mm; height: 34mm; }
+  footer { margin-top: auto; font-size: 7.5pt; color: #A39A95; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <img src="Icon/PNG/shah-icon-1024.png" alt="">
+    <div>
+      <h1>Шаг</h1>
+      <div class="tag">Скільки ти пройшов сьогодні — за одну секунду.</div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section>
+      <h2>Ідея і назва</h2>
+      <p>«Шаг» — коротке слово про рух уперед. Знак — <b>траєкторія</b>: шлях від старту (кільце) до точки «ти тут» (біла крапка).
+      Той самий слід бурштин → корал заповнює кільце прогресу в застосунку й віджетах, тож іконка, екран і віджет говорять однією мовою.</p>
+      <p style="margin-top:2mm">Назва пишеться кирилицею скрізь, також в англійській локалізації. Латиницею — лише технічний ідентифікатор <code>shah</code>.</p>
+    </section>
+    <section>
+      <h2>Іконка</h2>
+      <div class="icons">
+        <figure><div class="tile"><img src="Icon/PNG/shah-icon-1024.png"></div>Основна</figure>
+        <figure><div class="tile darkbg"><img src="Icon/PNG/shah-icon-dark-1024.png"></div>Темна iOS</figure>
+        <figure><div class="tile tintbg"><img src="Icon/PNG/shah-icon-tinted-1024.png"></div>Tinted iOS</figure>
+        <figure><div class="tile"><img src="Icon/PNG/shah-icon-light-1024.png"></div>Світла (документи)</figure>
+      </div>
+      <div class="small">Читабельність:
+        <img src="Icon/PNG/shah-icon-60.png" width="60" height="60">
+        <img src="Icon/PNG/shah-icon-40.png" width="40" height="40">
+        <img src="Icon/PNG/shah-icon-29.png" width="29" height="29"> 60 · 40 · 29 pt
+      </div>
+    </section>
+  </div>
+
+  <section>
+    <h2>Палітра</h2>
+    <div class="swatches">
+      <div class="sw"><div class="c" style="background:#FF5A47"></div><div class="t"><b>Корал · Coral</b>#FF5A47 · темна #FF6B57<br>Акцент: кільце, кнопки, стовпчики</div></div>
+      <div class="sw"><div class="c" style="background:#FFB547"></div><div class="t"><b>Бурштин · Amber</b>#FFB547<br>Початок сліду, градієнти, серія</div></div>
+      <div class="sw"><div class="c" style="background:#1A1412"></div><div class="t"><b>Чорнило · Ink</b>#1A1412 · текст<br>Фон іконки #2A211D → #14100E</div></div>
+      <div class="sw"><div class="c" style="background:#F7F4F2"></div><div class="t"><b>Фон · Background</b>#F7F4F2 · темна #000000<br>Картки #FFFFFF · темна #1A1614</div></div>
+      <div class="sw"><div class="c" style="background:#6E6560"></div><div class="t"><b>Другорядний текст</b>#6E6560 · темна #A89F9A<br>AA на фоні та картках</div></div>
+      <div class="sw"><div class="c" style="background:#C9321F"></div><div class="t"><b>Акцент для тексту</b>#C9321F · темна #FF7A66<br>Дрібний текст і посилання</div></div>
+      <div class="sw"><div class="c" style="background:#1B7F4C"></div><div class="t"><b>Позитив</b>#1B7F4C · темна #3DD68C<br>«+1,2 км до вчора»</div></div>
+      <div class="sw"><div class="c" style="background:#EFE7E2"></div><div class="t"><b>Доріжка кільця</b>#EFE7E2 · темна #2A2421<br>Неактивні елементи</div></div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section>
+      <h2>Типографіка</h2>
+      <div class="type"><span class="hero">7,4<small> км</small></span>
+        <p>Числа — <b>SF Pro Rounded Bold</b>, табличні цифри, анімація <code>numericText</code>.<br>
+        Решта — системні text styles (SF Pro) з Dynamic Type. Без власних шрифтів.</p></div>
+    </section>
+    <section>
+      <h2>Голос</h2>
+      <ul>
+        <li>На «ти», коротко, без оцінок: «на 0,8 км менше, ніж зазвичай», а не «ти відстаєш».</li>
+        <li>Чесно про приватність: «Дані не залишають телефон».</li>
+        <li>Числа завжди з одиницею й одним знаком після коми: «7,4 км».</li>
+      </ul>
+    </section>
+  </div>
+
+  <section>
+    <h2>Правила</h2>
+    <p><span class="do">Так:</span> слід завжди йде від бурштину до коралу; біла (або чорнильна на світлому) крапка — кінець шляху; навколо знака — поле ≥ 10 % ширини.<br>
+    <span class="dont">Ні:</span> не додавати текст в іконку; не міняти напрямок сліду; не ставити кораловий текст дрібніше 17 pt на білому (бери «акцент для тексту»); не використовувати більше одного акцентного кольору.</p>
+  </section>
+
+  <footer>Шаг · Brand/ · Майстри іконки: Icon/shah-icon*.svg (1024 × 1024) · Шари для Icon Composer: Icon/Layers · PNG: Icon/PNG</footer>
+</div>
+</body>
+</html>

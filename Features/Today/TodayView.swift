@@ -5,7 +5,6 @@ import SwiftUI
 /// compares with yesterday and with a usual day.
 struct TodayView: View {
     @Environment(AppModel.self) private var model
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ScaledMetric(relativeTo: .largeTitle) private var heroSize: CGFloat = 76
 
     var body: some View {

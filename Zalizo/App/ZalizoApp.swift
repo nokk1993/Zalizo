@@ -22,10 +22,11 @@ struct ZalizoApp: App {
     var body: some Scene {
         WindowGroup {
             if let container {
-                RootTabView()
+                // `.themed()` reads settings via @Query, so it must sit inside `.modelContainer`.
+                RootView()
+                    .themed()
                     .environment(appState)
                     .modelContainer(container)
-                    .themed()
             } else {
                 StartupErrorView(details: startupError ?? "")
             }

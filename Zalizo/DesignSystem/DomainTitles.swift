@@ -141,3 +141,144 @@ extension Weekday {
         }
     }
 }
+
+extension KeyLift {
+    var title: LocalizedStringResource {
+        switch self {
+        case .benchPress: "Жим штанги лежачи"
+        case .squat: "Присідання зі штангою"
+        case .romanianDeadlift: "Румунська станова тяга"
+        case .overheadPress: "Жим штанги стоячи"
+        case .barbellRow: "Тяга штанги в нахилі"
+        }
+    }
+}
+
+extension ExperienceLevel {
+    var subtitle: LocalizedStringResource {
+        switch self {
+        case .beginner: "Тренуюсь нерегулярно або менше року"
+        case .intermediate: "Регулярно тренуюсь, знаю базову техніку"
+        case .advanced: "Довго тренуюсь, прогрес уже повільний"
+        }
+    }
+}
+
+extension TrainingGoal {
+    var subtitle: LocalizedStringResource {
+        switch self {
+        case .muscleGain: "Профіцит калорій, ріст м'язів і ваги"
+        case .strength: "Більше сили в базових вправах"
+        case .recomposition: "Менше жиру, більше м'язів, вага майже не змінюється"
+        case .maintenance: "Зберегти форму"
+        }
+    }
+
+    var systemImage: String {
+        switch self {
+        case .muscleGain: "arrow.up.right.circle"
+        case .strength: "dumbbell"
+        case .recomposition: "arrow.triangle.2.circlepath"
+        case .maintenance: "equal.circle"
+        }
+    }
+}
+
+extension ActivityLevel {
+    var subtitle: LocalizedStringResource {
+        switch self {
+        case .sedentary: "Офіс, навчання, мало кроків (коефіцієнт 1,375)"
+        case .moderate: "Багато ходжу, частково на ногах (коефіцієнт 1,55)"
+        case .physical: "Фізична праця більшу частину дня (коефіцієнт 1,725)"
+        }
+    }
+
+    var systemImage: String {
+        switch self {
+        case .sedentary: "chair.lounge"
+        case .moderate: "figure.walk"
+        case .physical: "hammer"
+        }
+    }
+}
+
+extension Equipment {
+    var systemImage: String {
+        switch self {
+        case .barbell: "figure.strengthtraining.traditional"
+        case .dumbbells: "dumbbell"
+        case .cables: "cable.connector"
+        case .machines: "gearshape.2"
+        case .pullUpBar: "figure.climbing"
+        case .dipBars: "figure.cross.training"
+        case .adjustableBench: "bed.double"
+        case .ezBar: "line.diagonal"
+        case .bodyweight: "figure.core.training"
+        }
+    }
+}
+
+extension InjuryArea {
+    var systemImage: String {
+        switch self {
+        case .lowerBack: "figure.walk.motion"
+        case .knees: "figure.run"
+        case .shoulders: "figure.arms.open"
+        case .elbows: "hand.raised"
+        case .wrists: "hand.point.up.left"
+        }
+    }
+}
+
+extension FoodBudget {
+    var subtitle: LocalizedStringResource {
+        switch self {
+        case .economy: "Крупи, яйця, курка, сир, бобові"
+        case .medium: "Плюс риба, яловичина, горіхи, грецький йогурт"
+        }
+    }
+}
+
+/// Titles of built-in programs by their stable slug.
+enum ProgramTitles {
+    static func title(slug: String) -> LocalizedStringResource {
+        switch slug {
+        case ProgramCatalog.massSplit3: "Маса 3 дні: Спліт"
+        case ProgramCatalog.fullBody3: "Full Body 3 дні"
+        case ProgramCatalog.upperLower4: "Upper/Lower 4 дні"
+        case ProgramCatalog.pushPullLegs3: "Push/Pull/Legs 3 дні"
+        case ProgramCatalog.pushPullLegs6: "Push/Pull/Legs 6 днів"
+        default: "Власна програма"
+        }
+    }
+}
+
+extension PlanChange.Field {
+    var title: LocalizedStringResource {
+        switch self {
+        case .kcal: "Калорії (день відпочинку)"
+        case .trainingDayKcal: "Калорії (тренувальний день)"
+        case .protein: "Білок"
+        case .fat: "Жири"
+        case .carbs: "Вуглеводи"
+        case .water: "Вода"
+        case .targetWeight: "Цільова вага"
+        case .weeklyRate: "Темп набору"
+        case .forecastWeeks: "Прогноз"
+        case .program: "Рекомендована програма"
+        }
+    }
+
+    /// Unit suffix for old → new values.
+    var unit: LocalizedStringResource {
+        switch self {
+        case .kcal, .trainingDayKcal: "ккал"
+        case .protein, .fat, .carbs: "г"
+        case .water: "мл"
+        case .targetWeight: "кг"
+        case .weeklyRate: "кг/тижд"
+        case .forecastWeeks: "тижн."
+        case .program: ""
+        }
+    }
+}

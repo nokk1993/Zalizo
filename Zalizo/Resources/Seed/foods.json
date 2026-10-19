@@ -1,0 +1,1433 @@
+{
+ "version": 1,
+ "foods": [
+  {
+   "id": "oats",
+   "name": "Вівсяні пластівці (сухі)",
+   "kcal": 366,
+   "protein": 12.3,
+   "fat": 6.1,
+   "carbs": 59.5,
+   "fiber": 10,
+   "role": "carb",
+   "tags": [
+    "gluten"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "buckwheat",
+   "name": "Гречка (суха)",
+   "kcal": 343,
+   "protein": 12.6,
+   "fat": 3.3,
+   "carbs": 62.0,
+   "fiber": 10,
+   "role": "carb",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "rice",
+   "name": "Рис білий (сухий)",
+   "kcal": 344,
+   "protein": 6.7,
+   "fat": 0.7,
+   "carbs": 78.9,
+   "fiber": 1.4,
+   "role": "carb",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "brown-rice",
+   "name": "Рис бурий (сухий)",
+   "kcal": 337,
+   "protein": 7.4,
+   "fat": 1.8,
+   "carbs": 72.9,
+   "fiber": 3.5,
+   "role": "carb",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "pasta",
+   "name": "Макарони з твердих сортів (сухі)",
+   "kcal": 350,
+   "protein": 12.0,
+   "fat": 1.5,
+   "carbs": 71.0,
+   "fiber": 3,
+   "role": "carb",
+   "tags": [
+    "gluten"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "bulgur",
+   "name": "Булгур (сухий)",
+   "kcal": 342,
+   "protein": 12.3,
+   "fat": 1.3,
+   "carbs": 63.4,
+   "fiber": 12,
+   "role": "carb",
+   "tags": [
+    "gluten"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "millet",
+   "name": "Пшоно (сухе)",
+   "kcal": 348,
+   "protein": 11.5,
+   "fat": 3.3,
+   "carbs": 66.5,
+   "fiber": 3.6,
+   "role": "carb",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "pearl-barley",
+   "name": "Перловка (суха)",
+   "kcal": 315,
+   "protein": 9.3,
+   "fat": 1.1,
+   "carbs": 66.9,
+   "fiber": 8,
+   "role": "carb",
+   "tags": [
+    "gluten"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "couscous",
+   "name": "Кус-кус (сухий)",
+   "kcal": 376,
+   "protein": 12.8,
+   "fat": 0.6,
+   "carbs": 77.0,
+   "fiber": 5,
+   "role": "carb",
+   "tags": [
+    "gluten"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "quinoa",
+   "name": "Кіноа (суха)",
+   "kcal": 368,
+   "protein": 14.0,
+   "fat": 6.0,
+   "carbs": 64.0,
+   "fiber": 7,
+   "role": "carb",
+   "tags": [],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "potato",
+   "name": "Картопля",
+   "kcal": 77,
+   "protein": 2.0,
+   "fat": 0.4,
+   "carbs": 16.3,
+   "fiber": 2.2,
+   "role": "carb",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "sweet-potato",
+   "name": "Батат",
+   "kcal": 86,
+   "protein": 1.6,
+   "fat": 0.1,
+   "carbs": 20.0,
+   "fiber": 3,
+   "role": "carb",
+   "tags": [],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "wholegrain-bread",
+   "name": "Хліб цільнозерновий",
+   "kcal": 247,
+   "protein": 13.0,
+   "fat": 3.4,
+   "carbs": 41.0,
+   "fiber": 7,
+   "role": "bread",
+   "tags": [
+    "gluten"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "lavash",
+   "name": "Лаваш тонкий",
+   "kcal": 277,
+   "protein": 9.1,
+   "fat": 1.1,
+   "carbs": 56.0,
+   "fiber": 2,
+   "role": "bread",
+   "tags": [
+    "gluten"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "rice-cakes",
+   "name": "Хлібці рисові",
+   "kcal": 380,
+   "protein": 8.0,
+   "fat": 3.0,
+   "carbs": 80.0,
+   "fiber": 3,
+   "role": "bread",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "granola",
+   "name": "Гранола",
+   "kcal": 471,
+   "protein": 10.0,
+   "fat": 20.0,
+   "carbs": 64.0,
+   "fiber": 7,
+   "role": "carb",
+   "tags": [
+    "gluten",
+    "nuts"
+   ],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "oat-milk",
+   "name": "Вівсяне молоко",
+   "kcal": 45,
+   "protein": 1.0,
+   "fat": 1.5,
+   "carbs": 6.5,
+   "fiber": 0.0,
+   "role": "milk",
+   "tags": [
+    "gluten"
+   ],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "chicken-breast",
+   "name": "Куряче філе",
+   "kcal": 113,
+   "protein": 23.6,
+   "fat": 1.9,
+   "carbs": 0.4,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "chicken-thigh",
+   "name": "Курячі стегна без шкіри",
+   "kcal": 185,
+   "protein": 19.0,
+   "fat": 12.0,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "turkey",
+   "name": "Індичка (філе)",
+   "kcal": 114,
+   "protein": 24.0,
+   "fat": 1.0,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "beef-lean",
+   "name": "Яловичина пісна",
+   "kcal": 158,
+   "protein": 22.0,
+   "fat": 7.0,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "beef-mince",
+   "name": "Фарш яловичий 15 %",
+   "kcal": 215,
+   "protein": 18.0,
+   "fat": 15.0,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "pork-lean",
+   "name": "Свинина пісна (вирізка)",
+   "kcal": 142,
+   "protein": 21.0,
+   "fat": 6.3,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [
+    "pork"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "pork-neck",
+   "name": "Свиняча шия",
+   "kcal": 267,
+   "protein": 16.0,
+   "fat": 22.0,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [
+    "pork"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "chicken-liver",
+   "name": "Печінка куряча",
+   "kcal": 136,
+   "protein": 19.0,
+   "fat": 6.0,
+   "carbs": 0.7,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "chicken-ham",
+   "name": "Шинка куряча",
+   "kcal": 120,
+   "protein": 18.0,
+   "fat": 5.0,
+   "carbs": 1.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "hake",
+   "name": "Хек",
+   "kcal": 86,
+   "protein": 16.6,
+   "fat": 2.2,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [
+    "fish"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "pollock",
+   "name": "Минтай",
+   "kcal": 72,
+   "protein": 15.9,
+   "fat": 0.9,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [
+    "fish"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "mackerel",
+   "name": "Скумбрія",
+   "kcal": 191,
+   "protein": 18.0,
+   "fat": 13.2,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [
+    "fish"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "herring",
+   "name": "Оселедець",
+   "kcal": 161,
+   "protein": 17.7,
+   "fat": 11.4,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [
+    "fish"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "tuna-can",
+   "name": "Тунець у власному соку",
+   "kcal": 103,
+   "protein": 23.0,
+   "fat": 1.0,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [
+    "fish"
+   ],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "shrimp",
+   "name": "Креветки",
+   "kcal": 97,
+   "protein": 20.0,
+   "fat": 1.5,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "protein",
+   "tags": [
+    "fish"
+   ],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "egg",
+   "name": "Яйце куряче",
+   "kcal": 157,
+   "protein": 12.7,
+   "fat": 11.5,
+   "carbs": 0.7,
+   "fiber": 0.0,
+   "role": "egg",
+   "tags": [
+    "eggs"
+   ],
+   "premium": false,
+   "unitGrams": 55
+  },
+  {
+   "id": "egg-white",
+   "name": "Яєчний білок",
+   "kcal": 48,
+   "protein": 11.0,
+   "fat": 0.2,
+   "carbs": 0.7,
+   "fiber": 0.0,
+   "role": "egg",
+   "tags": [
+    "eggs"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "cottage-5",
+   "name": "Кисломолочний сир 5 %",
+   "kcal": 121,
+   "protein": 17.2,
+   "fat": 5.0,
+   "carbs": 1.8,
+   "fiber": 0.0,
+   "role": "dairy-protein",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "cottage-0",
+   "name": "Кисломолочний сир 0 %",
+   "kcal": 71,
+   "protein": 16.5,
+   "fat": 0.0,
+   "carbs": 1.3,
+   "fiber": 0.0,
+   "role": "dairy-protein",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "greek-yogurt",
+   "name": "Грецький йогурт 2 %",
+   "kcal": 73,
+   "protein": 10.0,
+   "fat": 2.0,
+   "carbs": 3.6,
+   "fiber": 0.0,
+   "role": "dairy-protein",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "milk",
+   "name": "Молоко 2,5 %",
+   "kcal": 52,
+   "protein": 2.8,
+   "fat": 2.5,
+   "carbs": 4.7,
+   "fiber": 0.0,
+   "role": "milk",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "lactose-free-milk",
+   "name": "Молоко безлактозне 2,5 %",
+   "kcal": 50,
+   "protein": 3.0,
+   "fat": 2.5,
+   "carbs": 4.7,
+   "fiber": 0.0,
+   "role": "milk",
+   "tags": [
+    "dairy"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "kefir",
+   "name": "Кефір 2,5 %",
+   "kcal": 51,
+   "protein": 2.9,
+   "fat": 2.5,
+   "carbs": 4.0,
+   "fiber": 0.0,
+   "role": "milk",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "ryazhanka",
+   "name": "Ряжанка 4 %",
+   "kcal": 67,
+   "protein": 2.8,
+   "fat": 4.0,
+   "carbs": 4.2,
+   "fiber": 0.0,
+   "role": "milk",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "drinking-yogurt",
+   "name": "Йогурт питний 2,5 %",
+   "kcal": 72,
+   "protein": 3.0,
+   "fat": 2.5,
+   "carbs": 9.0,
+   "fiber": 0.0,
+   "role": "milk",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "hard-cheese",
+   "name": "Сир твердий",
+   "kcal": 356,
+   "protein": 25.0,
+   "fat": 27.0,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "cheese",
+   "tags": [
+    "dairy"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "mozzarella",
+   "name": "Моцарела",
+   "kcal": 280,
+   "protein": 22.0,
+   "fat": 20.0,
+   "carbs": 1.0,
+   "fiber": 0.0,
+   "role": "cheese",
+   "tags": [
+    "dairy"
+   ],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "sour-cream",
+   "name": "Сметана 15 %",
+   "kcal": 158,
+   "protein": 2.6,
+   "fat": 15.0,
+   "carbs": 3.0,
+   "fiber": 0.0,
+   "role": "fat",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "butter",
+   "name": "Масло вершкове 82 %",
+   "kcal": 748,
+   "protein": 0.5,
+   "fat": 82.5,
+   "carbs": 0.8,
+   "fiber": 0.0,
+   "role": "fat",
+   "tags": [
+    "dairy"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "whey",
+   "name": "Протеїн сироватковий (порошок)",
+   "kcal": 380,
+   "protein": 75.0,
+   "fat": 5.0,
+   "carbs": 8.0,
+   "fiber": 0.0,
+   "role": "dairy-protein",
+   "tags": [
+    "dairy",
+    "lactose"
+   ],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "tofu",
+   "name": "Тофу",
+   "kcal": 76,
+   "protein": 8.0,
+   "fat": 4.8,
+   "carbs": 1.9,
+   "fiber": 0.0,
+   "role": "plant-protein",
+   "tags": [],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "chickpeas",
+   "name": "Нут (сухий)",
+   "kcal": 364,
+   "protein": 19.0,
+   "fat": 6.0,
+   "carbs": 61.0,
+   "fiber": 17,
+   "role": "legume",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "red-lentils",
+   "name": "Сочевиця червона (суха)",
+   "kcal": 314,
+   "protein": 24.0,
+   "fat": 1.5,
+   "carbs": 48.0,
+   "fiber": 11,
+   "role": "legume",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "beans",
+   "name": "Квасоля (суха)",
+   "kcal": 298,
+   "protein": 21.0,
+   "fat": 2.0,
+   "carbs": 47.0,
+   "fiber": 15,
+   "role": "legume",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "beans-can",
+   "name": "Квасоля консервована",
+   "kcal": 99,
+   "protein": 6.7,
+   "fat": 0.3,
+   "carbs": 17.0,
+   "fiber": 6,
+   "role": "legume",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "peas-dry",
+   "name": "Горох колотий (сухий)",
+   "kcal": 298,
+   "protein": 20.5,
+   "fat": 2.0,
+   "carbs": 53.0,
+   "fiber": 12,
+   "role": "legume",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "hummus",
+   "name": "Хумус",
+   "kcal": 166,
+   "protein": 7.9,
+   "fat": 9.6,
+   "carbs": 14.3,
+   "fiber": 6,
+   "role": "spread",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "sunflower-oil",
+   "name": "Олія соняшникова",
+   "kcal": 899,
+   "protein": 0.0,
+   "fat": 99.9,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "oil",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "olive-oil",
+   "name": "Олія оливкова",
+   "kcal": 898,
+   "protein": 0.0,
+   "fat": 99.8,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "oil",
+   "tags": [],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "peanut-butter",
+   "name": "Арахісова паста",
+   "kcal": 588,
+   "protein": 25.0,
+   "fat": 50.0,
+   "carbs": 20.0,
+   "fiber": 6,
+   "role": "nut",
+   "tags": [
+    "nuts"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "walnuts",
+   "name": "Волоські горіхи",
+   "kcal": 654,
+   "protein": 15.2,
+   "fat": 65.2,
+   "carbs": 7.0,
+   "fiber": 7,
+   "role": "nut",
+   "tags": [
+    "nuts"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "almonds",
+   "name": "Мигдаль",
+   "kcal": 609,
+   "protein": 18.6,
+   "fat": 53.7,
+   "carbs": 13.0,
+   "fiber": 12,
+   "role": "nut",
+   "tags": [
+    "nuts"
+   ],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "peanuts",
+   "name": "Арахіс",
+   "kcal": 552,
+   "protein": 26.3,
+   "fat": 45.2,
+   "carbs": 9.9,
+   "fiber": 8,
+   "role": "nut",
+   "tags": [
+    "nuts"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "sunflower-seeds",
+   "name": "Насіння соняшника",
+   "kcal": 578,
+   "protein": 20.7,
+   "fat": 52.9,
+   "carbs": 10.5,
+   "fiber": 8,
+   "role": "nut",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "pumpkin-seeds",
+   "name": "Гарбузове насіння",
+   "kcal": 556,
+   "protein": 24.5,
+   "fat": 45.8,
+   "carbs": 4.7,
+   "fiber": 6,
+   "role": "nut",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "chia",
+   "name": "Насіння чіа",
+   "kcal": 486,
+   "protein": 16.5,
+   "fat": 30.7,
+   "carbs": 42.0,
+   "fiber": 34,
+   "role": "nut",
+   "tags": [],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "avocado",
+   "name": "Авокадо",
+   "kcal": 160,
+   "protein": 2.0,
+   "fat": 14.7,
+   "carbs": 8.5,
+   "fiber": 7,
+   "role": "fat",
+   "tags": [],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "salo",
+   "name": "Сало",
+   "kcal": 797,
+   "protein": 2.4,
+   "fat": 89.0,
+   "carbs": 0.0,
+   "fiber": 0.0,
+   "role": "fat",
+   "tags": [
+    "pork"
+   ],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "banana",
+   "name": "Банан",
+   "kcal": 89,
+   "protein": 1.1,
+   "fat": 0.3,
+   "carbs": 22.8,
+   "fiber": 2.6,
+   "role": "fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": 120
+  },
+  {
+   "id": "apple",
+   "name": "Яблуко",
+   "kcal": 47,
+   "protein": 0.4,
+   "fat": 0.4,
+   "carbs": 9.8,
+   "fiber": 2.4,
+   "role": "fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": 170
+  },
+  {
+   "id": "orange",
+   "name": "Апельсин",
+   "kcal": 43,
+   "protein": 0.9,
+   "fat": 0.2,
+   "carbs": 8.1,
+   "fiber": 2.2,
+   "role": "fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": 180
+  },
+  {
+   "id": "pear",
+   "name": "Груша",
+   "kcal": 57,
+   "protein": 0.4,
+   "fat": 0.1,
+   "carbs": 15.0,
+   "fiber": 3.1,
+   "role": "fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": 170
+  },
+  {
+   "id": "kiwi",
+   "name": "Ківі",
+   "kcal": 61,
+   "protein": 1.1,
+   "fat": 0.5,
+   "carbs": 14.7,
+   "fiber": 3,
+   "role": "fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": 75
+  },
+  {
+   "id": "berries-frozen",
+   "name": "Ягоди заморожені (суміш)",
+   "kcal": 50,
+   "protein": 0.8,
+   "fat": 0.3,
+   "carbs": 11.0,
+   "fiber": 4,
+   "role": "fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "raisins",
+   "name": "Родзинки",
+   "kcal": 299,
+   "protein": 3.1,
+   "fat": 0.5,
+   "carbs": 79.0,
+   "fiber": 3.7,
+   "role": "dried-fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "dried-apricots",
+   "name": "Курага",
+   "kcal": 241,
+   "protein": 3.4,
+   "fat": 0.5,
+   "carbs": 62.6,
+   "fiber": 7,
+   "role": "dried-fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "dates",
+   "name": "Фініки",
+   "kcal": 282,
+   "protein": 2.5,
+   "fat": 0.4,
+   "carbs": 75.0,
+   "fiber": 8,
+   "role": "dried-fruit",
+   "tags": [],
+   "premium": true,
+   "unitGrams": null
+  },
+  {
+   "id": "prunes",
+   "name": "Чорнослив",
+   "kcal": 240,
+   "protein": 2.2,
+   "fat": 0.4,
+   "carbs": 64.0,
+   "fiber": 7,
+   "role": "dried-fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "orange-juice",
+   "name": "Сік апельсиновий",
+   "kcal": 45,
+   "protein": 0.7,
+   "fat": 0.2,
+   "carbs": 10.4,
+   "fiber": 0.0,
+   "role": "fruit",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "cucumber",
+   "name": "Огірок",
+   "kcal": 15,
+   "protein": 0.8,
+   "fat": 0.1,
+   "carbs": 2.8,
+   "fiber": 0.5,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "tomato",
+   "name": "Помідор",
+   "kcal": 20,
+   "protein": 0.9,
+   "fat": 0.2,
+   "carbs": 3.9,
+   "fiber": 1.2,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "cabbage",
+   "name": "Капуста білокачанна",
+   "kcal": 27,
+   "protein": 1.8,
+   "fat": 0.1,
+   "carbs": 4.7,
+   "fiber": 2.5,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "sauerkraut",
+   "name": "Капуста квашена",
+   "kcal": 19,
+   "protein": 0.9,
+   "fat": 0.1,
+   "carbs": 4.3,
+   "fiber": 2.9,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "broccoli",
+   "name": "Броколі",
+   "kcal": 34,
+   "protein": 2.8,
+   "fat": 0.4,
+   "carbs": 6.6,
+   "fiber": 2.6,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "carrot",
+   "name": "Морква",
+   "kcal": 41,
+   "protein": 0.9,
+   "fat": 0.2,
+   "carbs": 9.6,
+   "fiber": 2.8,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "beetroot",
+   "name": "Буряк",
+   "kcal": 43,
+   "protein": 1.6,
+   "fat": 0.2,
+   "carbs": 9.6,
+   "fiber": 2.8,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "bell-pepper",
+   "name": "Перець болгарський",
+   "kcal": 27,
+   "protein": 1.3,
+   "fat": 0.3,
+   "carbs": 5.3,
+   "fiber": 2,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "onion",
+   "name": "Цибуля",
+   "kcal": 40,
+   "protein": 1.1,
+   "fat": 0.1,
+   "carbs": 9.3,
+   "fiber": 1.7,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "spinach",
+   "name": "Шпинат",
+   "kcal": 23,
+   "protein": 2.9,
+   "fat": 0.4,
+   "carbs": 3.6,
+   "fiber": 2.2,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "zucchini",
+   "name": "Кабачок",
+   "kcal": 24,
+   "protein": 0.6,
+   "fat": 0.3,
+   "carbs": 4.6,
+   "fiber": 1,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "veg-mix",
+   "name": "Овочева суміш заморожена",
+   "kcal": 45,
+   "protein": 2.5,
+   "fat": 0.3,
+   "carbs": 8.0,
+   "fiber": 3,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "green-peas",
+   "name": "Горошок зелений заморожений",
+   "kcal": 81,
+   "protein": 5.4,
+   "fat": 0.4,
+   "carbs": 14.5,
+   "fiber": 5,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "corn-can",
+   "name": "Кукурудза консервована",
+   "kcal": 86,
+   "protein": 3.3,
+   "fat": 1.4,
+   "carbs": 16.0,
+   "fiber": 2,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "mushrooms",
+   "name": "Печериці",
+   "kcal": 27,
+   "protein": 4.3,
+   "fat": 1.0,
+   "carbs": 1.0,
+   "fiber": 1,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "tomato-paste",
+   "name": "Томатна паста",
+   "kcal": 82,
+   "protein": 4.3,
+   "fat": 0.5,
+   "carbs": 18.9,
+   "fiber": 4,
+   "role": "vegetable",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "honey",
+   "name": "Мед",
+   "kcal": 304,
+   "protein": 0.3,
+   "fat": 0.0,
+   "carbs": 82.4,
+   "fiber": 0.0,
+   "role": "sweet",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "jam",
+   "name": "Варення",
+   "kcal": 265,
+   "protein": 0.4,
+   "fat": 0.1,
+   "carbs": 65.0,
+   "fiber": 0.0,
+   "role": "sweet",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  },
+  {
+   "id": "dark-chocolate",
+   "name": "Шоколад чорний 70 %",
+   "kcal": 598,
+   "protein": 7.8,
+   "fat": 42.6,
+   "carbs": 45.9,
+   "fiber": 10,
+   "role": "sweet",
+   "tags": [],
+   "premium": false,
+   "unitGrams": null
+  }
+ ],
+ "substitutes": {
+  "carb": [
+   "buckwheat",
+   "rice",
+   "potato",
+   "millet",
+   "brown-rice",
+   "quinoa",
+   "pasta",
+   "bulgur"
+  ],
+  "bread": [
+   "wholegrain-bread",
+   "rice-cakes",
+   "lavash"
+  ],
+  "protein": [
+   "chicken-breast",
+   "turkey",
+   "beef-lean",
+   "chicken-thigh",
+   "pork-lean",
+   "hake",
+   "pollock"
+  ],
+  "egg": [
+   "chicken-breast",
+   "chicken-ham",
+   "tofu"
+  ],
+  "dairy-protein": [
+   "cottage-5",
+   "greek-yogurt",
+   "chicken-breast",
+   "tofu",
+   "turkey"
+  ],
+  "milk": [
+   "milk",
+   "lactose-free-milk",
+   "kefir",
+   "oat-milk",
+   "orange-juice"
+  ],
+  "cheese": [
+   "hard-cheese",
+   "chicken-ham",
+   "hummus"
+  ],
+  "plant-protein": [
+   "tofu",
+   "chicken-breast",
+   "red-lentils"
+  ],
+  "legume": [
+   "red-lentils",
+   "chickpeas",
+   "beans",
+   "buckwheat"
+  ],
+  "nut": [
+   "sunflower-seeds",
+   "pumpkin-seeds",
+   "walnuts",
+   "peanuts",
+   "avocado"
+  ],
+  "oil": [
+   "sunflower-oil",
+   "olive-oil"
+  ],
+  "fat": [
+   "sunflower-oil",
+   "avocado",
+   "butter"
+  ],
+  "fruit": [
+   "banana",
+   "apple",
+   "orange",
+   "pear",
+   "berries-frozen"
+  ],
+  "dried-fruit": [
+   "raisins",
+   "prunes",
+   "dried-apricots",
+   "dates",
+   "banana"
+  ],
+  "vegetable": [
+   "cucumber",
+   "tomato",
+   "cabbage",
+   "carrot",
+   "broccoli",
+   "veg-mix"
+  ],
+  "spread": [
+   "hummus",
+   "peanut-butter",
+   "hard-cheese"
+  ],
+  "sweet": [
+   "honey",
+   "jam",
+   "raisins"
+  ]
+ }
+}

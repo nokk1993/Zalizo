@@ -1,0 +1,675 @@
+{
+ "version": 1,
+ "menus": [
+  {
+   "id": "classic-oats",
+   "name": "Класика: вівсянка, гречка, курка",
+   "budget": "economy",
+   "meals": [
+    {
+     "slot": "breakfast",
+     "items": [
+      {
+       "food": "oats",
+       "grams": 100
+      },
+      {
+       "food": "milk",
+       "grams": 250
+      },
+      {
+       "food": "banana",
+       "grams": 120
+      },
+      {
+       "food": "peanut-butter",
+       "grams": 20
+      }
+     ]
+    },
+    {
+     "slot": "snack1",
+     "items": [
+      {
+       "food": "cottage-5",
+       "grams": 200
+      },
+      {
+       "food": "honey",
+       "grams": 20
+      },
+      {
+       "food": "walnuts",
+       "grams": 20
+      }
+     ]
+    },
+    {
+     "slot": "lunch",
+     "items": [
+      {
+       "food": "buckwheat",
+       "grams": 100
+      },
+      {
+       "food": "chicken-breast",
+       "grams": 200
+      },
+      {
+       "food": "sunflower-oil",
+       "grams": 10
+      },
+      {
+       "food": "cucumber",
+       "grams": 150
+      },
+      {
+       "food": "tomato",
+       "grams": 150
+      }
+     ]
+    },
+    {
+     "slot": "snack2",
+     "items": [
+      {
+       "food": "wholegrain-bread",
+       "grams": 80
+      },
+      {
+       "food": "egg",
+       "grams": 110
+      },
+      {
+       "food": "hard-cheese",
+       "grams": 30
+      }
+     ]
+    },
+    {
+     "slot": "dinner",
+     "items": [
+      {
+       "food": "rice",
+       "grams": 90
+      },
+      {
+       "food": "hake",
+       "grams": 220
+      },
+      {
+       "food": "broccoli",
+       "grams": 200
+      },
+      {
+       "food": "sunflower-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "beforeBed",
+     "items": [
+      {
+       "food": "kefir",
+       "grams": 300
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "budget-millet",
+   "name": "Бюджетне: пшоно, стегна, минтай",
+   "budget": "economy",
+   "meals": [
+    {
+     "slot": "breakfast",
+     "items": [
+      {
+       "food": "oats",
+       "grams": 100
+      },
+      {
+       "food": "milk",
+       "grams": 200
+      },
+      {
+       "food": "egg",
+       "grams": 110
+      },
+      {
+       "food": "apple",
+       "grams": 170
+      }
+     ]
+    },
+    {
+     "slot": "snack1",
+     "items": [
+      {
+       "food": "cottage-5",
+       "grams": 200
+      },
+      {
+       "food": "raisins",
+       "grams": 30
+      }
+     ]
+    },
+    {
+     "slot": "lunch",
+     "items": [
+      {
+       "food": "buckwheat",
+       "grams": 100
+      },
+      {
+       "food": "chicken-thigh",
+       "grams": 200
+      },
+      {
+       "food": "sauerkraut",
+       "grams": 150
+      },
+      {
+       "food": "sunflower-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "snack2",
+     "items": [
+      {
+       "food": "banana",
+       "grams": 120
+      },
+      {
+       "food": "sunflower-seeds",
+       "grams": 30
+      }
+     ]
+    },
+    {
+     "slot": "dinner",
+     "items": [
+      {
+       "food": "millet",
+       "grams": 80
+      },
+      {
+       "food": "pollock",
+       "grams": 250
+      },
+      {
+       "food": "carrot",
+       "grams": 150
+      },
+      {
+       "food": "sunflower-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "beforeBed",
+     "items": [
+      {
+       "food": "kefir",
+       "grams": 300
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lentil-pork",
+   "name": "Сочевиця, свинина, макарони",
+   "budget": "economy",
+   "meals": [
+    {
+     "slot": "breakfast",
+     "items": [
+      {
+       "food": "egg",
+       "grams": 165
+      },
+      {
+       "food": "lavash",
+       "grams": 60
+      },
+      {
+       "food": "bell-pepper",
+       "grams": 100
+      },
+      {
+       "food": "hard-cheese",
+       "grams": 30
+      }
+     ]
+    },
+    {
+     "slot": "snack1",
+     "items": [
+      {
+       "food": "kefir",
+       "grams": 300
+      },
+      {
+       "food": "banana",
+       "grams": 120
+      }
+     ]
+    },
+    {
+     "slot": "lunch",
+     "items": [
+      {
+       "food": "red-lentils",
+       "grams": 90
+      },
+      {
+       "food": "pork-lean",
+       "grams": 180
+      },
+      {
+       "food": "onion",
+       "grams": 50
+      },
+      {
+       "food": "carrot",
+       "grams": 100
+      },
+      {
+       "food": "sunflower-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "snack2",
+     "items": [
+      {
+       "food": "wholegrain-bread",
+       "grams": 80
+      },
+      {
+       "food": "peanut-butter",
+       "grams": 30
+      }
+     ]
+    },
+    {
+     "slot": "dinner",
+     "items": [
+      {
+       "food": "pasta",
+       "grams": 90
+      },
+      {
+       "food": "chicken-breast",
+       "grams": 180
+      },
+      {
+       "food": "tomato",
+       "grams": 200
+      },
+      {
+       "food": "sunflower-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "beforeBed",
+     "items": [
+      {
+       "food": "cottage-0",
+       "grams": 200
+      },
+      {
+       "food": "berries-frozen",
+       "grams": 100
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pasta-turkey",
+   "name": "Макарони, індичка, яловичина",
+   "budget": "medium",
+   "meals": [
+    {
+     "slot": "breakfast",
+     "items": [
+      {
+       "food": "egg",
+       "grams": 165
+      },
+      {
+       "food": "wholegrain-bread",
+       "grams": 80
+      },
+      {
+       "food": "hard-cheese",
+       "grams": 30
+      },
+      {
+       "food": "tomato",
+       "grams": 150
+      }
+     ]
+    },
+    {
+     "slot": "snack1",
+     "items": [
+      {
+       "food": "greek-yogurt",
+       "grams": 200
+      },
+      {
+       "food": "berries-frozen",
+       "grams": 100
+      },
+      {
+       "food": "granola",
+       "grams": 40
+      }
+     ]
+    },
+    {
+     "slot": "lunch",
+     "items": [
+      {
+       "food": "pasta",
+       "grams": 100
+      },
+      {
+       "food": "turkey",
+       "grams": 200
+      },
+      {
+       "food": "tomato-paste",
+       "grams": 30
+      },
+      {
+       "food": "olive-oil",
+       "grams": 10
+      },
+      {
+       "food": "bell-pepper",
+       "grams": 100
+      }
+     ]
+    },
+    {
+     "slot": "snack2",
+     "items": [
+      {
+       "food": "banana",
+       "grams": 120
+      },
+      {
+       "food": "almonds",
+       "grams": 30
+      }
+     ]
+    },
+    {
+     "slot": "dinner",
+     "items": [
+      {
+       "food": "potato",
+       "grams": 350
+      },
+      {
+       "food": "beef-lean",
+       "grams": 180
+      },
+      {
+       "food": "cabbage",
+       "grams": 200
+      },
+      {
+       "food": "sunflower-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "beforeBed",
+     "items": [
+      {
+       "food": "cottage-5",
+       "grams": 150
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rice-mackerel",
+   "name": "Рис, курка, скумбрія",
+   "budget": "medium",
+   "meals": [
+    {
+     "slot": "breakfast",
+     "items": [
+      {
+       "food": "oats",
+       "grams": 80
+      },
+      {
+       "food": "cottage-5",
+       "grams": 150
+      },
+      {
+       "food": "banana",
+       "grams": 120
+      },
+      {
+       "food": "honey",
+       "grams": 15
+      }
+     ]
+    },
+    {
+     "slot": "snack1",
+     "items": [
+      {
+       "food": "wholegrain-bread",
+       "grams": 80
+      },
+      {
+       "food": "hummus",
+       "grams": 60
+      },
+      {
+       "food": "cucumber",
+       "grams": 150
+      }
+     ]
+    },
+    {
+     "slot": "lunch",
+     "items": [
+      {
+       "food": "rice",
+       "grams": 100
+      },
+      {
+       "food": "chicken-breast",
+       "grams": 200
+      },
+      {
+       "food": "veg-mix",
+       "grams": 200
+      },
+      {
+       "food": "olive-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "snack2",
+     "items": [
+      {
+       "food": "milk",
+       "grams": 300
+      },
+      {
+       "food": "dates",
+       "grams": 40
+      }
+     ]
+    },
+    {
+     "slot": "dinner",
+     "items": [
+      {
+       "food": "potato",
+       "grams": 300
+      },
+      {
+       "food": "mackerel",
+       "grams": 180
+      },
+      {
+       "food": "beetroot",
+       "grams": 150
+      }
+     ]
+    },
+    {
+     "slot": "beforeBed",
+     "items": [
+      {
+       "food": "greek-yogurt",
+       "grams": 200
+      },
+      {
+       "food": "walnuts",
+       "grams": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dairy-free",
+   "name": "Без молочного: булгур, яловичина, тунець",
+   "budget": "medium",
+   "meals": [
+    {
+     "slot": "breakfast",
+     "items": [
+      {
+       "food": "oats",
+       "grams": 100
+      },
+      {
+       "food": "oat-milk",
+       "grams": 250
+      },
+      {
+       "food": "banana",
+       "grams": 120
+      },
+      {
+       "food": "peanut-butter",
+       "grams": 25
+      }
+     ]
+    },
+    {
+     "slot": "snack1",
+     "items": [
+      {
+       "food": "egg",
+       "grams": 110
+      },
+      {
+       "food": "wholegrain-bread",
+       "grams": 60
+      },
+      {
+       "food": "avocado",
+       "grams": 70
+      }
+     ]
+    },
+    {
+     "slot": "lunch",
+     "items": [
+      {
+       "food": "bulgur",
+       "grams": 100
+      },
+      {
+       "food": "turkey",
+       "grams": 200
+      },
+      {
+       "food": "bell-pepper",
+       "grams": 150
+      },
+      {
+       "food": "olive-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "snack2",
+     "items": [
+      {
+       "food": "apple",
+       "grams": 170
+      },
+      {
+       "food": "almonds",
+       "grams": 30
+      }
+     ]
+    },
+    {
+     "slot": "dinner",
+     "items": [
+      {
+       "food": "rice",
+       "grams": 90
+      },
+      {
+       "food": "beef-lean",
+       "grams": 180
+      },
+      {
+       "food": "broccoli",
+       "grams": 200
+      },
+      {
+       "food": "sunflower-oil",
+       "grams": 10
+      }
+     ]
+    },
+    {
+     "slot": "beforeBed",
+     "items": [
+      {
+       "food": "tuna-can",
+       "grams": 120
+      },
+      {
+       "food": "rice-cakes",
+       "grams": 30
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -18,6 +18,13 @@
 - **Етап 9 (харчування)**: `Tools/seed/nutrition_seed.py` → `foods.json` (95 продуктів) і `menus.json` (6 шаблонів); ядро `Nutrition/MenuBuilder.swift` (масштабування, заміни за алергіями/бюджетом, 3–6 прийомів, список покупок); `NutritionStore`; `Features/Nutrition/*` (щоденник з кільцями, вода, меню, норми, поради, адаптивна корекція).
 - **Етап 10 (цілі, досягнення, нагадування, база знань, швидкий запис)**: `Tools/seed/knowledge_seed.py` → `knowledge.json` (15 статей); ядро `QuickLog/QuickLogParser.swift` (15 варіантів написання в тестах), `Goals/Goals.swift`; `ReminderService` (локальні сповіщення на 14 днів з назвою дня програми), `AchievementService`; екрани `SettingsView` (усі налаштування 6.11 крім фунтів), `GoalsView`, `QuickLogView`, `KnowledgeViews`.
 - **Етап 11 (бекап)**: ядро `Backup/BackupFile.swift` (schemaVersion, усі секції опційні при читанні, дати як секунди — точний round trip, CSV); `BackupService` (експорт, імпорт «замінити все»/«об'єднати», фото base64 у файлі); `BackupView`; тест експорт → скидання → імпорт.
+- **Етап 12 (опційне)**: таргет `ZalizoWidgets` (WidgetExtension/, Live Activity з `RestActivityAttributes` у ZalizoCore), `LiveActivityService`; `HealthService` (вимкнено за замовчуванням, потрібна capability HealthKit вручну). Віджети домашнього екрана пропущено (потрібна App Group).
+- **Етапи 13–14**: ущільнено рядок підходу під iPhone SE, повний README.
+
+## Відомі обмеження / що перевірити на Mac
+- Увесь iOS-код написано без компілятора: перша збірка в Xcode може показати помилки, їх треба виправити.
+- Одиниці: лише кг/см (фунти не реалізовано).
+- «Маса 3 дні»: квадрицепс ≈ 7 підходів/тиждень (програма з ТЗ власника).
 
 ## Ухвалені рішення
 - Bundle ID: `ua.zalizo.app.b82a66`. Він стабільний, без персональних даних, **не змінювати**.

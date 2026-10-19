@@ -21,7 +21,8 @@ struct ShahApp: App {
                 .tint(Palette.accent)
                 .preferredColorScheme(model.settings.theme.colorScheme)
         }
-        .onChange(of: scenePhase) { _, phase in
+        // `initial: true` also runs on cold start.
+        .onChange(of: scenePhase, initial: true) { _, phase in
             model.isInForeground = phase == .active
             if phase == .active {
                 Task { await model.refresh() }

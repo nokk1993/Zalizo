@@ -51,7 +51,8 @@ public actor DistanceRepository {
     private let fullSyncInterval: TimeInterval
 
     private var state: HistoryCache?
-    private var inFlight: Task<History, any Error>?
+    private var inFlight: (id: Int, kind: RefreshKind, task: Task<History, any Error>)?
+    private var nextRefreshID = 0
 
     public init(
         health: any HealthService,
@@ -82,10 +83,20 @@ public actor DistanceRepository {
 
     @discardableResult
     public func refresh(_ kind: RefreshKind = .incremental) async throws -> History {
-        if let inFlight { return try await inFlight.value }
+        if let current = inFlight {
+            // Join a running refresh unless it is narrower than what was asked.
+            if current.kind == .full || kind == .incremental {
+                return try await current.task.value
+            }
+            _ = try? await current.task.value
+            if inFlight?.id == current.id { inFlight = nil }
+            return try await refresh(kind)
+        }
+        nextRefreshID += 1
+        let id = nextRefreshID
         let task = Task { try await self.performRefresh(kind) }
-        inFlight = task
-        defer { inFlight = nil }
+        inFlight = (id, kind, task)
+        defer { if inFlight?.id == id { inFlight = nil } }
         return try await task.value
     }
 

@@ -29,6 +29,15 @@ public struct TodaySummary: Equatable, Sendable {
     /// Average of the 7 days before today; `nil` without history.
     public let weekAverageMeters: Double?
 
+    public init(day: DayKey, meters: Double, steps: Int, goalMeters: Double, yesterdayMeters: Double?, weekAverageMeters: Double?) {
+        self.day = day
+        self.meters = meters
+        self.steps = steps
+        self.goalMeters = goalMeters
+        self.yesterdayMeters = yesterdayMeters
+        self.weekAverageMeters = weekAverageMeters
+    }
+
     public var progress: Double { goalMeters > 0 ? meters / goalMeters : 0 }
     public var isGoalMet: Bool { goalMeters > 0 && meters >= goalMeters }
     public var remainingMeters: Double { max(0, goalMeters - meters) }

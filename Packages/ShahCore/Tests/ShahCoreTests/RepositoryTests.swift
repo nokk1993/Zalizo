@@ -126,6 +126,23 @@ struct RepositoryTests {
         #expect(health.requests.count == 1)
     }
 
+    @Test func fullRequestDuringIncrementalStillRunsFull() async throws {
+        let clock = TestClock(date(2026, 10, 18, 9))
+        let health = MockHealthService(totals: [DayTotal(day: day(2026, 10, 18), meters: 1_000, steps: 1)], delay: .milliseconds(100))
+        let repo = makeRepository(health, clock: clock)
+        try await repo.refresh(.full)
+        let before = health.requests.count
+
+        // Access was just granted while a routine refresh was running.
+        async let routine = repo.refresh(.incremental)
+        try await Task.sleep(for: .milliseconds(20))
+        async let afterGrant = repo.refresh(.full)
+        _ = try await (routine, afterGrant)
+        let requests = Array(health.requests.dropFirst(before))
+        #expect(requests.count == 2)
+        #expect(requests.last?.lowerBound == earliest)
+    }
+
     @Test func unavailableHealthKeepsCache() async throws {
         let clock = TestClock(date(2026, 10, 18, 9))
         let health = MockHealthService.sample(today: day(2026, 10, 18), days: 5)

@@ -76,7 +76,8 @@ final class AppModel {
 
     // MARK: Actions
 
-    func refresh() async {
+    /// - Parameter full: re-read all history, e.g. right after access was granted.
+    func refresh(full: Bool = false) async {
         guard health.isHealthDataAvailable else {
             status = .healthUnavailable
             return
@@ -85,7 +86,9 @@ final class AppModel {
         defer { isRefreshing = false }
         today = DayKey(clock(), in: .current)
         do {
-            history = try await repository.refresh()
+            // With nothing cached, access may have just been granted in Settings:
+            // a full read picks up the whole history at once.
+            history = try await repository.refresh(full || history.isEmpty ? .full : .incremental)
             status = .ready
             didUpdateHistory()
             // Re-reads all history at most once a day or after a time-zone change.
@@ -101,7 +104,7 @@ final class AppModel {
 
     func requestAuthorization() async {
         try? await health.requestAuthorization()
-        await refresh()
+        await refresh(full: true)
     }
 
     func updateSettings(_ change: (inout AppSettings) -> Void) {
@@ -169,7 +172,11 @@ extension AppModel {
     static func live() -> AppModel {
         let arguments = ProcessInfo.processInfo.arguments
         if arguments.contains(uiTestArgument) {
-            return preview(settings: AppSettings(goalMeters: 10_000, hasCompletedOnboarding: arguments.contains(uiTestSkipOnboardingArgument)))
+            let skipOnboarding = arguments.contains(uiTestSkipOnboardingArgument)
+            return preview(settings: AppSettings(
+                goalMeters: skipOnboarding ? 10_000 : AppSettings.defaultGoalMeters,
+                hasCompletedOnboarding: skipOnboarding
+            ))
         }
         let health: any HealthService
         #if canImport(HealthKit)

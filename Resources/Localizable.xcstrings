@@ -1,12 +1,1001 @@
 {
   "sourceLanguage": "uk",
   "strings": {
+    "%@ / день": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ / day"
+          }
+        }
+      }
+    },
+    "%@ · %@ за день": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ per day"
+          }
+        }
+      }
+    },
+    "%lld%% · ціль %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld%% · goal %2$@"
+          }
+        }
+      }
+    },
+    "1. Параметри → Здоров'я → Доступ до даних і пристрої → Шаг": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Settings → Health → Data Access & Devices → Шаг"
+          }
+        }
+      }
+    },
+    "2. Увімкни «Відстань ходьби та бігу» і «Кроки».": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2. Turn on “Walking + Running Distance” and “Steps”."
+          }
+        }
+      }
+    },
+    "3. Повернись у Шаг і потягни екран вниз, щоб оновити.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3. Come back to Шаг and pull down to refresh."
+          }
+        }
+      }
+    },
+    "Health недоступний": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Health unavailable"
+          }
+        }
+      }
+    },
+    "iOS показує запит доступу лише один раз. Якщо ти вже відповів, змінити вибір можна тільки в Параметрах.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS asks for access only once. If you already answered, you can change it only in Settings."
+          }
+        }
+      }
+    },
+    "iPhone + Apple Watch": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone + Apple Watch"
+          }
+        }
+      }
+    },
+    "steps.word": {
+      "comment": "Only the word for steps, in the plural form for the number. The number is shown separately.",
+      "localizations": {
+        "uk": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "крок"
+                }
+              },
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "кроки"
+                }
+              },
+              "many": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "кроків"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "кроку"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "step"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "steps"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "streak.best": {
+      "localizations": {
+        "uk": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "рекорд %lld день"
+                }
+              },
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "рекорд %lld дні"
+                }
+              },
+              "many": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "рекорд %lld днів"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "рекорд %lld дня"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "best: %lld day"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "best: %lld days"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "streak.current": {
+      "localizations": {
+        "uk": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld день поспіль"
+                }
+              },
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld дні поспіль"
+                }
+              },
+              "many": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld днів поспіль"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld дня поспіль"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld day in a row"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld days in a row"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "today.accessibility": {
+      "localizations": {
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сьогодні пройдено %1$@, %2$#@percent@ цілі"
+          },
+          "substitutions": {
+            "percent": {
+              "argNum": 2,
+              "formatSpecifier": "lld",
+              "variations": {
+                "plural": {
+                  "one": {
+                    "stringUnit": {
+                      "state": "translated",
+                      "value": "%arg відсоток"
+                    }
+                  },
+                  "few": {
+                    "stringUnit": {
+                      "state": "translated",
+                      "value": "%arg відсотки"
+                    }
+                  },
+                  "many": {
+                    "stringUnit": {
+                      "state": "translated",
+                      "value": "%arg відсотків"
+                    }
+                  },
+                  "other": {
+                    "stringUnit": {
+                      "state": "translated",
+                      "value": "%arg відсотка"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today you walked %1$@, %2$lld percent of your goal"
+          }
+        }
+      }
+    },
+    "unit.km.spoken": {
+      "localizations": {
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "кілометра"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kilometers"
+          }
+        }
+      }
+    },
+    "unit.mi.spoken": {
+      "localizations": {
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "милі"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "miles"
+          }
+        }
+      }
+    },
+    "Історія": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        }
+      }
+    },
+    "Авто": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto"
+          }
+        }
+      }
+    },
+    "Без подвоєння: Health сам об'єднує записи з обох пристроїв.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No double counting: Health merges records from both devices."
+          }
+        }
+      }
+    },
+    "Без серверів, акаунтів, аналітики й реклами.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No servers, accounts, analytics or ads."
+          }
+        }
+      }
+    },
+    "Версія": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
+        }
+      }
+    },
+    "Вигляд": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance"
+          }
+        }
+      }
+    },
+    "Виконай ціль сьогодні · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hit your goal today · %@"
+          }
+        }
+      }
+    },
+    "Виконай ціль, щоб почати серію": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hit your goal to start a streak"
+          }
+        }
+      }
+    },
+    "Відкрити «Здоров'я»": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Health"
+          }
+        }
+      }
+    },
+    "Відстань": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Distance"
+          }
+        }
+      }
+    },
+    "Далі": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next"
+          }
+        }
+      }
+    },
+    "Дані": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data"
+          }
+        }
+      }
+    },
+    "Дані з Apple Health": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data from Apple Health"
+          }
+        }
+      }
+    },
+    "Дата": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date"
+          }
+        }
+      }
+    },
+    "Денна ціль": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily goal"
+          }
+        }
+      }
+    },
+    "Дозволити доступ до Health": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Health access"
+          }
+        }
+      }
+    },
+    "Доступ до Health": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Health access"
+          }
+        }
+      }
+    },
+    "Зазвичай": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usual"
+          }
+        }
+      }
+    },
+    "Зазвичай · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usual · %@"
+          }
+        }
+      }
+    },
+    "Запитати доступ ще раз": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask for access again"
+          }
+        }
+      }
+    },
+    "Збільшити ціль": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Increase goal"
+          }
+        }
+      }
+    },
+    "Зменшити ціль": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decrease goal"
+          }
+        }
+      }
+    },
+    "Крок %lld з %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Step %1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "Крок зміни — %@. Ціль використовується для кільця, серій і віджетів.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Step: %@. The goal is used for the ring, streaks and widgets."
+          }
+        }
+      }
+    },
+    "Кільце заповнюється до цієї відстані. Змінити можна будь-коли в налаштуваннях.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The ring fills up to this distance. You can change it any time in Settings."
+          }
+        }
+      }
+    },
+    "Лише читання": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read-only"
+          }
+        }
+      }
+    },
+    "Можливо, Шаг не має доступу до Health. Перевір: **Параметри → Здоров'я → Доступ до даних і пристрої → Шаг** і увімкни «Відстань ходьби та бігу» та «Кроки».": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаг may not have access to Health. Check **Settings → Health → Data Access & Devices → Шаг** and turn on “Walking + Running Distance” and “Steps”."
+          }
+        }
+      }
+    },
+    "Місяць": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Month"
+          }
+        }
+      }
+    },
+    "На цьому пристрої немає Apple Health, тому Шагу нема звідки брати дані.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device has no Apple Health, so Шаг has nowhere to read data from."
+          }
+        }
+      }
+    },
+    "Найкращий": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Best"
+          }
+        }
+      }
+    },
+    "Налаштування": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "Наступний період": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next period"
+          }
+        }
+      }
+    },
+    "Немає даних": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No data"
+          }
+        }
+      }
+    },
+    "Нічого не залишає телефон": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing leaves your phone"
+          }
+        }
+      }
+    },
+    "Одиниці": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Units"
+          }
+        }
+      }
+    },
+    "Оновити": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh"
+          }
+        }
+      }
+    },
+    "Період": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Period"
+          }
+        }
+      }
+    },
+    "Попередній період": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous period"
+          }
+        }
+      }
+    },
+    "Почати": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start"
+          }
+        }
+      }
+    },
+    "Про застосунок": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About"
+          }
+        }
+      }
+    },
+    "Пізніше": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Later"
+          }
+        }
+      }
+    },
+    "Рік": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Year"
+          }
+        }
+      }
+    },
+    "Світла": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        }
+      }
+    },
+    "Середнє": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Average"
+          }
+        }
+      }
+    },
+    "Серії поки немає": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No streak yet"
+          }
+        }
+      }
+    },
+    "Скільки ти пройшов сьогодні — за одну секунду.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How far you walked today — in one second."
+          }
+        }
+      }
+    },
+    "Скільки ти пройшов сьогодні.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How far you walked today."
+          }
+        }
+      }
+    },
+    "Сума": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total"
+          }
+        }
+      }
+    },
     "Сьогодні": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Today"
+          }
+        }
+      }
+    },
+    "Сьогодні ще не виконано · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not done today yet · %@"
+          }
+        }
+      }
+    },
+    "Так само": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Same"
+          }
+        }
+      }
+    },
+    "Твоя денна ціль": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your daily goal"
+          }
+        }
+      }
+    },
+    "Тема": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Theme"
+          }
+        }
+      }
+    },
+    "Темна": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        }
+      }
+    },
+    "Тиждень": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Week"
+          }
+        }
+      }
+    },
+    "Учора": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yesterday"
+          }
+        }
+      }
+    },
+    "Учора · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yesterday · %@"
+          }
+        }
+      }
+    },
+    "Ціль": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal"
+          }
+        }
+      }
+    },
+    "Ціль %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal %@"
+          }
+        }
+      }
+    },
+    "Ціль виконано": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal reached"
+          }
+        }
+      }
+    },
+    "Шаг": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаг"
+          }
+        }
+      }
+    },
+    "Шаг лише читає дані з Apple Health на цьому iPhone. Нічого не відправляється в інтернет.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаг only reads Apple Health data on this iPhone. Nothing is sent to the internet."
+          }
+        }
+      }
+    },
+    "Шаг нічого не записує в Health.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаг never writes to Health."
+          }
+        }
+      }
+    },
+    "Шаг читає відстань і кроки, які iPhone та Apple Watch уже записують у Health.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаг reads the distance and steps that your iPhone and Apple Watch already record in Health."
+          }
+        }
+      }
+    },
+    "Шаг читає лише «Відстань ходьби та бігу» і «Кроки». Якщо число не збігається з Apple Health або дорівнює нулю, перевір доступ:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаг reads only “Walking + Running Distance” and “Steps”. If the number differs from Apple Health or is zero, check access:"
+          }
+        }
+      }
+    },
+    "більше, ніж зазвичай": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "more than usual"
+          }
+        }
+      }
+    },
+    "більше, ніж учора": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "more than yesterday"
           }
         }
       }
@@ -21,6 +1010,26 @@
         }
       }
     },
+    "менше, ніж зазвичай": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "less than usual"
+          }
+        }
+      }
+    },
+    "менше, ніж учора": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "less than yesterday"
+          }
+        }
+      }
+    },
     "милі": {
       "localizations": {
         "en": {
@@ -31,22 +1040,42 @@
         }
       }
     },
-    "%@ кроків": {
+    "ще немає даних": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ steps"
+            "value": "no data yet"
           }
         }
       }
     },
-    "Скільки ти пройшов сьогодні.": {
+    "як зазвичай": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "How far you walked today."
+            "value": "as usual"
+          }
+        }
+      }
+    },
+    "як і вчора": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "same as yesterday"
+          }
+        }
+      }
+    },
+    "≈ %@ · %@ ходьби": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "≈ %1$@ · %2$@ of walking"
           }
         }
       }

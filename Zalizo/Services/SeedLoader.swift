@@ -21,6 +21,53 @@ enum SeedLoader {
         } catch {
             Log.data.error("Exercise seed failed: \(error.localizedDescription, privacy: .public)")
         }
+        do {
+            try seedPrograms(context: context, bundle: bundle)
+        } catch {
+            Log.data.error("Program seed failed: \(error.localizedDescription, privacy: .public)")
+        }
+    }
+
+    static func seedPrograms(context: ModelContext, bundle: Bundle = .main) throws {
+        guard let url = bundle.url(forResource: "programs", withExtension: "json") else {
+            throw SeedError.missingResource("programs.json")
+        }
+        try seedPrograms(ProgramSeedFile.decode(Data(contentsOf: url)), context: context)
+    }
+
+    /// Built-in programs are inserted once and never overwritten — the user may have edited them.
+    static func seedPrograms(_ file: ProgramSeedFile, context: ModelContext) throws {
+        guard let settings = ProfileStore.settings(in: context), settings.programsSeedVersion < file.version else { return }
+        let existing = Set(try context.fetch(FetchDescriptor<Program>()).compactMap(\.seedSlug))
+        for seed in file.programs where !existing.contains(seed.slug) {
+            context.insert(makeProgram(seed))
+        }
+        settings.programsSeedVersion = file.version
+        try context.save()
+    }
+
+    static func makeProgram(_ seed: ProgramSeed) -> Program {
+        let program = Program(name: seed.name)
+        program.summary = seed.summary
+        program.audience = seed.audience
+        program.recommendedWeeks = seed.recommendedWeeks
+        program.progressionNotes = seed.progressionNotes
+        program.isBuiltIn = true
+        program.seedSlug = seed.slug
+        program.days = seed.days.enumerated().map { index, daySeed in
+            let day = ProgramDay(order: index, name: daySeed.name, focus: daySeed.focus)
+            day.exercises = daySeed.exercises.enumerated().map { order, item in
+                let planned = PlannedExercise(
+                    order: order, exerciseSlug: item.slug, sets: item.sets,
+                    repMin: item.repMin, repMax: item.repMax, restSeconds: item.restSeconds
+                )
+                planned.targetRIR = item.targetRIR
+                planned.note = item.note
+                return planned
+            }
+            return day
+        }
+        return program
     }
 
     static func seedExercises(context: ModelContext, bundle: Bundle = .main) throws {

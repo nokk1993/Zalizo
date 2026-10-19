@@ -1,0 +1,1149 @@
+{
+ "version": 1,
+ "programs": [
+  {
+   "slug": "mass-split-3",
+   "name": "Маса 3 дні: Спліт",
+   "summary": "Класичний спліт на три дні: груди і біцепс, спина і трицепс, ноги і плечі. 60–75 хвилин.",
+   "audience": "Для тих, хто вже тренувався хоча б кілька місяців і може приходити в зал тричі на тиждень.",
+   "recommendedWeeks": 12,
+   "sessionsPerWeek": 3,
+   "progressionNotes": "Подвійна прогресія: коли в усіх робочих підходах досягнуто верхньої межі повторів — наступного разу додай вагу (верх тіла +2,5 кг, низ +5 кг) і почни з нижньої межі. Додаток підкаже це автоматично. Кожні 6–8 тижнів — розвантажувальний тиждень.",
+   "days": [
+    {
+     "name": "День A — Груди + Біцепс",
+     "focus": "Груди, біцепс",
+     "exercises": [
+      {
+       "slug": "barbell-bench-press",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "incline-dumbbell-press",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "chest-dips",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": "Або жим у тренажері"
+      },
+      {
+       "slug": "cable-crossover",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": "Або розведення гантелей"
+      },
+      {
+       "slug": "barbell-curl",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 105,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "incline-dumbbell-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "hammer-curl",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "День B — Спина + Трицепс",
+     "focus": "Спина, трицепс",
+     "exercises": [
+      {
+       "slug": "pull-up",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": "Або тяга верхнього блока"
+      },
+      {
+       "slug": "barbell-bent-over-row",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 150,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "seated-cable-row",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 105,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "one-arm-dumbbell-row",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "face-pull",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "close-grip-bench-press",
+       "sets": 3,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "ez-skull-crusher",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": "Або розгинання з-за голови"
+      },
+      {
+       "slug": "triceps-pushdown",
+       "sets": 2,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "День C — Ноги + Плечі (+ прес)",
+     "focus": "Ноги, плечі, прес",
+     "exercises": [
+      {
+       "slug": "barbell-back-squat",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "romanian-deadlift",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "leg-press",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "lying-leg-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "standing-calf-raise",
+       "sets": 4,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "overhead-press",
+       "sets": 3,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "dumbbell-lateral-raise",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "hanging-leg-raise",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": "Або планка 45–60 с"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "full-body-3",
+   "name": "Full Body 3 дні (A/B)",
+   "summary": "Усе тіло за тренування, два чергування: A/B/A на одному тижні, B/A/B на наступному. 50–60 хвилин.",
+   "audience": "Для новачків: кожна група м'язів працює тричі на тиждень, базові рухи вивчаються найшвидше.",
+   "recommendedWeeks": 12,
+   "sessionsPerWeek": 3,
+   "progressionNotes": "Подвійна прогресія: коли в усіх робочих підходах досягнуто верхньої межі повторів — наступного разу додай вагу (верх тіла +2,5 кг, низ +5 кг) і почни з нижньої межі. Додаток підкаже це автоматично. Кожні 6–8 тижнів — розвантажувальний тиждень.",
+   "days": [
+    {
+     "name": "Full Body A",
+     "focus": "Усе тіло: присідання, жим лежачи",
+     "exercises": [
+      {
+       "slug": "barbell-back-squat",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "barbell-bench-press",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "seated-cable-row",
+       "sets": 4,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "lying-leg-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "dumbbell-lateral-raise",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "dumbbell-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Full Body B",
+     "focus": "Усе тіло: румунська тяга, жим стоячи",
+     "exercises": [
+      {
+       "slug": "romanian-deadlift",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "leg-press",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "overhead-press",
+       "sets": 3,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "lat-pulldown",
+       "sets": 4,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "incline-dumbbell-press",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "rope-pushdown",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "upper-lower-4",
+   "name": "Upper/Lower 4 дні",
+   "summary": "Верх і низ тіла по черзі, кожна група двічі на тиждень. 60–70 хвилин.",
+   "audience": "Для середнього рівня, коли є 4 дні на тиждень. Добрий баланс об'єму і відновлення.",
+   "recommendedWeeks": 10,
+   "sessionsPerWeek": 4,
+   "progressionNotes": "Подвійна прогресія: коли в усіх робочих підходах досягнуто верхньої межі повторів — наступного разу додай вагу (верх тіла +2,5 кг, низ +5 кг) і почни з нижньої межі. Додаток підкаже це автоматично. Кожні 6–8 тижнів — розвантажувальний тиждень.",
+   "days": [
+    {
+     "name": "Верх A",
+     "focus": "Груди, спина, плечі, руки",
+     "exercises": [
+      {
+       "slug": "barbell-bench-press",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "barbell-bent-over-row",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "seated-dumbbell-press",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "lat-pulldown",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 105,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "barbell-curl",
+       "sets": 2,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "triceps-pushdown",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Низ A",
+     "focus": "Квадрицепс, задня поверхня, литки",
+     "exercises": [
+      {
+       "slug": "barbell-back-squat",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "romanian-deadlift",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "leg-press",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "lying-leg-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "standing-calf-raise",
+       "sets": 4,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "cable-crunch",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Верх B",
+     "focus": "Груди, спина, плечі, руки",
+     "exercises": [
+      {
+       "slug": "incline-dumbbell-press",
+       "sets": 4,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "pull-up",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "cable-crossover",
+       "sets": 2,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "chest-supported-row",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 105,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "dumbbell-lateral-raise",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "hammer-curl",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "cable-overhead-extension",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Низ B",
+     "focus": "Сідниці, квадрицепс, задня поверхня",
+     "exercises": [
+      {
+       "slug": "bulgarian-split-squat",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "hip-thrust",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "seated-leg-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "leg-extension",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "seated-calf-raise",
+       "sets": 4,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "hanging-leg-raise",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "ppl-3",
+   "name": "Push/Pull/Legs 3 дні",
+   "summary": "Жими, тяги, ноги — по одному разу на тиждень. 60–75 хвилин.",
+   "audience": "Для тих, хто має 3 дні і любить окремий день для кожного типу рухів.",
+   "recommendedWeeks": 10,
+   "sessionsPerWeek": 3,
+   "progressionNotes": "Подвійна прогресія: коли в усіх робочих підходах досягнуто верхньої межі повторів — наступного разу додай вагу (верх тіла +2,5 кг, низ +5 кг) і почни з нижньої межі. Додаток підкаже це автоматично. Кожні 6–8 тижнів — розвантажувальний тиждень.",
+   "days": [
+    {
+     "name": "Push — жими",
+     "focus": "Груди, плечі, трицепс",
+     "exercises": [
+      {
+       "slug": "barbell-bench-press",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "incline-dumbbell-press",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "seated-dumbbell-press",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "dumbbell-lateral-raise",
+       "sets": 4,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "cable-crossover",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "rope-pushdown",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "overhead-dumbbell-extension",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Pull — тяги",
+     "focus": "Спина, задня дельта, біцепс",
+     "exercises": [
+      {
+       "slug": "pull-up",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "barbell-bent-over-row",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 150,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "seated-cable-row",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 105,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "face-pull",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "barbell-curl",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "incline-dumbbell-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "hammer-curl",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Legs — ноги",
+     "focus": "Квадрицепс, задня поверхня, сідниці, литки",
+     "exercises": [
+      {
+       "slug": "barbell-back-squat",
+       "sets": 4,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "romanian-deadlift",
+       "sets": 4,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "leg-press",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "lying-leg-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "leg-extension",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "standing-calf-raise",
+       "sets": 4,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "cable-crunch",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "ppl-6",
+   "name": "Push/Pull/Legs 6 днів",
+   "summary": "Жими, тяги, ноги двічі на тиждень у двох варіантах (A і B). 45–60 хвилин.",
+   "audience": "Для досвідчених, які можуть тренуватися 6 днів і добре відновлюються (сон 7–9 годин).",
+   "recommendedWeeks": 8,
+   "sessionsPerWeek": 6,
+   "progressionNotes": "Подвійна прогресія: коли в усіх робочих підходах досягнуто верхньої межі повторів — наступного разу додай вагу (верх тіла +2,5 кг, низ +5 кг) і почни з нижньої межі. Додаток підкаже це автоматично. Кожні 6–8 тижнів — розвантажувальний тиждень.",
+   "days": [
+    {
+     "name": "Push A",
+     "focus": "Груди, плечі, трицепс",
+     "exercises": [
+      {
+       "slug": "barbell-bench-press",
+       "sets": 3,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "seated-dumbbell-press",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "cable-crossover",
+       "sets": 2,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "dumbbell-lateral-raise",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "rope-pushdown",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Pull A",
+     "focus": "Спина, біцепс",
+     "exercises": [
+      {
+       "slug": "pull-up",
+       "sets": 3,
+       "repMin": 6,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "barbell-bent-over-row",
+       "sets": 3,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 150,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "face-pull",
+       "sets": 2,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "barbell-curl",
+       "sets": 2,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Legs A",
+     "focus": "Квадрицепс, задня поверхня",
+     "exercises": [
+      {
+       "slug": "barbell-back-squat",
+       "sets": 3,
+       "repMin": 6,
+       "repMax": 8,
+       "restSeconds": 180,
+       "targetRIR": 1,
+       "note": ""
+      },
+      {
+       "slug": "romanian-deadlift",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 150,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "leg-extension",
+       "sets": 2,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "standing-calf-raise",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "cable-crunch",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Push B",
+     "focus": "Груди, плечі, трицепс",
+     "exercises": [
+      {
+       "slug": "incline-dumbbell-press",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "machine-chest-press",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "dumbbell-lateral-raise",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "overhead-dumbbell-extension",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Pull B",
+     "focus": "Спина, задня дельта, біцепс",
+     "exercises": [
+      {
+       "slug": "lat-pulldown",
+       "sets": 3,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "chest-supported-row",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 105,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "reverse-pec-deck",
+       "sets": 2,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "incline-dumbbell-curl",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 75,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    },
+    {
+     "name": "Legs B",
+     "focus": "Сідниці, квадрицепс, задня поверхня",
+     "exercises": [
+      {
+       "slug": "leg-press",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "bulgarian-split-squat",
+       "sets": 2,
+       "repMin": 8,
+       "repMax": 10,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "lying-leg-curl",
+       "sets": 3,
+       "repMin": 10,
+       "repMax": 12,
+       "restSeconds": 90,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "hip-thrust",
+       "sets": 2,
+       "repMin": 8,
+       "repMax": 12,
+       "restSeconds": 120,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "seated-calf-raise",
+       "sets": 3,
+       "repMin": 12,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      },
+      {
+       "slug": "hanging-leg-raise",
+       "sets": 2,
+       "repMin": 10,
+       "repMax": 15,
+       "restSeconds": 60,
+       "targetRIR": 2,
+       "note": ""
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

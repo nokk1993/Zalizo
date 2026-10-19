@@ -311,3 +311,33 @@ extension BodyRegion {
         }
     }
 }
+
+extension ExerciseSubstitution.Reason {
+    /// "немає обладнання: Бруси" / "ризик для: Поперек"
+    var text: String {
+        switch self {
+        case .missingEquipment(let items):
+            String(localized: "немає обладнання: \(items.map { String(localized: $0.title) }.joined(separator: ", "))")
+        case .injuryRisk(let areas):
+            String(localized: "ризик для: \(areas.map { String(localized: $0.title) }.joined(separator: ", "))")
+        }
+    }
+}
+
+extension Volume.Zone {
+    var title: LocalizedStringResource {
+        switch self {
+        case .low: "мало"
+        case .optimal: "норма"
+        case .high: "багато"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .low: Theme.Palette.warning
+        case .optimal: Theme.Palette.success
+        case .high: Theme.Palette.danger
+        }
+    }
+}

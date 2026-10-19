@@ -121,6 +121,9 @@ final class OnboardingModel {
 
     func finish() {
         persist()
+        if profile.activeProgramID == nil {
+            ProgramStore.activate(seedSlug: summary.recommendedProgramSlug, context: context)
+        }
         profile.onboardingCompleted = true
         profile.blockStartDate = profile.blockStartDate ?? .now
         save()

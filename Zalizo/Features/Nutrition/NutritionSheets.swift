@@ -87,7 +87,7 @@ struct AddFoodSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Скасувати") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Додати") { save() }
                         .bold()
                         .disabled(!canSave)
@@ -173,6 +173,6 @@ struct ShoppingListView: View {
     }
 
     private func shareText(_ items: [MenuBuilder.ShoppingItem]) -> String {
-        items.map { "• \($0.food.name) — \(amount($0))" }.joined(separator: "\n")
+        items.map { "• \($0.food.name) - \(amount($0))" }.joined(separator: "\n")
     }
 }

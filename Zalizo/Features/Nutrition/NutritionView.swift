@@ -162,7 +162,7 @@ private struct AdaptiveCard: View {
                 Button(proposal.deltaKcal > 0 ? LocalizedStringResource("Додати \(proposal.deltaKcal) ккал") : LocalizedStringResource("Зменшити на \(-proposal.deltaKcal) ккал")) {
                     onResolve(true)
                 }
-                .buttonStyle(.glassProminent)
+                .buttonStyle(.zalPrimary)
                 Button("Не зараз") { onResolve(false) }
                     .buttonStyle(.glass)
             }
@@ -174,8 +174,8 @@ private struct AdaptiveCard: View {
     private var message: LocalizedStringResource {
         switch proposal.reason {
         case .losing: "Вага не росте, а знижується. Пропонуємо додати \(proposal.deltaKcal) ккал на день."
-        case .tooSlow: "Ти набираєш повільно — додаємо \(proposal.deltaKcal) ккал на день."
-        case .tooFast: "Набір надто швидкий: частина набору — жир. Пропонуємо мінус \(-proposal.deltaKcal) ккал."
+        case .tooSlow: "Ти набираєш повільно - додаємо \(proposal.deltaKcal) ккал на день."
+        case .tooFast: "Набір надто швидкий: частина набору - жир. Пропонуємо мінус \(-proposal.deltaKcal) ккал."
         }
     }
 }
@@ -248,7 +248,7 @@ private struct WaterCard: View {
                         onChange(250)
                         Haptics.selection()
                     }
-                    .buttonStyle(.glassProminent)
+                    .buttonStyle(.zalPrimary)
                     .tint(Theme.Palette.water)
                     Button("−250") { onChange(-250) }
                         .buttonStyle(.glass)
@@ -320,7 +320,7 @@ private struct MenuSection: View {
                 }
                 .buttonStyle(.glass)
 
-                Text("Грамовки — для сирих продуктів і сухих круп. Якщо щось не підходить — заміни на схожий продукт з тієї ж групи.")
+                Text("Грамовки - для сирих продуктів і сухих круп. Якщо щось не підходить - заміни на схожий продукт з тієї ж групи.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -406,7 +406,7 @@ private struct NormsSection: View {
                         Text("+200").tag(200)
                     }
                     .pickerStyle(.segmented)
-                    Text("Трохи більше вуглеводів у день тренування — більше енергії на тренуванні. Тижнева калорійність майже не зміниться.")
+                    Text("Трохи більше вуглеводів у день тренування - більше енергії на тренуванні. Тижнева калорійність майже не зміниться.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }

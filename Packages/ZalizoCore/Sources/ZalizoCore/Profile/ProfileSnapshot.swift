@@ -97,7 +97,7 @@ public enum PlanCalculator {
         )
     }
 
-    /// What changes between two summaries — shown to the user before applying profile edits.
+    /// What changes between two summaries - shown to the user before applying profile edits.
     public static func changes(from old: PlanSummary, to new: PlanSummary) -> [PlanChange] {
         var result: [PlanChange] = []
         func add(_ field: PlanChange.Field, _ before: Double?, _ after: Double?) {

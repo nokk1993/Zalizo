@@ -16,7 +16,7 @@ extension ExperienceLevel {
     var title: LocalizedStringResource {
         switch self {
         case .beginner: "Новачок (до 1 року)"
-        case .intermediate: "Середній (1–3 роки)"
+        case .intermediate: "Середній (1-3 роки)"
         case .advanced: "Досвідчений (3+ роки)"
         }
     }

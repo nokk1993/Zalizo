@@ -50,7 +50,7 @@ struct WorkoutView: View {
                             .accessibilityLabel(Text("Меню тренування"))
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Завершити") { showSummary = true }
                         .bold()
                 }
@@ -234,7 +234,7 @@ struct ExerciseCard: View {
                 NavigationStack {
                     ExerciseDetailView(exercise: exercise)
                         .toolbar {
-                            ToolbarItem(placement: .confirmationAction) {
+                            ToolbarItem(placement: .topBarTrailing) {
                                 Button("Готово") { showDetail = false }
                             }
                         }
@@ -336,7 +336,7 @@ struct PrescriptionSummary: View {
 }
 
 enum PrescriptionText {
-    /// "4 × 6 × 72,5 кг" / "3 × 8–12 (власна вага)" / "3 × 45 с"
+    /// "4 × 6 × 72,5 кг" / "3 × 8-12 (власна вага)" / "3 × 45 с"
     static func target(sets: Int, prescription: Prescription, isTimed: Bool) -> String {
         let reps = Set(prescription.reps)
         let repsText = reps.count == 1 ? "\(prescription.reps.first ?? 0)" : prescription.reps.map(String.init).joined(separator: "/")
@@ -361,7 +361,7 @@ enum PrescriptionText {
         case .fromBaseline:
             String(localized: "Вага розрахована з твого результату в анкеті")
         case .increaseWeight:
-            String(localized: "Минулого разу — верх діапазону в усіх підходах. Додаємо вагу!")
+            String(localized: "Минулого разу - верх діапазону в усіх підходах. Додаємо вагу!")
         case .addReps:
             String(localized: "Та сама вага: +1 повтор у найслабшому підході")
         case .repeatWeight:
@@ -540,7 +540,7 @@ struct RestTimerBar: View {
                 Button("+30 с", action: onAdd)
                     .buttonStyle(.glass)
                 Button("Далі", action: onSkip)
-                    .buttonStyle(.glassProminent)
+                    .buttonStyle(.zalPrimary)
             }
             .padding(Theme.Spacing.m)
             .glassEffect(.regular, in: .rect(cornerRadius: Theme.Radius.card))
@@ -597,7 +597,7 @@ private struct CalibrationSheet: View {
                     .buttonStyle(.glass)
                 }
             }
-            Text("0 — до відмови, 2 — ще два повтори в запасі.")
+            Text("0 - до відмови, 2 - ще два повтори в запасі.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }

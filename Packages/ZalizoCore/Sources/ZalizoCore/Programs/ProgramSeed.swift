@@ -75,7 +75,7 @@ public struct ExerciseInfo: Equatable, Sendable {
 }
 
 public enum ProgramVolume {
-    /// Major groups that must land in the 10–20 weekly sets corridor.
+    /// Major groups that must land in the 10-20 weekly sets corridor.
     public static let majorGroups: [MuscleGroup] = [.chest, .back, .shoulders, .quads, .hamstrings, .glutes, .biceps, .triceps]
 
     public struct DayExercise: Sendable {

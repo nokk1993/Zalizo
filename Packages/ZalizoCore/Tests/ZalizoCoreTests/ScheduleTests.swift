@@ -68,7 +68,7 @@ struct ScheduleTests {
 @Suite("Session estimate")
 struct SessionEstimateTests {
     @Test func dayAEstimate() {
-        // Day A of the 3-day split ≈ 65–75 minutes
+        // Day A of the 3-day split ≈ 65-75 minutes
         let items = [
             SessionEstimate.Item(sets: 4, restSeconds: 180, hasWarmup: true),
             .init(sets: 3, restSeconds: 120, hasWarmup: false),

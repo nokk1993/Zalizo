@@ -1,7 +1,7 @@
 import Foundation
 
 /// Bi-weekly calorie correction based on the 7-day moving average of body weight.
-/// The result is only a proposal — the user confirms it with a button.
+/// The result is only a proposal - the user confirms it with a button.
 public enum AdaptiveCalories {
     public static let checkIntervalDays = 14
     /// Gain below this (% body weight / week) is considered too slow.

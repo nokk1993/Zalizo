@@ -71,7 +71,7 @@ public extension Calendar {
 }
 
 public extension DateInterval {
-    /// `start ≤ date < end` — `contains(_:)` also includes `end`, which double-counts midnight.
+    /// `start ≤ date < end` - `contains(_:)` also includes `end`, which double-counts midnight.
     func containsHalfOpen(_ date: Date) -> Bool {
         date >= start && date < end
     }

@@ -4,7 +4,7 @@ import ZalizoCore
 
 // Schema v1. The full data model is defined up front so that the first build on the phone
 // already stores data in its final shape. Any later change goes into SchemaV2 + a migration
-// stage in `ZalizoMigrationPlan` — never edit these models in place after release.
+// stage in `ZalizoMigrationPlan` - never edit these models in place after release.
 //
 // Enum-typed values are stored as raw strings (with typed accessors) so that adding enum cases
 // never breaks decoding of existing stores. Cross-entity references to exercises use the stable
@@ -150,7 +150,7 @@ enum SchemaV1: VersionedSchema {
         }
     }
 
-    /// Known lift entered in onboarding ("bench 70 kg × 10") — seeds working weights.
+    /// Known lift entered in onboarding ("bench 70 kg × 10") - seeds working weights.
     @Model
     final class StrengthBaseline {
         var id = UUID()
@@ -240,7 +240,7 @@ enum SchemaV1: VersionedSchema {
         var riskAreasRaw: [String] = []
         /// Asset catalog image names (start, finish).
         var imageNames: [String] = []
-        /// File name in Documents/ExercisePhotos — overrides bundled images.
+        /// File name in Documents/ExercisePhotos - overrides bundled images.
         var customImageFileName: String?
         var isCustom = false
         var isFavorite = false
@@ -343,13 +343,13 @@ enum SchemaV1: VersionedSchema {
         var endedAt: Date?
         var isFinished = false
         var programDayID: UUID?
-        /// Snapshot of the day name — survives program edits/deletion.
+        /// Snapshot of the day name - survives program edits/deletion.
         var title = ""
         var isDeload = false
         var wellnessSleep: Int?
         var wellnessFatigue: Int?
         var wellnessSoreness: Int?
-        /// Post-workout feeling 1–5
+        /// Post-workout feeling 1-5
         var feeling: Int?
         var note = ""
         @Relationship(deleteRule: .cascade, inverse: \PerformedExercise.session)

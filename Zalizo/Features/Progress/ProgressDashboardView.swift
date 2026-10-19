@@ -36,7 +36,7 @@ struct ProgressDashboardView: View {
                         ContentUnavailableView {
                             Label("Ще немає тренувань", systemImage: "chart.line.uptrend.xyaxis")
                         } description: {
-                            Text("Заверши перше тренування — тут з'являться графіки сили, об'єму і рекорди.")
+                            Text("Заверши перше тренування - тут з'являться графіки сили, об'єму і рекорди.")
                         }
                     }
                 } else {
@@ -73,7 +73,7 @@ struct ProgressDashboardView: View {
                     } header: {
                         Text("Об'єм цього тижня")
                     } footer: {
-                        Text("Робочі підходи на групу м'язів: менше 10 — мало, 10–20 — норма, більше 20 — багато.")
+                        Text("Робочі підходи на групу м'язів: менше 10 - мало, 10-20 - норма, більше 20 - багато.")
                     }
                 }
 
@@ -126,7 +126,7 @@ struct WeightSummary: View {
         let summary = snapshot.map { PlanCalculator.summary(for: $0) }
         let weekly = WeightTrend.weeklyChangeKg(StatsStore.weightSamples(entries))
         if samples.isEmpty {
-            Text("Додай зважування — тут з'явиться графік ваги з ковзним середнім і прогнозом.")
+            Text("Додай зважування - тут з'явиться графік ваги з ковзним середнім і прогнозом.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         } else {
@@ -162,7 +162,7 @@ struct WeightSummary: View {
 
 private func paceVerdict(percent: Double, range: ClosedRange<Double>) -> LocalizedStringResource {
     if percent < range.lowerBound { return "Повільніше за рекомендований темп" }
-    if percent > range.upperBound { return "Швидше за рекомендований темп — частина набору може бути жиром" }
+    if percent > range.upperBound { return "Швидше за рекомендований темп - частина набору може бути жиром" }
     return "У рекомендованому темпі"
 }
 

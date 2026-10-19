@@ -94,13 +94,13 @@ private struct GoalRow: View {
             return String(localized: "Цього місяця: \(Int(status.current)) з \(Int(goal.targetValue))")
         }
         guard let forecast = status.forecastDate else {
-            return String(localized: "Прогноз з'явиться, коли буде більше даних за 1–2 тижні")
+            return String(localized: "Прогноз з'явиться, коли буде більше даних за 1-2 тижні")
         }
         let date = forecast.formatted(date: .abbreviated, time: .omitted)
         if status.onTrack == false {
-            return String(localized: "За поточним темпом — до \(date), пізніше за дедлайн")
+            return String(localized: "За поточним темпом - до \(date), пізніше за дедлайн")
         }
-        return String(localized: "За поточним темпом — до \(date)")
+        return String(localized: "За поточним темпом - до \(date)")
     }
 }
 
@@ -211,7 +211,7 @@ private struct AddGoalSheet: View {
             .onAppear { target = defaultTarget(kind) }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Скасувати") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) { Button("Зберегти") { save() }.bold() }
+                ToolbarItem(placement: .topBarTrailing) { Button("Зберегти") { save() }.bold() }
             }
         }
     }
@@ -236,9 +236,9 @@ private struct AddGoalSheet: View {
         let start = currentValue(kind)
         let title: String = switch kind {
         case .bodyWeight: String(localized: "Вага \(target.kgText) кг")
-        case .liftWeight: String(localized: "\(exercises.first { $0.slug == exerciseSlug }?.nameUk ?? "") — \(target.kgText) кг")
+        case .liftWeight: String(localized: "\(exercises.first { $0.slug == exerciseSlug }?.nameUk ?? "") - \(target.kgText) кг")
         case .workoutsPerMonth: String(localized: "\(Int(target)) тренувань за місяць")
-        case .measurement: String(localized: "\(String(localized: measurement.title)) — \(target.kgText) см")
+        case .measurement: String(localized: "\(String(localized: measurement.title)) - \(target.kgText) см")
         }
         let goal = Goal(kind: kind, title: title, startValue: kind == .workoutsPerMonth ? 0 : start, targetValue: target)
         goal.exerciseSlug = kind == .liftWeight ? exerciseSlug : nil

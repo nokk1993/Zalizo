@@ -59,7 +59,7 @@ struct WorkoutServiceTests {
         let second = WorkoutService.start(day: try dayA(context), in: context)
         let bench = try #require(second.orderedExercises.first)
         let working = bench.orderedSets.filter { !$0.isWarmup }
-        // 70 × 8 in all sets (top of 6–8) → +2.5 kg and back to 6 reps
+        // 70 × 8 in all sets (top of 6-8) → +2.5 kg and back to 6 reps
         #expect(working.allSatisfy { $0.weightKg == 72.5 && $0.reps == 6 })
     }
 

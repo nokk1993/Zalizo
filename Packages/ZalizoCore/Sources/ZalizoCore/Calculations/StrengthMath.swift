@@ -70,7 +70,7 @@ public enum WeightRounding {
         case up
     }
 
-    /// Rounds to a multiple of `step` (2.5 kg barbell, 1–2 kg dumbbells, machine stack…).
+    /// Rounds to a multiple of `step` (2.5 kg barbell, 1-2 kg dumbbells, machine stack…).
     public static func round(_ weight: Double, step: Double, mode: Mode = .nearest) -> Double {
         guard step > 0 else { return weight }
         let units = weight / step
@@ -133,7 +133,7 @@ public enum WarmupGenerator {
     static let ramp: [(fraction: Double, reps: Int)] = [(0.4, 8), (0.6, 5), (0.8, 3)]
 
     /// - Parameters:
-    ///   - barWeight: empty bar (barbell lifts) — nil for dumbbells/machines.
+    ///   - barWeight: empty bar (barbell lifts) - nil for dumbbells/machines.
     public static func sets(workingWeight: Double, mechanic: ExerciseMechanic, barWeight: Double?, step: Double) -> [WarmupSet] {
         guard mechanic == .compound, workingWeight > 0 else { return [] }
         var sets: [WarmupSet] = []
@@ -202,7 +202,7 @@ public enum Volume {
         case low, optimal, high
     }
 
-    /// Hypertrophy guideline: 10–20 hard sets per muscle per week.
+    /// Hypertrophy guideline: 10-20 hard sets per muscle per week.
     public static func zone(weeklySets: Double) -> Zone {
         if weeklySets < 10 { return .low }
         if weeklySets > 20 { return .high }

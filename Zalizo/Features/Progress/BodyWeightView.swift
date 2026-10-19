@@ -23,7 +23,7 @@ struct BodyWeightView: View {
                     period: period
                 )
             } footer: {
-                Text("Вага щодня коливається на 0,5–1,5 кг через воду і їжу. Дивись на лінію середнього за 7 днів — вона показує справжній тренд.")
+                Text("Вага щодня коливається на 0,5-1,5 кг через воду і їжу. Дивись на лінію середнього за 7 днів - вона показує справжній тренд.")
             }
             Section("Зважування") {
                 ForEach(entries) { entry in
@@ -74,7 +74,7 @@ struct AddWeightSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Скасувати") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Зберегти") {
                         ProfileStore.recordWeight(weight, on: date, context: context)
                         try? context.save()

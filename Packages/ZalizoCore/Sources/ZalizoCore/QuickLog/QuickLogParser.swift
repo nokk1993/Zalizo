@@ -43,7 +43,7 @@ public enum QuickLogParser {
         var sets = 1
         var nameTokens: [String] = []
 
-        // "70х10х3", "70x10", "100х5" — Latin/Cyrillic x between numbers.
+        // "70х10х3", "70x10", "100х5" - Latin/Cyrillic x between numbers.
         let compact = try? NSRegularExpression(pattern: #"(\d+(?:\.\d+)?)\s*[xх]\s*(\d+)(?:\s*[xх]\s*(\d+))?"#)
         var remainder = normalized
         if let compact, let match = compact.firstMatch(in: normalized, range: NSRange(normalized.startIndex..., in: normalized)) {

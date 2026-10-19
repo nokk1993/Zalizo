@@ -76,7 +76,7 @@ enum BodyShapes {
         return combined
     }
 
-    /// Head, neck, hands, pelvis, feet — never highlighted.
+    /// Head, neck, hands, pelvis, feet - never highlighted.
     static func neutral(_ side: BodySide) -> [Path] {
         var parts = [
             ellipse(39, 2, 22, 25),                 // head

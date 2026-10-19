@@ -8,6 +8,7 @@ struct ZalizoApp: App {
     @State private var appState = AppState()
 
     init() {
+        Theme.configureAppearance()
         do {
             let container = try Persistence.makeContainer()
             try Persistence.bootstrap(container.mainContext)
@@ -23,19 +24,19 @@ struct ZalizoApp: App {
     var body: some Scene {
         WindowGroup {
             if let container {
-                // `.themed()` reads settings via @Query, so it must sit inside `.modelContainer`.
                 RootView()
                     .themed()
                     .environment(appState)
                     .modelContainer(container)
             } else {
                 StartupErrorView(details: startupError ?? "")
+                    .themed()
             }
         }
     }
 }
 
-/// Shown only if the database cannot be opened — the app never crashes on startup.
+/// Shown only if the database cannot be opened - the app never crashes on startup.
 private struct StartupErrorView: View {
     let details: String
 
@@ -43,10 +44,11 @@ private struct StartupErrorView: View {
         ContentUnavailableView {
             Label("Не вдалося відкрити дані", systemImage: "exclamationmark.triangle")
         } description: {
-            Text("Спробуй перезапустити додаток. Якщо помилка повторюється — віднови дані з резервної копії в Профілі.")
+            Text("Спробуй перезапустити додаток. Якщо помилка повторюється - віднови дані з резервної копії в Профілі.")
             Text(details)
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
+        .zalScreen()
     }
 }

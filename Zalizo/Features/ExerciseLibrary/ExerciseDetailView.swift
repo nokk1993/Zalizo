@@ -47,7 +47,7 @@ struct ExerciseDetailView: View {
                     DetailSection(title: "Безпека", systemImage: "shield.lefthalf.filled") {
                         BulletList(items: exercise.safetyTips, symbol: "checkmark", color: Theme.Palette.success)
                         if !exercise.riskAreas.isEmpty {
-                            Text("Навантажує: \(exercise.riskAreas.map { String(localized: $0.title) }.joined(separator: ", ")). Якщо є обмеження — обери альтернативу.")
+                            Text("Навантажує: \(exercise.riskAreas.map { String(localized: $0.title) }.joined(separator: ", ")). Якщо є обмеження - обери альтернативу.")
                                 .font(.footnote)
                                 .foregroundStyle(.secondary)
                         }

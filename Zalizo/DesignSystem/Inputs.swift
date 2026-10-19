@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Large tappable card for single/multiple choice (onboarding, settings).
+/// Large tappable glass card for single/multiple choice (onboarding, settings).
 struct OptionCard: View {
     let title: LocalizedStringResource
     var subtitle: LocalizedStringResource?
@@ -15,10 +15,7 @@ struct OptionCard: View {
         } label: {
             HStack(spacing: Theme.Spacing.m) {
                 if let systemImage {
-                    Image(systemName: systemImage)
-                        .font(.title2)
-                        .frame(width: 36)
-                        .foregroundStyle(isSelected ? Color.accentColor : .secondary)
+                    IconBadge(systemImage: systemImage, tint: isSelected ? Theme.Palette.accent : .secondary, size: 42)
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title).font(.headline)
@@ -30,25 +27,35 @@ struct OptionCard: View {
                 }
                 .multilineTextAlignment(.leading)
                 Spacer(minLength: 0)
-                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .font(.title3)
-                    .foregroundStyle(isSelected ? Color.accentColor : Color.secondary.opacity(0.5))
+                ZStack {
+                    Circle()
+                        .strokeBorder(Color.white.opacity(isSelected ? 0 : 0.25), lineWidth: 1.5)
+                    if isSelected {
+                        Circle().fill(Theme.Palette.accent)
+                        Image(systemName: "checkmark")
+                            .font(.caption.weight(.heavy))
+                            .foregroundStyle(Theme.Palette.onAccent)
+                    }
+                }
+                .frame(width: 26, height: 26)
+                .shadow(color: Theme.Palette.accent.opacity(isSelected ? 0.6 : 0), radius: 8)
             }
             .padding(Theme.Spacing.l)
             .frame(maxWidth: .infinity, minHeight: Theme.largeTapTarget, alignment: .leading)
-            .background(.background.secondary, in: .rect(cornerRadius: Theme.Radius.card))
+            .background { GlassSurface(cornerRadius: Theme.Radius.card, tint: isSelected ? Theme.Palette.accent : nil) }
             .overlay {
-                RoundedRectangle(cornerRadius: Theme.Radius.card)
-                    .strokeBorder(isSelected ? Color.accentColor : .clear, lineWidth: 2)
+                RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
+                    .strokeBorder(isSelected ? Theme.Palette.accent.opacity(0.9) : .clear, lineWidth: 1.5)
             }
             .contentShape(.rect(cornerRadius: Theme.Radius.card))
+            .animation(.snappy(duration: 0.2), value: isSelected)
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(isSelected ? [.isSelected] : [])
     }
 }
 
-/// Small capsule toggle used in flow layouts (weekdays, food exclusions).
+/// Capsule toggle used in flow layouts and pill pickers (weekdays, food exclusions, periods).
 struct ChipToggle: View {
     let title: LocalizedStringResource
     let isOn: Bool
@@ -60,11 +67,14 @@ struct ChipToggle: View {
             action()
         } label: {
             Text(title)
-                .font(.body.weight(.medium))
+                .font(.subheadline.weight(.semibold))
                 .padding(.horizontal, Theme.Spacing.l)
                 .frame(minHeight: 44)
-                .foregroundStyle(isOn ? Color.white : Color.primary)
-                .background(isOn ? Color.accentColor : Color.secondary.opacity(0.15), in: .capsule)
+                .foregroundStyle(isOn ? Theme.Palette.onAccent : Color.primary)
+                .background(isOn ? Theme.Palette.accent : Theme.Palette.row, in: Capsule())
+                .overlay { Capsule().strokeBorder(Color.white.opacity(isOn ? 0 : 0.12), lineWidth: 1) }
+                .shadow(color: Theme.Palette.accent.opacity(isOn ? 0.35 : 0), radius: 10)
+                .contentShape(Capsule())
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(isOn ? [.isSelected] : [])
@@ -188,7 +198,7 @@ struct HeightWheel: View {
     }
 }
 
-/// Compact weight input: text field with decimal pad + −/+ buttons.
+/// Compact weight input: text field with decimal pad + round -/+ buttons.
 struct WeightField: View {
     @Binding var weightKg: Double
     var step: Double = 2.5
@@ -198,10 +208,9 @@ struct WeightField: View {
             Button {
                 weightKg = max(0, weightKg - step)
             } label: {
-                Image(systemName: "minus").frame(width: 32, height: 32)
+                CircleIcon(systemImage: "minus", size: 36)
             }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.circle)
+            .buttonStyle(.plain)
             .accessibilityLabel("Зменшити вагу")
 
             TextField("кг", value: $weightKg, format: .number.precision(.fractionLength(0...2)))
@@ -209,24 +218,24 @@ struct WeightField: View {
                 .multilineTextAlignment(.center)
                 .font(.body.monospacedDigit())
                 .frame(width: 64)
-                .textFieldStyle(.roundedBorder)
+                .padding(.vertical, 6)
+                .background(Theme.Palette.row, in: .rect(cornerRadius: 10))
 
             Button {
                 weightKg += step
             } label: {
-                Image(systemName: "plus").frame(width: 32, height: 32)
+                CircleIcon(systemImage: "plus", size: 36)
             }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.circle)
+            .buttonStyle(.plain)
             .accessibilityLabel("Збільшити вагу")
         }
     }
 }
 
 extension Double {
-    /// "72,5" — up to one decimal, locale-aware.
+    /// "72,5" - up to one decimal, locale-aware.
     var kgText: String { formatted(.number.precision(.fractionLength(0...1))) }
-    /// "72,25" — up to two decimals (plates, rounding results).
+    /// "72,25" - up to two decimals (plates, rounding results).
     var preciseText: String { formatted(.number.precision(.fractionLength(0...2))) }
 }
 

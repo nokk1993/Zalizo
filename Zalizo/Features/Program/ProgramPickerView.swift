@@ -46,7 +46,7 @@ struct ProgramPickerView: View {
         .navigationTitle("Програми")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .topBarTrailing) {
                 Button("Готово") { dismiss() }
             }
         }
@@ -55,7 +55,7 @@ struct ProgramPickerView: View {
             Button("Створити") { create() }
             Button("Скасувати", role: .cancel) {}
         } message: {
-            Text("Буде створено \(newDays) порожні дні — додай у них вправи.")
+            Text("Буде створено \(newDays) порожні дні - додай у них вправи.")
         }
         .confirmationDialog("Видалити програму?", isPresented: Binding(get: { programToDelete != nil }, set: { if !$0 { programToDelete = nil } }), titleVisibility: .visible) {
             Button("Видалити", role: .destructive) {

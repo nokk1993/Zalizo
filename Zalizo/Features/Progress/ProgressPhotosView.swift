@@ -28,7 +28,7 @@ struct ProgressPhotosView: View {
                 ContentUnavailableView {
                     Label("Немає фото", systemImage: "photo.on.rectangle")
                 } description: {
-                    Text("Фотографуйся раз на 2–4 тижні при однаковому світлі й ракурсі. Фото зберігаються тільки в додатку.")
+                    Text("Фотографуйся раз на 2-4 тижні при однаковому світлі й ракурсі. Фото зберігаються тільки в додатку.")
                 }
                 .padding(.top, 60)
             }
@@ -212,7 +212,7 @@ private struct AddProgressPhotoSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Скасувати") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Зберегти") { save() }.bold()
                 }
             }
@@ -283,7 +283,7 @@ struct PhotoCompareView: View {
             .navigationTitle("До / після")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) { Button("Готово") { dismiss() } }
+                ToolbarItem(placement: .topBarTrailing) { Button("Готово") { dismiss() } }
             }
         }
     }

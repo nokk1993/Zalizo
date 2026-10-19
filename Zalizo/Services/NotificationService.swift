@@ -1,7 +1,7 @@
 import Foundation
 import UserNotifications
 
-/// Local notifications only (no push capability needed — works with a free Personal Team).
+/// Local notifications only (no push capability needed - works with a free Personal Team).
 /// Permission is requested the first time a feature needs it, never at launch.
 @MainActor
 enum NotificationService {

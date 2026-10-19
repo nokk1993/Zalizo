@@ -62,7 +62,7 @@ struct CustomExerciseEditor: View {
             } header: {
                 Text("Техніка")
             } footer: {
-                Text("Кожен крок — з нового рядка.")
+                Text("Кожен крок - з нового рядка.")
             }
             Section("Фото") {
                 if let photoData, let image = UIImage(data: photoData) {
@@ -83,7 +83,7 @@ struct CustomExerciseEditor: View {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Скасувати") { dismiss() }
             }
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .topBarTrailing) {
                 Button("Зберегти") { save() }
                     .disabled(!canSave)
             }

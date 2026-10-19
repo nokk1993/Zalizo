@@ -20,7 +20,7 @@ struct DomainTests {
     }
 
     @Test func rawValuesAreStable() {
-        // Persisted identifiers — changing them would break stored data and backups.
+        // Persisted identifiers - changing them would break stored data and backups.
         #expect(MuscleGroup.chest.rawValue == "chest")
         #expect(TrainingGoal.muscleGain.rawValue == "muscleGain")
         #expect(InjuryArea.lowerBack.rawValue == "lowerBack")

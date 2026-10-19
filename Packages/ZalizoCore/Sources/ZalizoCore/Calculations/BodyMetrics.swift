@@ -9,7 +9,7 @@ public enum BodyMetrics {
         return weightKg / (meters * meters)
     }
 
-    /// Basal metabolic rate, kcal/day — Mifflin–St Jeor (1990), the most accurate predictive
+    /// Basal metabolic rate, kcal/day - Mifflin-St Jeor (1990), the most accurate predictive
     /// equation for healthy adults (ADA Evidence Analysis Library, 2005).
     /// Men: 10·kg + 6.25·cm − 5·age + 5; women: same − 161.
     public static func bmr(sex: Sex, weightKg: Double, heightCm: Double, ageYears: Int) -> Double {
@@ -21,7 +21,7 @@ public enum BodyMetrics {
     }
 
     /// Physical-activity multiplier. Values already include ~3 resistance-training sessions per week
-    /// (classic Harris–Benedict/McArdle factors: lightly 1.375, moderately 1.55, very active 1.725).
+    /// (classic Harris-Benedict/McArdle factors: lightly 1.375, moderately 1.55, very active 1.725).
     public static func activityFactor(_ level: ActivityLevel) -> Double {
         switch level {
         case .sedentary: 1.375
@@ -47,7 +47,7 @@ public enum BodyMetrics {
         public let normalizedFFMI: Double
     }
 
-    /// Fat-free mass index — informational only, requires a body-fat estimate.
+    /// Fat-free mass index - informational only, requires a body-fat estimate.
     public static func ffmi(weightKg: Double, heightCm: Double, bodyFatPercent: Double) -> FFMIResult? {
         guard heightCm > 0, (0..<100).contains(bodyFatPercent) else { return nil }
         let meters = heightCm / 100

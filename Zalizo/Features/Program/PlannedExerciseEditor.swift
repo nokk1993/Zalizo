@@ -53,7 +53,7 @@ struct PlannedExerciseEditor: View {
             Section {
                 TextField("Примітка", text: $planned.note, axis: .vertical)
             } footer: {
-                Text("RIR — скільки повторів ти ще міг би зробити. 1–2 — оптимально для росту м'язів без зайвої втоми.")
+                Text("RIR - скільки повторів ти ще міг би зробити. 1-2 - оптимально для росту м'язів без зайвої втоми.")
             }
 
             Section("Замінити вправу") {

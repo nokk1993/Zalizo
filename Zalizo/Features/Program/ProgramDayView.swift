@@ -133,7 +133,7 @@ struct PlannedExerciseRow: View {
                 Text(planned.prescription).font(.caption.monospacedDigit()).foregroundStyle(.secondary)
                 if let reason = resolution.replacedBecause {
                     if resolution.isFallback {
-                        Label("Немає безпечної заміни (\(reason.text)) — будь обережний", systemImage: "exclamationmark.triangle.fill")
+                        Label("Немає безпечної заміни (\(reason.text)) - будь обережний", systemImage: "exclamationmark.triangle.fill")
                             .font(.caption2)
                             .foregroundStyle(Theme.Palette.danger)
                     } else {
@@ -151,9 +151,9 @@ struct PlannedExerciseRow: View {
 }
 
 extension PlannedExercise {
-    /// "4 × 6–8 · відпочинок 3 хв · RIR 1–2"
+    /// "4 × 6-8 · відпочинок 3 хв · RIR 1-2"
     var prescription: String {
-        let reps = repMin == repMax ? "\(repMin)" : "\(repMin)–\(repMax)"
+        let reps = repMin == repMax ? "\(repMin)" : "\(repMin)-\(repMax)"
         let unit = progression == .timed ? String(localized: "с") : ""
         return String(localized: "\(sets) × \(reps)\(unit) · відпочинок \(RestFormat.text(restSeconds)) · RIR \(targetRIR)")
     }

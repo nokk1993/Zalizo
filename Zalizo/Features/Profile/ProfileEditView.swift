@@ -63,7 +63,7 @@ struct ProfileEditView: View {
         }
         .navigationTitle("Мої дані")
         .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .topBarTrailing) {
                 Button("Зберегти") { startSave() }
                     .disabled(!hasEdits)
             }
@@ -138,7 +138,7 @@ struct ChangeReview: Identifiable {
     let changes: [PlanChange]
 }
 
-/// "Що зміниться" — confirmation before recalculating norms and forecast.
+/// "Що зміниться" - confirmation before recalculating norms and forecast.
 private struct ChangeReviewSheet: View {
     let review: ChangeReview
     let onConfirm: () -> Void
@@ -165,7 +165,7 @@ private struct ChangeReviewSheet: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Скасувати") { dismiss() }
                 }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Застосувати") {
                         dismiss()
                         onConfirm()
@@ -180,8 +180,8 @@ private struct ChangeReviewSheet: View {
             return "\(String(localized: ProgramTitles.title(slug: review.old.recommendedProgramSlug))) → \(String(localized: ProgramTitles.title(slug: review.new.recommendedProgramSlug)))"
         }
         let unit = String(localized: change.field.unit)
-        let old = change.old.map(\.preciseText) ?? "—"
-        let new = change.new.map(\.preciseText) ?? "—"
+        let old = change.old.map(\.preciseText) ?? "-"
+        let new = change.new.map(\.preciseText) ?? "-"
         return "\(old) → \(new) \(unit)"
     }
 }

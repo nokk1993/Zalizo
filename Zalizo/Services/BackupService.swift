@@ -19,7 +19,7 @@ enum BackupService {
 
         var errorDescription: String? {
             switch self {
-            case .notABackup: String(localized: "Це не файл резервної копії «Залізо».")
+            case .notABackup: String(localized: "Це не файл резервної копії «Зал».")
             case .newerVersion(let version): String(localized: "Файл створено новішою версією додатку (схема \(version)). Онови додаток і спробуй ще раз.")
             case .unreadable(let details): String(localized: "Не вдалося прочитати файл: \(details)")
             }

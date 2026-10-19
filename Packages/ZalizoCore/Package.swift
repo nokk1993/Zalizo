@@ -1,5 +1,5 @@
 // swift-tools-version: 6.0
-// ZalizoCore — pure business logic (calculations, progression, parsing, backup DTOs).
+// ZalizoCore - pure business logic (calculations, progression, parsing, backup DTOs).
 // No UIKit/SwiftUI/SwiftData imports here, so it builds and tests on macOS, iOS and Linux.
 import PackageDescription
 

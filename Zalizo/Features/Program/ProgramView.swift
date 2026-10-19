@@ -31,7 +31,7 @@ struct ProgramView: View {
                         Text("Обери одну з вбудованих програм або створи власну.")
                     } actions: {
                         Button("Обрати програму") { showPicker = true }
-                            .buttonStyle(.glassProminent)
+                            .buttonStyle(.zalPrimary)
                     }
                 }
                 Section {
@@ -129,7 +129,7 @@ private struct ProgramContent: View {
         } header: {
             Text("Об'єм на тиждень")
         } footer: {
-            Text("Робочі підходи на групу м'язів (допоміжні м'язи — ½ підходу). Орієнтир для росту м'язів — 10–20 підходів на тиждень.")
+            Text("Робочі підходи на групу м'язів (допоміжні м'язи - ½ підходу). Орієнтир для росту м'язів - 10-20 підходів на тиждень.")
         }
 
         Section {

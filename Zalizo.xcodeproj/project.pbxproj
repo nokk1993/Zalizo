@@ -318,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Залізо";
+				INFOPLIST_KEY_CFBundleDisplayName = "Зал";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,7 +342,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Залізо";
+				INFOPLIST_KEY_CFBundleDisplayName = "Зал";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -495,11 +495,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Залізо";
+				INFOPLIST_KEY_CFBundleDisplayName = "Зал";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Камера потрібна, щоб зробити фото прогресу. Фото зберігаються лише в додатку.";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Залізо читає вагу тіла з Apple Health (наприклад, з розумних ваг), якщо ти це дозволиш.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Залізо записує вагу тіла і силові тренування в Apple Health, якщо ти це дозволиш.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Зал читає вагу тіла з Apple Health (наприклад, з розумних ваг), якщо ти це дозволиш.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Зал записує вагу тіла і силові тренування в Apple Health, якщо ти це дозволиш.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Доступ до фото потрібен, щоб додати фото прогресу або картинку власної вправи.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -531,11 +531,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Залізо";
+				INFOPLIST_KEY_CFBundleDisplayName = "Зал";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Камера потрібна, щоб зробити фото прогресу. Фото зберігаються лише в додатку.";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Залізо читає вагу тіла з Apple Health (наприклад, з розумних ваг), якщо ти це дозволиш.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Залізо записує вагу тіла і силові тренування в Apple Health, якщо ти це дозволиш.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Зал читає вагу тіла з Apple Health (наприклад, з розумних ваг), якщо ти це дозволиш.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Зал записує вагу тіла і силові тренування в Apple Health, якщо ти це дозволиш.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Доступ до фото потрібен, щоб додати фото прогресу або картинку власної вправи.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

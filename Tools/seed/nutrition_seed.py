@@ -131,7 +131,7 @@ food("honey", "Мед", 304, 0.3, 0.0, 82.4, "sweet")
 food("jam", "Варення", 265, 0.4, 0.1, 65.0, "sweet")
 food("dark-chocolate", "Шоколад чорний 70 %", 598, 7.8, 42.6, 45.9, "sweet", fiber=10)
 
-# Порядок пошуку заміни для кожної ролі (перші — кращі).
+# Порядок пошуку заміни для кожної ролі (перші - кращі).
 SUBSTITUTES = {
     "carb": ["buckwheat", "rice", "potato", "millet", "brown-rice", "quinoa", "pasta", "bulgur"],
     "bread": ["wholegrain-bread", "rice-cakes", "lavash"],

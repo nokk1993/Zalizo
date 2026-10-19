@@ -256,7 +256,7 @@ private struct NextWorkoutCard: View {
                     .font(.headline)
                     .frame(maxWidth: .infinity, minHeight: 50)
             }
-            .buttonStyle(.glassProminent)
+            .buttonStyle(.zalPrimary)
             if isDeload {
                 Text("Розвантажувальний тиждень: підходів удвічі менше, вага та сама.")
                     .font(.caption)
@@ -287,7 +287,7 @@ private struct ActiveWorkoutCard: View {
                     .font(.headline)
                     .frame(maxWidth: .infinity, minHeight: 50)
             }
-            .buttonStyle(.glassProminent)
+            .buttonStyle(.zalPrimary)
         }
         .cardStyle()
     }
@@ -307,11 +307,11 @@ private struct DeloadCard: View {
             case .scheduled(let weeks):
                 Text("Ти тренуєшся \(weeks) тижнів без перерви. Тиждень з удвічі меншою кількістю підходів (вага та сама) допоможе відновитися і рости далі.")
             case .stalls(let count):
-                Text("Застій у \(count) базових вправах. Легкий тиждень — найкращий спосіб зрушити з місця.")
+                Text("Застій у \(count) базових вправах. Легкий тиждень - найкращий спосіб зрушити з місця.")
             }
             HStack {
                 Button("Почати розвантаження", action: onAccept)
-                    .buttonStyle(.glassProminent)
+                    .buttonStyle(.zalPrimary)
                 Button("Пізніше", action: onPostpone)
                     .buttonStyle(.glass)
             }
@@ -370,7 +370,7 @@ struct WellnessCheckSheet: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Пропустити", action: onSkip)
                 }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Почати") { onContinue(sleep, energy, soreness) }.bold()
                 }
             }
@@ -409,7 +409,7 @@ struct WeighInSheet: View {
         NavigationStack {
             VStack {
                 WeightWheel(weightKg: $weight)
-                Text("Найточніше — зранку після туалету, до їжі та води.")
+                Text("Найточніше - зранку після туалету, до їжі та води.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
@@ -420,7 +420,7 @@ struct WeighInSheet: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Скасувати") { dismiss() }
                 }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Зберегти") {
                         ProfileStore.recordWeight(weight, context: context)
                         try? context.save()

@@ -10,13 +10,16 @@ struct ZalizoWidgetsBundle: WidgetBundle {
     }
 }
 
+/// Lime accent of the app (the widget does not share the app's asset catalog).
+private let lime = Color(red: 0.80, green: 0.98, blue: 0.24)
+
 /// Lock screen + Dynamic Island: rest countdown and the next set.
 struct RestTimerLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: RestActivityAttributes.self) { context in
             LockScreenView(state: context.state, title: context.attributes.workoutTitle)
-                .activityBackgroundTint(Color.black.opacity(0.6))
-                .activitySystemActionForegroundColor(.orange)
+                .activityBackgroundTint(Color(red: 0.03, green: 0.05, blue: 0.09).opacity(0.85))
+                .activitySystemActionForegroundColor(lime)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
@@ -26,11 +29,11 @@ struct RestTimerLiveActivity: Widget {
                         Image(systemName: "dumbbell.fill")
                     }
                     .font(.caption.bold())
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(lime)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     RestCountdown(end: context.state.restEnd)
-                        .font(.title3.monospacedDigit().bold())
+                        .font(.title2.weight(.light).monospacedDigit())
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     VStack(alignment: .leading, spacing: 2) {
@@ -40,14 +43,14 @@ struct RestTimerLiveActivity: Widget {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
             } compactLeading: {
-                Image(systemName: "dumbbell.fill").foregroundStyle(.orange)
+                Image(systemName: "dumbbell.fill").foregroundStyle(lime)
             } compactTrailing: {
                 RestCountdown(end: context.state.restEnd)
                     .monospacedDigit()
                     .frame(maxWidth: 48)
             } minimal: {
                 Image(systemName: context.state.restEnd == nil ? "dumbbell.fill" : "timer")
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(lime)
             }
         }
     }
@@ -60,7 +63,7 @@ private struct LockScreenView: View {
     var body: some View {
         HStack(spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
-                Text(title).font(.caption).foregroundStyle(.secondary)
+                Text(title).font(.caption.weight(.semibold)).textCase(.uppercase).foregroundStyle(.secondary)
                 Text(state.exerciseName).font(.headline).lineLimit(1)
                 Text("Далі: \(state.nextSet)").font(.subheadline)
                 Text("Підходів: \(state.setsDone)/\(state.setsTotal)").font(.caption).foregroundStyle(.secondary)
@@ -71,8 +74,8 @@ private struct LockScreenView: View {
                     Text("Відпочинок").font(.caption).foregroundStyle(.secondary)
                 }
                 RestCountdown(end: state.restEnd)
-                    .font(.largeTitle.monospacedDigit().bold())
-                    .foregroundStyle(.orange)
+                    .font(.system(size: 44, weight: .thin).monospacedDigit())
+                    .foregroundStyle(lime)
             }
         }
         .padding()

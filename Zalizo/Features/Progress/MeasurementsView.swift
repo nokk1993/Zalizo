@@ -26,7 +26,7 @@ struct MeasurementsView: View {
                                     }
                                 }
                             } else {
-                                Text("—").foregroundStyle(.secondary)
+                                Text("-").foregroundStyle(.secondary)
                             }
                         } label: {
                             Text(kind.title)
@@ -34,7 +34,7 @@ struct MeasurementsView: View {
                     }
                 }
             } footer: {
-                Text("Міряй зранку, в одних і тих самих точках, сантиметровою стрічкою без натягу. Раз на 2–4 тижні достатньо.")
+                Text("Міряй зранку, в одних і тих самих точках, сантиметровою стрічкою без натягу. Раз на 2-4 тижні достатньо.")
             }
         }
         .navigationTitle("Заміри")
@@ -112,7 +112,7 @@ struct AddMeasurementsSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Скасувати") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Зберегти") { save() }
                         .bold()
                         .disabled(values.values.allSatisfy { $0 <= 0 })

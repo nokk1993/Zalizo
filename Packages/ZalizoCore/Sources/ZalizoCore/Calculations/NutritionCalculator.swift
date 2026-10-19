@@ -2,9 +2,9 @@ import Foundation
 
 /// Daily calorie and macro targets.
 ///
-/// Sources: ISSN position stand on protein and exercise (Jäger et al., 2017: 1.4–2.0 g/kg, up to 2.2);
-/// Iraki et al., 2019 (nutrition recommendations for bodybuilders in the off-season: surplus 10–20 %
-/// for novices, smaller for advanced; fat 0.5–1.5 g/kg, ≥20 % kcal); EFSA dietary reference values
+/// Sources: ISSN position stand on protein and exercise (Jäger et al., 2017: 1.4-2.0 g/kg, up to 2.2);
+/// Iraki et al., 2019 (nutrition recommendations for bodybuilders in the off-season: surplus 10-20 %
+/// for novices, smaller for advanced; fat 0.5-1.5 g/kg, ≥20 % kcal); EFSA dietary reference values
 /// (water, fibre ≈ 14 g / 1000 kcal per US DGA).
 public enum NutritionCalculator {
     public struct Input: Equatable, Sendable {
@@ -79,7 +79,7 @@ public enum NutritionCalculator {
     public static let minFatShare = 0.20
 
     /// Default energy surplus for the goal, % of TDEE.
-    /// Muscle gain: novice +12 % (range 10–15), trained +8 % (range 5–10).
+    /// Muscle gain: novice +12 % (range 10-15), trained +8 % (range 5-10).
     public static func defaultSurplusPercent(goal: TrainingGoal, experience: ExperienceLevel) -> Double {
         switch goal {
         case .muscleGain: experience.isNovice ? 12 : 8

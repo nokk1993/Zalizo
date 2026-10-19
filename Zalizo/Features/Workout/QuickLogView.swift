@@ -49,7 +49,7 @@ struct QuickLogView: View {
 
                 if notRecognised {
                     Section {
-                        Text("Не вдалося впізнати вправу — обери її вручну.")
+                        Text("Не вдалося впізнати вправу - обери її вручну.")
                             .foregroundStyle(Theme.Palette.warning)
                         Button("Обрати з бібліотеки") { showLibrary = true }
                     }
@@ -103,7 +103,7 @@ struct QuickLogView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Скасувати") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Зберегти") { save() }
                         .bold()
                         .disabled(lines.isEmpty)

@@ -98,7 +98,7 @@ private struct SettingsForm: View {
                 Text("Нагадування")
             } footer: {
                 if permissionDenied {
-                    Text("Сповіщення вимкнені для додатку. Увімкни їх: Параметри → Сповіщення → Залізо.")
+                    Text("Сповіщення вимкнені для додатку. Увімкни їх: Параметри → Сповіщення → Зал.")
                         .foregroundStyle(Theme.Palette.danger)
                 } else {
                     Text("Лише локальні сповіщення на цьому телефоні.")
@@ -228,8 +228,8 @@ private struct SettingsForm: View {
 
 enum AppInfo {
     static var versionText: String {
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "—"
-        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "—"
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "-"
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "-"
         return "\(version) (\(build))"
     }
 }

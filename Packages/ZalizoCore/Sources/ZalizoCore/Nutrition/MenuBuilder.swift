@@ -15,7 +15,7 @@ public struct Food: Codable, Equatable, Sendable, Identifiable {
     public var tags: [String]
     /// Not part of an economy budget.
     public var premium: Bool
-    /// Natural unit (egg 55 g, banana 120 g) — grams are rounded to whole units.
+    /// Natural unit (egg 55 g, banana 120 g) - grams are rounded to whole units.
     public var unitGrams: Double?
 
     public init(

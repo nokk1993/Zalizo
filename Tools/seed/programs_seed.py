@@ -2,13 +2,13 @@
 
 Run from the repo root:  python3 Tools/seed/programs_seed.py
 Writes Zalizo/Resources/Seed/programs.json and prints the weekly volume table
-(fractional sets: primary = 1, secondary = 0.5) so the 10–20 sets corridor can be checked.
+(fractional sets: primary = 1, secondary = 0.5) so the 10-20 sets corridor can be checked.
 Programs are inserted once and never overwritten (users may edit them).
 """
 import json
 import pathlib
 
-SEED_VERSION = 1
+SEED_VERSION = 2
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 EXERCISES = {e["slug"]: e for e in json.loads((ROOT / "Zalizo/Resources/Seed/exercises.json").read_text())["exercises"]}
 
@@ -23,18 +23,18 @@ def day(name, focus, *exercises):
     return dict(name=name, focus=focus, exercises=list(exercises))
 
 
-PROGRESSION = ("Подвійна прогресія: коли в усіх робочих підходах досягнуто верхньої межі повторів — "
+PROGRESSION = ("Подвійна прогресія: коли в усіх робочих підходах досягнуто верхньої межі повторів - "
                "наступного разу додай вагу (верх тіла +2,5 кг, низ +5 кг) і почни з нижньої межі. "
-               "Додаток підкаже це автоматично. Кожні 6–8 тижнів — розвантажувальний тиждень.")
+               "Додаток підкаже це автоматично. Кожні 6-8 тижнів - розвантажувальний тиждень.")
 
 PROGRAMS = [
     dict(
         slug="mass-split-3", name="Маса 3 дні: Спліт",
-        summary="Класичний спліт на три дні: груди і біцепс, спина і трицепс, ноги і плечі. 60–75 хвилин.",
+        summary="Класичний спліт на три дні: груди і біцепс, спина і трицепс, ноги і плечі. 60-75 хвилин.",
         audience="Для тих, хто вже тренувався хоча б кілька місяців і може приходити в зал тричі на тиждень.",
         recommendedWeeks=12, sessionsPerWeek=3, progressionNotes=PROGRESSION,
         days=[
-            day("День A — Груди + Біцепс", "Груди, біцепс",
+            day("День A - Груди + Біцепс", "Груди, біцепс",
                 x("barbell-bench-press", 4, (6, 8), 180, 1),
                 x("incline-dumbbell-press", 3, (8, 10), 120),
                 x("chest-dips", 3, (8, 12), 120, note="Або жим у тренажері"),
@@ -42,7 +42,7 @@ PROGRAMS = [
                 x("barbell-curl", 3, (8, 10), 105),
                 x("incline-dumbbell-curl", 3, (10, 12), 90),
                 x("hammer-curl", 2, (10, 12), 60)),
-            day("День B — Спина + Трицепс", "Спина, трицепс",
+            day("День B - Спина + Трицепс", "Спина, трицепс",
                 x("pull-up", 4, (6, 10), 150, note="Або тяга верхнього блока"),
                 x("barbell-bent-over-row", 4, (6, 8), 150, 1),
                 x("seated-cable-row", 3, (10, 12), 105),
@@ -51,7 +51,7 @@ PROGRAMS = [
                 x("close-grip-bench-press", 3, (6, 8), 120),
                 x("ez-skull-crusher", 3, (10, 12), 90, note="Або розгинання з-за голови"),
                 x("triceps-pushdown", 2, (12, 15), 60)),
-            day("День C — Ноги + Плечі (+ прес)", "Ноги, плечі, прес",
+            day("День C - Ноги + Плечі (+ прес)", "Ноги, плечі, прес",
                 x("barbell-back-squat", 4, (6, 8), 180, 1),
                 x("romanian-deadlift", 3, (8, 10), 150),
                 x("leg-press", 3, (10, 12), 120),
@@ -59,11 +59,11 @@ PROGRAMS = [
                 x("standing-calf-raise", 4, (10, 15), 60),
                 x("overhead-press", 3, (6, 8), 150),
                 x("dumbbell-lateral-raise", 3, (12, 15), 60),
-                x("hanging-leg-raise", 3, (10, 15), 60, note="Або планка 45–60 с")),
+                x("hanging-leg-raise", 3, (10, 15), 60, note="Або планка 45-60 с")),
         ]),
     dict(
         slug="full-body-3", name="Full Body 3 дні (A/B)",
-        summary="Усе тіло за тренування, два чергування: A/B/A на одному тижні, B/A/B на наступному. 50–60 хвилин.",
+        summary="Усе тіло за тренування, два чергування: A/B/A на одному тижні, B/A/B на наступному. 50-60 хвилин.",
         audience="Для новачків: кожна група м'язів працює тричі на тиждень, базові рухи вивчаються найшвидше.",
         recommendedWeeks=12, sessionsPerWeek=3, progressionNotes=PROGRESSION,
         days=[
@@ -84,7 +84,7 @@ PROGRAMS = [
         ]),
     dict(
         slug="upper-lower-4", name="Upper/Lower 4 дні",
-        summary="Верх і низ тіла по черзі, кожна група двічі на тиждень. 60–70 хвилин.",
+        summary="Верх і низ тіла по черзі, кожна група двічі на тиждень. 60-70 хвилин.",
         audience="Для середнього рівня, коли є 4 дні на тиждень. Добрий баланс об'єму і відновлення.",
         recommendedWeeks=10, sessionsPerWeek=4, progressionNotes=PROGRESSION,
         days=[
@@ -120,11 +120,11 @@ PROGRAMS = [
         ]),
     dict(
         slug="ppl-3", name="Push/Pull/Legs 3 дні",
-        summary="Жими, тяги, ноги — по одному разу на тиждень. 60–75 хвилин.",
+        summary="Жими, тяги, ноги - по одному разу на тиждень. 60-75 хвилин.",
         audience="Для тих, хто має 3 дні і любить окремий день для кожного типу рухів.",
         recommendedWeeks=10, sessionsPerWeek=3, progressionNotes=PROGRESSION,
         days=[
-            day("Push — жими", "Груди, плечі, трицепс",
+            day("Push - жими", "Груди, плечі, трицепс",
                 x("barbell-bench-press", 4, (6, 8), 180, 1),
                 x("incline-dumbbell-press", 3, (8, 10), 120),
                 x("seated-dumbbell-press", 3, (8, 10), 120),
@@ -132,7 +132,7 @@ PROGRAMS = [
                 x("cable-crossover", 3, (12, 15), 75),
                 x("rope-pushdown", 3, (10, 15), 60),
                 x("overhead-dumbbell-extension", 3, (10, 12), 75)),
-            day("Pull — тяги", "Спина, задня дельта, біцепс",
+            day("Pull - тяги", "Спина, задня дельта, біцепс",
                 x("pull-up", 4, (6, 10), 150),
                 x("barbell-bent-over-row", 4, (6, 8), 150, 1),
                 x("seated-cable-row", 3, (10, 12), 105),
@@ -140,7 +140,7 @@ PROGRAMS = [
                 x("barbell-curl", 3, (8, 10), 90),
                 x("incline-dumbbell-curl", 3, (10, 12), 75),
                 x("hammer-curl", 2, (10, 12), 60)),
-            day("Legs — ноги", "Квадрицепс, задня поверхня, сідниці, литки",
+            day("Legs - ноги", "Квадрицепс, задня поверхня, сідниці, литки",
                 x("barbell-back-squat", 4, (6, 8), 180, 1),
                 x("romanian-deadlift", 4, (8, 10), 150),
                 x("leg-press", 3, (10, 12), 120),
@@ -151,8 +151,8 @@ PROGRAMS = [
         ]),
     dict(
         slug="ppl-6", name="Push/Pull/Legs 6 днів",
-        summary="Жими, тяги, ноги двічі на тиждень у двох варіантах (A і B). 45–60 хвилин.",
-        audience="Для досвідчених, які можуть тренуватися 6 днів і добре відновлюються (сон 7–9 годин).",
+        summary="Жими, тяги, ноги двічі на тиждень у двох варіантах (A і B). 45-60 хвилин.",
+        audience="Для досвідчених, які можуть тренуватися 6 днів і добре відновлюються (сон 7-9 годин).",
         recommendedWeeks=8, sessionsPerWeek=6, progressionNotes=PROGRESSION,
         days=[
             day("Push A", "Груди, плечі, трицепс",
@@ -221,7 +221,7 @@ def main():
         print(f"{p['slug']:16}{row}")
     out = ROOT / "Zalizo/Resources/Seed/programs.json"
     out.write_text(json.dumps({"version": SEED_VERSION, "programs": PROGRAMS}, ensure_ascii=False, indent=1) + "\n")
-    print(f"{len(PROGRAMS)} programs → {out}  (* = major group outside 10–20)")
+    print(f"{len(PROGRAMS)} programs → {out}  (* = major group outside 10-20)")
 
 
 if __name__ == "__main__":

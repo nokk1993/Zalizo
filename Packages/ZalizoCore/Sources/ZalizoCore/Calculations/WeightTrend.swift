@@ -14,7 +14,7 @@ public struct WeightSample: Equatable, Sendable {
 /// Weight trend, target pace and forecast.
 ///
 /// Rate guidance: Iraki et al., 2019 and Helms et al. (Muscle & Strength Pyramid):
-/// novices ~0.25–0.5 % of body weight per week, trained lifters ≤0.25 %/week.
+/// novices ~0.25-0.5 % of body weight per week, trained lifters ≤0.25 %/week.
 public enum WeightTrend {
     // MARK: Moving average
 

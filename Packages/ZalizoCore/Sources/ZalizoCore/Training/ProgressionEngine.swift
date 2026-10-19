@@ -35,7 +35,7 @@ public struct ExerciseHistoryEntry: Equatable, Sendable {
     }
 }
 
-/// What kind of load the exercise uses — decides the weight increment.
+/// What kind of load the exercise uses - decides the weight increment.
 public enum LoadKind: Equatable, Sendable {
     case barbell
     case dumbbell(stepKg: Double, maxKg: Double)
@@ -130,7 +130,7 @@ public struct Prescription: Equatable, Sendable {
     public var weightChange: Double
     /// Most recent session for "минулого разу: 70 кг × 10, 10, 9, 8".
     public var last: ExerciseHistoryEntry?
-    /// Best estimated 1RM across history — "побити рекорд (зараз 93 кг)".
+    /// Best estimated 1RM across history - "побити рекорд (зараз 93 кг)".
     public var bestEstimatedOneRM: Double
 }
 
@@ -140,7 +140,7 @@ public enum ProgressionEngine {
     public static let stallReduction = 0.10
 
     /// Weight increment for the next jump.
-    /// Upper body +2.5 kg, lower body +5 kg, dumbbells → next dumbbell, isolation +1–2.5 kg.
+    /// Upper body +2.5 kg, lower body +5 kg, dumbbells → next dumbbell, isolation +1-2.5 kg.
     public static func increment(for plan: ExercisePlan, settings: LoadSettings, from weight: Double) -> Double {
         if let override = plan.incrementOverrideKg { return override }
         switch plan.load {
@@ -310,7 +310,7 @@ public enum DeloadAdvisor {
     }
 }
 
-/// "Як ти сьогодні?" — 1 = погано … 5 = відмінно for each answer.
+/// "Як ти сьогодні?" - 1 = погано … 5 = відмінно for each answer.
 public enum WellnessAdvisor {
     public enum Suggestion: Equatable, Sendable {
         case none

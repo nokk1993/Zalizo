@@ -251,15 +251,15 @@ final class WorkoutModel {
         let candidates = ordered.drop { $0.id != performed.id }
         for item in candidates {
             if let set = item.orderedSets.first(where: { !$0.isCompleted }) {
-                return String(localized: "Далі: \(item.exerciseName) — \(set.weightKg.kgText) кг × \(set.reps)")
+                return String(localized: "Далі: \(item.exerciseName) - \(set.weightKg.kgText) кг × \(set.reps)")
             }
         }
         for item in ordered {
             if let set = item.orderedSets.first(where: { !$0.isCompleted }) {
-                return String(localized: "Далі: \(item.exerciseName) — \(set.weightKg.kgText) кг × \(set.reps)")
+                return String(localized: "Далі: \(item.exerciseName) - \(set.weightKg.kgText) кг × \(set.reps)")
             }
         }
-        return String(localized: "Усі підходи виконано — завершуй тренування")
+        return String(localized: "Усі підходи виконано - завершуй тренування")
     }
 
     // MARK: Records

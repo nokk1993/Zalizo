@@ -2,7 +2,7 @@ import Foundation
 
 // Domain vocabulary shared by the app and the pure-logic services.
 // Raw values are stable identifiers: they are persisted in SwiftData and in backups,
-// so NEVER rename an existing raw value — add new cases instead.
+// so NEVER rename an existing raw value - add new cases instead.
 // User-facing (Ukrainian) titles live in the app target (DesignSystem/DomainTitles.swift).
 
 public enum Sex: String, Codable, CaseIterable, Sendable {
@@ -13,7 +13,7 @@ public enum Sex: String, Codable, CaseIterable, Sendable {
 public enum ExperienceLevel: String, Codable, CaseIterable, Sendable {
     /// < 1 year of consistent training
     case beginner
-    /// 1–3 years
+    /// 1-3 years
     case intermediate
     /// 3+ years
     case advanced

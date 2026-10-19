@@ -11,7 +11,7 @@ struct RootTabView: View {
             Tab("Сьогодні", systemImage: "flame", value: AppTab.today) {
                 TodayView()
             }
-            Tab("Програма", systemImage: "list.bullet.clipboard", value: AppTab.program) {
+            Tab("Програма", systemImage: "dumbbell", value: AppTab.program) {
                 ProgramView()
             }
             Tab("Прогрес", systemImage: "chart.line.uptrend.xyaxis", value: AppTab.progress) {
@@ -20,7 +20,7 @@ struct RootTabView: View {
             Tab("Харчування", systemImage: "fork.knife", value: AppTab.nutrition) {
                 NutritionView()
             }
-            Tab("Профіль", systemImage: "person.crop.circle", value: AppTab.profile) {
+            Tab("Профіль", systemImage: "person", value: AppTab.profile) {
                 ProfileView()
             }
         }

@@ -89,7 +89,7 @@ enum WorkoutService {
         )
     }
 
-    /// Prescription for a planned (not yet started) exercise — used by the Today screen.
+    /// Prescription for a planned (not yet started) exercise - used by the Today screen.
     static func prescription(for planned: PlannedExercise, slug: String, exercise: Exercise?, in context: ModelContext) -> Prescription {
         let settings = loadSettings(in: context)
         let plan = ExercisePlan(
@@ -156,7 +156,7 @@ enum WorkoutService {
         return session
     }
 
-    /// Appends an exercise to a running workout with default 3 × 8–12.
+    /// Appends an exercise to a running workout with default 3 × 8-12.
     @discardableResult
     static func add(_ exercise: Exercise, to session: WorkoutSession, in context: ModelContext) -> PerformedExercise {
         let isIsolation = exercise.mechanic == .isolation

@@ -19,8 +19,8 @@ public enum Defaults {
     ] // DEFAULT: a typical commercial gym
     public static let dumbbellMaxKg = 40.0 // DEFAULT
 
-    public static let proteinPerKg = 1.8 // DEFAULT, range 1.6–2.2
-    public static let fatPerKg = 0.9 // DEFAULT, range 0.8–1.0
+    public static let proteinPerKg = 1.8 // DEFAULT, range 1.6-2.2
+    public static let fatPerKg = 0.9 // DEFAULT, range 0.8-1.0
 
     public static let barbellStepKg = 2.5 // DEFAULT
     public static let dumbbellStepKg = 2.0 // DEFAULT

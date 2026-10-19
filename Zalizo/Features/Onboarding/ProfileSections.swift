@@ -28,9 +28,9 @@ struct WelcomeSection: View {
                 .foregroundStyle(Color.accentColor)
                 .frame(maxWidth: .infinity)
                 .padding(.top, Theme.Spacing.xl)
-            Text("Привіт! Це «Залізо»")
+            Text("Привіт! Це «Зал»")
                 .font(.largeTitle.bold())
-            Text("Кілька коротких питань — і додаток порахує твою норму калорій і БЖВ, складе програму тренувань і підкаже робочі ваги на кожне тренування.")
+            Text("Кілька коротких питань - і додаток порахує твою норму калорій і БЖВ, складе програму тренувань і підкаже робочі ваги на кожне тренування.")
                 .font(.body)
             Text("Відповіді можна змінити будь-коли: Профіль → Мої дані. Усі дані зберігаються тільки на цьому телефоні.")
                 .font(.callout)
@@ -43,7 +43,7 @@ struct WelcomeSection: View {
 struct DisclaimerBox: View {
     var body: some View {
         Label {
-            Text("Інформація в додатку не є медичною порадою. Якщо під час вправи з'явився біль — зупинись. При хронічних захворюваннях або проблемах зі здоров'ям порадься з лікарем.")
+            Text("Інформація в додатку не є медичною порадою. Якщо під час вправи з'явився біль - зупинись. При хронічних захворюваннях або проблемах зі здоров'ям порадься з лікарем.")
                 .font(.footnote)
         } icon: {
             Image(systemName: "cross.case")
@@ -94,7 +94,7 @@ struct BodySection: View {
             QuestionHeader(title: "Зріст")
             HeightWheel(heightCm: $snapshot.heightCm)
 
-            QuestionHeader(title: "Поточна вага", subtitle: "Зважуйся зранку натще — так найточніше")
+            QuestionHeader(title: "Поточна вага", subtitle: "Зважуйся зранку натще - так найточніше")
             WeightWheel(weightKg: $snapshot.weightKg)
         }
     }
@@ -163,7 +163,7 @@ struct ActivitySection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.m) {
-            QuestionHeader(title: "Повсякденна активність", subtitle: "Без урахування тренувань — для розрахунку калорій")
+            QuestionHeader(title: "Повсякденна активність", subtitle: "Без урахування тренувань - для розрахунку калорій")
             ForEach(ActivityLevel.allCases, id: \.self) { level in
                 OptionCard(title: level.title, subtitle: level.subtitle, systemImage: level.systemImage, isSelected: snapshot.activity == level) {
                     snapshot.activity = level
@@ -209,7 +209,7 @@ struct EquipmentSection: View {
 
             VStack(alignment: .leading, spacing: Theme.Spacing.s) {
                 Toggle("Є маленькі диски 1,25 кг", isOn: $snapshot.hasMicroPlates)
-                Text(snapshot.hasMicroPlates ? "Найменший крок штанги — 2,5 кг" : "Найменший крок штанги — 5 кг")
+                Text(snapshot.hasMicroPlates ? "Найменший крок штанги - 2,5 кг" : "Найменший крок штанги - 5 кг")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
@@ -245,7 +245,7 @@ struct LimitationsSection: View {
                     }
                 }
             }
-            Text("Якщо щось болить під час вправи — зупинись. Гострий або тривалий біль — привід звернутися до лікаря.")
+            Text("Якщо щось болить під час вправи - зупинись. Гострий або тривалий біль - привід звернутися до лікаря.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -312,7 +312,7 @@ struct TargetWeightSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
-            QuestionHeader(title: "Цільова вага", subtitle: "Необов'язково — інакше запропонуємо розумну ціль")
+            QuestionHeader(title: "Цільова вага", subtitle: "Необов'язково - інакше запропонуємо розумну ціль")
             Toggle("Я знаю, скільки хочу важити", isOn: hasTarget)
                 .cardStyle()
 
@@ -344,12 +344,12 @@ struct PaceInfo: View {
             let lower = weightKg * range.lowerBound / 100
             let upper = weightKg * range.upperBound / 100
             Label("Безпечний темп набору", systemImage: "speedometer").font(.headline)
-            Text("\(range.lowerBound.preciseText)–\(range.upperBound.preciseText) % ваги на тиждень ≈ \(lower.preciseText)–\(upper.preciseText) кг")
+            Text("\(range.lowerBound.preciseText)-\(range.upperBound.preciseText) % ваги на тиждень ≈ \(lower.preciseText)-\(upper.preciseText) кг")
             if summary.kgPerWeek > 0 {
                 Text("Плануємо: +\(summary.kgPerWeek.preciseText) кг на тиждень")
                     .foregroundStyle(.secondary)
             }
-            Text("Швидший набір — це здебільшого жир, а не м'язи.")
+            Text("Швидший набір - це здебільшого жир, а не м'язи.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -365,7 +365,7 @@ struct LiftsSection: View {
         VStack(alignment: .leading, spacing: Theme.Spacing.m) {
             QuestionHeader(title: "Стартові робочі ваги", subtitle: "З відомих результатів порахуємо твій 1ПМ і робочі ваги")
             OptionCard(
-                title: "Не знаю — підберемо на першому тренуванні",
+                title: "Не знаю - підберемо на першому тренуванні",
                 subtitle: "Почнеш з легкої ваги, а після підходу додаток підкаже, скільки додати",
                 systemImage: "wand.and.stars",
                 isSelected: !knowsLifts
@@ -381,7 +381,7 @@ struct LiftsSection: View {
                 ForEach(KeyLift.allCases, id: \.self) { lift in
                     LiftRow(title: lift.title, result: binding(for: lift))
                 }
-                Text("Заповни лише ті вправи, які знаєш. Найточніше — результат на 3–10 повторень.")
+                Text("Заповни лише ті вправи, які знаєш. Найточніше - результат на 3-10 повторень.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
@@ -422,7 +422,7 @@ private struct LiftRow: View {
     }
 }
 
-/// Calories, macros, pace, forecast and program — onboarding summary and Profile → "Норми і прогноз".
+/// Calories, macros, pace, forecast and program - onboarding summary and Profile → "Норми і прогноз".
 struct PlanSummaryCard: View {
     let summary: PlanSummary
     let snapshot: ProfileSnapshot
@@ -465,11 +465,11 @@ struct PlanSummaryCard: View {
 
             DisclosureGroup("Як це пораховано") {
                 VStack(alignment: .leading, spacing: Theme.Spacing.s) {
-                    Text("Базовий обмін (Міффлін–Сан Жеор): \(Int(summary.targets.bmr.rounded()).groupedText) ккал")
+                    Text("Базовий обмін (Міффлін-Сан Жеор): \(Int(summary.targets.bmr.rounded()).groupedText) ккал")
                     Text("З урахуванням активності: \(Int(summary.targets.tdee.rounded()).groupedText) ккал. Коефіцієнт уже включає ~3 тренування на тиждень.")
                     Text("Профіцит: \(summary.targets.surplusPercent.preciseText) %")
-                    Text("Білок \(snapshot.proteinPerKg.preciseText) г/кг, жири \(snapshot.fatPerKg.preciseText) г/кг (не менше 20 % калорій), решта — вуглеводи.")
-                    Text("ІМТ: \(summary.bmi.kgText). Для людей з розвиненими м'язами ІМТ неточний — він не відрізняє м'язи від жиру.")
+                    Text("Білок \(snapshot.proteinPerKg.preciseText) г/кг, жири \(snapshot.fatPerKg.preciseText) г/кг (не менше 20 % калорій), решта - вуглеводи.")
+                    Text("ІМТ: \(summary.bmi.kgText). Для людей з розвиненими м'язами ІМТ неточний - він не відрізняє м'язи від жиру.")
                 }
                 .font(.footnote)
                 .foregroundStyle(.secondary)
@@ -489,17 +489,17 @@ private struct ForecastBlock: View {
             Label("Прогноз", systemImage: "calendar").font(.headline)
             if let forecast = summary.forecast {
                 Text("З \(snapshot.weightKg.kgText) до \(summary.targetWeightKg.kgText) кг при темпі \(summary.kgPerWeek.preciseText) кг/тижд ≈ \(Int(forecast.weeks.rounded())) тижн.")
-                Text("Орієнтовно до \(forecast.targetDate.formatted(date: .long, time: .omitted)) — це ≈ \(forecast.workouts) тренувань при \(snapshot.sessionsPerWeek) на тиждень.")
+                Text("Орієнтовно до \(forecast.targetDate.formatted(date: .long, time: .omitted)) - це ≈ \(forecast.workouts) тренувань при \(snapshot.sessionsPerWeek) на тиждень.")
                     .foregroundStyle(.secondary)
                 if summary.isTargetSuggested {
-                    Text("Ціль запропонована автоматично — її можна змінити в Профілі.")
+                    Text("Ціль запропонована автоматично - її можна змінити в Профілі.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
             } else if summary.kgPerWeek == 0 {
-                Text("Мета — утримувати вагу. Стеж за силою і замірами.")
+                Text("Мета - утримувати вагу. Стеж за силою і замірами.")
             } else {
-                Text("Цільова вага не більша за поточну — прогноз набору недоступний.")
+                Text("Цільова вага не більша за поточну - прогноз набору недоступний.")
             }
         }
         .cardStyle()

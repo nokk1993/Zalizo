@@ -73,7 +73,7 @@ struct PlateCalculatorSheet: View {
                         .font(.headline)
                 }
                 if !result.isExact {
-                    Text("Точно \(weight.preciseText) кг не набрати — найближче \(result.achievedTotal.preciseText) кг")
+                    Text("Точно \(weight.preciseText) кг не набрати - найближче \(result.achievedTotal.preciseText) кг")
                         .font(.footnote)
                         .foregroundStyle(Theme.Palette.warning)
                 }
@@ -155,7 +155,7 @@ struct WarmupSheet: View {
         VStack(alignment: .leading, spacing: Theme.Spacing.m) {
             Text("Розминка до \(working.preciseText) кг").font(.title3.bold())
             if sets.isEmpty {
-                Text("Для цієї ваги окрема розминка не потрібна — зроби 1 легкий підхід на 10–12 повторів.")
+                Text("Для цієї ваги окрема розминка не потрібна - зроби 1 легкий підхід на 10-12 повторів.")
             } else {
                 ForEach(Array(sets.enumerated()), id: \.offset) { index, set in
                     HStack {
@@ -164,7 +164,7 @@ struct WarmupSheet: View {
                     }
                 }
             }
-            Text("Відпочинок між розминочними підходами — до хвилини. Розминка не повинна втомлювати.")
+            Text("Відпочинок між розминочними підходами - до хвилини. Розминка не повинна втомлювати.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -235,7 +235,7 @@ struct WorkoutSummaryView: View {
                 }
                 if !model.hasCompletedSets {
                     Section {
-                        Text("Немає жодного виконаного підходу — тренування не буде збережено в історії.")
+                        Text("Немає жодного виконаного підходу - тренування не буде збережено в історії.")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
@@ -247,7 +247,7 @@ struct WorkoutSummaryView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Назад") { dismiss() }
                 }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Зберегти") {
                         if model.hasCompletedSets {
                             model.finish(feeling: feeling, note: note)

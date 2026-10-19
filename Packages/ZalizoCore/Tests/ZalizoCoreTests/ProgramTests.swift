@@ -46,7 +46,7 @@ struct ProgramSeedTests {
         #expect(first.sets == 4 && first.repMin == 6 && first.repMax == 8)
     }
 
-    /// Weekly volume of major groups must be 10–20 hard sets.
+    /// Weekly volume of major groups must be 10-20 hard sets.
     /// Known exception from the owner's spec: the 3-day split trains legs once a week (quads ≈ 7 sets).
     @Test func weeklyVolumeInCorridor() throws {
         let catalog = try SeedFiles.catalog()

@@ -35,15 +35,45 @@ enum SeedLoader {
         try seedPrograms(ProgramSeedFile.decode(Data(contentsOf: url)), context: context)
     }
 
-    /// Built-in programs are inserted once and never overwritten — the user may have edited them.
+    /// Built-in programs are inserted once and never overwritten - the user may have edited them.
+    /// Only punctuation-level text fixes of untouched texts are applied on a seed version bump.
     static func seedPrograms(_ file: ProgramSeedFile, context: ModelContext) throws {
         guard let settings = ProfileStore.settings(in: context), settings.programsSeedVersion < file.version else { return }
-        let existing = Set(try context.fetch(FetchDescriptor<Program>()).compactMap(\.seedSlug))
+        let programs = try context.fetch(FetchDescriptor<Program>())
+        let seeds = Dictionary(file.programs.map { ($0.slug, $0) }, uniquingKeysWith: { first, _ in first })
+        for program in programs where program.isBuiltIn {
+            if let slug = program.seedSlug, let seed = seeds[slug] {
+                refreshTexts(of: program, from: seed)
+            }
+        }
+        let existing = Set(programs.compactMap(\.seedSlug))
         for seed in file.programs where !existing.contains(seed.slug) {
             context.insert(makeProgram(seed))
         }
         settings.programsSeedVersion = file.version
         try context.save()
+    }
+
+    /// Replaces a stored text with the seed text only if they differ by dash style alone,
+    /// so user renames survive.
+    static func refreshTexts(of program: Program, from seed: ProgramSeed) {
+        func refreshed(_ stored: String, _ seedText: String) -> String {
+            stored.shortDashes == seedText.shortDashes ? seedText : stored
+        }
+        program.name = refreshed(program.name, seed.name)
+        program.summary = refreshed(program.summary, seed.summary)
+        program.audience = refreshed(program.audience, seed.audience)
+        program.progressionNotes = refreshed(program.progressionNotes, seed.progressionNotes)
+        for day in program.days {
+            guard let daySeed = seed.days.first(where: { $0.name.shortDashes == day.name.shortDashes }) else { continue }
+            day.name = daySeed.name
+            day.focus = refreshed(day.focus, daySeed.focus)
+            for planned in day.exercises {
+                if let item = daySeed.exercises.first(where: { $0.slug == planned.exerciseSlug }) {
+                    planned.note = refreshed(planned.note, item.note)
+                }
+            }
+        }
     }
 
     static func makeProgram(_ seed: ProgramSeed) -> Program {
@@ -126,5 +156,12 @@ enum SeedLoader {
         exercise.imageNames = seed.imageNames
         exercise.isCustom = false
         exercise.seedVersion = version
+    }
+}
+
+private extension String {
+    /// Long dashes written as a short hyphen (the app's typography rule).
+    var shortDashes: String {
+        replacingOccurrences(of: "\u{2014}", with: "-").replacingOccurrences(of: "\u{2013}", with: "-")
     }
 }

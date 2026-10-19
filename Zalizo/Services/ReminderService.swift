@@ -4,7 +4,7 @@ import UserNotifications
 import ZalizoCore
 
 /// Schedules all local reminders for the next two weeks. Called on launch, when settings change and after workouts.
-/// Training reminders carry the concrete program day ("Сьогодні День A — Груди + Біцепс").
+/// Training reminders carry the concrete program day ("Сьогодні День A - Груди + Біцепс").
 @MainActor
 enum ReminderService {
     static let prefix = "reminder."
@@ -36,19 +36,19 @@ enum ReminderService {
                    let fire = time(10 * 60, on: nextDay, calendar: calendar), fire > now {
                     requests.append(request("missed.\(Int(date.timeIntervalSince1970))", at: fire, repeats: false,
                                             title: String(localized: "Вчора було тренування за планом"),
-                                            body: String(localized: "Нічого страшного — головне повернутися. Наступне тренування вже чекає.")))
+                                            body: String(localized: "Нічого страшного - головне повернутися. Наступне тренування вже чекає.")))
                 }
             }
         }
         if settings.weighInReminderEnabled {
             requests.append(dailyRequest("weigh", minutes: settings.weighInReminderMinutes,
                                          title: String(localized: "Час зважитися"),
-                                         body: String(localized: "Зранку після туалету, до їжі — так найточніше.")))
+                                         body: String(localized: "Зранку після туалету, до їжі - так найточніше.")))
         }
         if settings.waterReminderEnabled {
             for hour in [11, 13, 15, 17, 19] {
                 requests.append(dailyRequest("water.\(hour)", minutes: hour * 60, title: String(localized: "Вода"),
-                                             body: String(localized: "Склянка води — і відміть її в додатку.")))
+                                             body: String(localized: "Склянка води - і відміть її в додатку.")))
             }
         }
         if settings.backupReminderEnabled, BackupReminder.isDue(lastBackup: settings.lastBackupAt, firstUse: profile.createdAt, now: now),

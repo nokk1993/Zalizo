@@ -2,9 +2,11 @@ import SwiftUI
 import UIKit
 
 /// Exercise photo: user's own photo if set, otherwise the bundled start/finish image, otherwise a symbol.
+/// Photos are shown monochrome with a cool blue-gray tint, as in the visual style of the app.
 struct ExerciseImage: View {
     let exercise: Exercise
     var index = 0
+    var monochrome = true
 
     var body: some View {
         Group {
@@ -12,13 +14,11 @@ struct ExerciseImage: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFill()
+                    .grayscale(monochrome ? 1 : 0)
+                    .contrast(monochrome ? 1.08 : 1)
+                    .colorMultiply(monochrome ? Theme.Palette.ice : .white)
             } else {
-                ZStack {
-                    Color.secondary.opacity(0.12)
-                    Image(systemName: "figure.strengthtraining.traditional")
-                        .font(.title)
-                        .foregroundStyle(.secondary)
-                }
+                PhotoPlaceholder()
             }
         }
         .clipped()

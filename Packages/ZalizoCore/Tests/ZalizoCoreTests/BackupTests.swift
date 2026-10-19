@@ -71,6 +71,6 @@ struct BackupTests {
 
     @Test func fileName() throws {
         let date = try #require(utc.date(from: DateComponents(year: 2026, month: 10, day: 19, hour: 12)))
-        #expect(BackupCodec.fileName(for: date) == "Zalizo-backup-2026-10-19.json")
+        #expect(BackupCodec.fileName(for: date) == "Zal-backup-2026-10-19.json")
     }
 }

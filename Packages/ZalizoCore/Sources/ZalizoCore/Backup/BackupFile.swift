@@ -363,7 +363,7 @@ public enum BackupCodec {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd"
-        return "Zalizo-backup-\(formatter.string(from: date)).json"
+        return "Zal-backup-\(formatter.string(from: date)).json"
     }
 }
 

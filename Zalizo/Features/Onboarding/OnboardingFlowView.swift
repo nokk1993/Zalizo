@@ -111,7 +111,7 @@ struct OnboardingFlowView: View {
                     .bold()
                     .frame(maxWidth: .infinity, minHeight: 44)
             }
-            .buttonStyle(.glassProminent)
+            .buttonStyle(.zalPrimary)
             .disabled(!model.canProceed)
         }
         .padding(.horizontal, Theme.Spacing.l)

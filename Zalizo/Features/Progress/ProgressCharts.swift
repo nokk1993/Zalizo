@@ -93,7 +93,7 @@ struct TrendLineChart: View {
     }
 }
 
-/// Workouts per week — rounded bars.
+/// Workouts per week - rounded bars.
 struct WeeklyWorkoutsChart: View {
     let weeks: [StatsService.WeekCount]
     let target: Int

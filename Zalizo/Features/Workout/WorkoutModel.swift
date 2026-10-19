@@ -93,6 +93,8 @@ final class WorkoutModel {
         }
         if appSettings?.autoStartRestTimer ?? true {
             startRest(seconds: set.isWarmup ? min(60, performed.restSeconds) : performed.restSeconds, after: performed)
+        } else {
+            updateLiveActivity()
         }
     }
 
@@ -185,6 +187,7 @@ final class WorkoutModel {
         NotificationService.scheduleRestEnd(after: TimeInterval(seconds), nextSet: restNextSetText, sound: appSettings?.soundEnabled ?? true)
         Task { await NotificationService.requestAuthorizationIfNeeded() }
         startTicker()
+        updateLiveActivity()
     }
 
     func addRest(seconds: Int = 30) {
@@ -193,12 +196,31 @@ final class WorkoutModel {
         restTimer = timer
         NotificationService.scheduleRestEnd(after: timer.remaining(), nextSet: restNextSetText, sound: appSettings?.soundEnabled ?? true)
         startTicker()
+        updateLiveActivity()
     }
 
     func skipRest() {
         restTimer = nil
         restTicker?.cancel()
         NotificationService.cancelRestEnd()
+        updateLiveActivity()
+    }
+
+    /// Lock screen / Dynamic Island state: rest countdown + next set.
+    func updateLiveActivity() {
+        let pending = session.orderedExercises.filter { !$0.isSkipped }
+            .compactMap { item in item.orderedSets.first { !$0.isCompleted }.map { (item, $0) } }
+            .first
+        let done = session.exercises.reduce(0) { $0 + $1.workingSets.count }
+        let total = session.exercises.filter { !$0.isSkipped }.reduce(0) { $0 + $1.sets.filter { !$0.isWarmup }.count }
+        let state = RestActivityAttributes.ContentState(
+            restEnd: restTimer?.endDate,
+            exerciseName: pending?.0.exerciseName ?? session.title,
+            nextSet: pending.map { "\($0.1.weightKg.kgText) кг × \($0.1.reps)" } ?? String(localized: "Усе виконано"),
+            setsDone: done,
+            setsTotal: total
+        )
+        LiveActivityService.start(title: session.title, startedAt: session.startedAt, state: state)
     }
 
     /// Wakes up when the rest ends while the app is in the foreground: vibration + sound.
@@ -217,6 +239,7 @@ final class WorkoutModel {
         guard let timer = restTimer, timer.isFinished() else { return }
         restTimer = nil
         NotificationService.cancelRestEnd()
+        updateLiveActivity()
         Haptics.restFinished()
         if appSettings?.soundEnabled ?? true {
             AudioServicesPlaySystemSound(1005)
@@ -273,11 +296,13 @@ final class WorkoutModel {
 
     func finish(feeling: Int?, note: String) {
         skipRest()
+        LiveActivityService.end()
         WorkoutService.finish(session, feeling: feeling, note: note, in: context)
     }
 
     func discard() {
         skipRest()
+        LiveActivityService.end()
         WorkoutService.discard(session, in: context)
     }
 

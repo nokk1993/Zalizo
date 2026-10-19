@@ -278,6 +278,7 @@ enum WorkoutService {
         session.note = note
         session.isFinished = true
         try? context.save()
+        HealthService.saveWorkout(start: session.startedAt, end: session.endedAt ?? date)
     }
 
     static func discard(_ session: WorkoutSession, in context: ModelContext) {

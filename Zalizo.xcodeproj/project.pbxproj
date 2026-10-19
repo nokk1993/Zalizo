@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1000000000000000000007D /* ZalizoWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A10000000000000000000074 /* ZalizoWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A1000000000000000000007F /* ZalizoCore in Frameworks */ = {isa = PBXBuildFile; productRef = A1000000000000000000007E /* ZalizoCore */; };
 		A10000000000000000000062 /* ZalizoCore in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000061 /* ZalizoCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A1000000000000000000007A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A10000000000000000000070;
+			remoteInfo = ZalizoWidgets;
+		};
 		A10000000000000000000030 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A10000000000000000000001 /* Project object */;
@@ -20,13 +29,46 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A1000000000000000000007C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A1000000000000000000007D /* ZalizoWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A10000000000000000000074 /* ZalizoWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ZalizoWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000006 /* Zalizo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zalizo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000007 /* ZalizoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZalizoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000063 /* ZalizoCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ZalizoCore; path = Packages/ZalizoCore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A10000000000000000000076 /* Exceptions for "WidgetExtension" folder in "ZalizoWidgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A10000000000000000000070 /* ZalizoWidgets */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		A10000000000000000000075 /* WidgetExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A10000000000000000000076 /* Exceptions for "WidgetExtension" folder in "ZalizoWidgets" target */,
+			);
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
 		A10000000000000000000004 /* Zalizo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Zalizo;
@@ -40,6 +82,14 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A10000000000000000000072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000000000000000000007F /* ZalizoCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A10000000000000000000012 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -63,6 +113,7 @@
 			children = (
 				A10000000000000000000004 /* Zalizo */,
 				A10000000000000000000005 /* ZalizoTests */,
+				A10000000000000000000075 /* WidgetExtension */,
 				A10000000000000000000063 /* ZalizoCore */,
 				A10000000000000000000003 /* Products */,
 			);
@@ -73,6 +124,7 @@
 			children = (
 				A10000000000000000000006 /* Zalizo.app */,
 				A10000000000000000000007 /* ZalizoTests.xctest */,
+				A10000000000000000000074 /* ZalizoWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,10 +139,12 @@
 				A10000000000000000000011 /* Sources */,
 				A10000000000000000000012 /* Frameworks */,
 				A10000000000000000000013 /* Resources */,
+				A1000000000000000000007C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A1000000000000000000007B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A10000000000000000000004 /* Zalizo */,
@@ -126,6 +180,29 @@
 			productReference = A10000000000000000000007 /* ZalizoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A10000000000000000000070 /* ZalizoWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10000000000000000000077 /* Build configuration list for PBXNativeTarget "ZalizoWidgets" */;
+			buildPhases = (
+				A10000000000000000000071 /* Sources */,
+				A10000000000000000000072 /* Frameworks */,
+				A10000000000000000000073 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A10000000000000000000075 /* WidgetExtension */,
+			);
+			name = ZalizoWidgets;
+			packageProductDependencies = (
+				A1000000000000000000007E /* ZalizoCore */,
+			);
+			productName = ZalizoWidgets;
+			productReference = A10000000000000000000074 /* ZalizoWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -142,6 +219,9 @@
 					A10000000000000000000020 = {
 						CreatedOnToolsVersion = 26.3;
 						TestTargetID = A10000000000000000000010;
+					};
+					A10000000000000000000070 = {
+						CreatedOnToolsVersion = 26.3;
 					};
 				};
 			};
@@ -164,11 +244,19 @@
 			targets = (
 				A10000000000000000000010 /* Zalizo */,
 				A10000000000000000000020 /* ZalizoTests */,
+				A10000000000000000000070 /* ZalizoWidgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A10000000000000000000073 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A10000000000000000000013 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -186,6 +274,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A10000000000000000000071 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A10000000000000000000011 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,6 +298,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A1000000000000000000007B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A10000000000000000000070 /* ZalizoWidgets */;
+			targetProxy = A1000000000000000000007A /* PBXContainerItemProxy */;
+		};
 		A10000000000000000000031 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A10000000000000000000010 /* Zalizo */;
@@ -211,6 +311,54 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A10000000000000000000078 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Залізо";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ua.zalizo.app.b82a66.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A10000000000000000000079 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Залізо";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ua.zalizo.app.b82a66.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		A10000000000000000000050 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -350,6 +498,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Залізо";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Камера потрібна, щоб зробити фото прогресу. Фото зберігаються лише в додатку.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Залізо читає вагу тіла з Apple Health (наприклад, з розумних ваг), якщо ти це дозволиш.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Залізо записує вагу тіла і силові тренування в Apple Health, якщо ти це дозволиш.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Доступ до фото потрібен, щоб додати фото прогресу або картинку власної вправи.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -383,6 +534,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Залізо";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Камера потрібна, щоб зробити фото прогресу. Фото зберігаються лише в додатку.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Залізо читає вагу тіла з Apple Health (наприклад, з розумних ваг), якщо ти це дозволиш.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Залізо записує вагу тіла і силові тренування в Apple Health, якщо ти це дозволиш.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Доступ до фото потрібен, щоб додати фото прогресу або картинку власної вправи.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -441,6 +595,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A10000000000000000000077 /* Build configuration list for PBXNativeTarget "ZalizoWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10000000000000000000078 /* Debug */,
+				A10000000000000000000079 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A10000000000000000000040 /* Build configuration list for PBXProject "Zalizo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -478,6 +641,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A1000000000000000000007E /* ZalizoCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZalizoCore;
+		};
 		A10000000000000000000061 /* ZalizoCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ZalizoCore;

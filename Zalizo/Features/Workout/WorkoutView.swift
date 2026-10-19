@@ -75,6 +75,7 @@ struct WorkoutView: View {
                         }
                 }
             }
+            .onAppear { model.updateLiveActivity() }
             .animation(.snappy, value: model.restTimer != nil)
             .animation(.snappy, value: model.recordBanner)
             .sheet(isPresented: $showSummary) {
@@ -396,7 +397,7 @@ struct SetRow: View {
     let onRIR: (Int?) -> Void
 
     var body: some View {
-        HStack(spacing: Theme.Spacing.s) {
+        HStack(spacing: Theme.Spacing.xs + 2) {
             Menu {
                 Section("Запас повторів (RIR)") {
                     ForEach(0...4, id: \.self) { rir in
@@ -427,7 +428,7 @@ struct SetRow: View {
                         Text("RIR \(rir)").font(.system(size: 9)).foregroundStyle(.secondary)
                     }
                 }
-                .frame(width: 32, height: 44)
+                .frame(width: 28, height: 44)
                 .foregroundStyle(set.isWarmup ? Color.secondary : Color.primary)
             }
             .accessibilityLabel(Text(set.isWarmup ? "Розминочний підхід" : "Підхід \(label)"))
@@ -442,9 +443,9 @@ struct SetRow: View {
 
             Button(action: onToggle) {
                 Image(systemName: set.isCompleted ? "checkmark.circle.fill" : "circle")
-                    .font(.system(size: 34))
+                    .font(.system(size: 32))
                     .foregroundStyle(set.isCompleted ? Theme.Palette.success : Color.secondary)
-                    .frame(width: 48, height: 48)
+                    .frame(width: 44, height: 48)
                     .contentTransition(.symbolEffect(.replace))
             }
             .buttonStyle(.plain)
@@ -473,7 +474,7 @@ struct CompactStepper: View {
                     .minimumScaleFactor(0.7)
                 Text(unit).font(.system(size: 10)).foregroundStyle(.secondary)
             }
-            .frame(minWidth: 44)
+            .frame(minWidth: 40)
             button("plus", delta: step)
         }
         .frame(maxWidth: .infinity)
@@ -497,7 +498,7 @@ struct CompactStepper: View {
         } label: {
             Image(systemName: symbol)
                 .font(.body.bold())
-                .frame(width: 34, height: 44)
+                .frame(width: 30, height: 44)
                 .contentShape(.rect)
         }
         .buttonStyle(.plain)

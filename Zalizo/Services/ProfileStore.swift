@@ -97,6 +97,7 @@ enum ProfileStore {
         } else {
             context.insert(BodyWeightEntry(date: date, weightKg: kg))
         }
+        HealthService.saveWeight(kg, date: date)
     }
 
     /// Replaces the onboarding baselines ("bench 70 kg × 10").

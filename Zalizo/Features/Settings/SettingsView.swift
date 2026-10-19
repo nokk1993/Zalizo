@@ -21,6 +21,9 @@ private struct SettingsForm: View {
     @State private var confirmReset = false
     @State private var confirmResetFinal = false
     @State private var permissionDenied = false
+    @AppStorage(LiveActivityService.enabledKey) private var liveActivity = true
+    @State private var healthEnabled = HealthService.isEnabled
+    @State private var healthMessage: String?
 
     private let allPlates: [Double] = [25, 20, 15, 10, 5, 2.5, 1.25, 0.5]
 
@@ -72,6 +75,7 @@ private struct SettingsForm: View {
                 Toggle("Звук", isOn: $settings.soundEnabled)
                 Toggle("Вібрація", isOn: $settings.hapticsEnabled)
                 Toggle("«Як ти сьогодні?» перед тренуванням", isOn: $settings.useWellnessCheck)
+                Toggle("Таймер на заблокованому екрані (Live Activity)", isOn: $liveActivity)
                 Picker("Формула 1ПМ", selection: Binding(get: { settings.oneRMFormula }, set: { settings.oneRMFormula = $0 })) {
                     Text("Еплі").tag(OneRMFormula.epley)
                     Text("Бжицкі").tag(OneRMFormula.brzycki)
@@ -99,6 +103,37 @@ private struct SettingsForm: View {
                 } else {
                     Text("Лише локальні сповіщення на цьому телефоні.")
                 }
+            }
+
+            Section {
+                Toggle("Синхронізація з Apple Health", isOn: Binding(get: { healthEnabled }, set: { value in
+                    if value {
+                        Task {
+                            do {
+                                try await HealthService.requestAuthorization()
+                                HealthService.isEnabled = true
+                                healthEnabled = true
+                            } catch {
+                                healthMessage = error.localizedDescription
+                                HealthService.isEnabled = false
+                                healthEnabled = false
+                            }
+                        }
+                    } else {
+                        HealthService.isEnabled = false
+                        healthEnabled = false
+                    }
+                }))
+                if healthEnabled {
+                    Button("Імпортувати вагу з Health (90 днів)") { importHealthWeights() }
+                }
+                if let healthMessage {
+                    Text(healthMessage).font(.footnote).foregroundStyle(.secondary)
+                }
+            } header: {
+                Text("Apple Health (опційно)")
+            } footer: {
+                Text("Записує вагу і силові тренування в Health, читає вагу з розумних ваг. Потребує увімкнення HealthKit у Xcode (див. README).")
             }
 
             Section("Вигляд") {
@@ -135,6 +170,25 @@ private struct SettingsForm: View {
             Button("Скасувати", role: .cancel) {}
         } message: {
             Text("Усі тренування, вага, заміри, фото і профіль буде видалено з телефону.")
+        }
+    }
+
+    private func importHealthWeights() {
+        Task {
+            do {
+                let since = Calendar.current.date(byAdding: .day, value: -90, to: .now) ?? .now
+                let samples = try await HealthService.weights(since: since)
+                let existing = (try? context.fetch(FetchDescriptor<BodyWeightEntry>())) ?? []
+                var added = 0
+                for sample in samples where !existing.contains(where: { Calendar.current.isDate($0.date, inSameDayAs: sample.date) }) {
+                    context.insert(BodyWeightEntry(date: sample.date, weightKg: sample.kg))
+                    added += 1
+                }
+                try? context.save()
+                healthMessage = String(localized: "Імпортовано зважувань: \(added)")
+            } catch {
+                healthMessage = error.localizedDescription
+            }
         }
     }
 

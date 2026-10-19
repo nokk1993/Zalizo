@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1500 760" width="1500" height="760" font-family="-apple-system, 'SF Pro Rounded', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="coral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF7A45"/>
+      <stop offset="1" stop-color="#FF3D57"/>
+    </linearGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A211D"/>
+      <stop offset="1" stop-color="#14100E"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFB547"/>
+      <stop offset="1" stop-color="#FF4F4A"/>
+    </linearGradient>
+
+    <!-- A: Footsteps inside a progress ring -->
+    <symbol id="A" viewBox="0 0 1024 1024">
+      <rect width="1024" height="1024" rx="229" fill="url(#coral)"/>
+      <circle cx="512" cy="512" r="330" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="92"/>
+      <circle cx="512" cy="512" r="330" fill="none" stroke="#fff" stroke-width="92" stroke-linecap="round"
+              stroke-dasharray="1555 2074" transform="rotate(-90 512 512)"/>
+      <g fill="#fff">
+        <ellipse cx="440" cy="560" rx="54" ry="86" transform="rotate(-8 440 560)"/>
+        <circle cx="452" cy="684" r="40"/>
+        <ellipse cx="588" cy="400" rx="54" ry="86" transform="rotate(8 588 400)"/>
+        <circle cx="576" cy="524" r="40"/>
+      </g>
+    </symbol>
+
+    <!-- B: Trajectory path -->
+    <symbol id="B" viewBox="0 0 1024 1024">
+      <rect width="1024" height="1024" rx="229" fill="url(#night)"/>
+      <path d="M262 786 C 262 560, 470 640, 512 500 S 650 300, 762 262" fill="none"
+            stroke="url(#trail)" stroke-width="96" stroke-linecap="round"/>
+      <circle cx="262" cy="786" r="34" fill="#14100E" stroke="#FFB547" stroke-width="24"/>
+      <circle cx="762" cy="262" r="86" fill="#fff"/>
+    </symbol>
+
+    <!-- C: Ring made of steps -->
+    <symbol id="C" viewBox="0 0 1024 1024">
+      <rect width="1024" height="1024" rx="229" fill="#FFF6F1"/>
+      <g>
+        <rect x="472" y="150" width="80" height="170" rx="40" fill="#FF4F4A"/>
+      </g>
+      <g fill="#FF4F4A">
+        <rect x="472" y="150" width="80" height="170" rx="40" transform="rotate(45 512 512)"/>
+        <rect x="472" y="150" width="80" height="170" rx="40" transform="rotate(90 512 512)"/>
+        <rect x="472" y="150" width="80" height="170" rx="40" transform="rotate(135 512 512)"/>
+        <rect x="472" y="150" width="80" height="170" rx="40" transform="rotate(180 512 512)"/>
+        <rect x="472" y="150" width="80" height="170" rx="40" transform="rotate(225 512 512)"/>
+      </g>
+      <g fill="#FF4F4A" fill-opacity=".2">
+        <rect x="472" y="150" width="80" height="170" rx="40" transform="rotate(270 512 512)"/>
+        <rect x="472" y="150" width="80" height="170" rx="40" transform="rotate(315 512 512)"/>
+      </g>
+      <circle cx="512" cy="512" r="70" fill="#1A1412"/>
+    </symbol>
+  </defs>
+
+  <rect width="1500" height="760" fill="#F4F1EE"/>
+  <text x="40" y="58" font-size="30" font-weight="700" fill="#1A1412">Krok — 3 концепти іконки</text>
+  <text x="40" y="92" font-size="18" fill="#6B625D">Великий розмір = 1024 master · праворуч 60 pt і 29 pt (Settings) на світлому й темному фоні</text>
+
+  <!-- Column template: x offsets 40, 530, 1020 -->
+  <g transform="translate(40,130)">
+    <use href="#A" xlink:href="#A" width="300" height="300"/>
+    <rect x="320" y="0" width="120" height="140" rx="16" fill="#fff"/>
+    <use href="#A" xlink:href="#A" x="350" y="16" width="60" height="60"/>
+    <use href="#A" xlink:href="#A" x="365" y="96" width="29" height="29"/>
+    <rect x="320" y="160" width="120" height="140" rx="16" fill="#000"/>
+    <use href="#A" xlink:href="#A" x="350" y="176" width="60" height="60"/>
+    <use href="#A" xlink:href="#A" x="365" y="256" width="29" height="29"/>
+    <text y="350" font-size="24" font-weight="700" fill="#1A1412">A · «Кроки в кільці» ★</text>
+    <text y="380" font-size="16" fill="#4A423E">Кільце = денна ціль, два сліди = ходьба.</text>
+    <text y="402" font-size="16" fill="#4A423E">Прямо римується з кільцем на екрані й у віджетах.</text>
+    <text y="424" font-size="16" fill="#4A423E">Tinted/темна версія: біле кільце на чорному.</text>
+    <text y="446" font-size="16" fill="#4A423E">29 pt: кільце читається, сліди — як 2 крапки.</text>
+  </g>
+
+  <g transform="translate(530,130)">
+    <use href="#B" xlink:href="#B" width="300" height="300"/>
+    <rect x="320" y="0" width="120" height="140" rx="16" fill="#fff"/>
+    <use href="#B" xlink:href="#B" x="350" y="16" width="60" height="60"/>
+    <use href="#B" xlink:href="#B" x="365" y="96" width="29" height="29"/>
+    <rect x="320" y="160" width="120" height="140" rx="16" fill="#000"/>
+    <use href="#B" xlink:href="#B" x="350" y="176" width="60" height="60"/>
+    <use href="#B" xlink:href="#B" x="365" y="256" width="29" height="29"/>
+    <text y="350" font-size="24" font-weight="700" fill="#1A1412">B · «Траєкторія»</text>
+    <text y="380" font-size="16" fill="#4A423E">Шлях від старту до точки «ти тут».</text>
+    <text y="402" font-size="16" fill="#4A423E">Найвиразніша на Home Screen, але схожа</text>
+    <text y="424" font-size="16" fill="#4A423E">на навігатори/трекери маршрутів;</text>
+    <text y="446" font-size="16" fill="#4A423E">не римується з кільцем прогресу.</text>
+  </g>
+
+  <g transform="translate(1020,130)">
+    <use href="#C" xlink:href="#C" width="300" height="300"/>
+    <rect x="320" y="0" width="120" height="140" rx="16" fill="#fff"/>
+    <use href="#C" xlink:href="#C" x="350" y="16" width="60" height="60"/>
+    <use href="#C" xlink:href="#C" x="365" y="96" width="29" height="29"/>
+    <rect x="320" y="160" width="120" height="140" rx="16" fill="#000"/>
+    <use href="#C" xlink:href="#C" x="350" y="176" width="60" height="60"/>
+    <use href="#C" xlink:href="#C" x="365" y="256" width="29" height="29"/>
+    <text y="350" font-size="24" font-weight="700" fill="#1A1412">C · «Кільце з кроків»</text>
+    <text y="380" font-size="16" fill="#4A423E">Кожен сегмент — крок, заповнені = прогрес.</text>
+    <text y="402" font-size="16" fill="#4A423E">Найбільш «дизайнерська», світла.</text>
+    <text y="424" font-size="16" fill="#4A423E">Мінус: на 29 pt сегменти злипаються,</text>
+    <text y="446" font-size="16" fill="#4A423E">нагадує індикатор завантаження.</text>
+  </g>
+
+  <g transform="translate(40,640)">
+    <text font-size="18" font-weight="700" fill="#1A1412">Палітра (чернетка)</text>
+    <rect y="16" width="56" height="56" rx="12" fill="#FF5A47"/><text x="66" y="50" font-size="15" fill="#1A1412">Coral #FF5A47 — акцент</text>
+    <rect x="300" y="16" width="56" height="56" rx="12" fill="#FFB547"/><text x="366" y="50" font-size="15" fill="#1A1412">Amber #FFB547 — градієнт/серія</text>
+    <rect x="640" y="16" width="56" height="56" rx="12" fill="#1A1412"/><text x="706" y="50" font-size="15" fill="#1A1412">Ink #1A1412 — текст/темний фон</text>
+    <rect x="980" y="16" width="56" height="56" rx="12" fill="#FFF6F1" stroke="#E5DDD8"/><text x="1046" y="50" font-size="15" fill="#1A1412">Cream #FFF6F1 — світлий фон</text>
+  </g>
+</svg>

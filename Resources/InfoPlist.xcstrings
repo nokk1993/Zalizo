@@ -1,0 +1,38 @@
+{
+  "sourceLanguage": "uk",
+  "strings": {
+    "CFBundleDisplayName": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаг"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаг"
+          }
+        }
+      }
+    },
+    "NSHealthShareUsageDescription": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To show how many kilometres you walked today. Your data never leaves your phone."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Щоб показувати, скільки кілометрів ти пройшов за день. Дані не залишають твій телефон."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

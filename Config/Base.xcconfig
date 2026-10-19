@@ -1,0 +1,24 @@
+// Шаг — build configuration shared by all targets.
+//
+// ─────────────────────────── Change these ───────────────────────────
+//
+// 1. Your bundle ID. It must be unique to you, e.g. com.ivanpetrenko.shah
+//    (Latin letters, digits, dots and hyphens only).
+APP_BUNDLE_ID = com.yourname.shah
+
+// 2. Optional: your Team ID. You can leave it empty and instead pick your
+//    Team in Xcode → target → Signing & Capabilities (for "Shah" and "ShahWidgets").
+DEVELOPMENT_TEAM =
+
+// 3. Which capabilities to sign with:
+//    Full                   HealthKit + background delivery + App Group (recommended)
+//    NoBackgroundDelivery   if Xcode cannot provision "HealthKit Background Delivery"
+//    Basic                  HealthKit only, if Xcode cannot provision App Groups either
+//    The app adapts at runtime; see README → «Типові помилки».
+SHAH_CAPABILITIES = Full
+//
+// ─────────────────────────────────────────────────────────────────────
+
+SHAH_APP_GROUP = group.$(APP_BUNDLE_ID)
+MARKETING_VERSION = 1.0
+CURRENT_PROJECT_VERSION = 1

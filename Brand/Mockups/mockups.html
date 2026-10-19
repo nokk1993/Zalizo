@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>Шаг — мокапи</title>
+<style>
+  :root {
+    --coral: #FF5A47; --amber: #FFB547; --ink: #1A1412;
+    --font: "Inter", -apple-system, system-ui, sans-serif;
+  }
+  .light {
+    --bg: #F7F4F2; --surface: #FFFFFF; --text: #1A1412; --text2: #6E6560; --text3: #A39A95;
+    --track: #EFE7E2; --accent: #FF5A47; --positive: #23955C; --sep: #EAE3DF;
+    --glass: rgba(255,255,255,.72); --glass-border: rgba(0,0,0,.06);
+  }
+  .dark {
+    --bg: #000000; --surface: #1A1614; --text: #F7F1EE; --text2: #A89F9A; --text3: #6E6560;
+    --track: #2A2421; --accent: #FF6B57; --positive: #3DD68C; --sep: #2A2421;
+    --glass: rgba(40,34,31,.72); --glass-border: rgba(255,255,255,.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: #E9E4E0; padding: 36px; -webkit-font-smoothing: antialiased; }
+  h1 { font-size: 30px; color: #1A1412; margin-bottom: 6px; }
+  .sub { font-size: 16px; color: #6E6560; margin-bottom: 28px; }
+  .row { display: flex; gap: 36px; align-items: flex-start; }
+  .cap { margin-top: 12px; font-size: 15px; color: #4A423E; text-align: center; width: 393px; }
+  .phone { width: 393px; height: 852px; border-radius: 56px; background: var(--bg); color: var(--text);
+           position: relative; overflow: hidden; box-shadow: 0 0 0 10px #1A1412, 0 24px 60px rgba(0,0,0,.25); }
+  .status { height: 54px; display: flex; justify-content: space-between; align-items: center; padding: 14px 34px 0 46px;
+            font-weight: 600; font-size: 17px; }
+  .island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 124px; height: 36px; border-radius: 20px; background: #000; }
+  .homebar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 140px; height: 5px; border-radius: 3px; background: var(--text); opacity: .9; }
+  .content { padding: 0 20px; }
+  .date { font-size: 15px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: .4px; margin-top: 10px; }
+  .title { font-size: 34px; font-weight: 800; letter-spacing: -.5px; margin-top: 2px; }
+  .ringwrap { position: relative; width: 280px; height: 280px; margin: 26px auto 0; }
+  .ringwrap svg { position: absolute; inset: 0; }
+  .ringcenter { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .big { font-size: 76px; font-weight: 800; letter-spacing: -2.5px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .big small { font-size: 28px; font-weight: 700; letter-spacing: 0; margin-left: 4px; color: var(--text2); }
+  .ofgoal { font-size: 16px; color: var(--text2); margin-top: 8px; font-weight: 500; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px;
+          background: var(--surface); font-weight: 600; font-size: 16px; }
+  .center { display: flex; justify-content: center; margin-top: 22px; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+  .card { background: var(--surface); border-radius: 22px; padding: 16px; }
+  .card .k { font-size: 13px; color: var(--text2); font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
+  .card .v { font-size: 22px; font-weight: 800; margin-top: 6px; letter-spacing: -.3px; font-variant-numeric: tabular-nums; }
+  .card .d { font-size: 14px; color: var(--text2); margin-top: 2px; }
+  .pos { color: var(--positive); }
+  .tabbar { position: absolute; bottom: 30px; left: 20px; right: 20px; height: 64px; border-radius: 32px; background: var(--glass);
+            border: 1px solid var(--glass-border); backdrop-filter: blur(20px); display: flex; justify-content: space-around; align-items: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+  .tab { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 11px; font-weight: 600; color: var(--text2); padding: 6px 18px; border-radius: 24px; }
+  .tab.on { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .tab svg { width: 24px; height: 24px; }
+  .seg { display: flex; background: var(--track); border-radius: 12px; padding: 3px; margin-top: 18px; }
+  .seg div { flex: 1; text-align: center; font-size: 14px; font-weight: 600; padding: 7px 0; border-radius: 9px; color: var(--text); }
+  .seg .on { background: var(--surface); box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+  .chart { background: var(--surface); border-radius: 22px; padding: 16px 14px 10px; margin-top: 14px; }
+  .chart .hdr { font-size: 13px; color: var(--text2); font-weight: 600; text-transform: uppercase; }
+  .chart .hv { font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
+  .streak { display: flex; align-items: center; gap: 14px; }
+  .streak .flame { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center;
+                   background: linear-gradient(135deg, var(--amber), var(--coral)); color: #fff; font-size: 22px; }
+  .list { background: var(--surface); border-radius: 22px; margin-top: 8px; overflow: hidden; }
+  .li { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; font-size: 17px; border-bottom: 1px solid var(--sep); }
+  .li:last-child { border-bottom: 0; }
+  .li .r { color: var(--text2); display: flex; align-items: center; gap: 8px; }
+  .sect { font-size: 13px; color: var(--text2); text-transform: uppercase; font-weight: 600; margin: 22px 16px 0; }
+  .foot { font-size: 13px; color: var(--text2); margin: 8px 16px 0; line-height: 1.4; }
+  .stepper { display: flex; border-radius: 10px; background: var(--track); }
+  .stepper span { width: 44px; text-align: center; font-size: 20px; padding: 2px 0; color: var(--text); }
+  .stepper span:first-child { border-right: 1px solid var(--sep); }
+  .minis { display: flex; background: var(--track); border-radius: 9px; padding: 2px; }
+  .minis span { font-size: 13px; padding: 5px 10px; border-radius: 7px; font-weight: 600; }
+  .minis .on { background: var(--surface); }
+  .btn { display: block; text-align: center; background: var(--accent); color: #fff; font-weight: 700; font-size: 17px;
+         padding: 17px; border-radius: 999px; }
+  .btn2 { display: block; text-align: center; color: var(--accent); font-weight: 600; font-size: 17px; padding: 14px; }
+  .ob { position: absolute; inset: 54px 0 0 0; padding: 0 28px; display: flex; flex-direction: column; }
+  .ob h2 { font-size: 32px; font-weight: 800; letter-spacing: -.6px; line-height: 1.1; margin-top: 26px; }
+  .ob p { font-size: 17px; color: var(--text2); line-height: 1.45; margin-top: 14px; }
+  .dots { display: flex; gap: 8px; justify-content: center; margin: 18px 0; }
+  .dots i { width: 8px; height: 8px; border-radius: 4px; background: var(--track); }
+  .dots i.on { width: 22px; background: var(--accent); }
+  .bullets { margin-top: 22px; display: flex; flex-direction: column; gap: 16px; }
+  .bullet { display: flex; gap: 14px; align-items: flex-start; }
+  .bullet .ic { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--surface); color: var(--accent); }
+  .bullet b { display: block; font-size: 16px; }
+  .bullet span { font-size: 15px; color: var(--text2); line-height: 1.35; }
+  .chips { display: flex; gap: 10px; justify-content: center; margin-top: 22px; }
+  .chip { padding: 9px 16px; border-radius: 999px; background: var(--surface); font-weight: 600; }
+  .chip.on { background: var(--accent); color: #fff; }
+  .badge { display: inline-flex; gap: 6px; align-items: center; padding: 6px 12px; border-radius: 999px; color: #fff; font-weight: 700; font-size: 14px;
+           background: linear-gradient(90deg, var(--amber), var(--coral)); }
+  /* widgets */
+  .w { border-radius: 22px; background: var(--surface); color: var(--text); padding: 14px; position: relative; overflow: hidden; }
+  .ws { width: 170px; height: 170px; }
+  .wm { width: 364px; height: 170px; }
+  .wallpaper { background: linear-gradient(160deg, #F4C9B8 0%, #EBA28C 40%, #8C5A6E 100%); }
+  .wallpaper.night { background: linear-gradient(160deg, #2B2340 0%, #3E2A3A 50%, #120E14 100%); }
+  .appicon { width: 64px; height: 64px; border-radius: 15px; }
+  .lockclock { text-align: center; color: rgba(255,255,255,.95); }
+  .lockclock .d { font-size: 20px; font-weight: 600; margin-top: 20px; }
+  .lockclock .t { font-size: 96px; font-weight: 700; letter-spacing: -2px; line-height: 1; }
+  .acc { color: #fff; }
+  .accc { width: 72px; height: 72px; border-radius: 36px; background: rgba(255,255,255,.18); backdrop-filter: blur(10px); position: relative; }
+  .accr { width: 170px; height: 72px; border-radius: 16px; padding: 8px 4px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const P = new URLSearchParams(location.search);
+const sheet = P.get('sheet') || 'today';
+const goal = 10;
+
+const icon = {
+  walk: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="13.5" cy="4" r="2.2"/><path d="M10.6 7.6c.5-.4 1.2-.6 1.9-.5l1.2.2c.8.1 1.4.6 1.7 1.3l1.1 2.6 2.2.9c.5.2.7.8.5 1.3s-.8.7-1.3.5l-2.6-1.1-.8-1.8-.9 3.6 2.2 2.5c.2.2.3.5.3.8l.3 4.1c0 .6-.4 1-.9 1.1-.6 0-1-.4-1.1-.9l-.3-3.8-2.3-2.4-.8 3.1-2.9 4.1c-.3.5-.9.6-1.4.2-.5-.3-.6-.9-.2-1.4l2.7-3.8 1.6-6.6-1.4.7-1.2 2.6c-.2.5-.8.7-1.3.5s-.7-.8-.5-1.3l1.4-2.9c.1-.2.3-.4.5-.5l2.7-1.6z"/></svg>',
+  chart: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="12" width="4" height="9" rx="1.5"/><rect x="10" y="6" width="4" height="15" rx="1.5"/><rect x="17" y="9" width="4" height="12" rx="1.5"/></svg>',
+  gear: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/><circle cx="12" cy="12" r="7" /></svg>',
+  shield: '<svg viewBox="0 0 24 24" width="22" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.9-4.9 1.4 1.4-6.3 6.3z"/></svg>',
+  heart: '<svg viewBox="0 0 24 24" width="22" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.6 4.5c2.1 0 3.5 1.1 4.4 2.5.9-1.4 2.3-2.5 4.4-2.5 3.6 0 5.7 3.8 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg>',
+  watch: '<svg viewBox="0 0 24 24" width="22" fill="currentColor"><rect x="6" y="5" width="12" height="14" rx="3.5"/><rect x="8" y="1.5" width="8" height="3" rx="1"/><rect x="8" y="19.5" width="8" height="3" rx="1"/></svg>',
+  nocloud: '<svg viewBox="0 0 24 24" width="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 18h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 9.5 4.3 4.3 0 0 0 7 18z"/><path d="M3 3l18 18"/></svg>',
+  chev: '<svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 5 7 7-7 7"/></svg>',
+};
+
+function appIcon(size, rx) {
+  return `<svg width="${size}" height="${size}" viewBox="0 0 1024 1024">
+    <defs><linearGradient id="nt${size}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A211D"/><stop offset="1" stop-color="#14100E"/></linearGradient>
+    <linearGradient id="tr${size}" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FFB547"/><stop offset="1" stop-color="#FF4F4A"/></linearGradient></defs>
+    <rect width="1024" height="1024" rx="${rx ?? 229}" fill="url(#nt${size})"/>
+    <path d="M262 786 C 262 560, 470 640, 512 500 S 650 300, 762 262" fill="none" stroke="url(#tr${size})" stroke-width="96" stroke-linecap="round"/>
+    <circle cx="262" cy="786" r="34" fill="#14100E" stroke="#FFB547" stroke-width="24"/>
+    <circle cx="762" cy="262" r="86" fill="#fff"/></svg>`;
+}
+
+// Progress ring: amber→coral trail with a white "you are here" knob — same language as the icon.
+let ringId = 0;
+// Angular gradient emulated with short arc segments (SwiftUI uses AngularGradient).
+function mix(a, b, t) {
+  const h = x => [1,3,5].map(i => parseInt(x.slice(i, i+2), 16));
+  const A = h(a), B = h(b);
+  return 'rgb(' + A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(',') + ')';
+}
+function ring(size, stroke, p, opts = {}) {
+  const r = (size - stroke) / 2, cx = size / 2, f = Math.min(p, 1);
+  const track = opts.track || 'var(--track)';
+  const pt = a => [cx + r * Math.cos(a - Math.PI / 2), cx + r * Math.sin(a - Math.PI / 2)];
+  let arcs = '';
+  if (f > 0) {
+    const N = Math.max(2, Math.ceil(f * 90)), total = 2 * Math.PI * f;
+    for (let i = 0; i < N; i++) {
+      const a0 = total * i / N, a1 = total * Math.min(1, (i + 1.6) / N);
+      const [x0, y0] = pt(a0), [x1, y1] = pt(Math.min(a1, total));
+      const col = opts.mono || mix('#FFB547', '#FF5A47', i / (N - 1));
+      const cap = (i === 0 || i === N - 1) ? 'round' : 'butt';
+      arcs += `<path d="M${x0} ${y0} A${r} ${r} 0 0 1 ${x1} ${y1}" fill="none" stroke="${col}" stroke-width="${stroke}" stroke-linecap="${cap}"/>`;
+    }
+    if (opts.knob !== false) { const [kx, ky] = pt(total); arcs += `<circle cx="${kx}" cy="${ky}" r="${stroke * 0.3}" fill="#fff"/>`; }
+  }
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+    <circle cx="${cx}" cy="${cx}" r="${r}" fill="none" stroke="${track}" stroke-width="${stroke}"/>${arcs}</svg>`;
+}
+
+function phone(theme, inner, tab) {
+  const tabbar = tab ? `<div class="tabbar">
+      <div class="tab ${tab==='today'?'on':''}">${icon.walk}Сьогодні</div>
+      <div class="tab ${tab==='history'?'on':''}">${icon.chart}Історія</div>
+      <div class="tab ${tab==='settings'?'on':''}">${icon.gear}Налаштування</div></div>` : '';
+  return `<div class="phone ${theme}"><div class="island"></div>
+    <div class="status"><span>9:41</span><span style="letter-spacing:2px">▂▄▆ ◔ ▮</span></div>
+    ${inner}${tabbar}<div class="homebar"></div></div>`;
+}
+const col = (html, cap) => `<div>${html}<div class="cap">${cap}</div></div>`;
+
+function today(theme, km, opts = {}) {
+  const p = km / goal;
+  const done = p >= 1;
+  return phone(theme, `<div class="content">
+    <div class="date">Неділя, 18 жовтня</div>
+    <div class="title">Сьогодні</div>
+    <div class="ringwrap">${ring(280, 30, p)}
+      <div class="ringcenter">
+        <div class="big">${km.toFixed(1).replace('.', ',')}<small>км</small></div>
+        <div class="ofgoal">${Math.round(p*100)}% · ціль ${goal} км</div>
+        ${done ? '<span class="badge" style="margin-top:10px">✓ Ціль виконано</span>' : ''}
+      </div>
+      ${done ? confetti() : ''}
+    </div>
+    <div class="center"><span class="pill"><span style="color:var(--accent);display:flex;width:20px">${icon.walk}</span>${opts.steps || '10 482 кроки'}</span></div>
+    <div class="cards">
+      <div class="card"><div class="k">Учора · 6,2 км</div><div class="v pos">${opts.vy || '+1,2 км'}</div><div class="d">більше, ніж учора</div></div>
+      <div class="card"><div class="k">Зазвичай · 8,2 км</div><div class="v ${opts.va ? 'pos' : ''}">${opts.va || '−0,8 км'}</div><div class="d">${opts.da || 'менше, ніж зазвичай'}</div></div>
+    </div>
+  </div>`, 'today');
+}
+
+function confetti() {
+  const cs = ['#FF5A47','#FFB547','#3DD68C','#5AB2FF','#FF8AD8'];
+  let s = '';
+  for (let i = 0; i < 26; i++) {
+    const x = (i * 53) % 330 - 25, y = -((i * 37) % 70) + (Math.abs(x - 140) > 120 ? 60 : -6), rot = (i * 47) % 180;
+    s += `<i style="position:absolute;left:${x}px;top:${y}px;width:${i%3?8:6}px;height:${i%3?14:6}px;border-radius:2px;background:${cs[i%5]};transform:rotate(${rot}deg);opacity:.9"></i>`;
+  }
+  return s;
+}
+
+function empty(theme) {
+  return phone(theme, `<div class="content">
+    <div class="date">Неділя, 18 жовтня</div>
+    <div class="title">Сьогодні</div>
+    <div style="text-align:center;margin-top:70px">
+      <div style="display:inline-block;opacity:.9">${ring(150, 16, 0, {knob:false})}</div>
+      <div style="font-size:24px;font-weight:800;margin-top:22px">Немає даних</div>
+      <div style="font-size:16px;color:var(--text2);line-height:1.45;margin:10px 12px 0">
+        Можливо, Шаг не має доступу до Health. Перевір:<br>
+        <b style="color:var(--text)">Параметри → Здоров'я → Доступ до даних і пристрої → Шаг</b><br>і увімкни «Відстань ходьби й бігу» та «Кроки».</div>
+      <div style="margin:26px 20px 0"><span class="btn">Відкрити Параметри</span></div>
+      <span class="btn2">Оновити</span>
+    </div>
+  </div>`, 'today');
+}
+
+const week = [['Пн',6.1],['Вт',8.3],['Ср',4.2],['Чт',10.4],['Пт',7.9],['Сб',12.6],['Нд',7.4]];
+const month = Array.from({length: 31}, (_, i) => [String(i+1), +(4 + ((i*7919)%97)/97*9 + (i%6===5?3:0)).toFixed(1)]);
+
+function bars(data, sel, h = 190, labelsEvery = 1) {
+  const max = 14, w = 325, bw = w / data.length;
+  const gy = h - goal / max * h;
+  let s = `<svg width="${w}" height="${h + 24}">`;
+  data.forEach(([l, v], i) => {
+    const bh = v / max * h, x = i * bw + bw * 0.18, ww = bw * 0.64;
+    const met = v >= goal;
+    const fill = sel === i ? 'url(#bsel)' : (met ? 'var(--accent)' : 'color-mix(in srgb, var(--accent) 38%, var(--track))');
+    s += `<rect x="${x}" y="${h - bh}" width="${ww}" height="${bh}" rx="${Math.min(6, ww/2)}" fill="${fill}"/>`;
+    if (i % labelsEvery === 0) s += `<text x="${x + ww/2}" y="${h + 18}" font-size="12" text-anchor="middle" fill="var(--text2)" font-family="Inter">${l}</text>`;
+  });
+  s += `<line x1="0" x2="${w}" y1="${gy}" y2="${gy}" stroke="var(--text)" stroke-opacity=".55" stroke-dasharray="4 4" stroke-width="1.5"/>
+    <rect x="0" y="${gy - 19}" width="74" height="16" rx="5" fill="var(--surface)"/><text x="4" y="${gy - 7}" font-size="11" fill="var(--text2)" font-family="Inter" font-weight="700">Ціль ${goal} км</text>
+    <defs><linearGradient id="bsel" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FFB547"/><stop offset="1" stop-color="#FF5A47"/></linearGradient></defs></svg>`;
+  return s;
+}
+
+function history(theme, period) {
+  const isW = period === 'w';
+  const data = isW ? week : month;
+  const sel = isW ? 5 : 17;
+  const selV = data[sel][1];
+  const sum = data.reduce((a, b) => a + b[1], 0), avg = sum / data.length, best = Math.max(...data.map(d => d[1]));
+  const f = v => v.toFixed(1).replace('.', ',');
+  const callX = (sel + .5) * (325 / data.length);
+  return phone(theme, `<div class="content">
+    <div class="title" style="margin-top:10px">Історія</div>
+    <div class="seg"><div class="${isW?'on':''}">Тиждень</div><div class="${!isW?'on':''}">Місяць</div><div>Рік</div></div>
+    <div class="chart">
+      <div class="hdr">${isW ? '12–18 жовтня' : 'Жовтень 2026'}</div>
+      <div class="hv">${f(sum)} <span style="font-size:17px;color:var(--text2);font-weight:600">км</span></div>
+      <div style="position:relative;margin-top:30px">
+        <div style="position:absolute;top:-28px;left:${Math.max(0, Math.min(225, callX - 50))}px;background:var(--text);color:var(--bg);font-size:12px;font-weight:700;padding:4px 9px;border-radius:8px;white-space:nowrap">${isW ? 'Сб, 17 жовт' : '18 жовт'} · ${f(selV)} км</div>
+        ${bars(data, sel, isW ? 190 : 170, isW ? 1 : 5)}
+      </div>
+    </div>
+    <div class="cards" style="grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px">
+      <div class="card" style="padding:12px"><div class="k" style="font-size:11px">Сума</div><div class="v" style="font-size:19px">${f(sum)}</div><div class="d">км</div></div>
+      <div class="card" style="padding:12px"><div class="k" style="font-size:11px">Середнє</div><div class="v" style="font-size:19px">${f(avg)}</div><div class="d">км / день</div></div>
+      <div class="card" style="padding:12px"><div class="k" style="font-size:11px">Найкращий</div><div class="v" style="font-size:19px">${f(best)}</div><div class="d">${isW?'сб, 17 жовт':'км'}</div></div>
+    </div>
+    <div class="card streak" style="margin-top:12px"><div class="flame">🔥</div>
+      <div><div style="font-weight:800;font-size:18px">3 дні поспіль</div><div style="color:var(--text2);font-size:14px">ціль виконано · рекорд 12 днів</div></div></div>
+  </div>`, 'history');
+}
+
+function settings(theme) {
+  return phone(theme, `<div class="content" style="padding:0 16px">
+    <div class="title" style="margin:10px 4px 0">Налаштування</div>
+    <div class="sect">Ціль</div>
+    <div class="list"><div class="li"><span>Денна ціль</span><span class="r"><b style="color:var(--text)">10,0 км</b><span class="stepper"><span>−</span><span>+</span></span></span></div></div>
+    <div class="foot">Крок зміни — 0,5 км. Ціль використовується для кільця, серій і віджетів.</div>
+    <div class="sect">Вигляд</div>
+    <div class="list">
+      <div class="li"><span>Одиниці</span><span class="minis"><span class="on">км</span><span>милі</span></span></div>
+      <div class="li"><span>Тема</span><span class="minis"><span class="${theme==='light'?'':'on'}">Авто</span><span class="${theme==='light'?'on':''}">Світла</span><span>Темна</span></span></div>
+    </div>
+    <div class="sect">Дані</div>
+    <div class="list">
+      <div class="li"><span>Доступ до Health</span><span class="r">${icon.chev}</span></div>
+    </div>
+    <div class="foot">Шаг лише читає дані з Apple Health на цьому iPhone. Нічого не відправляється в інтернет.</div>
+    <div class="sect">Про застосунок</div>
+    <div class="list"><div class="li"><span>Версія</span><span class="r">1.0 (1)</span></div></div>
+  </div>`, 'settings');
+}
+
+function onboarding(theme, n) {
+  const dots = `<div class="dots">${[0,1,2].map(i => `<i class="${i===n?'on':''}"></i>`).join('')}</div>`;
+  if (n === 0) return phone(theme, `<div class="ob">
+      <div style="margin-top:70px;display:flex;justify-content:center">${appIcon(180, 0).replace('<rect width="1024" height="1024" rx="0" fill="url(#nt180)"/>', '')}</div>
+      <h2 style="text-align:center;font-size:44px;margin-top:30px">Шаг</h2>
+      <p style="text-align:center;font-size:19px">Скільки ти пройшов сьогодні — за одну секунду.</p>
+      <div style="flex:1"></div>${dots}
+      <span class="btn" style="margin-bottom:48px">Далі</span></div>`);
+  if (n === 1) return phone(theme, `<div class="ob">
+      <div style="margin-top:36px;width:72px;height:72px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,var(--amber),var(--coral));color:#fff">${icon.heart.replace('width="22"','width="38"')}</div>
+      <h2>Дані з Apple Health</h2>
+      <p>Шаг читає відстань і кроки, які iPhone та Apple Watch уже записують у Health.</p>
+      <div class="bullets">
+        <div class="bullet"><div class="ic">${icon.watch}</div><div><b>iPhone + Apple Watch</b><span>Без подвоєння: Health сам об'єднує записи з обох пристроїв.</span></div></div>
+        <div class="bullet"><div class="ic">${icon.nocloud}</div><div><b>Нічого не залишає телефон</b><span>Без серверів, акаунтів, аналітики й реклами.</span></div></div>
+        <div class="bullet"><div class="ic">${icon.shield}</div><div><b>Лише читання</b><span>Шаг нічого не записує в Health.</span></div></div>
+      </div>
+      <div style="flex:1"></div>${dots}
+      <span class="btn">Дозволити доступ до Health</span><span class="btn2" style="margin-bottom:26px">Пізніше</span></div>`);
+  return phone(theme, `<div class="ob">
+      <h2 style="margin-top:44px">Твоя денна ціль</h2>
+      <p>Кільце заповнюється до цієї відстані. Змінити можна будь-коли в налаштуваннях.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:26px;margin-top:56px">
+        <span style="width:56px;height:56px;border-radius:28px;background:var(--surface);display:grid;place-items:center;font-size:30px;color:var(--accent)">−</span>
+        <div class="big" style="font-size:92px">5<small>км</small></div>
+        <span style="width:56px;height:56px;border-radius:28px;background:var(--surface);display:grid;place-items:center;font-size:30px;color:var(--accent)">+</span>
+      </div>
+      <p style="text-align:center;margin-top:10px">≈ 6 600 кроків · 1 год ходьби</p>
+      <div class="chips"><span class="chip">3 км</span><span class="chip on">5 км</span><span class="chip">8 км</span><span class="chip">10 км</span></div>
+      <div style="flex:1"></div>${dots}
+      <span class="btn" style="margin-bottom:48px">Почати</span></div>`);
+}
+
+function wSmall(theme, km) {
+  const p = km / goal;
+  return `<div class="w ws ${theme}"><div style="position:absolute;inset:0;display:grid;place-items:center">${ring(136, 15, p)}</div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div style="font-size:34px;font-weight:800;letter-spacing:-1px">${km.toFixed(1).replace('.', ',')}</div>
+      <div style="font-size:13px;font-weight:600;color:var(--text2)">з ${goal} км</div></div></div>`;
+}
+function wMedium(theme, km) {
+  const p = km / goal;
+  let mb = '';
+  week.forEach(([l, v], i) => {
+    const h = v / 14 * 70;
+    mb += `<div style="display:flex;flex-direction:column;align-items:center;gap:4px"><div style="height:70px;display:flex;align-items:flex-end"><div style="width:12px;height:${h}px;border-radius:4px;background:${i===6?'linear-gradient(#FF5A47,#FFB547)':(v>=goal?'var(--accent)':'color-mix(in srgb, var(--accent) 38%, var(--track))')}"></div></div><span style="font-size:10px;color:var(--text2);font-weight:600">${l}</span></div>`;
+  });
+  return `<div class="w wm ${theme}" style="display:flex;gap:16px;align-items:center">
+    <div style="position:relative;width:132px;height:132px;flex:none">${ring(132, 14, p)}
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div style="font-size:30px;font-weight:800;letter-spacing:-1px">${km.toFixed(1).replace('.', ',')}</div><div style="font-size:12px;color:var(--text2);font-weight:600">км</div></div></div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--accent)">Сьогодні · 74%</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:2px">10 482 кроки · ще 2,6 км</div>
+      <div style="display:flex;justify-content:space-between;margin-top:10px">${mb}</div></div></div>`;
+}
+
+function home(theme) {
+  const night = theme === 'dark';
+  const apps = ['#5AB2FF','#3DD68C','#FFD84A','#B07CFF','#FF8AD8','#8E8E93','#FF9F0A','#64D2FF'];
+  return `<div class="phone ${theme} wallpaper ${night?'night':''}"><div class="island"></div>
+    <div class="status" style="color:#fff"><span>9:41</span><span>▂▄▆ ◔ ▮</span></div>
+    <div style="padding:14px 22px;display:grid;grid-template-columns:170px 170px;gap:24px">
+      ${wSmall(theme, 7.4)}
+      <div style="display:grid;grid-template-columns:64px 64px;gap:18px 34px;align-content:start">
+        ${[0,1,2,3].map(i => `<div style="text-align:center"><div class="appicon" style="background:${apps[i]}"></div><div style="color:#fff;font-size:11px;margin-top:5px">App</div></div>`).join('')}
+      </div>
+      <div style="grid-column:span 2">${wMedium(theme, 7.4)}</div>
+      <div style="grid-column:span 2;display:grid;grid-template-columns:repeat(4,64px);gap:18px 30px">
+        <div style="text-align:center">${appIcon(64)}<div style="color:#fff;font-size:11px;margin-top:5px">Шаг</div></div>
+        ${[4,5,6].map(i => `<div style="text-align:center"><div class="appicon" style="background:${apps[i]}"></div><div style="color:#fff;font-size:11px;margin-top:5px">App</div></div>`).join('')}
+      </div>
+    </div><div class="homebar" style="background:#fff"></div></div>`;
+}
+
+function lock() {
+  const p = 0.74;
+  return `<div class="phone dark wallpaper night"><div class="island"></div>
+    <div class="status" style="color:#fff"><span></span><span>▂▄▆ ◔ ▮</span></div>
+    <div class="lockclock"><div class="d">Неділя, 18 жовтня</div><div class="t">9:41</div></div>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:14px;color:#fff">
+      <div class="accc" style="display:grid;place-items:center">
+        <div style="position:absolute;inset:0;display:grid;place-items:center">${ring(64, 7, p, {mono:'#fff', track:'rgba(255,255,255,.25)', knob:false})}</div>
+        <div style="text-align:center;line-height:1"><div style="font-size:19px;font-weight:800">7,4</div><div style="font-size:10px;font-weight:600;opacity:.8">км</div></div></div>
+      <div class="accr">
+        <div style="font-size:13px;font-weight:700;opacity:.85;display:flex;gap:5px;align-items:center"><span style="width:14px;display:flex">${icon.walk}</span>Шаг</div>
+        <div style="font-size:24px;font-weight:800;letter-spacing:-.5px;margin-top:1px">7,4 км</div>
+        <div style="height:6px;border-radius:3px;background:rgba(255,255,255,.25);margin-top:5px"><div style="width:74%;height:6px;border-radius:3px;background:#fff"></div></div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:60px;left:0;right:0;text-align:center;color:rgba(255,255,255,.6);font-size:14px">Проведіть угору, щоб відкрити</div>
+    <div class="homebar" style="background:#fff"></div></div>`;
+}
+
+const sheets = {
+  onboarding: ['Онбординг', 'Три кроки: що це → доступ до Health → ціль. Остання картка — темна тема.',
+    [col(onboarding('light', 0), '1 · Привітання'), col(onboarding('light', 1), '2 · Чому Health і приватність'),
+     col(onboarding('light', 2), '3 · Вибір цілі (за замовч. 5 км)'), col(onboarding('dark', 1), '2 · темна тема')]],
+  today: ['Сьогодні', 'Головний сценарій: відкрив → за секунду бачиш число. Кільце — той самий «слід» бурштин→корал, що й на іконці, з білою крапкою «ти тут».',
+    [col(today('light', 7.4), 'Звичайний день (74%)'), col(today('dark', 7.4), 'Темна тема'),
+     col(today('light', 12.4, {steps:'16 930 кроків', vy:'+6,2 км', va:'+4,2 км', da:'більше, ніж зазвичай'}), 'Ціль виконано: конфеті + haptic, раз на день'),
+     col(empty('light'), 'Немає даних / немає доступу')]],
+  history: ['Історія і Налаштування', 'Swift Charts: стовпчики, пунктир цілі, тап → точне значення. Насичені стовпчики = ціль виконана.',
+    [col(history('light', 'w'), 'Історія · тиждень'), col(history('dark', 'm'), 'Історія · місяць (темна)'),
+     col(settings('light'), 'Налаштування'), col(settings('dark'), 'Налаштування (темна)')]],
+  widgets: ['Віджети', 'Home Screen: малий і середній. Lock Screen: accessoryCircular і accessoryRectangular (монохромні, система тонує).',
+    [col(home('light'), 'Home Screen · світла'), col(home('dark'), 'Home Screen · темна'), col(lock(), 'Lock Screen'),
+     `<div style="display:flex;flex-direction:column;gap:22px">${col(`<div class="light" style="display:flex;gap:16px;padding:16px;background:#E0DBD7;border-radius:28px">${wSmall('light', 3.1)}${wSmall('dark', 10.6)}</div>`, 'Малий: 31% (світлий) · 106% (темний)')}</div>`]],
+};
+
+const [h, sub, cols] = sheets[sheet];
+document.getElementById('root').innerHTML = `<h1>Шаг — ${h}</h1><div class="sub">${sub}</div><div class="row">${cols.join('')}</div>`;
+</script>
+</body>
+</html>

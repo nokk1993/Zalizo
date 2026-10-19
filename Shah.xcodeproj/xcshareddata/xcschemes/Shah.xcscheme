@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme LastUpgradeVersion = "2630" version = "1.7">
+   <BuildAction parallelizeBuildables = "YES" buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
+            <BuildableReference BuildableIdentifier = "primary" BlueprintIdentifier = "598CE4110B86E0EA73F3A317" BuildableName = "Shah.app" BlueprintName = "Shah" ReferencedContainer = "container:Shah.xcodeproj">
+</BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction buildConfiguration = "Debug" selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB" shouldUseLaunchSchemeArgsEnv = "YES" shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference skipped = "NO" parallelizable = "YES">
+            <BuildableReference BuildableIdentifier = "primary" BlueprintIdentifier = "511DAB1665134DBF73370F87" BuildableName = "ShahTests.xctest" BlueprintName = "ShahTests" ReferencedContainer = "container:Shah.xcodeproj">
+</BuildableReference>
+         </TestableReference>
+         <TestableReference skipped = "NO">
+            <BuildableReference BuildableIdentifier = "primary" BlueprintIdentifier = "F81AB234449456CC01275833" BuildableName = "ShahUITests.xctest" BlueprintName = "ShahUITests" ReferencedContainer = "container:Shah.xcodeproj">
+</BuildableReference>
+         </TestableReference>
+         <TestableReference skipped = "NO" parallelizable = "YES">
+            <BuildableReference BuildableIdentifier = "primary" BlueprintIdentifier = "ShahCoreTests" BuildableName = "ShahCoreTests" BlueprintName = "ShahCoreTests" ReferencedContainer = "container:Packages/ShahCore">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction buildConfiguration = "Debug" selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB" launchStyle = "0" useCustomWorkingDirectory = "NO" ignoresPersistentStateOnLaunch = "NO" debugDocumentVersioning = "YES" debugServiceExtension = "internal" allowLocationSimulation = "YES">
+      <BuildableProductRunnable runnableDebuggingMode = "0">
+         <BuildableReference BuildableIdentifier = "primary" BlueprintIdentifier = "598CE4110B86E0EA73F3A317" BuildableName = "Shah.app" BlueprintName = "Shah" ReferencedContainer = "container:Shah.xcodeproj">
+</BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction buildConfiguration = "Release" shouldUseLaunchSchemeArgsEnv = "YES" savedToolIdentifier = "" useCustomWorkingDirectory = "NO" debugDocumentVersioning = "YES">
+      <BuildableProductRunnable runnableDebuggingMode = "0">
+         <BuildableReference BuildableIdentifier = "primary" BlueprintIdentifier = "598CE4110B86E0EA73F3A317" BuildableName = "Shah.app" BlueprintName = "Shah" ReferencedContainer = "container:Shah.xcodeproj">
+</BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction buildConfiguration = "Release" revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

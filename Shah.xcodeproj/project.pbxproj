@@ -1,0 +1,811 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		82B1A5C279D5CD4DE4F13885 = {
+			isa = PBXBuildFile;
+			productRef = D866A1B60739288C8F90161F;
+		};
+		83D7999CE3F528FA8DF97B67 = {
+			isa = PBXBuildFile;
+			productRef = A7E91794E1FD0CC4CAD3EB5B;
+		};
+		CD801C648E48D1CE53E68AD6 = {
+			isa = PBXBuildFile;
+			fileRef = EB09720EDF4B01FA74581F7D;
+			settings = {
+				ATTRIBUTES = (
+					RemoveHeadersOnCopy,
+				);
+			};
+		};
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10BDF5EDD06448BA0D54E7CE = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46F86FAA6BBF9AC94A7E4595;
+			proxyType = 1;
+			remoteGlobalIDString = 598CE4110B86E0EA73F3A317;
+			remoteInfo = Shah;
+		};
+		484D3D2479262066E7B4D966 = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46F86FAA6BBF9AC94A7E4595;
+			proxyType = 1;
+			remoteGlobalIDString = 598CE4110B86E0EA73F3A317;
+			remoteInfo = Shah;
+		};
+		BE4D850FA0A320A1A37F5E67 = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46F86FAA6BBF9AC94A7E4595;
+			proxyType = 1;
+			remoteGlobalIDString = 88BBF1816CFD903CC7FB7942;
+			remoteInfo = ShahWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BBF573DFCE0245707CDE4200 = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CD801C648E48D1CE53E68AD6,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		145100669FC6589B655B4935 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.xml;
+			path = "ShahWidgets-Info.plist";
+			sourceTree = "<group>";
+		};
+		3A95779EED3B5C96A8C49081 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.entitlements;
+			path = "ShahWidgets-NoBackgroundDelivery.entitlements";
+			sourceTree = "<group>";
+		};
+		50E3E75A00359D8E04A9744F = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.entitlements;
+			path = "Shah-NoBackgroundDelivery.entitlements";
+			sourceTree = "<group>";
+		};
+		56B8236565DADF4A59869FB3 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.entitlements;
+			path = "ShahWidgets-Basic.entitlements";
+			sourceTree = "<group>";
+		};
+		5D2A3EF52500C32F544E57FE = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.application;
+			includeInIndex = 0;
+			path = Shah.app;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8555F9BEF6D35374F18CED19 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.xml;
+			path = "Shah-Info.plist";
+			sourceTree = "<group>";
+		};
+		9D49358F3EA8655C61017F6A = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = ShahTests.xctest;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A2FA911E6EDD98B2EA603218 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.entitlements;
+			path = "Shah-Basic.entitlements";
+			sourceTree = "<group>";
+		};
+		A373C5E65995251948425D83 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xcconfig;
+			path = Base.xcconfig;
+			sourceTree = "<group>";
+		};
+		B1F6A425D8A2F5F8890BEDDA = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.entitlements;
+			path = "Shah-Full.entitlements";
+			sourceTree = "<group>";
+		};
+		D873B2F9A14E23629E703770 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.entitlements;
+			path = "ShahWidgets-Full.entitlements";
+			sourceTree = "<group>";
+		};
+		E1C303868652EA69E82F8BB3 = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = ShahUITests.xctest;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EB09720EDF4B01FA74581F7D = {
+			isa = PBXFileReference;
+			explicitFileType = "wrapper.app-extension";
+			includeInIndex = 0;
+			path = ShahWidgets.appex;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		44A76281BC9AEAEE537CD85E = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				InfoPlist.xcstrings,
+			);
+			target = 88BBF1816CFD903CC7FB7942;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		165BF74A252DB2D530A37C06 = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		254B3BA83E35890E0B900508 = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				44A76281BC9AEAEE537CD85E,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3ECCD82740D19383DD1C8B8A = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = App;
+			sourceTree = "<group>";
+		};
+		4B317CD147FD1A4E63DD8E1F = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		A4DB9EB19C4D1B250F03FDB7 = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		A693013CFE9E31DFEBCA1991 = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		D90B90564FA1EF9598AE0BF3 = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E5C8605DDEB65D53830E2B06 = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Features;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		459D0942A35605A5EAE74B65 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D7999CE3F528FA8DF97B67,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8324E3290738036ADD8187DD = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC5D214791EC3B497B0E3152 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82B1A5C279D5CD4DE4F13885,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B62C6A2BB0D347ABB2DD84 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		113236722DEE1DC96F378B9D = {
+			isa = PBXGroup;
+			children = (
+				5D2A3EF52500C32F544E57FE,
+				EB09720EDF4B01FA74581F7D,
+				9D49358F3EA8655C61017F6A,
+				E1C303868652EA69E82F8BB3,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71DC27D9F8E3B109C877BFC4 = {
+			isa = PBXGroup;
+			children = (
+				3ECCD82740D19383DD1C8B8A,
+				E5C8605DDEB65D53830E2B06,
+				D90B90564FA1EF9598AE0BF3,
+				165BF74A252DB2D530A37C06,
+				254B3BA83E35890E0B900508,
+				4B317CD147FD1A4E63DD8E1F,
+				D6C849779C92E025F6502698,
+				89B104369EBC5E85E7E43C6B,
+				113236722DEE1DC96F378B9D,
+			);
+			sourceTree = "<group>";
+		};
+		89B104369EBC5E85E7E43C6B = {
+			isa = PBXGroup;
+			children = (
+				A373C5E65995251948425D83,
+				8555F9BEF6D35374F18CED19,
+				145100669FC6589B655B4935,
+				B1F6A425D8A2F5F8890BEDDA,
+				50E3E75A00359D8E04A9744F,
+				A2FA911E6EDD98B2EA603218,
+				D873B2F9A14E23629E703770,
+				3A95779EED3B5C96A8C49081,
+				56B8236565DADF4A59869FB3,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		D6C849779C92E025F6502698 = {
+			isa = PBXGroup;
+			children = (
+				A693013CFE9E31DFEBCA1991,
+				A4DB9EB19C4D1B250F03FDB7,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		511DAB1665134DBF73370F87 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9387616502B67532F4C3177;
+			buildPhases = (
+				EBB000BFD96E349FF19490EB,
+				F6B62C6A2BB0D347ABB2DD84,
+				108FD22B6D276A7146B7808B,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56C9862CA7B081E5A49EB7D7,
+			);
+			fileSystemSynchronizedGroups = (
+				A693013CFE9E31DFEBCA1991,
+			);
+			name = ShahTests;
+			packageProductDependencies = (
+			);
+			productName = ShahTests;
+			productReference = 9D49358F3EA8655C61017F6A;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		598CE4110B86E0EA73F3A317 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BF714CD5E189FCFC2037860;
+			buildPhases = (
+				5F612BCAB30EC1F6057F51B4,
+				459D0942A35605A5EAE74B65,
+				CC3CFB7E04E80497925F7026,
+				BBF573DFCE0245707CDE4200,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4661C82199287830E45F048,
+			);
+			fileSystemSynchronizedGroups = (
+				3ECCD82740D19383DD1C8B8A,
+				E5C8605DDEB65D53830E2B06,
+				D90B90564FA1EF9598AE0BF3,
+				165BF74A252DB2D530A37C06,
+				254B3BA83E35890E0B900508,
+			);
+			name = Shah;
+			packageProductDependencies = (
+				A7E91794E1FD0CC4CAD3EB5B,
+			);
+			productName = Shah;
+			productReference = 5D2A3EF52500C32F544E57FE;
+			productType = "com.apple.product-type.application";
+		};
+		88BBF1816CFD903CC7FB7942 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C13B0DF388EA384B2F885EAD;
+			buildPhases = (
+				DCB74784C53E5638737E0492,
+				DC5D214791EC3B497B0E3152,
+				1D9B1DC133835BA78AD46C0D,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4B317CD147FD1A4E63DD8E1F,
+				165BF74A252DB2D530A37C06,
+				254B3BA83E35890E0B900508,
+			);
+			name = ShahWidgets;
+			packageProductDependencies = (
+				D866A1B60739288C8F90161F,
+			);
+			productName = ShahWidgets;
+			productReference = EB09720EDF4B01FA74581F7D;
+			productType = "com.apple.product-type.app-extension";
+		};
+		F81AB234449456CC01275833 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34AC0ED695114A429940CD2B;
+			buildPhases = (
+				27678ACF5319A2F7E678EA20,
+				8324E3290738036ADD8187DD,
+				87CF39B2CCD1A1F35F5ED071,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4948097A0D06031DA2156C5,
+			);
+			fileSystemSynchronizedGroups = (
+				A4DB9EB19C4D1B250F03FDB7,
+			);
+			name = ShahUITests;
+			packageProductDependencies = (
+			);
+			productName = ShahUITests;
+			productReference = E1C303868652EA69E82F8BB3;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					598CE4110B86E0EA73F3A317 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					88BBF1816CFD903CC7FB7942 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					511DAB1665134DBF73370F87 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					F81AB234449456CC01275833 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 598CE4110B86E0EA73F3A317;
+					};
+				};
+			};
+			buildConfigurationList = 946392D46B65BE2E368A0D3B;
+			developmentRegion = uk;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				uk,
+				en,
+				Base,
+			);
+			mainGroup = 71DC27D9F8E3B109C877BFC4;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				14ADB664CA7C05453ADB2583,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 113236722DEE1DC96F378B9D;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				598CE4110B86E0EA73F3A317,
+				88BBF1816CFD903CC7FB7942,
+				511DAB1665134DBF73370F87,
+				F81AB234449456CC01275833,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		108FD22B6D276A7146B7808B = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D9B1DC133835BA78AD46C0D = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87CF39B2CCD1A1F35F5ED071 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC3CFB7E04E80497925F7026 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27678ACF5319A2F7E678EA20 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F612BCAB30EC1F6057F51B4 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCB74784C53E5638737E0492 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBB000BFD96E349FF19490EB = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		56C9862CA7B081E5A49EB7D7 = {
+			isa = PBXTargetDependency;
+			target = 598CE4110B86E0EA73F3A317;
+			targetProxy = 10BDF5EDD06448BA0D54E7CE;
+		};
+		F4661C82199287830E45F048 = {
+			isa = PBXTargetDependency;
+			target = 88BBF1816CFD903CC7FB7942;
+			targetProxy = BE4D850FA0A320A1A37F5E67;
+		};
+		F4948097A0D06031DA2156C5 = {
+			isa = PBXTargetDependency;
+			target = 598CE4110B86E0EA73F3A317;
+			targetProxy = 484D3D2479262066E7B4D966;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0297097045443E8E3BD93CC1 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Config/Shah-$(SHAH_CAPABILITIES).entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Shah-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Шаг";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Щоб показувати, скільки кілометрів ти пройшов за день. Дані не залишають твій телефон.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+			};
+			name = Release;
+		};
+		3DEDEE70FBA247013D1ACDF0 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shah.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shah";
+			};
+			name = Debug;
+		};
+		5248CBC2E60AA9370224CCB1 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).uitests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Shah;
+			};
+			name = Debug;
+		};
+		5E1134544568A0C1B09E583D = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A373C5E65995251948425D83;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6D7F11E5D6027092787E0847 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Config/Shah-$(SHAH_CAPABILITIES).entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Shah-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Шаг";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Щоб показувати, скільки кілометрів ти пройшов за день. Дані не залишають твій телефон.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+			};
+			name = Debug;
+		};
+		AF6E6F8199C6C5DFD13E2D3C = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shah.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shah";
+			};
+			name = Release;
+		};
+		B3AFDE6F970A0432673383DD = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A373C5E65995251948425D83;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D241ABAFB435874D81A834D1 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Config/ShahWidgets-$(SHAH_CAPABILITIES).entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/ShahWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Шаг";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+			};
+			name = Release;
+		};
+		F1C22EE6DC7B3A81197FD375 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Config/ShahWidgets-$(SHAH_CAPABILITIES).entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/ShahWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Шаг";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+			};
+			name = Debug;
+		};
+		FA5A726D373E135A9797F91D = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).uitests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Shah;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		34AC0ED695114A429940CD2B = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5248CBC2E60AA9370224CCB1,
+				FA5A726D373E135A9797F91D,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		946392D46B65BE2E368A0D3B = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E1134544568A0C1B09E583D,
+				B3AFDE6F970A0432673383DD,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BF714CD5E189FCFC2037860 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D7F11E5D6027092787E0847,
+				0297097045443E8E3BD93CC1,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9387616502B67532F4C3177 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DEDEE70FBA247013D1ACDF0,
+				AF6E6F8199C6C5DFD13E2D3C,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C13B0DF388EA384B2F885EAD = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1C22EE6DC7B3A81197FD375,
+				D241ABAFB435874D81A834D1,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		14ADB664CA7C05453ADB2583 = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ShahCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A7E91794E1FD0CC4CAD3EB5B = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14ADB664CA7C05453ADB2583;
+			productName = ShahCore;
+		};
+		D866A1B60739288C8F90161F = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14ADB664CA7C05453ADB2583;
+			productName = ShahCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595;
+}
